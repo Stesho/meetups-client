@@ -226,9 +226,9 @@ describe('Array', () => {
       return newArr;
     }
 
-    // const last = getLastN1;
+    const last = getLastN1;
     // const last = getLastN2;
-    const last = getLastN3;
+    // const last = getLastN3;
 
     it('Should return n last items from the specified array', () => {
       expect(last([1, 2, 3, 4, 5, 6, 7], 3)).toStrictEqual([5, 6, 7]);
@@ -266,9 +266,9 @@ describe('Array', () => {
       return count;
     }
 
-    // const countFalsyValues = countFalsy1;
+    const countFalsyValues = countFalsy1;
     // const countFalsyValues = countFalsy2;
-    const countFalsyValues = countFalsy3;
+    // const countFalsyValues = countFalsy3;
 
     it('Should return number of falsy values in specified array', () => {
       expect(countFalsyValues([1, 0, '', null, 'hello', '0'])).toBe(3);
@@ -276,7 +276,12 @@ describe('Array', () => {
   });
 
   describe('unique: Find all unique items in array', () => {
-    const unique = TODO_IMPLEMENT_ME;
+    function findUnique(arr) {
+      return Array.from(new Set(arr));
+    }
+
+    const unique = findUnique;
+
     it('Should return array of unique items from specified array', () => {
       expect(unique(['a', 'b', 'a', 'c', 'e', 'b', 'o'])).toStrictEqual([
         'a',
