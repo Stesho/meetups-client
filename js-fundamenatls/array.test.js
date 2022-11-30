@@ -140,7 +140,28 @@ describe('Array', () => {
   });
 
   describe('toUppercase: Uppercase each array item', () => {
-    const toUppercase = TODO_IMPLEMENT_ME;
+    function uppercase1(arr) {
+      return arr.map((item) => item.toUpperCase());
+    }
+    
+    // alternative solution
+    function uppercase2(arr) {
+      const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXUZ';
+      const lower = 'abcdefghijklmnopqrstuvwxuz';
+
+      for (let i = 0; i < arr.length; i++) {
+        if(arr[i].match(/[a-z]/i)) {
+          const index = lower.indexOf(arr[i]) || upper.indexOf(arr[i]);
+          arr[i] = upper[index];
+        }
+      }
+
+      return arr;
+    }
+
+    const toUppercase = uppercase1;
+    // const toUppercase = uppercase2;
+
     it('Should convert strings from specified array to uppercase', () => {
       expect(toUppercase(['aaaa', 'abc'])).toStrictEqual(['AAAA', 'ABC']);
     });
