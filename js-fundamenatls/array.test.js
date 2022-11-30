@@ -195,9 +195,37 @@ describe('Array', () => {
   });
 
   describe('last: Get n last items from array', () => {
-    const last = TODO_IMPLEMENT_ME;
+    function getLastN1(arr, count) {
+      if(count === undefined || arr.length < count) {
+        return arr;
+      }
+      const startIndex = arr.length - count;
+
+      return arr.splice(startIndex, count + 1);
+    }
+
+    // alternative solution
+    function getLastN2(arr, count) {
+      if(arr.length < count) {
+        return arr;
+      }
+
+      return arr.slice(arr.length - count, arr.length);
+    }
+
+    const last = getLastN1;
+    // const last = getLastN2;
+
     it('Should return n last items from the specified array', () => {
       expect(last([1, 2, 3, 4, 5, 6, 7], 3)).toStrictEqual([5, 6, 7]);
+    });
+
+    it('Should work if array length less then n', () => {
+      expect(last([1, 2], 3)).toStrictEqual([1, 2]);
+    });
+
+    it('Should work without second parameter', () => {
+      expect(last([1, 2])).toStrictEqual([1, 2]);
     });
   });
 
