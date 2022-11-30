@@ -295,7 +295,7 @@ describe('Array', () => {
 
   describe('groupBy: Group array data by key', () => {
     function group1(arr, field) {
-      const filedsValue = new Set(arr.map(item => item[field]));
+      const filedsValue = new Set(arr.map(item => item[field]).filter(item => item !== undefined));
       const resultArray = [];
 
       filedsValue.forEach(fieldValue => {
@@ -314,24 +314,55 @@ describe('Array', () => {
 
     it('Should return a map of grouped data by key and value selector', function () {
       let arr = [
-        { country: 'Belarus', city: 'Brest' },
+        { country: 'Belarus', city: 'Brest', population: 10 },
         { country: 'Russia', city: 'Omsk' },
-        { country: 'Russia', city: 'Samara' },
+        { country: 'Russia', city: 'Samara', population: 3 },
         { country: 'Belarus', city: 'Grodno' },
-        { country: 'Belarus', city: 'Minsk' },
-        { country: 'Poland', city: 'Lodz' },
+        { country: 'Belarus', city: 'Minsk', population: 2 },
+        { country: 'Poland', city: 'Lodz', population: 10 },
       ];
   
       expect(groupBy(arr, 'country')).toStrictEqual([
-        ['Belarus', [{ country: 'Belarus', city: 'Brest' }, { country: 'Belarus', city: 'Grodno' }, { country: 'Belarus', city: 'Minsk' }]],
-        ['Russia', [{ country: 'Russia', city: 'Omsk' }, { country: 'Russia', city: 'Samara' }]],
-        ['Poland', [{ country: 'Poland', city: 'Lodz' }]],
+        ['Belarus', [{ country: 'Belarus', city: 'Brest', population: 10 }, { country: 'Belarus', city: 'Grodno' }, { country: 'Belarus', city: 'Minsk', population: 2 }]],
+        ['Russia', [{ country: 'Russia', city: 'Omsk' }, { country: 'Russia', city: 'Samara', population: 3 }]],
+        ['Poland', [{ country: 'Poland', city: 'Lodz', population: 10 }]],
+      ]);
+
+      expect(groupBy(arr, 'city')).toStrictEqual([
+        ['Brest', [ { country: 'Belarus', city: 'Brest', population: 10 } ]],
+        ['Omsk', [ { country: 'Russia', city: 'Omsk' } ]],
+        ['Samara', [ { country: 'Russia', city: 'Samara', population: 3 } ]],
+        ['Grodno', [ { country: 'Belarus', city: 'Grodno' } ]],
+        ['Minsk', [ { country: 'Belarus', city: 'Minsk', population: 2 } ]],
+        ['Lodz', [ { country: 'Poland', city: 'Lodz', population: 10 } ]]
+      ]);
+    });
+
+    it("Should work if items don't have a passed field", function () {
+      let arr = [
+        { country: 'Belarus', city: 'Brest', population: 10 },
+        { country: 'Russia', city: 'Omsk' },
+        { country: 'Russia', city: 'Samara', population: 3 },
+        { country: 'Belarus', city: 'Grodno' },
+        { country: 'Belarus', city: 'Minsk', population: 2 },
+        { country: 'Poland', city: 'Lodz', population: 10 },
+      ];
+
+      expect(groupBy(arr, 'population')).toStrictEqual([
+        [ 10, [ { country: 'Belarus', city: 'Brest', population: 10 }, { country: 'Poland', city: 'Lodz', population: 10 } ]],
+        [ 3, [ { country: 'Russia', city: 'Samara', population: 3 } ]],
+        [ 2, [ { country: 'Belarus', city: 'Minsk', population: 2 } ]]
       ]);
     });
   });
 
   describe('compact: Remove all falsy values from array', () => {
-    const compact = TODO_IMPLEMENT_ME;
+    function removeAll(arr) {
+      return arr.filter(item => !!item);
+    }
+
+    const compact = removeAll;
+
     it('Should create array with all falsy values removed.', () => {
       expect(compact([1, 0, null, 'a'])).toStrictEqual([1, 'a']);
     });
