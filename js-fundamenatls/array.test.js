@@ -230,7 +230,32 @@ describe('Array', () => {
   });
 
   describe('countFalsyValues: Count falsy values in the array', () => {
-    const countFalsyValues = TODO_IMPLEMENT_ME;
+    function countFalsy1(arr) {
+      return arr.reduce((sum, item) => !item ? sum : sum + 1, 0);
+    }
+    
+    // alternative solution 1
+    function countFalsy2(arr) {
+      return arr.filter(item => !item).length;
+    }
+
+    // alternative solution 2
+    function countFalsy3(arr) {
+      let count = 0;
+
+      arr.forEach(item => {
+        if(Boolean(item)) {
+          count++;
+        }  
+      })
+
+      return count;
+    }
+
+    // const countFalsyValues = countFalsy1;
+    // const countFalsyValues = countFalsy2;
+    const countFalsyValues = countFalsy3;
+
     it('Should return number of falsy values in specified array', () => {
       expect(countFalsyValues([1, 0, '', null, 'hello', '0'])).toBe(3);
     });
