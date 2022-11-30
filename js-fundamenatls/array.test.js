@@ -4,11 +4,66 @@ const TODO_IMPLEMENT_ME = () => {
 
 describe('Array', () => {
   describe('double: Duplicate each array element twice', () => {
-    const double = TODO_IMPLEMENT_ME;
+    function dublicate1(arr) {
+      return [...arr, ...arr];
+    }
+
+    // alternative solution 1
+    function dublicate2(arr) {
+      return arr.concat(arr);
+    }
+
+    // alternative solution 2
+    function dublicate3(arr) {
+      const length = arr.length;
+      for (let i = 0; i < length; i++) {
+        const lastIndex = arr.length;
+        arr[lastIndex] = arr[i];
+      }
+      return arr;
+    }
+
+    // alternative solution 3
+    function dublicate4(arr) {
+      arr.forEach((item) => {
+        arr.push(item);
+      });
+      return arr;
+    }
+
+    const double = dublicate1;
+    // const double = dublicate2;
+    // const double = dublicate3;
+    // const double = dublicate4;
+
     it('Should return specified array twice', () => {
       expect(double([1, 2, 3])).toStrictEqual([1, 2, 3, 1, 2, 3]);
     });
-    it.todo('Write additional tests');
+
+    it('Should return empty array if empty array passed', () => {
+      expect(double([])).toStrictEqual([]);
+    });
+
+    it('Should work with any types', () => {
+      expect(
+        double(['5', { a: 5 }, 10, [4, 7], true, null, undefined])
+      ).toStrictEqual([
+        '5',
+        { a: 5 },
+        10,
+        [4, 7],
+        true,
+        null,
+        undefined,
+        '5',
+        { a: 5 },
+        10,
+        [4, 7],
+        true,
+        null,
+        undefined,
+      ]);
+    });
   });
 
   describe('convertItemsToString: Convert each array element to string', () => {
