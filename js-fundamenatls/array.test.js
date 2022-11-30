@@ -294,7 +294,24 @@ describe('Array', () => {
   });
 
   describe('groupBy: Group array data by key', () => {
-    const groupBy = TODO_IMPLEMENT_ME;
+    function group1(arr, field) {
+      const filedsValue = new Set(arr.map(item => item[field]));
+      const resultArray = [];
+
+      filedsValue.forEach(fieldValue => {
+        const newArray = [];
+        const items = arr.filter(item => item[field] === fieldValue);
+
+        newArray.push(fieldValue, items);
+
+        resultArray.push(newArray);
+      });
+
+      return resultArray;
+    }
+
+    const groupBy = group1;
+
     it('Should return a map of grouped data by key and value selector', function () {
       let arr = [
         { country: 'Belarus', city: 'Brest' },
@@ -304,11 +321,11 @@ describe('Array', () => {
         { country: 'Belarus', city: 'Minsk' },
         { country: 'Poland', city: 'Lodz' },
       ];
-
+  
       expect(groupBy(arr, 'country')).toStrictEqual([
-        ['Belarus', ['Brest', 'Grodno', 'Minsk']],
-        ['Russia', ['Omsk', 'Samara']],
-        ['Poland', ['Lodz']],
+        ['Belarus', [{ country: 'Belarus', city: 'Brest' }, { country: 'Belarus', city: 'Grodno' }, { country: 'Belarus', city: 'Minsk' }]],
+        ['Russia', [{ country: 'Russia', city: 'Omsk' }, { country: 'Russia', city: 'Samara' }]],
+        ['Poland', [{ country: 'Poland', city: 'Lodz' }]],
       ]);
     });
   });

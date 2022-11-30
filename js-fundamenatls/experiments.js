@@ -1,10 +1,26 @@
-function getLastN3(arr, count) {
-  const newArr = [];
-  for(let i = 0; i < count; i++) {
-    newArr.unshift(arr.pop());
-  }
-  return newArr;
+let arr = [
+  { country: 'Belarus', city: 'Brest' },
+  { country: 'Russia', city: 'Omsk' },
+  { country: 'Russia', city: 'Samara' },
+  { country: 'Belarus', city: 'Grodno' },
+  { country: 'Belarus', city: 'Minsk' },
+  { country: 'Poland', city: 'Lodz' },
+];
+
+function group1(arr, field) {
+  const filedsValue = new Set(arr.map(item => item[field]));
+  const resultArray = [];
+
+  filedsValue.forEach(fieldValue => {
+    const newArray = [];
+    const items = arr.filter(item => item[field] === fieldValue);
+
+    newArray.push(fieldValue, items);
+
+    resultArray.push(newArray);
+  });
+
+  return resultArray;
 }
 
-console.log(getLastN3([1, 2, 3, 4, 5, 6, 7], 3));
-console.log(getLastN3([1, 2], 3));
+console.log(group1(arr, 'country'));
