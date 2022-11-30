@@ -204,7 +204,7 @@ describe('Array', () => {
       return arr.splice(startIndex, count + 1);
     }
 
-    // alternative solution
+    // alternative solution 1
     function getLastN2(arr, count) {
       if(arr.length < count) {
         return arr;
@@ -213,8 +213,22 @@ describe('Array', () => {
       return arr.slice(arr.length - count, arr.length);
     }
 
-    const last = getLastN1;
+    // alternative solution 2
+    function getLastN3(arr, count) {
+      if(count === undefined || arr.length < count) {
+        return arr;
+      }
+
+      const newArr = [];
+      for(let i = 0; i < count; i++) {
+        newArr.unshift(arr.pop());
+      }
+      return newArr;
+    }
+
+    // const last = getLastN1;
     // const last = getLastN2;
+    const last = getLastN3;
 
     it('Should return n last items from the specified array', () => {
       expect(last([1, 2, 3, 4, 5, 6, 7], 3)).toStrictEqual([5, 6, 7]);

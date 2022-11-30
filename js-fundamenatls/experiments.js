@@ -1,10 +1,10 @@
-function getLastN1(arr, count) {
-  if(count === undefined || arr.length < count) {
-    return arr;
+function getLastN3(arr, count) {
+  const newArr = [];
+  for(let i = 0; i < count; i++) {
+    newArr.unshift(arr.pop());
   }
-  const startIndex = arr.length - count;
-
-  return arr.splice(startIndex, count + 1);
+  return newArr;
 }
 
-console.log(getLastN1([1, 2]));
+console.log(getLastN3([1, 2, 3, 4, 5, 6, 7], 3));
+console.log(getLastN3([1, 2], 3));
