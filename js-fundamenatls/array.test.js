@@ -168,9 +168,29 @@ describe('Array', () => {
   });
 
   describe('insert: Insert item into array', () => {
-    const insert = TODO_IMPLEMENT_ME;
+    function insertItem1(arr, ...items) {
+      return Array.from(new Set([...arr, ...items].sort()));
+    }
+
+    // alternative solution
+    function insertItem2(arr, ...items) {
+      const tempArray = [...arr, ...items].sort();
+      return [...tempArray].filter((item, index) => tempArray.indexOf(item) === index);
+    }
+
+    const insert = insertItem1;
+    // const insert = insertItem2;
+
     it('Insert an item at specified position', () => {
       expect(insert([1, 2, 4], 3, 2)).toStrictEqual([1, 2, 3, 4]);
+    });
+
+    it('Should work with empty array', () => {
+      expect(insert([], 3, 2, 1)).toStrictEqual([1, 2, 3]);
+    });
+
+    it('Should work without second parameter', () => {
+      expect(insert([1, 2, 3])).toStrictEqual([1, 2, 3]);
     });
   });
 
