@@ -392,8 +392,23 @@ describe('Array', () => {
   });
 
   describe('flattenDeep: Flatten array deep. Write you own implementation do not use Array.flat', () => {
-    // Write you own implementation do not use Array.flat
-    const flattenDeep = TODO_IMPLEMENT_ME;
+    function flat(arr) {
+      const resultArray = [];
+    
+      for(let i = 0; i < arr.length; i++) {
+        if(arr[i] instanceof Array) {
+          resultArray.push(...flat(arr[i]));
+        }
+        else {
+          resultArray.push(arr[i]);
+        }
+      }
+    
+      return resultArray;
+    }
+    
+    const flattenDeep = flat;
+    
     it('Should recursively flatten array.', () => {
       expect(flattenDeep([1, [2, [3, [4]], 5]])).toStrictEqual([1, 2, 3, 4, 5]);
     });
