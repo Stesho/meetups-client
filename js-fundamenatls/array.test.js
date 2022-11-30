@@ -96,11 +96,47 @@ describe('Array', () => {
   });
 
   describe('calculateOccurrences: Calculate occurrences of an item in the array', () => {
-    const calculateOccurrences = TODO_IMPLEMENT_ME;
+    function calculate1(arr, item) {
+      return arr.reduce(
+        (sum, current) =>
+          typeof current === typeof item &&
+          JSON.stringify(current) === JSON.stringify(item)
+            ? sum + 1
+            : sum,
+        0
+      );
+    }
+
+    const calculateOccurrences = calculate1;
+
     it('Should return the number of all occurrences of specified item in an array', () => {
       expect(calculateOccurrences([1, 2, 1, 4, 1], 1)).toBe(3);
     });
-    it.todo('Write additional tests');
+
+    it('Should work with any types', () => {
+      expect(
+        calculateOccurrences(['5', { a: true }, true, 10, [4, 7], true], true)
+      ).toBe(2);
+    });
+
+    it('Should work with any types', () => {
+      expect(
+        calculateOccurrences(
+          ['5', { a: true }, [4, 7], 10, [4, 7], true, null, [4, 7]],
+          [4, 7]
+        )
+      ).toBe(3);
+    });
+
+    it('should return 0 if there is no match', () => {
+      expect(calculateOccurrences([2, 3, 4], 1)).toBe(0);
+    });
+
+    it('Should search according to item type', () => {
+      expect(calculateOccurrences([{ null: null }, [null], 'null'], null)).toBe(
+        0
+      );
+    });
   });
 
   describe('toUppercase: Uppercase each array item', () => {
