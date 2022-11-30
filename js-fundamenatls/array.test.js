@@ -67,11 +67,32 @@ describe('Array', () => {
   });
 
   describe('convertItemsToString: Convert each array element to string', () => {
-    const convertItemsToString = TODO_IMPLEMENT_ME;
+    function convert1(arr) {
+      return arr.map((item) =>
+        typeof item === 'object'
+          ? JSON.stringify(item)
+              .replaceAll('"', '')
+              .replaceAll(':', ': ')
+              .replaceAll(',', ', ')
+          : item.toString()
+      );
+    }
+
+    const convertItemsToString = convert1;
+
     it('Converts number array to the array of string values', () => {
       expect(convertItemsToString([1, 2, 3])).toStrictEqual(['1', '2', '3']);
     });
-    it.todo('Write additional tests');
+
+    it('Should return empty array if empty array passed', () => {
+      expect(convertItemsToString([])).toStrictEqual([]);
+    });
+
+    it('Should work with any types', () => {
+      expect(
+        convertItemsToString(['5', {a: true}, 10, [4, 7], true, null])
+      ).toStrictEqual(['5', '{a: true}', '10', '[4, 7]', 'true', 'null']);
+    });
   });
 
   describe('calculateOccurrences: Calculate occurrences of an item in the array', () => {
