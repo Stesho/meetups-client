@@ -58,8 +58,28 @@ describe('async', () => {
   });
 
   describe('Promise.race', () => {
-    
-    
+    it('Should return first promise', async () => {
+      const fn = jest.fn();
+      jest.setTimeout(300);
+
+      const result = await Promise.race([
+        new Promise(resolve => setTimeout(() => {
+          fn();
+          resolve(1);
+        }, 300)),
+        new Promise(resolve => setTimeout(() => {
+          fn();
+          resolve(2);
+        }, 200)),
+        new Promise(resolve => setTimeout(() => {
+          fn();
+          resolve(3);
+        }, 100))
+      ]);
+
+      expect(fn).toBeCalledTimes(1);
+      expect(result).toStrictEqual(3);
+    });
   });
 
   describe('Promise_all: your own implementation of Promise.all', () => {
