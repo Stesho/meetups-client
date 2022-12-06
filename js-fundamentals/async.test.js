@@ -31,13 +31,35 @@ describe('async', () => {
       });
     });
   });
-
+  
   describe('Promise.all', () => {
-    it.todo('Write tests');
+    it('Should return array of promises', async () => {
+      const fn = jest.fn();
+      jest.setTimeout(300);
+
+      const result = await Promise.all([
+        new Promise(resolve => setTimeout(() => {
+          fn();
+          resolve(1);
+        }, 300)),
+        new Promise(resolve => setTimeout(() => {
+          fn();
+          resolve(2);
+        }, 200)),
+        new Promise(resolve => setTimeout(() => {
+          fn();
+          resolve(3);
+        }, 100))
+      ])
+
+      expect(fn).toBeCalledTimes(3);
+      expect(result).toStrictEqual([1, 2, 3]);
+    });
   });
 
   describe('Promise.race', () => {
-    it.todo('Write tests');
+    
+    
   });
 
   describe('Promise_all: your own implementation of Promise.all', () => {
@@ -87,10 +109,10 @@ describe('async', () => {
     const fetchComments = (articleId, withUser = false) => {};
 
     describe('fetchUser', () => {
-      it('fetches user by id', async () => {
-        const user = await fetchUser(1);
-        expect(user.name).toBe('User1');
-      });
+      // it('fetches user by id', async () => {
+      //   const user = await fetchUser(1);
+      //   expect(user.name).toBe('User1');
+      // });
       it.todo('rejects if user is not found');
     });
 
