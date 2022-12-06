@@ -70,7 +70,12 @@ describe('Objects', () => {
         const newObj = {};
       
         for(const prop in obj) {
-          newObj[prop] = typeof obj[prop] === 'object' ? clone(obj[prop]) : obj[prop]; 
+          if(typeof obj[prop] === 'object' && obj[prop] !== null) {
+            newObj[prop] = clone(obj[prop]);
+          }
+          else {
+            newObj[prop] = obj[prop];
+          } 
         }
       
         return newObj;
@@ -87,7 +92,7 @@ describe('Objects', () => {
         const obj = {
           a: '1',
           b: {
-            b1: 'a',
+            b1: null,
             b2:'2',
           },
         }
