@@ -297,13 +297,25 @@ describe('Function and closure', () => {
       };
 
     test('logMe should log start and end of call js function', () => {
-      const loggedExample = logMe(logger)((arg) => arg);
+      const fn = jest.fn((arg) => arg);
+      const loggedExample = logMe(logger)(fn);
+      
       expect(loggedExample('test1')).toBe('test1');
+      expect(fn.mock.calls.length).toBe(1);
+      expect(fn.mock.calls[0][0]).toBe('test1');
+      expect(fn.mock.results[0].value).toBe('test1');
       expect(logger.messages).toStrictEqual(['start', 'end']);
     });
 
-    test.todo('Write test using mock instead of example');
-    test.todo('Write test using mock for logger');
+    test('logger.log should be called twice on each logMe call', () => {
+      logger.log = jest.fn(logger.log);
+      const loggedExample = logMe(logger)((arg) => arg);
+      
+      expect(loggedExample('test1')).toBe('test1');
+      expect(logger.log.mock.calls.length).toBe(2);
+      expect(logger.log.mock.calls[0][0]).toBe('start');
+      expect(logger.log.mock.calls[1][0]).toBe('end');
+    });
   });
 
   describe('Creates a function that is restricted to invoking func once. Repeat calls to the function return the value of the first invocation.', () => {
