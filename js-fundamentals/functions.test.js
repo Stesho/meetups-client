@@ -407,11 +407,34 @@ describe('Function and closure', () => {
      *   find(data, "AAA-AAA"); // { name: "Name 1", key: 'AAA-AAA', items: [ ... ] }
      *   find(data, "EEE-EEE"); // { name: "Name 1.2.2", key: 'EEE-EEE', items: [ ... ] }
      */
-    function find(node, key) {
-      
+     function find(node, key) {
+      if(node.key === key) {
+        return node;
+      }
+    
+      if(!('items' in node)) {
+        return undefined;
+      }
+    
+      for(let item of node.items) {
+        let newNode = find(item, key);
+        if(newNode) {
+          return newNode;
+        }
+      }
     }
 
-    it.todo('Write tests');
+    const findNode = find;
+
+    it('Should recursively find node', () => {
+      expect(findNode(node, 'AAA-AAA')).toStrictEqual(node);
+      expect(findNode(node, 'BBB-BBB')).toStrictEqual(node.items[0]);
+      expect(findNode(node, 'CCC-CCC')).toStrictEqual(node.items[1].items[0]);
+    });
+
+    it('Should return undefined if node is not found', () => {
+      expect(findNode(node, '')).toStrictEqual(undefined);
+    });
   });
 
   describe('error handling: try/catch/finally', () => {
