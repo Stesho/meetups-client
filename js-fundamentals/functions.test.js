@@ -448,9 +448,43 @@ describe('Function and closure', () => {
       callMe,
       callMeOnErrorFn,
       callMeInAnyCase
-    ) => {};
+    ) => (arg) => {
+      try {
+        callMe(arg);
+      }
+      catch(error) {
+        callMeOnErrorFn(error);
+      }
+      finally {
+        return callMeInAnyCase();
+      }
+    };
 
-    it.todo('Write tests');
+    const fn1 = (arg) => {
+      if(arg > 0) {
+        return arg;
+      }
+      throw new Error('Inavlid arg');
+    };
+    const fn2 = (error) => error.message;
+    const fn3 = () => 'Invoke anyway';
+
+    
+    it('If callMe throw the Error then callMeOnErrorFn should be called', () => {
+      const mockfn2 = jest.fn(fn2);
+      const errHandler = callMeWithErrorHandling(fn1, mockfn2, fn3);
+      
+      expect(errHandler(10)).toBe('Invoke anyway');
+      expect(mockfn2).not.toHaveBeenCalled();
+    });
+    
+    it('If callMe throw the Error then callMeOnErrorFn should be called', () => {
+      const mockfn2 = jest.fn(fn2);
+      const errHandler = callMeWithErrorHandling(fn1, mockfn2, fn3);
+      
+      expect(errHandler(-10)).toBe('Invoke anyway');
+      expect(mockfn2).toHaveBeenCalled();
+    });
   });
 
   describe('useState:', () => {
