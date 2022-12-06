@@ -17,11 +17,11 @@ describe('Objects', () => {
 
       function clone(obj) {
         const newObj = {};
-      
-        for(const prop in obj) {
+
+        for (const prop in obj) {
           newObj[prop] = obj[prop];
         }
-      
+
         return newObj;
       }
 
@@ -29,10 +29,10 @@ describe('Objects', () => {
       function clone1(obj) {
         return Object.assign({}, obj);
       }
-      
+
       // alternative solution 2
       function clone2(obj) {
-        return {...obj};
+        return { ...obj };
       }
 
       const shallowClone = clone2;
@@ -42,10 +42,10 @@ describe('Objects', () => {
           a: '1',
           b: {
             b1: 'a',
-            b2:'2',
+            b2: '2',
           },
-        }
-        
+        };
+
         const cloned = shallowClone(obj);
 
         expect(cloned !== obj).toBe(true);
@@ -68,19 +68,18 @@ describe('Objects', () => {
 
       function clone(obj) {
         const newObj = {};
-      
-        for(const prop in obj) {
-          if(typeof obj[prop] === 'object' && obj[prop] !== null) {
+
+        for (const prop in obj) {
+          if (typeof obj[prop] === 'object' && obj[prop] !== null) {
             newObj[prop] = clone(obj[prop]);
-          }
-          else {
+          } else {
             newObj[prop] = obj[prop];
-          } 
+          }
         }
-      
+
         return newObj;
       }
-      
+
       // alternative solution
       function clone1(obj) {
         return JSON.parse(JSON.stringify(obj));
@@ -93,10 +92,10 @@ describe('Objects', () => {
           a: '1',
           b: {
             b1: null,
-            b2:'2',
+            b2: '2',
           },
-        }
-        
+        };
+
         const cloned = deepClone(obj);
 
         expect(cloned !== obj).toBe(true);
@@ -114,15 +113,15 @@ describe('Objects', () => {
      * pick(object, ['a', 'c']); // { a: 1, c: 3 }
      * pick(object, ['c']); //  { c: 3 }
      */
-     function pick1(obj, props) {
-      if(props === undefined) {
+    function pick1(obj, props) {
+      if (props === undefined) {
         throw new Error();
       }
 
       const newObj = {};
-    
-      props.forEach(prop => {
-        if(prop in obj) {
+
+      props.forEach((prop) => {
+        if (prop in obj) {
           newObj[prop] = obj[prop];
         }
       });
@@ -131,14 +130,14 @@ describe('Objects', () => {
     }
 
     const pick = pick1;
-    
+
     it('Should return an new object composed of picked object`s properties', () => {
       const object = { a: 1, b: '2', c: null };
       const props = ['a', 'c'];
 
       const picked = pick(object, props);
 
-      expect(picked).toStrictEqual({a: 1, c: null}); 
+      expect(picked).toStrictEqual({ a: 1, c: null });
     });
 
     it('Should work with empty object', () => {
@@ -168,12 +167,12 @@ describe('Objects', () => {
        * isEqual(obj1, obj3); // false
        */
       function isShallowEqual(obj1, obj2) {
-        for(const prop in obj1) {
-          if(obj1[prop] !== obj2[prop]) {
+        for (const prop in obj1) {
+          if (obj1[prop] !== obj2[prop]) {
             return false;
           }
         }
-      
+
         return true;
       }
 
@@ -200,25 +199,29 @@ describe('Objects', () => {
       function isDeepEqual(obj1, obj2) {
         let obj1Len = Object.keys(obj1).length;
         let obj2Len = Object.keys(obj2).length;
-      
-        if(obj1Len !== obj2Len) {
+
+        if (obj1Len !== obj2Len) {
           return false;
         }
-      
-        for(const prop in obj1) {
-          if(typeof obj1[prop] === 'object' && typeof obj2[prop] === 'object' && obj1[prop] !== null && obj2[prop] !== null) {
-            if(!isDeepEqual(obj1[prop], obj2[prop])) {
+
+        for (const prop in obj1) {
+          if (
+            typeof obj1[prop] === 'object' &&
+            typeof obj2[prop] === 'object' &&
+            obj1[prop] !== null &&
+            obj2[prop] !== null
+          ) {
+            if (!isDeepEqual(obj1[prop], obj2[prop])) {
               return false;
             }
-          }
-          else if(obj1[prop] !== obj2[prop]) {
+          } else if (obj1[prop] !== obj2[prop]) {
             return false;
           }
         }
-      
+
         return true;
       }
-      
+
       const isEqual = isDeepEqual;
 
       it('Should return true if objects have the same properties with the same values', () => {
@@ -239,31 +242,31 @@ describe('Objects', () => {
      * get({ a: { b: { c: 3 } }, 'a.b.c') // 3
      */
     function get(obj, path) {
-      if(path === '') {
+      if (path === '') {
         return obj;
       }
 
       let result = obj;
       path = path.split('.');
-    
-      path.forEach(prop => {
+
+      path.forEach((prop) => {
         result = result[prop];
       });
-    
+
       return result;
     }
 
     it('Should return value from object by path', () => {
-      const obj = { a: { b: { c: 3 } }}; 
+      const obj = { a: { b: { c: 3 } } };
 
-      expect(get(obj, 'a')).toStrictEqual({ b: { c: 3 }});
+      expect(get(obj, 'a')).toStrictEqual({ b: { c: 3 } });
       expect(get(obj, 'a.b.c')).toStrictEqual(3);
     });
 
     it('Should return object if empty string provided', () => {
-      const obj = { a: { b: { c: 3 } }}; 
+      const obj = { a: { b: { c: 3 } } };
 
-      expect(get(obj, '')).toStrictEqual({a: { b: { c: 3 }}});
+      expect(get(obj, '')).toStrictEqual({ a: { b: { c: 3 } } });
     });
   });
 });
