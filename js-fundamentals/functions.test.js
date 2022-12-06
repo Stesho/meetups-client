@@ -126,12 +126,6 @@ describe('Function and closure', () => {
       
       expect(obj.getValue()).toBe(undefined);
     });
-
-    test('If value is not provided in setValue method than throw exception', () => {
-      obj = createGetterSetter();
-      
-      expect(() => obj.setValue()).toThrow('Value is not provided');
-    });
   });
 
   describe('calcCall calculates number of function calls', () => {
