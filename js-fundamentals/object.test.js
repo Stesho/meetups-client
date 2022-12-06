@@ -122,7 +122,7 @@ describe('Objects', () => {
       const newObj = {};
     
       props.forEach(prop => {
-        if(obj[prop]) {
+        if(prop in obj) {
           newObj[prop] = obj[prop];
         }
       });
@@ -133,12 +133,12 @@ describe('Objects', () => {
     const pick = pick1;
     
     it('Should return an new object composed of picked object`s properties', () => {
-      const object = { a: 1, b: '2', c: 3 };
+      const object = { a: 1, b: '2', c: null };
       const props = ['a', 'c'];
 
       const picked = pick(object, props);
 
-      expect(picked).toStrictEqual({a: 1, c: 3}); 
+      expect(picked).toStrictEqual({a: 1, c: null}); 
     });
 
     it('Should work with empty object', () => {
