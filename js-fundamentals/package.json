@@ -4,9 +4,11 @@
   "description": "Javascript fundamentals tasks",
   "main": "index.js",
   "scripts": {
-    "t:example": "jest example.test.js",
-    "t:example-final": "jest example.final.test.js",
     "t:array": "jest array.test.js --watch",
+    "t:object": "jest object.test.js --watch",
+    "t:functions": "jest functions.test.js --watch",
+    "t:async": "jest async.test.js --watch",
+    "t:this": "jest this.test.js --watch",
     "format": "npx prettier *.js --write"
   },
   "author": "",

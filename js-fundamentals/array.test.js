@@ -4,284 +4,59 @@ const TODO_IMPLEMENT_ME = () => {
 
 describe('Array', () => {
   describe('double: Duplicate each array element twice', () => {
-    function dublicate1(arr) {
-      return [...arr, ...arr];
-    }
-
-    // alternative solution 1
-    function dublicate2(arr) {
-      return arr.concat(arr);
-    }
-
-    // alternative solution 2
-    function dublicate3(arr) {
-      const length = arr.length;
-      for (let i = 0; i < length; i++) {
-        const lastIndex = arr.length;
-        arr[lastIndex] = arr[i];
-      }
-      return arr;
-    }
-
-    // alternative solution 3
-    function dublicate4(arr) {
-      arr.forEach((item) => {
-        arr.push(item);
-      });
-      return arr;
-    }
-
-    const double = dublicate1;
-    // const double = dublicate2;
-    // const double = dublicate3;
-    // const double = dublicate4;
-
+    const double = TODO_IMPLEMENT_ME;
     it('Should return specified array twice', () => {
       expect(double([1, 2, 3])).toStrictEqual([1, 2, 3, 1, 2, 3]);
     });
-
-    it('Should return empty array if empty array passed', () => {
-      expect(double([])).toStrictEqual([]);
-    });
-
-    it('Should work with any types', () => {
-      expect(
-        double(['5', { a: 5 }, 10, [4, 7], true, null, undefined])
-      ).toStrictEqual([
-        '5',
-        { a: 5 },
-        10,
-        [4, 7],
-        true,
-        null,
-        undefined,
-        '5',
-        { a: 5 },
-        10,
-        [4, 7],
-        true,
-        null,
-        undefined,
-      ]);
-    });
+    it.todo('Write additional tests');
   });
 
   describe('convertItemsToString: Convert each array element to string', () => {
-    function convert1(arr) {
-      return arr.map((item) =>
-        typeof item === 'object'
-          ? JSON.stringify(item)
-              .replaceAll('"', '')
-              .replaceAll(':', ': ')
-              .replaceAll(',', ', ')
-          : item.toString()
-      );
-    }
-
-    const convertItemsToString = convert1;
-
+    const convertItemsToString = TODO_IMPLEMENT_ME;
     it('Converts number array to the array of string values', () => {
       expect(convertItemsToString([1, 2, 3])).toStrictEqual(['1', '2', '3']);
     });
-
-    it('Should return empty array if empty array passed', () => {
-      expect(convertItemsToString([])).toStrictEqual([]);
-    });
-
-    it('Should work with any types', () => {
-      expect(
-        convertItemsToString(['5', {a: true}, 10, [4, 7], true, null])
-      ).toStrictEqual(['5', '{a: true}', '10', '[4, 7]', 'true', 'null']);
-    });
+    it.todo('Write additional tests');
   });
 
   describe('calculateOccurrences: Calculate occurrences of an item in the array', () => {
-    function calculate1(arr, item) {
-      return arr.reduce(
-        (sum, current) =>
-          typeof current === typeof item &&
-          JSON.stringify(current) === JSON.stringify(item)
-            ? sum + 1
-            : sum,
-        0
-      );
-    }
-
-    const calculateOccurrences = calculate1;
-
+    const calculateOccurrences = TODO_IMPLEMENT_ME;
     it('Should return the number of all occurrences of specified item in an array', () => {
       expect(calculateOccurrences([1, 2, 1, 4, 1], 1)).toBe(3);
     });
-
-    it('Should work with any types', () => {
-      expect(
-        calculateOccurrences(['5', { a: true }, true, 10, [4, 7], true], true)
-      ).toBe(2);
-    });
-
-    it('Should work with any types', () => {
-      expect(
-        calculateOccurrences(
-          ['5', { a: true }, [4, 7], 10, [4, 7], true, null, [4, 7]],
-          [4, 7]
-        )
-      ).toBe(3);
-    });
-
-    it('should return 0 if there is no match', () => {
-      expect(calculateOccurrences([2, 3, 4], 1)).toBe(0);
-    });
-
-    it('Should search according to item type', () => {
-      expect(calculateOccurrences([{ null: null }, [null], 'null'], null)).toBe(
-        0
-      );
-    });
+    it.todo('Write additional tests');
   });
 
   describe('toUppercase: Uppercase each array item', () => {
-    function uppercase1(arr) {
-      return arr.map((item) => item.toUpperCase());
-    }
-    
-    // alternative solution
-    function uppercase2(arr) {
-      const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXUZ';
-      const lower = 'abcdefghijklmnopqrstuvwxuz';
-
-      for (let i = 0; i < arr.length; i++) {
-        if(arr[i].match(/[a-z]/i)) {
-          const index = lower.indexOf(arr[i]) || upper.indexOf(arr[i]);
-          arr[i] = upper[index];
-        }
-      }
-
-      return arr;
-    }
-
-    const toUppercase = uppercase1;
-    // const toUppercase = uppercase2;
-
+    const toUppercase = TODO_IMPLEMENT_ME;
     it('Should convert strings from specified array to uppercase', () => {
       expect(toUppercase(['aaaa', 'abc'])).toStrictEqual(['AAAA', 'ABC']);
     });
   });
 
   describe('insert: Insert item into array', () => {
-    function insertItem1(arr, ...items) {
-      return Array.from(new Set([...arr, ...items].sort()));
-    }
-
-    // alternative solution
-    function insertItem2(arr, ...items) {
-      const tempArray = [...arr, ...items].sort();
-      return [...tempArray].filter((item, index) => tempArray.indexOf(item) === index);
-    }
-
-    const insert = insertItem1;
-    // const insert = insertItem2;
-
+    const insert = TODO_IMPLEMENT_ME;
     it('Insert an item at specified position', () => {
       expect(insert([1, 2, 4], 3, 2)).toStrictEqual([1, 2, 3, 4]);
-    });
-
-    it('Should work with empty array', () => {
-      expect(insert([], 3, 2, 1)).toStrictEqual([1, 2, 3]);
-    });
-
-    it('Should work without second parameter', () => {
-      expect(insert([1, 2, 3])).toStrictEqual([1, 2, 3]);
     });
   });
 
   describe('last: Get n last items from array', () => {
-    function getLastN1(arr, count) {
-      if(count === undefined || arr.length < count) {
-        return arr;
-      }
-      const startIndex = arr.length - count;
-
-      return arr.splice(startIndex, count + 1);
-    }
-
-    // alternative solution 1
-    function getLastN2(arr, count) {
-      if(arr.length < count) {
-        return arr;
-      }
-
-      return arr.slice(arr.length - count, arr.length);
-    }
-
-    // alternative solution 2
-    function getLastN3(arr, count) {
-      if(count === undefined || arr.length < count) {
-        return arr;
-      }
-
-      const newArr = [];
-      for(let i = 0; i < count; i++) {
-        newArr.unshift(arr.pop());
-      }
-      return newArr;
-    }
-
-    const last = getLastN1;
-    // const last = getLastN2;
-    // const last = getLastN3;
-
+    const last = TODO_IMPLEMENT_ME;
     it('Should return n last items from the specified array', () => {
       expect(last([1, 2, 3, 4, 5, 6, 7], 3)).toStrictEqual([5, 6, 7]);
-    });
-
-    it('Should work if array length less then n', () => {
-      expect(last([1, 2], 3)).toStrictEqual([1, 2]);
-    });
-
-    it('Should work without second parameter', () => {
-      expect(last([1, 2])).toStrictEqual([1, 2]);
     });
   });
 
   describe('countFalsyValues: Count falsy values in the array', () => {
-    function countFalsy1(arr) {
-      return arr.reduce((sum, item) => !item ? sum : sum + 1, 0);
-    }
-    
-    // alternative solution 1
-    function countFalsy2(arr) {
-      return arr.filter(item => !item).length;
-    }
-
-    // alternative solution 2
-    function countFalsy3(arr) {
-      let count = 0;
-
-      arr.forEach(item => {
-        if(Boolean(item)) {
-          count++;
-        }  
-      })
-
-      return count;
-    }
-
-    const countFalsyValues = countFalsy1;
-    // const countFalsyValues = countFalsy2;
-    // const countFalsyValues = countFalsy3;
-
+    const countFalsyValues = TODO_IMPLEMENT_ME;
     it('Should return number of falsy values in specified array', () => {
       expect(countFalsyValues([1, 0, '', null, 'hello', '0'])).toBe(3);
     });
   });
 
   describe('unique: Find all unique items in array', () => {
-    function findUnique(arr) {
-      return Array.from(new Set(arr));
-    }
-
-    const unique = findUnique;
-
+    const unique = TODO_IMPLEMENT_ME;
     it('Should return array of unique items from specified array', () => {
       expect(unique(['a', 'b', 'a', 'c', 'e', 'b', 'o'])).toStrictEqual([
         'a',
@@ -294,121 +69,43 @@ describe('Array', () => {
   });
 
   describe('groupBy: Group array data by key', () => {
-    function group1(arr, field) {
-      const filedsValue = new Set(arr.map(item => item[field]).filter(item => item !== undefined));
-      const resultArray = [];
-
-      filedsValue.forEach(fieldValue => {
-        const newArray = [];
-        const items = arr.filter(item => item[field] === fieldValue);
-
-        newArray.push(fieldValue, items);
-
-        resultArray.push(newArray);
-      });
-
-      return resultArray;
-    }
-
-    const groupBy = group1;
-
+    const groupBy = TODO_IMPLEMENT_ME;
     it('Should return a map of grouped data by key and value selector', function () {
       let arr = [
-        { country: 'Belarus', city: 'Brest', population: 10 },
+        { country: 'Belarus', city: 'Brest' },
         { country: 'Russia', city: 'Omsk' },
-        { country: 'Russia', city: 'Samara', population: 3 },
+        { country: 'Russia', city: 'Samara' },
         { country: 'Belarus', city: 'Grodno' },
-        { country: 'Belarus', city: 'Minsk', population: 2 },
-        { country: 'Poland', city: 'Lodz', population: 10 },
+        { country: 'Belarus', city: 'Minsk' },
+        { country: 'Poland', city: 'Lodz' },
       ];
-  
+
       expect(groupBy(arr, 'country')).toStrictEqual([
-        ['Belarus', [{ country: 'Belarus', city: 'Brest', population: 10 }, { country: 'Belarus', city: 'Grodno' }, { country: 'Belarus', city: 'Minsk', population: 2 }]],
-        ['Russia', [{ country: 'Russia', city: 'Omsk' }, { country: 'Russia', city: 'Samara', population: 3 }]],
-        ['Poland', [{ country: 'Poland', city: 'Lodz', population: 10 }]],
-      ]);
-
-      expect(groupBy(arr, 'city')).toStrictEqual([
-        ['Brest', [ { country: 'Belarus', city: 'Brest', population: 10 } ]],
-        ['Omsk', [ { country: 'Russia', city: 'Omsk' } ]],
-        ['Samara', [ { country: 'Russia', city: 'Samara', population: 3 } ]],
-        ['Grodno', [ { country: 'Belarus', city: 'Grodno' } ]],
-        ['Minsk', [ { country: 'Belarus', city: 'Minsk', population: 2 } ]],
-        ['Lodz', [ { country: 'Poland', city: 'Lodz', population: 10 } ]]
-      ]);
-    });
-
-    it("Should work if items don't have a passed field", function () {
-      let arr = [
-        { country: 'Belarus', city: 'Brest', population: 10 },
-        { country: 'Russia', city: 'Omsk' },
-        { country: 'Russia', city: 'Samara', population: 3 },
-        { country: 'Belarus', city: 'Grodno' },
-        { country: 'Belarus', city: 'Minsk', population: 2 },
-        { country: 'Poland', city: 'Lodz', population: 10 },
-      ];
-
-      expect(groupBy(arr, 'population')).toStrictEqual([
-        [ 10, [ { country: 'Belarus', city: 'Brest', population: 10 }, { country: 'Poland', city: 'Lodz', population: 10 } ]],
-        [ 3, [ { country: 'Russia', city: 'Samara', population: 3 } ]],
-        [ 2, [ { country: 'Belarus', city: 'Minsk', population: 2 } ]]
+        ['Belarus', ['Brest', 'Grodno', 'Minsk']],
+        ['Russia', ['Omsk', 'Samara']],
+        ['Poland', ['Lodz']],
       ]);
     });
   });
 
   describe('compact: Remove all falsy values from array', () => {
-    function removeAll(arr) {
-      return arr.filter(item => !!item);
-    }
-
-    const compact = removeAll;
-
+    const compact = TODO_IMPLEMENT_ME;
     it('Should create array with all falsy values removed.', () => {
       expect(compact([1, 0, null, 'a'])).toStrictEqual([1, 'a']);
     });
   });
 
   describe('flatten: Flatten array. ', () => {
-    function flat(arr) {
-      const resultArray = [];
-
-      for(let i = 0; i < arr.length; i++) {
-        if(arr[i] instanceof Array) {
-          resultArray.push(...arr[i]);
-        }
-        else {
-          resultArray.push(arr[i]);
-        }
-      }
-
-      return resultArray;
-    }
-
-    const flatten = flat;
-
+    //Write you own implementation do not use Array.flat
+    const flatten = TODO_IMPLEMENT_ME;
     it('Should flatten array (make it one level less deep)', () => {
       expect(flatten([1, [2, [3, [4]], 5]])).toStrictEqual([1, 2, [3, [4]], 5]);
     });
   });
 
   describe('flattenDeep: Flatten array deep. Write you own implementation do not use Array.flat', () => {
-    function flat(arr) {
-      const resultArray = [];
-    
-      for(let i = 0; i < arr.length; i++) {
-        if(arr[i] instanceof Array) {
-          resultArray.push(...flat(arr[i]));
-        }
-        else {
-          resultArray.push(arr[i]);
-        }
-      }
-    
-      return resultArray;
-    }
-    
-    const flattenDeep = flat;
-    
+    // Write you own implementation do not use Array.flat
+    const flattenDeep = TODO_IMPLEMENT_ME;
     it('Should recursively flatten array.', () => {
       expect(flattenDeep([1, [2, [3, [4]], 5]])).toStrictEqual([1, 2, 3, 4, 5]);
     });
