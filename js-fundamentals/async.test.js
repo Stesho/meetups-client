@@ -33,7 +33,7 @@ describe('async', () => {
   });
   
   describe('Promise.all', () => {
-    it('Should return array of promises', async () => {
+    it('Should return array of promises results', async () => {
       const fn = jest.fn();
       jest.setTimeout(300);
 
@@ -58,7 +58,7 @@ describe('async', () => {
   });
 
   describe('Promise.race', () => {
-    it('Should return first promise', async () => {
+    it('Should return first fulfilled promise', async () => {
       const fn = jest.fn();
       jest.setTimeout(300);
 
@@ -84,6 +84,36 @@ describe('async', () => {
 
   describe('Promise_all: your own implementation of Promise.all', () => {
     // Some advices https://eloquentjavascript.net/11_async.html#i_Ug+Dv9Mmsw
+    async function Promise_all(promises) {
+      const results = [];
+      let isCompleted = 0;
+      
+      return new Promise(async (resolve, reject) => {
+        for(let i = 0; i < promises.length; i++) {
+          try {
+            const value = await promises[i];
+            isCompleted++;
+            results[i] = value;
+            if(results.length === isCompleted) {
+              resolve(results);
+            }
+          }
+          catch(error) {
+            reject(error);
+          }
+        }
+      })
+    }
+
+    it('Should return array of promises results', async () => {
+      const result = await Promise_all([
+        Promise.resolve(1),
+        Promise.resolve(2),
+        Promise.reject(3),
+      ]);
+
+      expect(result).toStrictEqual([1, 2]);
+    });
   });
 
   describe('Articles', () => {
