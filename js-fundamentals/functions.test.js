@@ -334,7 +334,7 @@ describe('Function and closure', () => {
       }
     }
 
-    test('...', () => {
+    test('Callback should be invoked once', () => {
       // DON'T CHANGE
       let callsCount = 0;
       // DON'T CHANGE
@@ -342,12 +342,13 @@ describe('Function and closure', () => {
         callsCount++;
       }
 
-      const initialize = once(init);
+      const mockInit = jest.fn(init);
+      const initialize = once(mockInit);
       initialize();
       initialize();
       initialize();
 
-      expect(callsCount).toBe(1);
+      expect(mockInit).toBeCalledTimes(1);
     });
   });
 
