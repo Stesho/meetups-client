@@ -206,7 +206,7 @@ describe('Objects', () => {
         }
       
         for(const prop in obj1) {
-          if(typeof obj1[prop] === 'object' && typeof obj2[prop] === 'object') {
+          if(typeof obj1[prop] === 'object' && typeof obj2[prop] === 'object' && obj1[prop] !== null && obj2[prop] !== null) {
             if(!isDeepEqual(obj1[prop], obj2[prop])) {
               return false;
             }
@@ -222,8 +222,8 @@ describe('Objects', () => {
       const isEqual = isDeepEqual;
 
       it('Should return true if objects have the same properties with the same values', () => {
-        const obj1 = { a: 1, b: { a: 2 } };
-        const obj2 = { a: 1, b: { a: 2 } };
+        const obj1 = { a: 1, b: { a: null } };
+        const obj2 = { a: 1, b: { a: null } };
         const obj3 = { a: 1, b: { a: 2 }, a: 2 };
 
         expect(isEqual(obj1, obj2)).toBe(true);
