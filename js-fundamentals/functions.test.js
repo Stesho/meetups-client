@@ -93,9 +93,6 @@ describe('Function and closure', () => {
           return this.value
         },
         setValue(newValue) {
-          if(!newValue) {
-            throw new Error('Value is not provided');
-          }
           this.value = newValue;
         }
       }
@@ -109,9 +106,6 @@ describe('Function and closure', () => {
           return value
         },
         setValue(newValue) {
-          if(!newValue) {
-            throw new Error('Value is not provided');
-          }
           value = newValue;
         }
       }
