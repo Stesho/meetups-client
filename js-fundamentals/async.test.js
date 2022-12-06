@@ -9,16 +9,26 @@ describe('async', () => {
         expect(fn).toBeCalled();
       });
 
-      it.todo(
-        'Write additional tests: second callback, chains, callbacks arguments'
-      );
-    });
-    describe('catch', () => {
-      it.todo('Write tests');
-    });
+      it('calls first passed callback to then if promise is fulfilled', async () => {
+        const fn = jest.fn();
 
-    describe('finally', () => {
-      it.todo('Write tests');
+        await new Promise(resolve => {
+          fn();
+          resolve();
+          fn();
+        })
+          .then(fn, fn)
+          .then(fn);
+
+        expect(fn).toBeCalledTimes(4);
+      });
+
+      it('calls first passed callback to then if promise is fulfilled', async () => {
+        const fn = jest.fn();
+
+        await Promise.reject().then(null, fn).then(fn);
+        expect(fn).toBeCalledTimes(2);
+      });
     });
   });
 
