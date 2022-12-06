@@ -7,15 +7,39 @@ describe('Function and closure', () => {
      * @example
      * compose(fn1, fn2, fn3, fn4) === fn1(fn2(fn3(fn4(arg))))
      */
-    const compose = TODO_IMPLEMENT_ME;
 
-    test.todo('Write  tests');
+     function composeFunc(...funcs) {
+      return function(x) {
+        return funcs.reduceRight((prevFunc, currFunc) => currFunc(prevFunc), x);
+      }
+    }
+
+    const compose = composeFunc;
+
+    test('If compose make composition of functions', () => {
+      const mult2 = (x) => x * 2;
+      const plus3 = (x) => x + 3;
+      const plus4 = (x) => x + 4;
+
+      const multiply = compose(plus4, plus3, mult2)
+
+      expect(multiply(2)).toBe(11);
+    });
   });
 
   describe('createIncrementor: create function that each time return new value incremented by incrementValue and start from start', () => {
-    const createIncrementor = TODO_IMPLEMENT_ME;
-    test('Should ... ', () => {
+    function incrementor(init, step) {
+      let value = init - step;
+      return function() {
+        return value += step;
+      }
+    }
+
+    const createIncrementor = incrementor;
+
+    test('Should increment by step each time function called', () => {
       const nextFrom10By7 = createIncrementor(10, 7);
+
       expect(nextFrom10By7()).toBe(10);
       expect(nextFrom10By7()).toBe(17);
       expect(nextFrom10By7()).toBe(24);
@@ -23,17 +47,33 @@ describe('Function and closure', () => {
   });
 
   describe('createUserCreator: create new user with unique number identifier using increment', () => {
-    // Should return function
-    const createUserCreator = TODO_IMPLEMENT_ME;
-    // Write description
-    test('Should ....', () => {
+    function createUser(initialID = 0) {
+      let identifier = initialID;
+      return function(name) {
+        return {
+          name,
+          id: identifier++
+        }
+      }
+    }
+
+    const createUserCreator = createUser;
+    
+    test('Should create new user with incremented id', () => {
       const createUser = createUserCreator(1); // 1 is start id.
+      
       expect(createUser('Ivan')).toStrictEqual({ name: 'Ivan', id: 1 });
       expect(createUser('Petr').name).toBe('Petr');
       expect(createUser('Anna').id).toBe(3);
     });
+    
+    test('If initial id not passed than initial id is equal to 0', () => {
+      const createUser = createUserCreator(); // 1 is start id.
 
-    test.todo('Write additional tests');
+      expect(createUser('Ivan')).toStrictEqual({ name: 'Ivan', id: 0 });
+      expect(createUser('Petr').name).toBe('Petr');
+      expect(createUser('Anna').id).toBe(2);
+    });
   });
 
   describe('createGetterSetter', () => {
@@ -45,9 +85,59 @@ describe('Function and closure', () => {
      *  obj.setValue(20);
      *  obj.getValue(); //20
      */
-    const createGetterSetter = TODO_IMPLEMENT_ME;
-    test.todo('Created obj should have getValue and setValue methods');
-    test.todo('Write additional tests');
+
+     function createObject(initial = undefined) {
+      return {
+        value: initial,
+        getValue() { 
+          return this.value
+        },
+        setValue(newValue) {
+          if(!newValue) {
+            throw new Error('Value is not provided');
+          }
+          this.value = newValue;
+        }
+      }
+    }
+
+    // alternative solution
+    function createObject1(initial = undefined) {
+      let value = initial;
+      return {
+        getValue() { 
+          return value
+        },
+        setValue(newValue) {
+          if(!newValue) {
+            throw new Error('Value is not provided');
+          }
+          value = newValue;
+        }
+      }
+    }
+
+    const createGetterSetter = createObject1;
+
+    test('Created obj should have getValue and setValue methods', () => {
+      obj = createGetterSetter(10);
+
+      obj.setValue(20);
+      
+      expect(obj.getValue()).toBe(20);
+    });
+    
+    test('If initial id is not passed than initial id is equal to undefined', () => {
+      obj = createGetterSetter();
+      
+      expect(obj.getValue()).toBe(undefined);
+    });
+
+    test('If value is not provided in setValue method than throw exception', () => {
+      obj = createGetterSetter();
+      
+      expect(() => obj.setValue()).toThrow('Value is not provided');
+    });
   });
 
   describe('calcCall calculates number of function calls', () => {
@@ -57,9 +147,15 @@ describe('Function and closure', () => {
     }
 
     function calcCall(func) {
-      // TODO: implement
-      return [func, () => 0]; // CHANGE TOO
-    }
+      let count = 0;
+      const incrementCount = () => {
+        ++count;
+        return func();
+      }
+      const getCount = () => count;
+      
+      return [incrementCount, getCount];
+    }    
 
     test('Calculate function invocation', () => {
       const [callFn, getFnCount] = calcCall(fn);
@@ -82,19 +178,30 @@ describe('Function and closure', () => {
     // Before start see next task with memoize function to understand difference
     describe('memoizeLast Creates a function that memoizes the last result of function', () => {
       function memoizeLast(fn) {
-        // TODO: implement
-      }
-      test('Should cache the result of function with single argument', () => {
-        // DON'T CHANGE.
-        let invokesCount = 0;
-        function formula(x) {
-          // DON'T CHANGE.
-          invokesCount++;
-          return 10 * x + 5;
+        let lastResult = null;
+        let lastResultArgument = null;
+        return function(arg) {
+          if(lastResultArgument === arg) {
+            return lastResult;
+          }
+          lastResult = fn(arg);
+          lastResultArgument = arg;
+          return lastResult;
         }
+      }
 
+      // DON'T CHANGE.
+      let invokesCount = 0;
+      function formula(x) {
+        // DON'T CHANGE.
+        invokesCount++;
+        return 10 * x + 5;
+      }
+
+      
+      test('Should cache the result of function with single argument', () => {
         const memoizedFormula = memoizeLast(formula);
-
+        
         expect(memoizedFormula(10)).toBe(105);
         expect(memoizedFormula(10)).toBe(105);
         expect(invokesCount).toBe(1);
@@ -108,21 +215,45 @@ describe('Function and closure', () => {
        *  https://jestjs.io/docs/mock-functions
        *  toHaveBeenCalledTimes = https://jestjs.io/docs/expect#tohavebeencalledtimesnumber
        */
-      test.todo('Use jest.fn() instead of formula function');
+      test('Callback should only be called when recalculating', () => {
+        const fn = jest.fn();
+        const memoizedFormula = memoizeLast(fn);
+        
+        memoizedFormula(10);
+        memoizedFormula(10);
+        memoizedFormula(5);
+
+        expect(fn).toHaveBeenCalledTimes(2);
+      });
     });
 
     describe('memoize Creates a function that memoizes all previous result of function invocation', () => {
       function memoize(fn) {
-        // TODO: implement
-      }
-      test('Should cache the result of function with single argument', () => {
-        // DON'T CHANGE.
-        let invokesCount = 0;
-        function formula(x) {
-          // DON'T CHANGE.
-          invokesCount++;
-          return 10 * x + 5;
+        let result = [];
+        let resultArgument = [];
+
+        return function(arg) {
+          let index = resultArgument.indexOf(arg);
+          if(index !== -1) {
+            return result[index];
+          }
+
+          result.push(fn(arg));
+          resultArgument.push(arg);
+
+          return result.at(-1);
         }
+      }
+
+      // DON'T CHANGE.
+      let invokesCount = 0;
+      function formula(x) {
+        // DON'T CHANGE.
+        invokesCount++;
+        return 10 * x + 5;
+      }
+
+      test('Should cache the result of function with single argument', () => {
 
         const memoizedFormula = memoize(formula);
 
@@ -139,7 +270,18 @@ describe('Function and closure', () => {
        *  https://jestjs.io/docs/mock-functions
        *  toHaveBeenCalledTimes = https://jestjs.io/docs/expect#tohavebeencalledtimesnumber
        */
-      test.todo('Use jest.fn() instead of formula function');
+      test('Callback should only be called when recalculating', () => {
+        const fn = jest.fn();
+        const memoizedFormula = memoize(fn);
+        
+        memoizedFormula(10);
+        memoizedFormula(10);
+        memoizedFormula(5);
+        memoizedFormula(10);
+        memoizedFormula(5);
+
+        expect(fn).toHaveBeenCalledTimes(2);
+      });
     });
   });
 
@@ -178,7 +320,18 @@ describe('Function and closure', () => {
 
   describe('Creates a function that is restricted to invoking func once. Repeat calls to the function return the value of the first invocation.', () => {
     function once(fn) {
-      // TODO: implement
+      const maxCalls = 1;
+      let value = null;
+      let count = 0;
+
+      return function() {
+        if(count < maxCalls) {
+          value = fn();
+          count++;
+        }
+
+        return value; 
+      }
     }
 
     test('...', () => {
@@ -205,11 +358,13 @@ describe('Function and closure', () => {
      * const add10 = partial(add, 10)
      * add10(5); // 15
      */
-    function partial(fn, arg1) {
-      // TODO: implement
-    }
+     function partial(fn, init) {
+      return function(arg) {
+        return fn(init, arg);
+      }
+    }    
 
-    test.todo('Write tests');
+    // test('Should');
   });
 
   describe('findNode: recursion', () => {
@@ -245,7 +400,9 @@ describe('Function and closure', () => {
      *   find(data, "AAA-AAA"); // { name: "Name 1", key: 'AAA-AAA', items: [ ... ] }
      *   find(data, "EEE-EEE"); // { name: "Name 1.2.2", key: 'EEE-EEE', items: [ ... ] }
      */
-    function find(node, key) {}
+    function find(node, key) {
+      
+    }
 
     it.todo('Write tests');
   });
