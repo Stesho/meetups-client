@@ -196,41 +196,62 @@ describe('Objects', () => {
        * isDeepEqual(obj1, obj2); // true
        */
 
-      function isDeepEqual(obj1, obj2) {
-        let obj1Len = Object.keys(obj1).length;
-        let obj2Len = Object.keys(obj2).length;
-
-        if (obj1Len !== obj2Len) {
-          return false;
+      function isDeepEqual(value1, value2) {
+        if(typeof value1 !== typeof value2) return false;
+      
+        // check primitive
+        if(typeof value1 !== 'object' && typeof value2 !== 'object') {
+          if(Number.isNaN(value1) && Number.isNaN(value2)) return true;
+      
+          return value1 === value2;
         }
-
-        for (const prop in obj1) {
-          if (
-            typeof obj1[prop] === 'object' &&
-            typeof obj2[prop] === 'object' &&
-            obj1[prop] !== null &&
-            obj2[prop] !== null
-          ) {
-            if (!isDeepEqual(obj1[prop], obj2[prop])) {
-              return false;
-            }
-          } else if (obj1[prop] !== obj2[prop]) {
-            return false;
+        
+        // check null
+        if(value1 === null && value2 === null) return true;
+        if(value1 === null || value2 === null) return false;
+        
+        // check array
+        if(Array.isArray(value1) && Array.isArray(value2)) {
+          if(value1.length !== value2.length) return false;
+          
+          for(let i = 0; i < value1.length; i++) {
+            if(!isDeepEqual(value1[i], value2[i])) return false;
           }
+          
+          return true;
         }
-
+        
+        if(Array.isArray(value1) || Array.isArray(value2)) return false;
+        
+        // check object
+        const value1Keys = Object.keys(value1);
+        const value2Keys = Object.keys(value2);
+      
+        if(value1Keys.length !== value2Keys.length) return false;
+        if(!isDeepEqual(value1Keys, value2Keys)) return false;
+        
+        for(let i = 0; i < value1Keys.length; i++) {
+          const key = value1Keys[i];
+          if(!isDeepEqual(value1[key], value2[key])) return false;
+        }
+        
         return true;
-      }
+      }            
 
       const isEqual = isDeepEqual;
 
-      it('Should return true if objects have the same properties with the same values', () => {
-        const obj1 = { a: 1, b: { a: null } };
-        const obj2 = { a: 1, b: { a: null } };
-        const obj3 = { a: 1, b: { a: 2 }, a: 2 };
+      it('Should compare any type of arguments', () => {
+        expect(isDeepEqual(1, 1)).toBe(true);
+        expect(isDeepEqual(NaN, NaN)).toBe(true);
+        expect(isDeepEqual([1, [1, 2], 3], [1, [1, 2], 3])).toBe(true);
+        expect(isDeepEqual({a: 1, b: {c: 2}}, {a: 1, b: {c: 2}})).toBe(true);
+        expect(isDeepEqual(null, null)).toBe(true);
 
-        expect(isEqual(obj1, obj2)).toBe(true);
-        expect(isEqual(obj1, obj3)).toBe(false);
+        expect(isDeepEqual(1, 2)).toBe(false);
+        expect(isDeepEqual(NaN, 0)).toBe(false);
+        expect(isDeepEqual([1, [1, 1], 3], [1, [1, 2], 3])).toBe(false);
+        expect(isDeepEqual({a: 2, b: {c: 2}}, {a: 1, b: {c: 2}})).toBe(false);
+        expect(isDeepEqual(0, null)).toBe(false);
       });
     });
   });
