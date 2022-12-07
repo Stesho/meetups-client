@@ -296,7 +296,17 @@ describe('Function and closure', () => {
         return result;
       };
 
+    beforeEach(() => {
+      logger.messages = [];
+    });
+
     test('logMe should log start and end of call js function', () => {
+      const loggedExample = logMe(logger)((arg) => arg);
+      expect(loggedExample('test1')).toBe('test1');
+      expect(logger.messages).toStrictEqual(['start', 'end']);
+    });
+
+    test('Write test using mock instead of example', () => {
       const fn = jest.fn((arg) => arg);
       const loggedExample = logMe(logger)(fn);
       
@@ -307,7 +317,7 @@ describe('Function and closure', () => {
       expect(logger.messages).toStrictEqual(['start', 'end']);
     });
 
-    test('logger.log should be called twice on each logMe call', () => {
+    test('Write test using mock for logger', () => {
       logger.log = jest.fn(logger.log);
       const loggedExample = logMe(logger)((arg) => arg);
       
