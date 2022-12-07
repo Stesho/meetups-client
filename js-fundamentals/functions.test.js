@@ -382,7 +382,7 @@ describe('Function and closure', () => {
 
     test('Should add provided value to init value', () => {
       const add = (a, b) => a + b;
-      const add10 = partial2(add, 10);
+      const add10 = partial1(add, 10);
       
       expect(add10(5)).toBe(15);
       expect(add10(0)).toBe(10);
@@ -510,9 +510,9 @@ describe('Function and closure', () => {
      * @example
      *     const [value, setValue] = useState('Unique state name', 'initial value')
      *     const [year, setYear] = useState('year', 2000)
-     *     value; // 2000
-     *     setValue(2015);
-     *     value; // 2000
+     *     year; // 2000
+     *     setYear(2015);
+     *     year; // 2000
      *     const  [updatedYear] = useState('year', 2000)
      *     updatedYear; // 2015
      *     const [month, setMonth] = useState('month', 'Jan');
@@ -523,6 +523,36 @@ describe('Function and closure', () => {
      *     const  [updatedYear2] = useState('year', 2000)
      *     updatedYear; // 2015
      */
-    const useState = TODO_IMPLEMENT_ME;
+
+    const obj = {
+      value: {},
+      useState(uniqueName, initValue) {
+        const setValue = (newValue) => {
+          this.value[uniqueName] = newValue;
+        }
+    
+        if(uniqueName in this.value) {
+          return [this.value[uniqueName], setValue];
+        }
+    
+        this.value[uniqueName] = initValue;
+      
+        return [this.value[uniqueName], setValue];
+      }
+    }
+
+    const useState = obj.useState.bind(obj);
+
+    it('Should set state by unique name', () => {
+      const [year, setYear] = useState('year', 2000);
+      year;
+      setYear(2015);
+      const  [updatedYear] = useState('year', 2000);
+      const  [month] = useState('month', 12);
+
+      expect(year).toBe(2000);
+      expect(updatedYear).toBe(2015);
+      expect(month).toBe(12);
+    });
   });
 });
