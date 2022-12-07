@@ -376,13 +376,13 @@ describe('Function and closure', () => {
     }    
 
     //alternative solution
-    function partial1(fn, init) {
-      return fn.bind(null, init);
-    } 
+    function partial1(fn, ...init) {
+      return fn.bind(null, ...init);
+    }    
 
     test('Should add provided value to init value', () => {
       const add = (a, b) => a + b;
-      const add10 = partial1(add, 10);
+      const add10 = partial2(add, 10);
       
       expect(add10(5)).toBe(15);
       expect(add10(0)).toBe(10);
