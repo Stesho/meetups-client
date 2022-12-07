@@ -105,15 +105,44 @@ describe('async', () => {
       })
     }
 
+    // alternative solution
+    async function Promise_all1(promises) {
+      const results = [];
+      let isCompleted = 0;
+      
+      return new Promise(async (resolve, reject) => {
+        for(let i = 0; i < promises.length; i++) {
+          const promise = promises[i];
+          promise.then(value => {
+            isCompleted++;
+            results[i] = value;
+            if(promises.length === isCompleted) {
+              resolve(results);
+            }
+          }).catch(reject);
+        }
+      })
+    }
+
     it('Should return array of promises results', async () => {
-      const result = await Promise_all([
+      const result = await Promise_all1([
         Promise.resolve(1),
         Promise.resolve(2),
-        Promise.reject(3),
+        Promise.resolve(3),
       ]);
 
-      expect(result).toStrictEqual([1, 2]);
+      expect(result).toStrictEqual([1, 2, 3]);
     });
+
+    // it('Should return error if at least one promise are rejected', async () => {
+    //   expect(async () => {
+    //     await Promise_all1([
+    //       Promise.resolve(1),
+    //       Promise.reject(2),
+    //       Promise.resolve(3),
+    //     ]);
+    //   }).toThrow();
+    // });
   });
 
   describe('Articles', () => {
