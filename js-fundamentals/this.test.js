@@ -54,7 +54,7 @@ describe('THIS', () => {
       describe('using call', () => {
         const findMax = (arr) => {
           // TODO: fix me
-          return Math.max(arr);
+          return Math.max.apply(null, arr);
         };
 
         it('Finds max number in array', () => {
