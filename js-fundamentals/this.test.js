@@ -25,8 +25,8 @@ describe('THIS', () => {
       const bob = { name: 'Bob', get: 50 };
 
       // TODO: fix
-      const getTomName = fn;
-      const getBobName = fn;
+      const getTomName = fn.bind(tom);
+      const getBobName = fn.bind(bob);
 
       expect(getTomName()).toBe('Tom');
       expect(getBobName()).toBe('Bob');
