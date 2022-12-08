@@ -76,7 +76,7 @@ describe('THIS', () => {
       describe('using spread ...', () => {
         const findMax = (arr) => {
           // TODO: fix me
-          return Math.max(arr);
+          return Math.max(...arr);
         };
 
         it('Finds max number in array', () => {
@@ -93,7 +93,7 @@ describe('THIS', () => {
         secondName: 'Ivanov',
         age: 20,
 
-        sayHello: () => {
+        sayHello() {
           return `Hi, ${this.firstName}!`;
         },
       };
@@ -101,11 +101,25 @@ describe('THIS', () => {
       const sayHello = person.sayHello.bind(person);
 
       // In this example assertion is true, but our code has a bug. Change assertion (toBe part) to find bug (test should fail)
-      expect(sayHello()).toBe(person.sayHello());
+      expect(sayHello()).toBe('Hi, Ivan!');
     });
 
-    test.todo(
-      'Rewrite previous exercise by creating the Person class with sayHello method using arrow function, write needed tests.'
-    );
+    test('Rewrite previous exercise by creating the Person class with sayHello method using arrow function, write needed tests.', 
+    () => {
+      class Person {
+        constructor(firstName, secondName) {
+          this.firstName = firstName;
+          this.secondName = secondName;
+        }
+
+        sayHello = () => {
+          return `Hi, ${this.firstName}!`; 
+        }
+      }
+
+      const person = new Person('Ivan', 'Ivanov');
+
+      expect(person.sayHello()).toBe('Hi, Ivan!');
+    });
   });
 });
