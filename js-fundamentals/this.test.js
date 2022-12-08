@@ -11,8 +11,8 @@ describe('THIS', () => {
       }
 
       // TODO: write correct expression inside expect
-      expect(/* ??? */).toBe('aaa aaa');
-      expect(/* ??? */).toBe('bbb bbb');
+      expect(example.call(a)).toBe('aaa aaa');
+      expect(example.call(b)).toBe('bbb bbb');
     });
 
     it('Creates function  connected with specific this', () => {
