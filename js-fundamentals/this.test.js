@@ -45,7 +45,7 @@ describe('THIS', () => {
       };
 
       // TODO: FIX ME
-      const sayHello = person.sayHello;
+      const sayHello = person.sayHello.bind(person);
 
       expect(sayHello()).toBe(person.sayHello());
     });
