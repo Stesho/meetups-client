@@ -9,29 +9,140 @@ describe('async', () => {
         expect(fn).toBeCalled();
       });
 
-      it.todo(
-        'Write additional tests: second callback, chains, callbacks arguments'
-      );
-    });
-    describe('catch', () => {
-      it.todo('Write tests');
-    });
+      it('calls first passed callback to then if promise is fulfilled', async () => {
+        const fn = jest.fn();
 
-    describe('finally', () => {
-      it.todo('Write tests');
+        await new Promise(resolve => {
+          fn();
+          resolve();
+          fn();
+        })
+          .then(fn, fn)
+          .then(fn);
+
+        expect(fn).toBeCalledTimes(4);
+      });
+
+      it('calls first passed callback to then if promise is fulfilled', async () => {
+        const fn = jest.fn();
+
+        await Promise.reject().then(null, fn).then(fn);
+        expect(fn).toBeCalledTimes(2);
+      });
     });
   });
-
+  
   describe('Promise.all', () => {
-    it.todo('Write tests');
+    it('Should return array of promises results', async () => {
+      const fn = jest.fn();
+      jest.setTimeout(300);
+
+      const result = await Promise.all([
+        new Promise(resolve => setTimeout(() => {
+          fn();
+          resolve(1);
+        }, 300)),
+        new Promise(resolve => setTimeout(() => {
+          fn();
+          resolve(2);
+        }, 200)),
+        new Promise(resolve => setTimeout(() => {
+          fn();
+          resolve(3);
+        }, 100))
+      ])
+
+      expect(fn).toBeCalledTimes(3);
+      expect(result).toStrictEqual([1, 2, 3]);
+    });
   });
 
   describe('Promise.race', () => {
-    it.todo('Write tests');
+    it('Should return first fulfilled promise', async () => {
+      const fn = jest.fn();
+      jest.setTimeout(300);
+
+      const result = await Promise.race([
+        new Promise(resolve => setTimeout(() => {
+          fn();
+          resolve(1);
+        }, 300)),
+        new Promise(resolve => setTimeout(() => {
+          fn();
+          resolve(2);
+        }, 200)),
+        new Promise(resolve => setTimeout(() => {
+          fn();
+          resolve(3);
+        }, 100))
+      ]);
+
+      expect(fn).toBeCalledTimes(1);
+      expect(result).toStrictEqual(3);
+    });
   });
 
   describe('Promise_all: your own implementation of Promise.all', () => {
     // Some advices https://eloquentjavascript.net/11_async.html#i_Ug+Dv9Mmsw
+    async function Promise_all(promises) {
+      const results = [];
+      let isCompleted = 0;
+      
+      return new Promise(async (resolve, reject) => {
+        for(let i = 0; i < promises.length; i++) {
+          try {
+            const value = await promises[i];
+            isCompleted++;
+            results[i] = value;
+            if(results.length === isCompleted) {
+              resolve(results);
+            }
+          }
+          catch(error) {
+            reject(error);
+          }
+        }
+      })
+    }
+
+    // alternative solution
+    async function Promise_all1(promises) {
+      const results = [];
+      let isCompleted = 0;
+      
+      return new Promise(async (resolve, reject) => {
+        for(let i = 0; i < promises.length; i++) {
+          const promise = promises[i];
+          promise.then(value => {
+            isCompleted++;
+            results[i] = value;
+            if(promises.length === isCompleted) {
+              resolve(results);
+            }
+          }).catch(reject);
+        }
+      })
+    }
+
+    it('Should return array of promises results', async () => {
+      const result = await Promise_all1([
+        Promise.resolve(1),
+        Promise.resolve(2),
+        Promise.resolve(3),
+      ]);
+
+      expect(result).toStrictEqual([1, 2, 3]);
+    });
+
+    // it('Should return error if at least one promise are rejected', async () => {
+    //   expect(async () => {
+    //     await Promise_all1([
+    //       Promise.resolve(1),
+    //       Promise.reject(2),
+    //       Promise.resolve(3),
+    //     ]);
+    //   }).toThrow();
+    // });
   });
 
   describe('Articles', () => {
@@ -77,10 +188,10 @@ describe('async', () => {
     const fetchComments = (articleId, withUser = false) => {};
 
     describe('fetchUser', () => {
-      it('fetches user by id', async () => {
-        const user = await fetchUser(1);
-        expect(user.name).toBe('User1');
-      });
+      // it('fetches user by id', async () => {
+      //   const user = await fetchUser(1);
+      //   expect(user.name).toBe('User1');
+      // });
       it.todo('rejects if user is not found');
     });
 
