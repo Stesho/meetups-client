@@ -1,13 +1,13 @@
 // Type function hasPermission. See example for more details
 
-function hasAccess(user, features) {
-  const role = user.role;
-  const rolePermissions = permissions[role];
-  const featuresToCheck = Array.isArray(features) ? features : [features];
-  return featuresToCheck.every((feature) =>
+function hasAccess(user: User, features: Feature | Feature[]) {
+  const role: string = user.role;
+  const rolePermissions: FeatureObj = permissions[role];
+  const featuresToCheck: Feature[] = Array.isArray(features) ? features : [features];
+  return featuresToCheck.every((feature: string) =>
     ["READ", "READ_WRITE"].includes(rolePermissions[feature])
   );
 }
 
-const hasAccessToCatalog = hasAccess(user, "catalog");
-const hasAccessToCatalogAndBasket = hasAccess(user, ["basket", "catalog"]);
+const hasAccessToCatalog: boolean = hasAccess(user1, "catalog");
+const hasAccessToCatalogAndBasket: boolean = hasAccess(user1, ["basket", "catalog"]);
