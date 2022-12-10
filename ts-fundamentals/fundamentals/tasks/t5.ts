@@ -1,12 +1,13 @@
 // Type function useState. See source code for more details
 
-function useState(initialValue) {
-  let currentValue = initialValue;
-  const setValue = (value) => {
+function useState<T>(initialValue: T) {
+  let currentValue: T = initialValue;
+  const setValue = (value: T) => {
     currentValue = value;
   };
   const getValue = () => currentValue;
-  return [getValue, setValue, initialValue];
+  const resArr: [() => T, (value: T) => void, T] = [getValue, setValue, initialValue]; 
+  return resArr;
 }
 
 const [getValue, setValue, initialValue] = useState(10);
