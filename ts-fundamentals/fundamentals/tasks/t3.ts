@@ -9,5 +9,5 @@ function hasAccess(user: User, features: Feature | Feature[]): boolean {
   );
 }
 
-const hasAccessToCatalog: boolean = hasAccess(user1, "catalog");
-const hasAccessToCatalogAndBasket: boolean = hasAccess(user1, ["basket", "catalog"]);
+const hasAccessToCatalog = hasAccess(user1, "catalog");
+const hasAccessToCatalogAndBasket = hasAccess(user1, ["basket", "catalog"]);
