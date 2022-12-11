@@ -4,9 +4,9 @@ function hasAccess(user: User, features: Feature | Feature[]): boolean {
   const role: `${Role}` = user.role;
   const rolePermissions: FeaturesPermissions= permissions[role];
   const featuresToCheck: Feature[] = Array.isArray(features) ? features : [features];
-  const undefinedFeature: Permission = "NO_ACCESS";
+  const noAccess: Permission = "NO_ACCESS";
   return featuresToCheck.every((feature: Feature) => 
-    ["READ", "READ_WRITE"].includes(rolePermissions[feature] || undefinedFeature)
+    ["READ", "READ_WRITE"].includes(rolePermissions[feature] || noAccess)
   );
 }
 
