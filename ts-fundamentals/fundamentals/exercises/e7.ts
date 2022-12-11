@@ -77,9 +77,9 @@ const users: User[] = [
       occupation: 'Ordinary person'
   }
 ];
-
-export function swap(v1, v2) {
-  return [v2, v1];
+export function swap<T, V>(v1: T, v2: V) {
+  const resArr: [V, T] = [v2, v1]; 
+  return resArr;
 }
 
 function test1() {
