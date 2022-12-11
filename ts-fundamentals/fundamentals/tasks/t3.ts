@@ -1,8 +1,8 @@
 // Type function hasPermission. See example for more details
 
-function hasAccess(user: User, features: Feature | Feature[]) {
-  const role: string = user.role;
-  const rolePermissions: FeatureObj = permissions[role];
+function hasAccess(user: User, features: Feature | Feature[]): boolean {
+  const role: `${Role}` = user.role;
+  const rolePermissions: FeaturesPermissions = permissions[role];
   const featuresToCheck: Feature[] = Array.isArray(features) ? features : [features];
   return featuresToCheck.every((feature: string) =>
     ["READ", "READ_WRITE"].includes(rolePermissions[feature])
