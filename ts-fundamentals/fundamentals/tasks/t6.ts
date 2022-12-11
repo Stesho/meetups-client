@@ -2,7 +2,7 @@
 
 interface Arr<T> {
   slice(start?: number, end?: number): T[];
-  pop(): T;
+  pop(): T | undefined;
   push(value: T): number;
   sort(callback: (a: T, b: T) => number): T[];
   indexOf(value: T, fromIndex: number): number;
