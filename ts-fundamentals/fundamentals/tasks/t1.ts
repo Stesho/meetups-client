@@ -13,7 +13,7 @@ interface User {
   lastName: string,
   isOnline: boolean,
   age?: number,
-  role: 'user' | 'admin',
+  role: 'user' | 'admin' | 'guest',
   address: Address | null; 
 }
 
