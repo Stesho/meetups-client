@@ -4,11 +4,21 @@
 
 // TODO: define Role, Feature, Permission and FeaturePermission
 
-let role: Role = Role.Guest;
+enum Role {
+  Guest = 'guest',
+  User = 'user',
+  Admin = 'admin'
+};
 
+type Feature = 'catalog' | 'basket' | 'news' | 'report';
+type Permission = 'NO_ACCESS' | 'READ' | 'READ_WRITE';
+type FeaturesPermissions = Partial<Record<Feature, Permission>>
+type RolesPermissions = Record<Role, FeaturesPermissions>;
+
+let role: Role = Role.Guest;
 let feature: Feature = "catalog";
 let permission: Permission = "READ";
-const permissions: FeaturePermission = {
+const permissions: RolesPermissions = {
   guest: {
     catalog: "READ",
     news: "READ",
