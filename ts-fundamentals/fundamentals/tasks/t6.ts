@@ -1,6 +1,6 @@
 // Create interface Array<T> with following arrays method: pop, push, sort, indexOf, every, map, filter, reduce.
 
-interface Arr<T> {
+interface Array<T> {
   slice(start?: number, end?: number): T[];
   pop(): T | undefined;
   push(...value: T[]): number;
