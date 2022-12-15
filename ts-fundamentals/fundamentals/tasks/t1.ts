@@ -1,6 +1,22 @@
 // Describe interface User that has the following properties: id, firstName, lastName, isOnline, age, role, address. See
 // usage example below
 
+interface Address {
+  city: string,
+  country: string,
+  zip: string,
+}
+
+interface User {
+  id: string,
+  firstName: string,
+  lastName: string,
+  isOnline: boolean,
+  age?: number,
+  role: 'user' | 'admin' | 'guest',
+  address: Address | null; 
+}
+
 const user1: User = {
   id: "111",
   firstName: "Ivan",
@@ -25,7 +41,7 @@ const user2: User = {
   address: null,
 };
 
-const user3 = {
+const user3: User = {
   id: "333",
   firstName: "Ivan",
   lastName: "Ivanov",

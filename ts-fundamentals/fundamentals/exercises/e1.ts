@@ -16,9 +16,13 @@ Exercise:
 
 */
 
-export type User = unknown;
-
-export const users: unknown[] = [
+export interface User {
+    name: string;
+    age: number;
+    occupation: string;
+};
+  
+export const users: User[] = [
     {
         name: 'Max Mustermann',
         age: 25,
@@ -30,10 +34,11 @@ export const users: unknown[] = [
         occupation: 'Astronaut'
     }
 ];
-
-export function logPerson(user: unknown) {
+  
+export function logPerson(user: User) {
     console.log(` - ${user.name}, ${user.age}`);
 }
 
 console.log('Users:');
 users.forEach(logPerson);
+  

@@ -11,8 +11,8 @@ describe('THIS', () => {
       }
 
       // TODO: write correct expression inside expect
-      expect(/* ??? */).toBe('aaa aaa');
-      expect(/* ??? */).toBe('bbb bbb');
+      expect(example.call(a)).toBe('aaa aaa');
+      expect(example.call(b)).toBe('bbb bbb');
     });
 
     it('Creates function  connected with specific this', () => {
@@ -25,8 +25,8 @@ describe('THIS', () => {
       const bob = { name: 'Bob', get: 50 };
 
       // TODO: fix
-      const getTomName = fn;
-      const getBobName = fn;
+      const getTomName = fn.bind(tom);
+      const getBobName = fn.bind(bob);
 
       expect(getTomName()).toBe('Tom');
       expect(getBobName()).toBe('Bob');
@@ -45,7 +45,7 @@ describe('THIS', () => {
       };
 
       // TODO: FIX ME
-      const sayHello = person.sayHello;
+      const sayHello = person.sayHello.bind(person);
 
       expect(sayHello()).toBe(person.sayHello());
     });
@@ -54,7 +54,7 @@ describe('THIS', () => {
       describe('using call', () => {
         const findMax = (arr) => {
           // TODO: fix me
-          return Math.max(arr);
+          return Math.max.call(null, ...arr);
         };
 
         it('Finds max number in array', () => {
@@ -65,7 +65,7 @@ describe('THIS', () => {
       describe('using apply', () => {
         const findMax = (arr) => {
           // TODO: fix me
-          return Math.max(arr);
+          return Math.max.apply(null, arr);
         };
 
         it('Finds max number in array', () => {
@@ -76,7 +76,7 @@ describe('THIS', () => {
       describe('using spread ...', () => {
         const findMax = (arr) => {
           // TODO: fix me
-          return Math.max(arr);
+          return Math.max(...arr);
         };
 
         it('Finds max number in array', () => {
@@ -93,7 +93,7 @@ describe('THIS', () => {
         secondName: 'Ivanov',
         age: 20,
 
-        sayHello: () => {
+        sayHello() {
           return `Hi, ${this.firstName}!`;
         },
       };
@@ -101,11 +101,25 @@ describe('THIS', () => {
       const sayHello = person.sayHello.bind(person);
 
       // In this example assertion is true, but our code has a bug. Change assertion (toBe part) to find bug (test should fail)
-      expect(sayHello()).toBe(person.sayHello());
+      expect(sayHello()).toBe('Hi, Ivan!');
     });
 
-    test.todo(
-      'Rewrite previous exercise by creating the Person class with sayHello method using arrow function, write needed tests.'
-    );
+    test('Rewrite previous exercise by creating the Person class with sayHello method using arrow function, write needed tests.', 
+    () => {
+      class Person {
+        constructor(firstName, secondName) {
+          this.firstName = firstName;
+          this.secondName = secondName;
+        }
+
+        sayHello = () => {
+          return `Hi, ${this.firstName}!`; 
+        }
+      }
+
+      const person = new Person('Ivan', 'Ivanov');
+
+      expect(person.sayHello()).toBe('Hi, Ivan!');
+    });
   });
 });
