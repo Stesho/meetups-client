@@ -1,0 +1,13 @@
+.button {
+    border: none;
+    cursor: pointer;
+    background: none;
+
+    transition-property: transform;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.2s;
+
+    &:active {
+        transform: scale(0.85);
+    }
+}
