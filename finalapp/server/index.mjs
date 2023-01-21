@@ -53,7 +53,7 @@ app.use('/api/news', newsRoutes(db));
 
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
-app.listen(8000, () => {
+app.listen(3000, () => {
   console.log('Api server is up.');
-  console.log('listening on port 8000');
+  console.log('listening on port 3000');
 });
