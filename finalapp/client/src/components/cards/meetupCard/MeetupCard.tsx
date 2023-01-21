@@ -44,7 +44,7 @@ export const MeetupCard = ({ meetup, type, onMeetupDelete, onMeetupEdit }: Meetu
                 <h3 className={styles.meetupSubject}>{meetup.subject}</h3>
                 <p className={styles.meetupExcerpt}>{meetup.excerpt}</p>
             </div>
-            {type == 'basic' ? (
+            {type === 'basic' ? (
                 <div className={styles.bottomLine}>
                     <img src={profileIcon} />
                     <span className={styles.supportInfo}>{meetup.goCount} поддерживают</span>

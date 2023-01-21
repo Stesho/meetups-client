@@ -17,16 +17,10 @@ export const checkDateValidity = (value: string): boolean => {
 
     const [day, month, year, time] = dateValues
     const [hours, minutes] = time.split(':')
-    if (!isInteger(year) || !isInteger(day) || !isInteger(hours) || !isInteger(minutes) || MONTH_NAMES.indexOf(month) === -1) {
-        return false
-    }
+    const isCorrectFormat = !isInteger(year) || !isInteger(day) || !isInteger(hours) || !isInteger(minutes) || (MONTH_NAMES.indexOf(month) === -1)
+    const isCorrectValue = checkYear(Number(year)) || checkDay(Number(day), MONTH_NAMES.indexOf(month)) || checkHours(Number(hours)) || checkMinutes(Number(minutes)) 
 
-    if (
-        checkYear(Number(year)) ||
-        checkDay(Number(day), MONTH_NAMES.indexOf(month)) ||
-        checkHours(Number(hours)) ||
-        checkMinutes(Number(minutes))
-    ) {
+    if (isCorrectFormat || isCorrectValue) {
         return false
     }
 
