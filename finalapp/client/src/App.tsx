@@ -17,7 +17,6 @@ export const App = (): JSX.Element => (
             <Route path="/create-meetup" element={<CreateMeetupPage user={testUser} />} />
             <Route path="/news" element={<NewsPage />} />
             <Route path="/authorize" element={<AuthorizationPage />} />
-
             <Route path="/edit-meetup/:id" element={<EditMeetupPage />} />
         </Routes>
     </BrowserRouter>
