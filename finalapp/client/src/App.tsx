@@ -7,6 +7,7 @@ import { CreateMeetupPage } from './pages/create-meetup/CreateMeetupPage'
 import { AuthorizationPage } from './pages/authorization/AuthorizationPage'
 import { ShortUser } from './core/types/User'
 import { EditMeetupPage } from './pages/edit-meetup/EditMeetupPage'
+import ThemePreviewPage from './pages/preview/ThemePreviewPage/ThemePreviewPage'
 
 export const App = (): JSX.Element => (
     <BrowserRouter>
@@ -18,6 +19,7 @@ export const App = (): JSX.Element => (
             <Route path="/news" element={<NewsPage />} />
             <Route path="/authorize" element={<AuthorizationPage />} />
             <Route path="/edit-meetup/:id" element={<EditMeetupPage />} />
+            <Route path="/theme-preview/:id" element={<ThemePreviewPage />} />
         </Routes>
     </BrowserRouter>
 )
