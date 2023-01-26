@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import styles from './ThemePreviewPage.module.scss'
-import { ThemePreview } from '../../../components/preview/themePreview/ThemePreview';
+import React, { useState, useEffect } from 'react';
+import styles from './MeetupPreviewPage.module.scss'
+import MeetupPreview from '../../../components/preview/meetupPreview/MeetupPreview';
 import { useParams } from 'react-router-dom';
 import { getMeetupFromServerById } from '../../../core/utils/getMeetupFromServerById';
 import { Meetup } from '../../../core/types/Meetup';
 
-const ThemePreviewPage = () => {
+const MeetupPreviewPage = () => {
   const [meetup, setMeetup] = useState<Meetup | null>(null)
   const { id } = useParams()
 
@@ -25,13 +25,13 @@ const ThemePreviewPage = () => {
       {meetup && (
         <div className={styles.previewPage}>
           <div className={styles.title}>
-              <h1 className="basicH1">Просмотр Темы</h1>
+              <h1 className="basicH1">Просмотр Митапа</h1>
           </div>
-          <ThemePreview meetup={meetup} onCancel={() => {}} onDelete={() => {}} onApprove={() => {}}/>
+          <MeetupPreview meetup={meetup} onCancel={() => {}} onPublish={() => {}}/>
         </div>
       )}
     </section>
   );
 };
 
-export default ThemePreviewPage;
+export default MeetupPreviewPage;
