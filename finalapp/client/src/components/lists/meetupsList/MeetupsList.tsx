@@ -1,10 +1,10 @@
+import React from 'react'
 import { Meetup } from '../../../core/types/Meetup'
 import styles from './MeetupsList.module.scss'
-import React from 'react'
 import { MeetupCard } from '../../cards/meetupCard/MeetupCard'
 import Button from '../../ui/button/Button'
 import { NavigateFunction, useNavigate } from 'react-router-dom'
-import { removeMeetupFromServerById } from '../../../core/utils/removeMeetupFromServer'
+import meetupsStore from '../../../store/meetupsStore'
 
 interface MeetupsListProps {
     meetups: Array<Meetup>
@@ -16,25 +16,22 @@ export const MeetupsList = (props: MeetupsListProps): JSX.Element => {
 
     const goToCreateMeetupPage = (): void => navigate('/create-meetup')
 
-    const removeMeetupButtonClick = async (meetup: Meetup): Promise<void> => {
-        await removeMeetupFromServerById(meetup.id)
-        window.location.reload()
+    const removeMeetupButtonClick = (meetup: Meetup): void => {
+        meetupsStore.deleteMeetupById(meetup.id)
     }
 
     const editMeetupButtonClick = (meetup: Meetup): void => {
         navigate(`/edit-meetup/${meetup.id}`)
     }
 
-    const renderedData: Array<Meetup> = props.meetups.filter((meetup: Meetup): boolean => meetup.status === props.status)
-
     return (
         <div className={styles.listContainer}>
             <div className={styles.row}>
-                <span className={styles.suggested}>{renderedData.length} тем предложено</span>
+                <span className={styles.suggested}>{props.meetups.length} тем предложено</span>
                 <Button type="secondary" callback={goToCreateMeetupPage} text="+ Создать митап" />
             </div>
             <div className={styles.meetups}>
-                {renderedData.map(
+                {props.meetups.map(
                     (meetup: Meetup): JSX.Element => (
                         <MeetupCard
                             type={props.status === 'REQUEST' ? 'basic' : 'moderation'}

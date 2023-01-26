@@ -1,16 +1,17 @@
+import React from 'react'
 import { AuthorizationForm } from '../../components/forms/authorization/AuthorizationForm'
 import { NavigateFunction, useNavigate } from 'react-router-dom'
 import { AuthorizationRequestData } from '../../core/types/AuthorizationRequestData'
 import { tryAuthorize } from '../../core/utils/tryAuthorize'
-import React from 'react'
+import userStore from '../../store/userStore'
 import styles from './AuthorizationPage.module.scss'
 
 export const AuthorizationPage = (): JSX.Element => {
     const navigate: NavigateFunction = useNavigate()
 
     const onAuthorizationFormSend = async (data: AuthorizationRequestData): Promise<void> => {
-        const response = await tryAuthorize(data)
-        console.log(response)
+        // const response = await tryAuthorize(data)
+        userStore.singIn(data)
     }
 
     return (

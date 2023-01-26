@@ -6,7 +6,7 @@ import { ShortUser } from '../../core/types/User'
 import { NavigateFunction, useNavigate, useParams } from 'react-router-dom'
 import styles from './EditMeetupPage.module.scss'
 import { getMeetupFromServerById } from '../../core/utils/getMeetupFromServerById'
-import { updateMeetupOnServer } from '../../core/utils/updateMeetupOnServer'
+import meetupsStore from '../../store/meetupsStore'
 
 export const EditMeetupPage = () => {
     const [meetup, setMeetup] = useState<Meetup | null>(null)
@@ -20,7 +20,7 @@ export const EditMeetupPage = () => {
     }
     // todo: write function
     const onSave = async (data: MeetupData, event?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        await updateMeetupOnServer({
+        const newMeetup = {
             id: meetup!.id,
             subject: data.subject,
             place: data.place,
@@ -34,7 +34,8 @@ export const EditMeetupPage = () => {
             finish: data.finish,
             goCount: meetup!.goCount,
             author: data.author
-        })
+        }
+        meetupsStore.editMeetup(newMeetup)
         navigate('/meetups')
     }
     // todo: write function
