@@ -1,20 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './MeetupsPage.module.scss'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import { MeetupsList } from '../../components/lists/meetupsList/MeetupsList'
-import { Meetup } from '../../core/types/Meetup'
-import { getMeetupsFromServer } from '../../core/utils/getMeetupsFromServer'
+import { observer } from 'mobx-react-lite'
+import meetupsStore from '../../store/meetupsStore'
 
-const MeetupsPage = (): JSX.Element => {
-    const [allMeetups, setAllMeetups] = React.useState<Array<Meetup>>([])
-
-    const loadAllMeetups = async () => {
-        const receivedMeetups: Array<Meetup> = await getMeetupsFromServer()
-        setAllMeetups(receivedMeetups)
-    }
-
-    React.useEffect((): void => {
-        loadAllMeetups()
+const MeetupsPage = observer((): JSX.Element => {
+    useEffect((): void => {
+        meetupsStore.fetchMeetups()
     }, [])
 
     return (
@@ -39,21 +32,21 @@ const MeetupsPage = (): JSX.Element => {
                     </TabList>
 
                     <TabPanel>
-                        <MeetupsList meetups={allMeetups} status="REQUEST" />
+                        <MeetupsList meetups={meetupsStore.requsetMeetups} status="REQUEST" />
                     </TabPanel>
                     <TabPanel>
-                        <MeetupsList meetups={allMeetups} status="DRAFT" />
+                        <MeetupsList meetups={meetupsStore.draftMeetups} status="DRAFT" />
                     </TabPanel>
                     <TabPanel>
-                        <MeetupsList meetups={allMeetups} status="DRAFT" />
+                        <MeetupsList meetups={meetupsStore.futureMeetups} status="CONFIRMED" />
                     </TabPanel>
                     <TabPanel>
-                        <MeetupsList meetups={allMeetups} status="DRAFT" />
+                        <MeetupsList meetups={meetupsStore.pastMeetups} status="CONFIRMED" />
                     </TabPanel>
                 </Tabs>
             </div>
         </section>
     )
-}
+})
 
 export default MeetupsPage

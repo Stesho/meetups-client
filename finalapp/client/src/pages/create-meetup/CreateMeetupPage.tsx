@@ -4,10 +4,10 @@ import { CreateMeetupStepper } from '../../components/createMeetupStepper/Create
 import { NavigateFunction, useNavigate } from 'react-router-dom'
 import { FormRequiredData } from '../../components/forms/create/required/RequiredCreateForm'
 import { FormAdditionalData } from '../../components/forms/create/additional/AdditionalCreateForm'
-import { CreatedMeetup } from '../../core/types/Meetup'
+import { CreatedMeetup, Meetup } from '../../core/types/Meetup'
 import { combineFormDataForCreatedMeetup } from '../../core/utils/combineFormDataForCreatedMeetup'
-import { sendCreatedMeetupToServer } from '../../core/utils/sendCreatedMeetupToServer'
-import { ShortUser, User } from '../../core/types/User'
+import { ShortUser } from '../../core/types/User'
+import meetupsStore from '../../store/meetupsStore'
 
 interface CreateMeetupPageProps {
     user: ShortUser
@@ -20,8 +20,7 @@ export const CreateMeetupPage = ({ user }: CreateMeetupPageProps): JSX.Element =
 
     const createMeetup = async (required: FormRequiredData, additional: FormAdditionalData): Promise<void> => {
         const combinedMeetup: CreatedMeetup = combineFormDataForCreatedMeetup(required, additional, user)
-        console.log(combinedMeetup)
-        await sendCreatedMeetupToServer(combinedMeetup)
+        meetupsStore.addMeetup(combinedMeetup as Meetup)
         leavePage()
     }
 
