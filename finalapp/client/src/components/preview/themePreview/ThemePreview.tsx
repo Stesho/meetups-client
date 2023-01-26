@@ -5,14 +5,14 @@ import { Meetup } from '../../../core/types/Meetup'
 import { User } from '../../../core/types/User'
 import styles from './ThemePreview.module.scss'
 
-interface PreviewThemeProps {
+interface ThemePreviewProps {
     meetup: Meetup
     onCancel: (event?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
     onDelete: (event?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
     onApprove: (event?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
 }
 
-export const PreviewTheme = (props: PreviewThemeProps): JSX.Element => {
+export const ThemePreview = (props: ThemePreviewProps): JSX.Element => {
 	const [allVotedUsers, setAllVotedUsets] = useState<User[]>([])
 
     const loadAllVotedUsers = async () => {
