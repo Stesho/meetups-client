@@ -19,14 +19,14 @@ export const AuthorizationForm = (props: AuthorizationFormProps): JSX.Element =>
     return (
         <form className={styles.form} onSubmit={preventDefaultSubmit} action="#">
             <LabeledInput
-                label="Username"
+                label="Имя пользователя"
                 onChange={setUsername}
                 type="text"
                 placeholder="Albert Richards"
                 className={styles.input}
             />
-            <LabeledInput label="Password" onChange={setPassword} type="password" className={styles.input} />
-            <Button text="Authorize" type="primary" callback={onAuthorizeButtonClick} />
+            <LabeledInput label="Пароль" onChange={setPassword} type="password" className={styles.input} />
+            <Button text="Вход" type="primary" callback={onAuthorizeButtonClick} />
         </form>
     )
 }

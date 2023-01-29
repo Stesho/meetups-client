@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import MeetupsPage from './pages/meetups/MeetupsPage'
 import NewsPage from './pages/news/NewsPage'
@@ -10,20 +10,22 @@ import { EditMeetupPage } from './pages/edit-meetup/EditMeetupPage'
 import ThemePreviewPage from './pages/preview/ThemePreviewPage/ThemePreviewPage'
 import MeetupPreviewPage from './pages/preview/MeetupPreviewPage/MeetupPreviewPage'
 
-export const App = (): JSX.Element => (
-    <BrowserRouter>
-        <Header user={testUser} />
-        <Routes>
-            <Route path="/" element={<Navigate to="/meetups" />} />
-            <Route path="/meetups" element={<MeetupsPage />} />
-            <Route path="/create-meetup" element={<CreateMeetupPage user={testUser} />} />
-            <Route path="/news" element={<NewsPage />} />
-            <Route path="/authorize" element={<AuthorizationPage />} />
-            <Route path="/edit-meetup/:id" element={<EditMeetupPage />} />
-            <Route path="/theme-preview/:id" element={<ThemePreviewPage />} />
-            <Route path="/meetup-preview/:id" element={<MeetupPreviewPage />} />
-        </Routes>
-    </BrowserRouter>
-)
+export const App = (): JSX.Element => {
+    return (
+        <BrowserRouter>
+            <Header />
+            <Routes>
+                <Route path="/" element={<Navigate to="/meetups" />} />
+                <Route path="/meetups" element={<MeetupsPage />} />
+                <Route path="/create-meetup" element={<CreateMeetupPage user={testUser} />} />
+                <Route path="/news" element={<NewsPage />} />
+                <Route path="/authorize" element={<AuthorizationPage />} />
+                <Route path="/edit-meetup/:id" element={<EditMeetupPage />} />
+                <Route path="/theme-preview/:id" element={<ThemePreviewPage />} />
+                <Route path="/meetup-preview/:id" element={<MeetupPreviewPage />} />
+            </Routes>
+        </BrowserRouter>
+    )
+}
 
 const testUser: ShortUser = { name: 'Alfred', surname: 'Lind', id: '1af86359-8e9d-41da-8da8-67e68ee514ea' }
