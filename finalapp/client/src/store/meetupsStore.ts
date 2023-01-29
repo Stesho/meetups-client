@@ -68,4 +68,4 @@ class MeetupsStore {
   }
 }
 
-export default new MeetupsStore()
+export default MeetupsStore;

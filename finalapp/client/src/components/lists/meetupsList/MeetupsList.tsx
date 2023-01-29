@@ -4,7 +4,7 @@ import styles from './MeetupsList.module.scss'
 import { MeetupCard } from '../../cards/meetupCard/MeetupCard'
 import Button from '../../ui/button/Button'
 import { NavigateFunction, useNavigate } from 'react-router-dom'
-import meetupsStore from '../../../store/meetupsStore'
+import { useStore } from '../../../context/storeContext'
 
 interface MeetupsListProps {
     meetups: Array<Meetup>
@@ -13,11 +13,12 @@ interface MeetupsListProps {
 
 export const MeetupsList = (props: MeetupsListProps): JSX.Element => {
     const navigate: NavigateFunction = useNavigate()
+    const meetupsStores = useStore('MeetupsStore')
 
     const goToCreateMeetupPage = (): void => navigate('/create-meetup')
 
     const removeMeetupButtonClick = (meetup: Meetup): void => {
-        meetupsStore.deleteMeetupById(meetup.id)
+        meetupsStores.deleteMeetupById(meetup.id)
     }
 
     const editMeetupButtonClick = (meetup: Meetup): void => {
