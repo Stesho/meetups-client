@@ -11,6 +11,7 @@ export const AuthorizationPage = (): JSX.Element => {
 
     const onAuthorizationFormSend = async (data: AuthorizationRequestData): Promise<void> => {
         userStore.singIn(data)
+        navigate('/meetups')
     }
 
     return (
