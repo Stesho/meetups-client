@@ -3,9 +3,11 @@ import styles from './MeetupsPage.module.scss'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import { MeetupsList } from '../../components/lists/meetupsList/MeetupsList'
 import { observer } from 'mobx-react-lite'
-import meetupsStore from '../../store/meetupsStore'
+import { useStore } from '../../context/storeContext'
 
 const MeetupsPage = observer((): JSX.Element => {
+    const meetupsStore = useStore('MeetupsStore')
+
     useEffect((): void => {
         meetupsStore.fetchMeetups()
     }, [])

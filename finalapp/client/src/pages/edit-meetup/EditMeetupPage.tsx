@@ -4,13 +4,14 @@ import { MeetupData } from '../../components/forms/edit/EditMeetupForm'
 import { Meetup } from '../../core/types/Meetup'
 import { ShortUser } from '../../core/types/User'
 import { NavigateFunction, useNavigate, useParams } from 'react-router-dom'
-import styles from './EditMeetupPage.module.scss'
 import { getMeetupFromServerById } from '../../core/utils/getMeetupFromServerById'
-import meetupsStore from '../../store/meetupsStore'
+import { useStore } from '../../context/storeContext'
+import styles from './EditMeetupPage.module.scss'
 
 export const EditMeetupPage = () => {
     const [meetup, setMeetup] = useState<Meetup | null>(null)
     const navigate: NavigateFunction = useNavigate()
+    const meetupsStore = useStore('MeetupsStore')
 
     const { id } = useParams()
 

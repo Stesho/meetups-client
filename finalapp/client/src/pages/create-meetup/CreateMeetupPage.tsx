@@ -7,7 +7,7 @@ import { FormAdditionalData } from '../../components/forms/create/additional/Add
 import { CreatedMeetup, Meetup } from '../../core/types/Meetup'
 import { combineFormDataForCreatedMeetup } from '../../core/utils/combineFormDataForCreatedMeetup'
 import { ShortUser } from '../../core/types/User'
-import meetupsStore from '../../store/meetupsStore'
+import { useStore } from '../../context/storeContext'
 
 interface CreateMeetupPageProps {
     user: ShortUser
@@ -15,6 +15,7 @@ interface CreateMeetupPageProps {
 
 export const CreateMeetupPage = ({ user }: CreateMeetupPageProps): JSX.Element => {
     const navigation: NavigateFunction = useNavigate()
+    const meetupsStore = useStore('MeetupsStore')
 
     const leavePage = (): void => navigation('/meetups')
 
