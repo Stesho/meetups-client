@@ -1,7 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import Button from '../../components/ui/button/Button';
+import styles from './NewsPage.module.scss'
+import NewsList from '../../components/lists/newsList/NewsList';
+import { observer } from 'mobx-react-lite';
+import { useStore } from '../../context/storeContext';
 
-const NewsPage = (): JSX.Element => {
-    return <section className="container smoothPage"></section>
-}
+const NewsPage = observer((): JSX.Element => {
+    const newsStore = useStore('NewsStore')
+
+    useEffect(() => {
+        newsStore.fetchNews()
+    }, [newsStore])
+
+    return (
+        <section className="container smoothPage">
+            <div className={styles.newsPage}>
+                <div className={styles.title}>
+                    <h1 className="basicH1">Новости</h1>
+                    <Button type='secondary' text='+ Создать Новость' callback={() => {}}/>
+                </div>
+                <NewsList news={newsStore.news}/>
+            </div>
+        </section>
+    );
+})
 
 export default NewsPage
