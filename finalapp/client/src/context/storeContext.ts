@@ -1,7 +1,7 @@
 import { createStoreContext } from '../core/utils/createContext'
 import MeetupsStore from '../store/meetupsStore'
 import UserStore from '../store/userStore'
-import NewsStore from '../store/newStore'
+import NewsStore from '../store/newsStore'
 
 const meetupsStore = new MeetupsStore()
 const userStore = new UserStore()
