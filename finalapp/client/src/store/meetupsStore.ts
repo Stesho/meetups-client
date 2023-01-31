@@ -43,7 +43,7 @@ class MeetupsStore {
     this.setMeetups(recievedMeetups)
   }
 
-  get requsetMeetups(): Meetup[] {
+  get requestMeetups(): Meetup[] {
     return this.meetups.filter(meetup => meetup.status === 'REQUEST')
   }
 

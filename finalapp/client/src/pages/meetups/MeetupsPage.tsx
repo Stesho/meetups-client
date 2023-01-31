@@ -34,7 +34,7 @@ const MeetupsPage = observer((): JSX.Element => {
                     </TabList>
 
                     <TabPanel>
-                        <MeetupsList meetups={meetupsStore.requsetMeetups} status="REQUEST" />
+                        <MeetupsList meetups={meetupsStore.requestMeetups} status="REQUEST" />
                     </TabPanel>
                     <TabPanel>
                         <MeetupsList meetups={meetupsStore.draftMeetups} status="DRAFT" />
