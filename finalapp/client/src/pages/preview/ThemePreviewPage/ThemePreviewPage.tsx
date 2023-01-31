@@ -4,16 +4,41 @@ import { ThemePreview } from '../../../components/preview/themePreview/ThemePrev
 import { useParams } from 'react-router-dom';
 import { getMeetupFromServerById } from '../../../core/utils/getMeetupFromServerById';
 import { Meetup } from '../../../core/types/Meetup';
+import { useNavigate, NavigateFunction } from 'react-router-dom'
+import { useStore } from '../../../context/storeContext';
 
 const ThemePreviewPage = () => {
   const [meetup, setMeetup] = useState<Meetup | null>(null)
   const { id } = useParams()
+  const navigate: NavigateFunction = useNavigate()
+  const meetupsStore = useStore('MeetupsStore')
 
   const loadMeetup = async () => {
     if (id) {
       const receivedMeetup: Meetup | null = await getMeetupFromServerById(id)
       setMeetup(receivedMeetup)
     }
+  }
+
+  const toMeetupsPage = () => {
+    navigate('/meetups')
+  }
+
+  const approveTheme = () => {
+    if(meetup) {
+      meetupsStore.editMeetup({
+        ...meetup,
+        status: 'DRAFT'
+      })
+    }
+    toMeetupsPage()
+  }
+  
+  const deleteMeetup = () => {
+    if(meetup) {
+      meetupsStore.deleteMeetupById(meetup.id)
+    }
+    toMeetupsPage()
   }
 
   useEffect(() => {
@@ -27,7 +52,7 @@ const ThemePreviewPage = () => {
           <div className={styles.title}>
               <h1 className="basicH1">Просмотр Темы</h1>
           </div>
-          <ThemePreview meetup={meetup} onCancel={() => {}} onDelete={() => {}} onApprove={() => {}}/>
+          <ThemePreview meetup={meetup} onCancel={toMeetupsPage} onDelete={deleteMeetup} onApprove={approveTheme}/>
         </div>
       )}
     </section>
