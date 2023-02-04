@@ -4,7 +4,6 @@ import { MeetupData } from '../../components/forms/edit/EditMeetupForm'
 import { Meetup } from '../../core/types/Meetup'
 import { ShortUser } from '../../core/types/User'
 import { NavigateFunction, useNavigate, useParams } from 'react-router-dom'
-import { getMeetupFromServerById } from '../../core/utils/getMeetupFromServerById'
 import { useStore } from '../../context/storeContext'
 import styles from './EditMeetupPage.module.scss'
 
@@ -44,7 +43,7 @@ export const EditMeetupPage = () => {
 
     const loadMeetup = async () => {
         if (id) {
-            const receivedMeetup: Meetup | null = await getMeetupFromServerById(id)
+            const receivedMeetup: Meetup | null = await meetupsStore.getMeetupById(id)
             setMeetup(receivedMeetup)
         }
     }
