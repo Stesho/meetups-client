@@ -1,16 +1,16 @@
 import { makeAutoObservable } from "mobx"
 import { News } from "../core/types/News"
-import { getNewsFromServer } from "../core/utils/getNewsFromServer"
+import ServerApi from "../core/utils/serverApi"
 
 class NewsStore {
   news: News[] = []
   
-  constructor() {
+  constructor(private readonly serverApi: ServerApi) {
     makeAutoObservable(this)
   }
 
   async fetchNews() {
-    const newsList = await getNewsFromServer()
+    const newsList = await this.serverApi.getNewsFromServer()
 
     if(newsList !== null) {
       this.setNews(newsList)

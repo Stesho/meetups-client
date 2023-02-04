@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Meetup } from '../../../core/types/Meetup'
 import styles from './MeetupsList.module.scss'
 import { MeetupCard } from '../../cards/meetupCard/MeetupCard'
@@ -7,18 +7,22 @@ import { NavigateFunction, useNavigate } from 'react-router-dom'
 import { useStore } from '../../../context/storeContext'
 import Modal from '../../modal/Modal'
 
+import ServerApi from '../../../core/utils/serverApi'
+import { observer } from 'mobx-react-lite'
+
 interface MeetupsListProps {
     meetups: Array<Meetup>
     status: 'REQUEST' | 'DRAFT' | 'CONFIRMED' // for filtering in different tabs
 }
 
-export const MeetupsList = (props: MeetupsListProps): JSX.Element => {
+export const MeetupsList = observer((props: MeetupsListProps): JSX.Element => {
     const navigate: NavigateFunction = useNavigate()
-    const meetupsStores = useStore('MeetupsStore')
+    const meetupsStore = useStore('MeetupsStore')
     const [isActiveModal, setIsActiveModal] = useState<boolean>(false)
     const [deleteMeetupId, setDeleteMeetupId] = useState<string>(null!)
     const [deleteMeetupSubject, setDeleteMeetupSubject] = useState<string>(null!)
-
+    const notificationStore = useStore('NotificationStore')
+    
     const goToCreateMeetupPage = (): void => navigate('/create-meetup')
 
     const removeMeetupButtonClick = (meetup: Meetup): void => {
@@ -32,7 +36,7 @@ export const MeetupsList = (props: MeetupsListProps): JSX.Element => {
     }
 
     const onConfirmDelete = (meetupId: string) => {
-        meetupsStores.deleteMeetupById(meetupId)
+        meetupsStore.deleteMeetupById(meetupId)
         setIsActiveModal(false)
     }
 
@@ -69,4 +73,4 @@ export const MeetupsList = (props: MeetupsListProps): JSX.Element => {
             </div>
         </div>
     )
-}
+})

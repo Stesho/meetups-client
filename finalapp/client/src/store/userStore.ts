@@ -1,18 +1,17 @@
 import { makeAutoObservable } from "mobx"
 import { User } from "../core/types/User"
 import { AuthorizationRequestData } from "../core/types/AuthorizationRequestData"
-import { tryAuthorize } from "../core/utils/tryAuthorize"
-import { getUserFromServer } from "../core/utils/getUserFromServer"
+import ServerApi from "../core/utils/serverApi"
 
 class UserStore {
   user: User = null!
   
-  constructor() {
+  constructor(private readonly serverApi: ServerApi) {
     makeAutoObservable(this)
   }
 
   async singIn(user: AuthorizationRequestData): Promise<void> {
-    const recievedUser = await tryAuthorize(user)
+    const recievedUser = await this.serverApi.tryAuthorize(user)
 
     if(recievedUser !== null) {
       this.setUser(recievedUser)
@@ -20,7 +19,7 @@ class UserStore {
   }
 
   async fetchUser(): Promise<void> {
-    const recievedUser = await getUserFromServer()
+    const recievedUser = await this.serverApi.getUserFromServer()
 
     if(recievedUser !== null) {
       this.setUser(recievedUser)

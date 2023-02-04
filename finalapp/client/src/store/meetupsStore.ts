@@ -1,28 +1,25 @@
 import { makeAutoObservable } from "mobx"
 import { Meetup } from "../core/types/Meetup";
-import { getMeetupsFromServer } from '../core/utils/getMeetupsFromServer'
-import { removeMeetupFromServerById } from "../core/utils/removeMeetupFromServer";
-import { sendCreatedMeetupToServer } from "../core/utils/sendCreatedMeetupToServer";
-import { updateMeetupOnServer } from "../core/utils/updateMeetupOnServer";
+import ServerApi from "../core/utils/serverApi";
 
 class MeetupsStore {
   meetups: Meetup[] = [];
 
-  constructor() {
+  constructor(private readonly serverApi: ServerApi) {
     makeAutoObservable(this)
   }
 
   async addMeetup(meetup: Meetup): Promise<void> {
-    const response = await sendCreatedMeetupToServer(meetup)
+    const response = await this.serverApi.sendCreatedMeetupToServer(meetup)
 
-    if(typeof response === 'object') {
+    if(response !== null) {
       this.meetups.push(meetup)
     }
   }
 
   async deleteMeetupById(id: string): Promise<void> {
-    const response = await removeMeetupFromServerById(id)
-    
+    const response = await this.serverApi.removeMeetupFromServerById(id)
+
     if(response !== null) {
       const newMeetups = this.meetups.filter(meetup => meetup.id !== id)
       this.setMeetups(newMeetups)
@@ -30,16 +27,16 @@ class MeetupsStore {
   }
 
   async editMeetup(meetup: Meetup): Promise<void> {
-    const response = await updateMeetupOnServer(meetup)
+    const response = await this.serverApi.updateMeetupOnServer(meetup)
 
-    if(typeof response === 'object') {
+    if(response !== null) {
       const editedMeetupIndex = this.meetups.findIndex(item => item.id === meetup.id)
       this.meetups[editedMeetupIndex] = meetup
     }
   }
 
   async fetchMeetups(): Promise<void> {
-    const recievedMeetups = await getMeetupsFromServer()
+    const recievedMeetups = await this.serverApi.getMeetupsFromServer()
     this.setMeetups(recievedMeetups)
   }
 
