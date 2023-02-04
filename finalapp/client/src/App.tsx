@@ -10,6 +10,7 @@ import { EditMeetupPage } from './pages/edit-meetup/EditMeetupPage'
 import ThemePreviewPage from './pages/preview/ThemePreviewPage/ThemePreviewPage'
 import MeetupPreviewPage from './pages/preview/MeetupPreviewPage/MeetupPreviewPage'
 import CreateNewsPage from './pages/create-news/CreateNewsPage'
+import NotificationBanner from './components/notificationBanner/NotificationBanner'
 
 export const App = (): JSX.Element => {
     return (
@@ -26,6 +27,7 @@ export const App = (): JSX.Element => {
                 <Route path="/meetup-preview/:id" element={<MeetupPreviewPage />} />
                 <Route path="/create-news" element={<CreateNewsPage />} />
             </Routes>
+            <NotificationBanner />
         </BrowserRouter>
     )
 }
