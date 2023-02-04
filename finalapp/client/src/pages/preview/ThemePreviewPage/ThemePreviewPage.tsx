@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import styles from './ThemePreviewPage.module.scss'
 import { ThemePreview } from '../../../components/preview/themePreview/ThemePreview';
 import { useParams } from 'react-router-dom';
-import { getMeetupFromServerById } from '../../../core/utils/getMeetupFromServerById';
 import { Meetup } from '../../../core/types/Meetup';
 import { useNavigate, NavigateFunction } from 'react-router-dom'
 import { useStore } from '../../../context/storeContext';
@@ -15,7 +14,7 @@ const ThemePreviewPage = () => {
 
   const loadMeetup = async () => {
     if (id) {
-      const receivedMeetup: Meetup | null = await getMeetupFromServerById(id)
+      const receivedMeetup: Meetup | null = await meetupsStore.getMeetupById(id)
       setMeetup(receivedMeetup)
     }
   }

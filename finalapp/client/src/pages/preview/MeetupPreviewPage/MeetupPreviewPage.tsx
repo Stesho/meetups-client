@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styles from './MeetupPreviewPage.module.scss'
 import MeetupPreview from '../../../components/preview/meetupPreview/MeetupPreview';
 import { useParams } from 'react-router-dom';
-import { getMeetupFromServerById } from '../../../core/utils/getMeetupFromServerById';
 import { Meetup } from '../../../core/types/Meetup';
 import { useNavigate, NavigateFunction } from 'react-router-dom';
 import { useStore } from '../../../context/storeContext';
@@ -15,7 +14,7 @@ const MeetupPreviewPage = () => {
 
   const loadMeetup = async () => {
     if (id) {
-      const receivedMeetup: Meetup | null = await getMeetupFromServerById(id)
+      const receivedMeetup: Meetup | null = await meetupsStore.getMeetupById(id)
       setMeetup(receivedMeetup)
     }
   }
