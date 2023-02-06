@@ -142,6 +142,22 @@ class ServerApi {
     }
   }
 
+  async getMeetupFromServerById(id: string): Promise<Meetup | null> {
+    try {
+      const response = await this.fetch(`${BASE_SERVER_URL}${MEETUPS_URL}/${id}`)
+
+      if(!response?.ok) {
+        return null
+      }
+
+      return await response.json()
+    }
+    catch(error) {
+      this.notificationStore.error(this.errorMessage.unknown)
+      return null
+    }
+  }
+
   // User
   async tryAuthorize(authData: AuthorizationRequestData): Promise<User | null> {
     try {
@@ -205,6 +221,22 @@ class ServerApi {
     catch {
       this.notificationStore.error(this.errorMessage.unknown)
       return []
+    }
+  }
+
+  async getNewsFromServerById(id: string): Promise<News | null> {
+    try {
+      const response = await this.fetch(`${BASE_SERVER_URL}${NEWS_URL}/${id}`)
+
+      if(!response?.ok) {
+        return null
+      }
+
+      return await response.json()
+    }
+    catch(error) {
+      this.notificationStore.error(this.errorMessage.unknown)
+      return null
     }
   }
 }
