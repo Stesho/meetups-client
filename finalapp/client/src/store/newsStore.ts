@@ -9,12 +9,17 @@ class NewsStore {
     makeAutoObservable(this)
   }
 
-  async fetchNews() {
+  async fetchNews(): Promise<void> {
     const newsList = await this.serverApi.getNewsFromServer()
 
     if(newsList !== null) {
       this.setNews(newsList)
     }
+  }
+
+  async getNewsById(id: string): Promise<News | null> {
+    const news = this.news.find(item => item.id === id)
+    return news || null
   }
 
   setNews(news: News[]) {

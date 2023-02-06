@@ -35,6 +35,10 @@
     @extend .basicH3;
     margin-top: 8px;
     margin-bottom: 8px;
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 .newsText {
