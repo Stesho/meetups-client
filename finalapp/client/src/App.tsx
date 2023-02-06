@@ -11,6 +11,7 @@ import ThemePreviewPage from './pages/preview/ThemePreviewPage/ThemePreviewPage'
 import MeetupPreviewPage from './pages/preview/MeetupPreviewPage/MeetupPreviewPage'
 import CreateNewsPage from './pages/create-news/CreateNewsPage'
 import NotificationBanner from './components/notificationBanner/NotificationBanner'
+import NewsPreviewPage from './pages/preview/NewsPreviewPage/NewsPreviewPage'
 
 export const App = (): JSX.Element => {
     return (
@@ -26,6 +27,7 @@ export const App = (): JSX.Element => {
                 <Route path="/theme-preview/:id" element={<ThemePreviewPage />} />
                 <Route path="/meetup-preview/:id" element={<MeetupPreviewPage />} />
                 <Route path="/create-news" element={<CreateNewsPage />} />
+                <Route path="/news-preview/:id" element={<NewsPreviewPage />} />
             </Routes>
             <NotificationBanner />
         </BrowserRouter>
