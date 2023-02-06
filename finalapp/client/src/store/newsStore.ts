@@ -18,8 +18,8 @@ class NewsStore {
   }
 
   async getNewsById(id: string): Promise<News | null> {
-    const news = this.news.find(item => item.id === id)
-    return news || null
+    const news = this.serverApi.getNewsFromServerById(id)
+    return news
   }
 
   setNews(news: News[]) {

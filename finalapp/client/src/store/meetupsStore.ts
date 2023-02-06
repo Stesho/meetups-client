@@ -36,8 +36,8 @@ class MeetupsStore {
   }
 
   async getMeetupById(id: string): Promise<Meetup | null> {
-    const meetup = this.meetups.find(meetup => meetup.id === id)
-    return meetup || null
+    const meetup = this.serverApi.getMeetupFromServerById(id)
+    return meetup
   }
 
   async fetchMeetups(): Promise<void> {
