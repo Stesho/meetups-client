@@ -1,12 +1,22 @@
 import { makeAutoObservable } from "mobx"
 import { Meetup } from "../core/types/Meetup";
 import ServerApi from "../core/utils/serverApi";
+import ConfirmationStore from "./confirmationStore";
 
 class MeetupsStore {
   meetups: Meetup[] = [];
 
-  constructor(private readonly serverApi: ServerApi) {
+  constructor(private readonly serverApi: ServerApi, private readonly confirmationStore: ConfirmationStore) {
     makeAutoObservable(this)
+  }
+
+  private async deleteMeetupById(id: string): Promise<void> {
+    const response = await this.serverApi.removeMeetupFromServerById(id)
+  
+    if(response !== null) {
+      const newMeetups = this.meetups.filter(meetup => meetup.id !== id)
+      this.setMeetups(newMeetups)
+    }
   }
 
   async addMeetup(meetup: Meetup): Promise<void> {
@@ -17,13 +27,11 @@ class MeetupsStore {
     }
   }
 
-  async deleteMeetupById(id: string): Promise<void> {
-    const response = await this.serverApi.removeMeetupFromServerById(id)
-
-    if(response !== null) {
-      const newMeetups = this.meetups.filter(meetup => meetup.id !== id)
-      this.setMeetups(newMeetups)
+  deleteMeetup(meetup: Meetup): void {
+    const onConfirmModal = () => {
+      this.deleteMeetupById(meetup.id)
     }
+    this.confirmationStore.show('Вы хотите удалить митап?', meetup.subject, onConfirmModal)
   }
 
   async editMeetup(meetup: Meetup): Promise<void> {
@@ -36,7 +44,7 @@ class MeetupsStore {
   }
 
   async getMeetupById(id: string): Promise<Meetup | null> {
-    const meetup = this.serverApi.getMeetupFromServerById(id)
+    const meetup = await this.serverApi.getMeetupFromServerById(id)
     return meetup
   }
 

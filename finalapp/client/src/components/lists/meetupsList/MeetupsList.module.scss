@@ -1,38 +1,6 @@
 @import '../../../styles/colors';
 @import '../../../styles/typography.scss';
 
-.modalCaption,
-.meetupSubject {
-    display: block;
-    text-align: center;
-    @extend .basicH3;
-}
-
-.modalCaption {
-    font-size: 16px;
-    font-weight: normal;
-}
-
-.meetupSubject {
-    font-size: 20px;
-    margin: 10px 0 30px 0;
-}
-
-.modalButtons {
-    display: flex;
-    justify-content: space-between;
-}
-
-.modalCancelBtn {
-    width: 100%;
-    margin: 0 10px 0 0;
-}
-
-.modalConfirmBtn {
-    width: 100%;
-    margin: 0 0 0 10px;
-}
-
 .listContainer {
     width: 100%;
     display: flex;
