@@ -35,7 +35,7 @@ const ThemePreviewPage = () => {
   
   const deleteMeetup = () => {
     if(meetup) {
-      meetupsStore.deleteMeetupById(meetup.id)
+      meetupsStore.deleteMeetup(meetup)
     }
     toMeetupsPage()
   }

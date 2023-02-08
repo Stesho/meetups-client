@@ -18,7 +18,7 @@ class NewsStore {
   }
 
   async getNewsById(id: string): Promise<News | null> {
-    const news = this.serverApi.getNewsFromServerById(id)
+    const news = await this.serverApi.getNewsFromServerById(id)
     return news
   }
 
