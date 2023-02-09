@@ -224,6 +224,32 @@ class ServerApi {
     }
   }
 
+  async sendCreatedNewsToServer(newNews: News): Promise<News | null> {
+    try {
+      const response = await this.fetch(`${BASE_SERVER_URL}${NEWS_URL}`, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newNews)
+      })
+
+      if(!response?.ok) {
+        return null
+      }
+
+      const news = await response.json()
+      this.notificationStore.success(this.successMessage.addedMeetup)
+
+      return news
+    }
+    catch {
+      this.notificationStore.error(this.errorMessage.unknown)
+      return null
+    }
+  }
+
   async getNewsFromServerById(id: string): Promise<News | null> {
     try {
       const response = await this.fetch(`${BASE_SERVER_URL}${NEWS_URL}/${id}`)

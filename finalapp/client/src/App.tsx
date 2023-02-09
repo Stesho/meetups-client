@@ -20,15 +20,15 @@ export const App = (): JSX.Element => {
             <Header />
             <Routes>
                 <Route path="/" element={<Navigate to="/meetups" />} />
+                <Route path="/authorize" element={<AuthorizationPage />} />
                 <Route path="/meetups" element={<MeetupsPage />} />
                 <Route path="/create-meetup" element={<CreateMeetupPage user={testUser} />} />
-                <Route path="/news" element={<NewsPage />} />
-                <Route path="/authorize" element={<AuthorizationPage />} />
                 <Route path="/edit-meetup/:id" element={<EditMeetupPage />} />
-                <Route path="/theme-preview/:id" element={<ThemePreviewPage />} />
                 <Route path="/meetup-preview/:id" element={<MeetupPreviewPage />} />
-                <Route path="/create-news" element={<CreateNewsPage />} />
+                <Route path="/theme-preview/:id" element={<ThemePreviewPage />} />
+                <Route path="/news" element={<NewsPage />} />
                 <Route path="/news-preview/:id" element={<NewsPreviewPage />} />
+                <Route path="/create-news" element={<CreateNewsPage />} />
             </Routes>
             <NotificationBanner />
             <Modal />

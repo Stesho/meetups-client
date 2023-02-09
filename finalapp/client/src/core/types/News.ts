@@ -5,3 +5,5 @@ export interface News {
     text: string
     image: string | null
 }
+
+export type CreatedNews = Omit<News, 'id' | 'publicationDate'> 

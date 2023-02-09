@@ -15,7 +15,6 @@ const NewsPreviewPage = () => {
     const loadNews = async () => {
         if (id) {
             const receivedNews: News | null = await newsStore.getNewsById(id)
-            console.log(receivedNews)
             setNews(receivedNews)
         }
     }
