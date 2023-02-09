@@ -9,17 +9,25 @@ class NewsStore {
     makeAutoObservable(this)
   }
 
-  async fetchNews(): Promise<void> {
-    const newsList = await this.serverApi.getNewsFromServer()
+  async addNews(news: News): Promise<void> {
+    const response = await this.serverApi.sendCreatedNewsToServer(news)
 
-    if(newsList !== null) {
-      this.setNews(newsList)
+    if(response !== null) {
+      this.news.push(response)
     }
   }
 
   async getNewsById(id: string): Promise<News | null> {
     const news = await this.serverApi.getNewsFromServerById(id)
     return news
+  }
+
+  async fetchNews(): Promise<void> {
+    const newsList = await this.serverApi.getNewsFromServer()
+
+    if(newsList !== null) {
+      this.setNews(newsList)
+    }
   }
 
   setNews(news: News[]) {
