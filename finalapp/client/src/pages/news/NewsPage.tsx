@@ -5,6 +5,7 @@ import NewsList from '../../components/lists/newsList/NewsList';
 import { observer } from 'mobx-react-lite';
 import { useStore } from '../../context/storeContext';
 import { useNavigate, NavigateFunction } from 'react-router-dom';
+import AvailableFor from '../../core/utils/availableFor';
 
 const NewsPage = observer((): JSX.Element => {
     const navigate: NavigateFunction = useNavigate()
@@ -23,7 +24,9 @@ const NewsPage = observer((): JSX.Element => {
             <div className={styles.newsPage}>
                 <div className={styles.title}>
                     <h1 className="basicH1">Новости</h1>
-                    <Button type='secondary' text='+ Создать Новость' callback={toCreateNewsPage}/>
+                    <AvailableFor roles={['EMPLOYEE']}>
+                        <Button type='secondary' text='+ Создать Новость' callback={toCreateNewsPage}/>
+                    </AvailableFor>
                 </div>
                 <NewsList news={newsStore.news}/>
             </div>

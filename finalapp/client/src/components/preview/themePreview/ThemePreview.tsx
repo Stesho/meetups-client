@@ -3,6 +3,7 @@ import { ProfileInfo } from '../../profileInfo/ProfileInfo'
 import Button from '../../ui/button/Button'
 import { Meetup } from '../../../core/types/Meetup'
 import { User } from '../../../core/types/User'
+import AvailableFor from '../../../core/utils/availableFor'
 import styles from './ThemePreview.module.scss'
 
 interface ThemePreviewProps {
@@ -55,11 +56,32 @@ export const ThemePreview = (props: ThemePreviewProps): JSX.Element => {
 				))}
 			</div>
             <div className={styles.buttons}>
-                <Button type="default" text="Назад" callback={(event) => props.onCancel(event)} />
-                <div>
-					<Button className={styles.deleteButton} type="secondary" text="Удалить" callback={(event) => props.onDelete(event)} />
-					<Button type="primary" text="Одобрить тему" callback={(event) => props.onApprove(event)} />
-				</div>
+                <Button
+                    className={styles.cancelButton}
+                    type="default"
+                    text="Назад"
+                    callback={(event) => props.onCancel(event)}
+                />
+                <AvailableFor roles={['EMPLOYEE']}>
+                    <div className={styles.mainButtons}>
+                        <Button
+                            className={styles.deleteButton}
+                            type="secondary"
+                            text="Удалить"
+                            callback={(event) => props.onDelete(event)}
+                        />
+                        <Button
+                            type="primary"
+                            text="Одобрить тему"
+                            callback={(event) => props.onApprove(event)}
+                        />
+                    </div>
+                </AvailableFor>
+                <AvailableFor roles={['CHIEF']}>
+                    <div className={styles.mainButtons}>
+                        <Button type="primary" text="Поддержать" callback={(event) => props.onApprove(event)} />
+                    </div>
+                </AvailableFor>
             </div>
         </article>
     )

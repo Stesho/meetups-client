@@ -6,6 +6,7 @@ import Button from '../../ui/button/Button'
 import { NavigateFunction, useNavigate } from 'react-router-dom'
 import { useStore } from '../../../context/storeContext'
 import { observer } from 'mobx-react-lite'
+import AvailableFor from '../../../core/utils/availableFor'
 
 interface MeetupsListProps {
     meetups: Array<Meetup>
@@ -30,7 +31,9 @@ export const MeetupsList = observer((props: MeetupsListProps): JSX.Element => {
         <div className={styles.listContainer}>
             <div className={styles.row}>
                 <span className={styles.suggested}>{props.meetups.length} тем предложено</span>
-                <Button type="secondary" callback={goToCreateMeetupPage} text="+ Создать митап" />
+                <AvailableFor roles={['CHIEF', 'EMPLOYEE']}>
+                    <Button type="secondary" callback={goToCreateMeetupPage} text="+ Создать митап" />
+                </AvailableFor>
             </div>
             <div className={styles.meetups}>
                 {props.meetups.map(
