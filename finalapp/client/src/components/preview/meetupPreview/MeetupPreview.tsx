@@ -6,6 +6,7 @@ import mapPinIcon from '../../../assets/icons/map-pin-icon.svg'
 import defaultMeetupImg from '../../../assets/images/default-meetup-img.png'
 import { ProfileInfo } from '../../profileInfo/ProfileInfo';
 import Button from '../../ui/button/Button';
+import AvailableFor from '../../../core/utils/availableFor';
 import styles from './MeetupPreview.module.scss'
 
 interface MeetupPreviewProps {
@@ -48,7 +49,14 @@ const MeetupPreview = (props: MeetupPreviewProps) => {
             </div>
             <div className={styles.buttons}>
                 <Button type="default" text="Назад" callback={(event) => props.onCancel(event)} />
-                <Button type="primary" text="Опубликовать" callback={(event) => props.onPublish(event)} />
+                <AvailableFor roles={['EMPLOYEE']}>
+                    <Button
+                        className={styles.publishBtn}
+                        type="primary"
+                        text="Опубликовать"
+                        callback={(event) => props.onPublish(event)}
+                    />
+                </AvailableFor>
             </div>
         </article>
     );

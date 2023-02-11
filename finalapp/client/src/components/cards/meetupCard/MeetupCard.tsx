@@ -6,6 +6,7 @@ import { RedactorButton } from '../../ui/redactorButton/RedactorButton'
 import { ProfileInfo } from '../../profileInfo/ProfileInfo'
 import { getMeetupDatePlaceInfo } from '../../../core/utils/getMeetupDatePlaceInfo'
 import { useNavigate, NavigateFunction } from 'react-router-dom'
+import AvailableFor from '../../../core/utils/availableFor'
 
 export interface MeetupCardProps {
     meetup: Meetup
@@ -45,9 +46,13 @@ export const MeetupCard = ({ meetup, type, onMeetupDelete, onMeetupEdit }: Meetu
                     <div className={styles.meetupDateInfo}>{getMeetupDatePlaceInfo(meetup)}</div>
                 )}
                 <div className={styles.editCard}>
-                    <RedactorButton type="delete" onClick={onDelete} />
+                    <AvailableFor roles={['EMPLOYEE']}>
+                        <RedactorButton type="delete" onClick={onDelete} />
+                    </AvailableFor>
                     {type === 'moderation' && typeof onEdit !== 'undefined' && (
-                        <RedactorButton type="edit" onClick={onEdit} style={{ marginLeft: '32px' }} />
+                        <AvailableFor roles={['EMPLOYEE']}>
+                            <RedactorButton type="edit" onClick={onEdit} style={{ marginLeft: '32px' }} />
+                        </AvailableFor>
                     )}
                 </div>
             </div>

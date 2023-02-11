@@ -3,6 +3,8 @@ import { User } from "../core/types/User"
 import { AuthorizationRequestData } from "../core/types/AuthorizationRequestData"
 import ServerApi from "../core/utils/serverApi"
 
+type Roles = 'EMPLOYEE' | 'CHIEF'
+
 class UserStore {
   user: User = null!
   
@@ -14,7 +16,7 @@ class UserStore {
     const recievedUser = await this.serverApi.tryAuthorize(user)
 
     if(recievedUser !== null) {
-      this.setUser(recievedUser)
+      this.user = recievedUser
     }
   }
 
@@ -22,12 +24,12 @@ class UserStore {
     const recievedUser = await this.serverApi.getUserFromServer()
 
     if(recievedUser !== null) {
-      this.setUser(recievedUser)
+      this.user = recievedUser
     }
   }
 
-  setUser(user: User) {
-    this.user = user
+  get role(): Roles | null {
+    return this.user?.roles
   }
 }
 

@@ -4,6 +4,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import { MeetupsList } from '../../components/lists/meetupsList/MeetupsList'
 import { observer } from 'mobx-react-lite'
 import { useStore } from '../../context/storeContext'
+import AvailableFor from '../../core/utils/availableFor'
 
 const MeetupsPage = observer((): JSX.Element => {
     const meetupsStore = useStore('MeetupsStore')

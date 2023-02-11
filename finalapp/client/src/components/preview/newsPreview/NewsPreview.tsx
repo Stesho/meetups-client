@@ -3,6 +3,7 @@ import styles from './NewsPreview.module.scss'
 import defaultNewsImg from '../../../assets/images/default-meetup-img.png'
 import { News } from '../../../core/types/News';
 import Button from '../../ui/button/Button';
+import AvailableFor from '../../../core/utils/availableFor';
 
 interface NewsPreviewProps {
     news: News
@@ -22,7 +23,11 @@ const NewsPreview = (props: NewsPreviewProps) => {
             </div>
             <div className={styles.buttons}>
                 <Button type="default" text="Назад" callback={(event) => props.onCancel(event)} />
-                <Button type="secondary" text="Редактировать" callback={(event) => props.onEdit(event)} />
+                <AvailableFor roles={['EMPLOYEE']}>
+                    <div className={styles.mainButtons}>
+                        <Button type="secondary" text="Редактировать" callback={(event) => props.onEdit(event)} />
+                    </div>
+                </AvailableFor>
             </div>
         </article>
     );
