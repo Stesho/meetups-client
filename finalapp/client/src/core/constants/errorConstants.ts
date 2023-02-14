@@ -1,1 +1,1 @@
-export const UNKNOWN_ERROR: string = 'Unknown error'
+export const UNKNOWN_ERROR: string = 'Unknown error';

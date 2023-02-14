@@ -4,14 +4,14 @@ import { NewsCard } from '../../cards/newsCard/NewsCard';
 import styles from './NewsList.module.scss';
 
 interface NewsListProps {
-  news: News[]
+  news: News[];
 }
 
 const NewsList = (props: NewsListProps) => {
   return (
     <div className={styles.newsList}>
       {props.news.map((news: News) => (
-        <NewsCard news={news} key={news.id}/>
+        <NewsCard news={news} key={news.id} />
       ))}
     </div>
   );
