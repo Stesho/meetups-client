@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react'
 import styles from './MeetupsPage.module.scss'
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
-import { MeetupsList } from '../../components/lists/meetupsList/MeetupsList'
 import { observer } from 'mobx-react-lite'
 import { useStore } from '../../context/storeContext'
 import AvailableFor from '../../core/utils/availableFor'
+import { Outlet, NavLink } from 'react-router-dom'
 
 const MeetupsPage = observer((): JSX.Element => {
     const meetupsStore = useStore('MeetupsStore')
+    const setActiveLink = (props: { isActive: boolean, isPending: boolean }): string | undefined => (
+        props.isActive ? `${styles.tabItem} ${styles.selectedTabItem}` : `${styles.tabItem}`
+    )
 
     useEffect((): void => {
         meetupsStore.fetchMeetups()
@@ -18,35 +20,19 @@ const MeetupsPage = observer((): JSX.Element => {
             <div className={styles.meetupsPage}>
                 <h1 className="basicH1">Митапы</h1>
 
-                <Tabs className={styles.tabs}>
-                    <TabList className={styles.tabList}>
-                        <Tab className={styles.tabItem} selectedClassName={styles.selectedTabItem}>
-                            Темы
-                        </Tab>
-                        <Tab className={styles.tabItem} selectedClassName={styles.selectedTabItem}>
-                            На модерации
-                        </Tab>
-                        <Tab className={styles.tabItem} selectedClassName={styles.selectedTabItem}>
-                            Будущие
-                        </Tab>
-                        <Tab className={styles.tabItem} selectedClassName={styles.selectedTabItem}>
-                            Прошедшие
-                        </Tab>
-                    </TabList>
-
-                    <TabPanel>
-                        <MeetupsList meetups={meetupsStore.requestMeetups} status="REQUEST" />
-                    </TabPanel>
-                    <TabPanel>
-                        <MeetupsList meetups={meetupsStore.draftMeetups} status="DRAFT" />
-                    </TabPanel>
-                    <TabPanel>
-                        <MeetupsList meetups={meetupsStore.futureMeetups} status="CONFIRMED" />
-                    </TabPanel>
-                    <TabPanel>
-                        <MeetupsList meetups={meetupsStore.pastMeetups} status="CONFIRMED" />
-                    </TabPanel>
-                </Tabs>
+                <div className={styles.tabs}>
+                    <div className={styles.tabList}>
+                        <NavLink to="/meetups/topics" className={setActiveLink}>Темы</NavLink>
+                        <AvailableFor roles={['CHIEF', 'EMPLOYEE']}>
+                            <NavLink to="/meetups/moderation" className={setActiveLink}>
+                                На модерации
+                            </NavLink>
+                        </AvailableFor>
+                        <NavLink to="/meetups/future" className={setActiveLink}>Будущие</NavLink>
+                        <NavLink to="/meetups/past" className={setActiveLink}>Прошедшие</NavLink>
+                    </div>
+                </div>
+                <Outlet/>
             </div>
         </section>
     )

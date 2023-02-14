@@ -1,4 +1,5 @@
 import React from 'react';
+import { observer } from 'mobx-react-lite';
 import { useStore } from '../../context/storeContext';
 
 type Roles = 'EMPLOYEE' | 'CHIEF'
@@ -8,7 +9,7 @@ interface AvailableForProps {
   roles: Roles[]
 } 
 
-const AvailableFor = (props: AvailableForProps): JSX.Element | null => {
+const AvailableFor = observer((props: AvailableForProps): JSX.Element | null => {
   const userStore = useStore('UserStore')
 
   return (
@@ -18,6 +19,6 @@ const AvailableFor = (props: AvailableForProps): JSX.Element | null => {
       null
     )
   );
-};
+})
 
 export default AvailableFor;

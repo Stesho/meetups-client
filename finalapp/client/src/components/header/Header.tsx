@@ -7,19 +7,13 @@ import { NavLink } from 'react-router-dom'
 import { ProfileInfo } from '../profileInfo/ProfileInfo'
 import { ShortUser } from '../../core/types/User'
 import { observer } from 'mobx-react-lite'
-import { useStore } from '../../context/storeContext'
 
 export interface HeaderProps {
-    user?: ShortUser
+    user: ShortUser
 }
 
 export const Header = observer(({ user }: HeaderProps): JSX.Element => {
     const navigate: NavigateFunction = useNavigate()
-    const userStore = useStore('UserStore')
-
-    React.useEffect(() => {
-        userStore.fetchUser()
-    }, [])
 
     const toAuthorizePage = () => {
         navigate('/authorize')
@@ -40,9 +34,9 @@ export const Header = observer(({ user }: HeaderProps): JSX.Element => {
                         Новости
                     </NavLink>
                 </nav>
-                {userStore.user !== null ? (
+                {user !== null ? (
                     <ProfileInfo
-                        user={userStore.user}
+                        user={user}
                         first="name"
                         avatarHeightPX={40}
                         text={{ fontWeight: '400', fontSize: '16px', color: '#FFF' }}

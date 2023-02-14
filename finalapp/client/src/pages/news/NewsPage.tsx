@@ -12,7 +12,7 @@ const NewsPage = observer((): JSX.Element => {
     const newsStore = useStore('NewsStore')
 
     const toCreateNewsPage = () => {
-        navigate('/create-news')
+        navigate('/news/create')
     }
 
     useEffect(() => {
