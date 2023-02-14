@@ -2,83 +2,83 @@
 @import '../../../styles/typography.scss';
 
 .block {
-    background-color: $white;
-    box-shadow: 0px 4px 7px rgba(215, 221, 232, 0.398055);
-    border-radius: 5px;
+  background-color: $white;
+  box-shadow: 0px 4px 7px rgba(215, 221, 232, 0.398055);
+  border-radius: 5px;
 }
 
 .caption {
-    @extend .inputName;
-    margin-top: 7px;
-    margin-bottom: 10px;
+  @extend .inputName;
+  margin-top: 7px;
+  margin-bottom: 10px;
 }
 
 .img {
+  width: 100%;
+  height: 308px;
+  img {
     width: 100%;
-    height: 308px;
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-    }
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
 }
 
 .title {
-    @extend .block;
-    @extend .additionalH2;
-    padding: 26px 29px 30px 24px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+  @extend .block;
+  @extend .additionalH2;
+  padding: 26px 29px 30px 24px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .timePlace {
-    @extend .block;
-    padding: 21px 200px 11px 23px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 15px;
-    color: $grey-800;
+  @extend .block;
+  padding: 21px 200px 11px 23px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 15px;
+  color: $grey-800;
 }
 
 .timePlaceItem {
-    display: flex;
-    align-items: center;
-    margin-bottom: 7px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 7px;
 }
 
 .timePlaceIcon {
-    margin-right: 16px;
+  margin-right: 16px;
 }
 
 .author {
-    @extend .block;
-    @extend .pageLink_active;
-    color: $grey-800;
-    padding: 15px 16px 17px 23px;
-    margin-top: 5px;
-    margin-bottom: 19px;
+  @extend .block;
+  @extend .pageLink_active;
+  color: $grey-800;
+  padding: 15px 16px 17px 23px;
+  margin-top: 5px;
+  margin-bottom: 19px;
 }
 
 .excerpt {
-    @extend .block;
-    @extend .pageLink;
-    color: $grey-800;
-    padding: 22px 63px 18px 23px;
-    margin-top: 5px;
-    margin-bottom: 19px;
+  @extend .block;
+  @extend .pageLink;
+  color: $grey-800;
+  padding: 22px 63px 18px 23px;
+  margin-top: 5px;
+  margin-bottom: 19px;
 }
 
 .buttons {
-    @extend .block;
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
-    padding: 16px 24px;
-    display: flex;
-    justify-content: center;
+  @extend .block;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+  padding: 16px 24px;
+  display: flex;
+  justify-content: center;
 }
 
 .publishBtn {
-    margin: 0 0 0 auto;
+  margin: 0 0 0 auto;
 }

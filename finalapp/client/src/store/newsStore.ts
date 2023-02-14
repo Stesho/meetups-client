@@ -1,38 +1,38 @@
-import { makeAutoObservable } from "mobx"
-import { News } from "../core/types/News"
-import ServerApi from "../core/utils/serverApi"
+import { makeAutoObservable } from 'mobx';
+import { News } from '../core/types/News';
+import ServerApi from '../core/utils/serverApi';
 
 class NewsStore {
-  news: News[] = []
-  
+  news: News[] = [];
+
   constructor(private readonly serverApi: ServerApi) {
-    makeAutoObservable(this)
+    makeAutoObservable(this);
   }
 
   async addNews(news: News): Promise<void> {
-    const response = await this.serverApi.sendCreatedNewsToServer(news)
+    const response = await this.serverApi.sendCreatedNewsToServer(news);
 
-    if(response !== null) {
-      this.news.push(response)
+    if (response !== null) {
+      this.news.push(response);
     }
   }
 
   async getNewsById(id: string): Promise<News | null> {
-    const news = await this.serverApi.getNewsFromServerById(id)
-    return news
+    const news = await this.serverApi.getNewsFromServerById(id);
+    return news;
   }
 
   async fetchNews(): Promise<void> {
-    const newsList = await this.serverApi.getNewsFromServer()
+    const newsList = await this.serverApi.getNewsFromServer();
 
-    if(newsList !== null) {
-      this.setNews(newsList)
+    if (newsList !== null) {
+      this.setNews(newsList);
     }
   }
 
   setNews(news: News[]) {
-    this.news = news
+    this.news = news;
   }
 }
 
-export default NewsStore
+export default NewsStore;

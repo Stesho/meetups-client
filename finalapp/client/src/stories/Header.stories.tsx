@@ -1,21 +1,21 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { Header } from '../components/header/Header'
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Header } from '../components/header/Header';
 
 export default {
-    title: 'Header',
-    component: Header
-} as ComponentMeta<typeof Header>
+  title: 'Header',
+  component: Header,
+} as ComponentMeta<typeof Header>;
 
-const Template: ComponentStory<typeof Header> = (args) => <Header {...args} />
+const Template: ComponentStory<typeof Header> = (args) => <Header {...args} />;
 
-export const MainHeader = Template.bind({})
+export const MainHeader = Template.bind({});
 MainHeader.args = {
-    user: {
-        id: 'jjjj',
-        name: 'Albert',
-        surname: 'Richards'
-    }
-}
+  user: {
+    id: 'jjjj',
+    name: 'Albert',
+    surname: 'Richards',
+  },
+};
 
-export const MainNoNameHeader = Template.bind({})
-MainNoNameHeader.args = {}
+export const MainNoNameHeader = Template.bind({});
+MainNoNameHeader.args = {};
