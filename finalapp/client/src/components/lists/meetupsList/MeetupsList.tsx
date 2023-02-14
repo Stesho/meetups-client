@@ -17,7 +17,7 @@ export const MeetupsList = observer((props: MeetupsListProps): JSX.Element => {
     const navigate: NavigateFunction = useNavigate()
     const meetupsStore = useStore('MeetupsStore')
     
-    const goToCreateMeetupPage = (): void => navigate('/create-meetup')
+    const goToCreateMeetupPage = (): void => navigate('/meetups/create')
 
     const removeMeetupButtonClick = (meetup: Meetup): void => {
         meetupsStore.deleteMeetup(meetup)
@@ -49,5 +49,37 @@ export const MeetupsList = observer((props: MeetupsListProps): JSX.Element => {
                 )}
             </div>
         </div>
+    )
+})
+
+export const Topics = observer((): JSX.Element => {
+    const meetupsStore = useStore('MeetupsStore')    
+
+    return (
+        <MeetupsList meetups={meetupsStore.requestMeetups} status="REQUEST"/>
+    )
+})
+
+export const Moderation = observer((): JSX.Element => {
+    const meetupsStore = useStore('MeetupsStore')    
+
+    return (
+        <MeetupsList meetups={meetupsStore.draftMeetups} status="DRAFT"/>
+    )
+})
+
+export const FutureMeetups = observer((): JSX.Element => {
+    const meetupsStore = useStore('MeetupsStore')    
+
+    return (
+        <MeetupsList meetups={meetupsStore.futureMeetups} status="CONFIRMED"/>
+    )
+})
+
+export const PastMeetups = observer((): JSX.Element => {
+    const meetupsStore = useStore('MeetupsStore')    
+
+    return (
+        <MeetupsList meetups={meetupsStore.pastMeetups} status="CONFIRMED"/>
     )
 })

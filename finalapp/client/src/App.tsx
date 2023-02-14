@@ -12,28 +12,48 @@ import MeetupPreviewPage from './pages/preview/MeetupPreviewPage/MeetupPreviewPa
 import CreateNewsPage from './pages/create-news/CreateNewsPage'
 import NotificationBanner from './components/notificationBanner/NotificationBanner'
 import NewsPreviewPage from './pages/preview/NewsPreviewPage/NewsPreviewPage'
+import { Topics, Moderation, FutureMeetups, PastMeetups } from './components/lists/meetupsList/MeetupsList'
 import Modal from './components/confirmation/Confirmation'
+import { useStore } from './context/storeContext'
+import { observer } from 'mobx-react-lite'
 
-export const App = (): JSX.Element => {
+export const App = observer((): JSX.Element => {
+    const userStore = useStore('UserStore')
+
+    useEffect(() => {
+        userStore.fetchUser()
+    }, [])
+
     return (
         <BrowserRouter>
-            <Header />
+            <Header user={userStore.user}/>
             <Routes>
                 <Route path="/" element={<Navigate to="/meetups" />} />
-                <Route path="/authorize" element={<AuthorizationPage />} />
-                <Route path="/meetups" element={<MeetupsPage />} />
-                <Route path="/create-meetup" element={<CreateMeetupPage user={testUser} />} />
-                <Route path="/edit-meetup/:id" element={<EditMeetupPage />} />
-                <Route path="/meetup-preview/:id" element={<MeetupPreviewPage />} />
-                <Route path="/theme-preview/:id" element={<ThemePreviewPage />} />
-                <Route path="/news" element={<NewsPage />} />
-                <Route path="/news-preview/:id" element={<NewsPreviewPage />} />
-                <Route path="/create-news" element={<CreateNewsPage />} />
+                <Route path="authorize" element={<AuthorizationPage />} />
+                <Route path="meetups" element={<Navigate to="/meetups/topics"/>} />
+                <Route path="meetups">
+                    <Route element={<MeetupsPage />}>
+                        <Route path="topics" element={<Topics/>} />
+                        <Route path="moderation" element={<Moderation/>} />
+                        <Route path="future" element={<FutureMeetups/>} />
+                        <Route path="past" element={<PastMeetups/>} />
+                    </Route>
+                    <Route path="create" element={<CreateMeetupPage user={testUser} />} />
+                    <Route path="edit/:id" element={<EditMeetupPage />} />
+                    <Route path="preview/:id" element={<MeetupPreviewPage />} />
+                    <Route path="theme-preview/:id" element={<ThemePreviewPage />} />
+                </Route>
+                <Route path="news">
+                    <Route index element={<NewsPage />} />
+                    <Route path="preview/:id" element={<NewsPreviewPage />} />
+                    <Route path="create" element={<CreateNewsPage />} />
+                </Route>
+                <Route path="*" element={'NOT FOUND'}/>
             </Routes>
             <NotificationBanner />
             <Modal />
         </BrowserRouter>
     )
-}
+})
 
 const testUser: ShortUser = { name: 'Alfred', surname: 'Lind', id: '1af86359-8e9d-41da-8da8-67e68ee514ea' }

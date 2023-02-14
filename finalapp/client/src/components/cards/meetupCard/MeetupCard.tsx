@@ -25,11 +25,11 @@ export const MeetupCard = ({ meetup, type, onMeetupDelete, onMeetupEdit }: Meetu
     }
 
     const toPreviewMeetupPage = () => {
-        navigate(`/meetup-preview/${meetup.id}`)
+        navigate(`/meetups/preview/${meetup.id}`)
     }
 
     const toPreviewThemePage = () => {
-        navigate(`/theme-preview/${meetup.id}`)
+        navigate(`/meetups/theme-preview/${meetup.id}`)
     }
 
     return (

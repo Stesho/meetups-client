@@ -13,7 +13,7 @@ export const NewsCard = ({ news }: NewsCardProps): JSX.Element => {
     const navigate: NavigateFunction = useNavigate()
 
     const toNewsPreviewPage = () => {
-        navigate(`/news-preview/${news.id}`)
+        navigate(`/news/preview/${news.id}`)
     }
 
     return (
