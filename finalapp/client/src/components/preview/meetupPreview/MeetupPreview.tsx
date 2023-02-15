@@ -62,16 +62,18 @@ const MeetupPreview = (props: MeetupPreviewProps) => {
       <div className={styles.buttons}>
         <Button
           type="default"
-          text="Назад"
           callback={(event) => props.onCancel(event)}
-        />
+        >
+          Назад
+        </Button>
         <AvailableFor roles={['EMPLOYEE']}>
           <Button
             className={styles.publishBtn}
             type="primary"
-            text="Опубликовать"
             callback={(event) => props.onPublish(event)}
-          />
+          >
+            Опубликовать
+          </Button>
         </AvailableFor>
       </div>
     </article>

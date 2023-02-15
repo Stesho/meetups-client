@@ -96,13 +96,14 @@ export const RequiredCreateForm = (
         />
       </div>
       <div className={styles.buttons}>
-        <Button callback={props.onCancel} type="default" text="Назад" />
+        <Button callback={props.onCancel} type="default">Назад</Button>
         <Button
           callback={(event) => props.onSubmit(getData(), event)}
           type="primary"
-          text="Далее"
           disabled={!checkForm()}
-        />
+        >
+          Далее
+        </Button>
       </div>
     </form>
   );

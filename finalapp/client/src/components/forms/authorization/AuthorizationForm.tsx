@@ -72,12 +72,13 @@ export const AuthorizationForm = (
         helpText={password.message}
       />
       <Button
-        text="Вход"
         type="primary"
         callback={onAuthorizeButtonClick}
         disabled={!checkForm()}
         className={styles.button}
-      />
+      >
+        Вход
+      </Button>
     </form>
   );
 };
