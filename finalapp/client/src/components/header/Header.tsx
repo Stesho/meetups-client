@@ -49,7 +49,9 @@ export const Header = observer(({ user }: HeaderProps): JSX.Element => {
             text={{ fontWeight: '400', fontSize: '16px', color: '#FFF' }}
           />
         ) : (
-          <Button callback={toAuthorizePage} type="default" text="Войти" />
+          <Button callback={toAuthorizePage} type="default">
+            Войти
+          </Button>
         )}
       </div>
     </header>

@@ -27,9 +27,10 @@ const NewsPage = observer((): JSX.Element => {
           <AvailableFor roles={['EMPLOYEE']}>
             <Button
               type="secondary"
-              text="+ Создать Новость"
               callback={toCreateNewsPage}
-            />
+            >
+              + Создать Новость
+            </Button>
           </AvailableFor>
         </div>
         <NewsList news={newsStore.news} />

@@ -114,19 +114,21 @@ export const EditMeetupForm = (props: EditMeetupFormProps): JSX.Element => {
         </div>
       </div>
       <div className={styles.buttons}>
-        <Button callback={props.onCancel} type="default" text="Отмена" />
+        <Button callback={props.onCancel} type="default">Отмена</Button>
         <div>
           <Button
             className={styles.previewButton}
             callback={props.onPreview}
             type="secondary"
-            text="Предпросмотр"
-          />
+          >
+            Предпросмотр
+          </Button>
           <Button
             callback={(event) => props.onSave(getData(), event)}
             type="primary"
-            text="Сохранить"
-          />
+          >
+            Сохранить
+          </Button>
         </div>
       </div>
     </form>

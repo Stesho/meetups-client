@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './Button.module.scss';
 
 interface ButtonProps {
-  text: string;
+  children: React.ReactNode
   type: 'primary' | 'secondary' | 'default';
   className?: string;
   disabled?: boolean;
@@ -11,7 +11,7 @@ interface ButtonProps {
 }
 
 export default function Button({
-  text,
+  children,
   type,
   disabled,
   callback,
@@ -25,7 +25,7 @@ export default function Button({
       className={buttonClass}
       disabled={disabled}
     >
-      {text}
+      {children}
     </button>
   );
 }

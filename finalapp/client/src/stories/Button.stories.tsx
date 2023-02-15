@@ -10,7 +10,7 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  text: 'Primary button',
+  children: 'Primary button',
   type: 'primary',
   disabled: false,
   callback: () => {},
@@ -18,7 +18,7 @@ Primary.args = {
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  text: 'Secondary button',
+  children: 'Secondary button',
   type: 'secondary',
   disabled: false,
   callback: () => {},
@@ -26,7 +26,7 @@ Secondary.args = {
 
 export const Default = Template.bind({});
 Default.args = {
-  text: 'Default button',
+  children: 'Default button',
   type: 'default',
   disabled: false,
   callback: () => {},

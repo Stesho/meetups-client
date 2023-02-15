@@ -37,8 +37,9 @@ export const MeetupsList = observer((props: MeetupsListProps): JSX.Element => {
           <Button
             type="secondary"
             callback={goToCreateMeetupPage}
-            text="+ Создать митап"
-          />
+          >
+            + Создать митап
+          </Button>
         </AvailableFor>
       </div>
       <div className={styles.meetups}>

@@ -24,16 +24,18 @@ const NewsPreview = (props: NewsPreviewProps) => {
       <div className={styles.buttons}>
         <Button
           type="default"
-          text="Назад"
           callback={(event) => props.onCancel(event)}
-        />
+        >
+          Назад
+        </Button>
         <AvailableFor roles={['EMPLOYEE']}>
           <div className={styles.mainButtons}>
             <Button
               type="secondary"
-              text="Редактировать"
               callback={(event) => props.onEdit(event)}
-            />
+            >
+              Редактировать
+            </Button>
           </div>
         </AvailableFor>
       </div>

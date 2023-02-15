@@ -44,16 +44,18 @@ const Modal = observer((): JSX.Element => {
         <div className={styles.buttons}>
           <Button
             callback={close}
-            text="Нет"
             type="secondary"
             className={styles.cancelBtn}
-          />
+          >
+            Нет
+          </Button>
           <Button
             callback={confirm}
-            text="Да"
             type="primary"
             className={styles.confirmBtn}
-          />
+          >
+            Да
+          </Button>
         </div>
       </div>
     </div>

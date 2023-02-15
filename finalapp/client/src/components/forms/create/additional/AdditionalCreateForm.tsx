@@ -131,13 +131,14 @@ export const AdditionalCreateForm = (
         <ImageLoader onLoadCallback={(newImage) => setImage(newImage)} />
       </div>
       <div className={styles.buttons}>
-        <Button callback={props.onCancel} type="default" text="Назад" />
+        <Button callback={props.onCancel} type="default">Назад</Button>
         <Button
           callback={submitForm}
           type="primary"
-          text="Далее"
           disabled={!checkForm()}
-        />
+        >
+          Далее
+        </Button>
       </div>
     </form>
   );

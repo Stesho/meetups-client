@@ -63,31 +63,35 @@ export const ThemePreview = (props: ThemePreviewProps): JSX.Element => {
         <Button
           className={styles.cancelButton}
           type="default"
-          text="Назад"
           callback={(event) => props.onCancel(event)}
-        />
+        >
+          Назад
+        </Button>
         <AvailableFor roles={['EMPLOYEE']}>
           <div className={styles.mainButtons}>
             <Button
               className={styles.deleteButton}
               type="secondary"
-              text="Удалить"
               callback={(event) => props.onDelete(event)}
-            />
+            >
+              Удалить
+            </Button>
             <Button
               type="primary"
-              text="Одобрить тему"
               callback={(event) => props.onApprove(event)}
-            />
+            >
+              Одобрить тему
+            </Button>
           </div>
         </AvailableFor>
         <AvailableFor roles={['CHIEF']}>
           <div className={styles.mainButtons}>
             <Button
               type="primary"
-              text="Поддержать"
               callback={(event) => props.onApprove(event)}
-            />
+            >
+              Поддержать
+            </Button>
           </div>
         </AvailableFor>
       </div>
