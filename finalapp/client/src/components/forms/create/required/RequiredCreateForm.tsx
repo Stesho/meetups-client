@@ -8,6 +8,8 @@ import {
   checkMaxLength,
 } from '../../../../core/utils/inputValidation';
 import Button from '../../../ui/button/Button';
+import TranslatedMessage from '../../../translatedMessage/TranslatedMessage';
+import Translation from '../../../../core/utils/translation';
 
 export interface FormRequiredData {
   name: string;
@@ -32,14 +34,13 @@ const validationOptions = {
   maxLength: checkMaxLength(maxInputLength),
 };
 
-const errorMessages = {
-  minLength: 'Поле не может быть пустым',
-  maxLength: 'Поле слишком длинное',
-};
-
 export const RequiredCreateForm = (
   props: RequiredCreateFormProps,
 ): JSX.Element => {
+  const errorMessages = {
+    minLength: Translation.translatedText('validation.notEmpty'),
+    maxLength: Translation.translatedText('validation.maxLength'),
+  };
   const name = useInput<typeof validationOptions>(
     validationOptions,
     errorMessages,
@@ -75,7 +76,7 @@ export const RequiredCreateForm = (
           onBlur={() => name.setIsOnBlur(true)}
           status={name.status}
           type="text"
-          label="Название"
+          label={Translation.translatedText('form.name')}
           helpText={name.message}
         />
         <LabeledInput
@@ -83,26 +84,30 @@ export const RequiredCreateForm = (
           onBlur={() => speaker.setIsOnBlur(true)}
           status={speaker.status}
           type="text"
-          label="Спикер"
+          label={Translation.translatedText('form.speaker')}
           helpText={speaker.message}
         />
         <TextArea
           onChange={(event) => description.setValue(event.target.value)}
           onBlur={() => description.setIsOnBlur(true)}
           status={description.status}
-          name="Описание"
+          name={Translation.translatedText('form.description')}
           maxLength={maxTextAreaLength}
           helpText={description.message}
         />
       </div>
       <div className={styles.buttons}>
-        <Button callback={props.onCancel} type="default">Назад</Button>
+        <Button callback={props.onCancel} type="default">
+          <TranslatedMessage
+            message={Translation.translatedText('btn.cancel')}
+          />
+        </Button>
         <Button
           callback={(event) => props.onSubmit(getData(), event)}
           type="primary"
           disabled={!checkForm()}
         >
-          Далее
+          <TranslatedMessage message={Translation.translatedText('btn.next')} />
         </Button>
       </div>
     </form>

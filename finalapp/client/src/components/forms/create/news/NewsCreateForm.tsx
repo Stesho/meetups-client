@@ -10,6 +10,8 @@ import {
   checkMaxLength,
 } from '../../../../core/utils/inputValidation';
 import Button from '../../../ui/button/Button';
+import TranslatedMessage from '../../../translatedMessage/TranslatedMessage';
+import Translation from '../../../../core/utils/translation';
 
 interface NewsCreateFormProps {
   onCancel: () => void;
@@ -28,12 +30,11 @@ const validationOptions = {
   maxLength: checkMaxLength(maxInputLength),
 };
 
-const errorMessages = {
-  minLength: 'Поле не может быть пустым',
-  maxLength: 'Поле слишком длинное',
-};
-
 const NewsCreateForm = (props: NewsCreateFormProps) => {
+  const errorMessages = {
+    minLength: Translation.translatedText('validation.notEmpty'),
+    miaxLength: Translation.translatedText('validation.maxLength'),
+  };
   const title = useInput<typeof validationOptions>(
     validationOptions,
     errorMessages,
@@ -68,27 +69,29 @@ const NewsCreateForm = (props: NewsCreateFormProps) => {
           onBlur={() => title.setIsOnBlur(true)}
           status={title.status}
           type="text"
-          label="Заголовок"
+          label={Translation.translatedText('form.header')}
           helpText={title.message}
         />
         <TextArea
           onChange={(event) => text.setValue(event.target.value)}
           onBlur={() => text.setIsOnBlur(true)}
           status={text.status}
-          name="Текст"
+          name={Translation.translatedText('form.text')}
           maxLength={maxTextAreaLength}
           helpText={text.message}
         />
         <ImageLoader onLoadCallback={(newImage) => setImage(newImage)} />
       </div>
       <div className={styles.buttons}>
-        <Button callback={props.onCancel} type="default" >Назад</Button>
-        <Button
-          callback={submitForm}
-          type="primary"
-          disabled={!checkForm()}
-        >
-          Создать
+        <Button callback={props.onCancel} type="default">
+          <TranslatedMessage
+            message={Translation.translatedText('btn.cancel')}
+          />
+        </Button>
+        <Button callback={submitForm} type="primary" disabled={!checkForm()}>
+          <TranslatedMessage
+            message={Translation.translatedText('btn.create')}
+          />
         </Button>
       </div>
     </form>

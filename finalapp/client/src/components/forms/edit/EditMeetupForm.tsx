@@ -6,6 +6,8 @@ import { Meetup } from '../../../core/types/Meetup';
 import Button from '../../ui/button/Button';
 import defaultMeetupImg from '../../../assets/images/default-meetup-img.png';
 import styles from './EditMeetupForm.module.scss';
+import TranslatedMessage from '../../translatedMessage/TranslatedMessage';
+import Translation from '../../../core/utils/translation';
 
 export type MeetupData = Pick<
   Meetup,
@@ -62,7 +64,11 @@ export const EditMeetupForm = (props: EditMeetupFormProps): JSX.Element => {
     <form className={styles.form} onSubmit={preventDefaultSubmit}>
       <div className={styles.inputs}>
         <div className={styles.photo}>
-          <span className={styles.caption}>Фото</span>
+          <span className={styles.caption}>
+            <TranslatedMessage
+              message={Translation.translatedText('form.photo')}
+            />
+          </span>
           <div className={styles.imgWrapper}>
             <img src={image} className={styles.img} alt="#" />
           </div>
@@ -71,7 +77,7 @@ export const EditMeetupForm = (props: EditMeetupFormProps): JSX.Element => {
           <LabeledInput
             onChange={setTheme}
             initialValue={subject}
-            label="Тема"
+            label={Translation.translatedText('form.subject')}
           />
         </div>
         <div className={styles.dates}>
@@ -80,28 +86,28 @@ export const EditMeetupForm = (props: EditMeetupFormProps): JSX.Element => {
             setValue={setStart}
             value={start}
             className={styles.date}
-            label="Начало"
+            label={Translation.translatedText('form.start')}
           />
           <DateInput
             id={'finish'}
             setValue={setEnd}
             value={finish}
             className={styles.date}
-            label="Окончание"
+            label={Translation.translatedText('form.finish')}
           />
         </div>
         <div className={styles.place}>
           <LabeledInput
             onChange={setPlace}
             initialValue={place}
-            label="Место"
+            label={Translation.translatedText('form.place')}
           />
         </div>
         <div className={styles.speaker}>
           <LabeledInput
             onChange={setSpeaker}
             initialValue={author}
-            label="Спикер"
+            label={Translation.translatedText('form.speaker')}
           />
         </div>
         <div className={styles.description}>
@@ -109,25 +115,33 @@ export const EditMeetupForm = (props: EditMeetupFormProps): JSX.Element => {
             onChange={(event) => setDescription(event.target.value)}
             initialValue={excerpt}
             className={styles.textarea}
-            name="Описание"
+            name={Translation.translatedText('form.description')}
           />
         </div>
       </div>
       <div className={styles.buttons}>
-        <Button callback={props.onCancel} type="default">Отмена</Button>
+        <Button callback={props.onCancel} type="default">
+          <TranslatedMessage
+            message={Translation.translatedText('btn.cancel')}
+          />
+        </Button>
         <div>
           <Button
             className={styles.previewButton}
             callback={props.onPreview}
             type="secondary"
           >
-            Предпросмотр
+            <TranslatedMessage
+              message={Translation.translatedText('btn.preview')}
+            />
           </Button>
           <Button
             callback={(event) => props.onSave(getData(), event)}
             type="primary"
           >
-            Сохранить
+            <TranslatedMessage
+              message={Translation.translatedText('btn.save')}
+            />
           </Button>
         </div>
       </div>

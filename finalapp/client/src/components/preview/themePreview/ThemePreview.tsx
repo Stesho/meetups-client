@@ -5,6 +5,8 @@ import { Meetup } from '../../../core/types/Meetup';
 import { User } from '../../../core/types/User';
 import AvailableFor from '../../../core/utils/availableFor';
 import styles from './ThemePreview.module.scss';
+import TranslatedMessage from '../../translatedMessage/TranslatedMessage';
+import Translation from '../../../core/utils/translation';
 
 interface ThemePreviewProps {
   meetup: Meetup;
@@ -34,11 +36,17 @@ export const ThemePreview = (props: ThemePreviewProps): JSX.Element => {
 
   return (
     <article>
-      <h3 className={styles.caption}>Название</h3>
+      <h3 className={styles.caption}>
+        <TranslatedMessage message={Translation.translatedText('form.name')} />
+      </h3>
       <div className={styles.title}>
         <h2>{props.meetup.subject}</h2>
       </div>
-      <h3 className={styles.caption}>Автор</h3>
+      <h3 className={styles.caption}>
+        <TranslatedMessage
+          message={Translation.translatedText('form.author')}
+        />
+      </h3>
       <div className={styles.author}>
         <ProfileInfo
           user={props.meetup.author}
@@ -46,11 +54,19 @@ export const ThemePreview = (props: ThemePreviewProps): JSX.Element => {
           avatarHeightPX={40}
         />
       </div>
-      <h3 className={styles.caption}>Описание</h3>
+      <h3 className={styles.caption}>
+        <TranslatedMessage
+          message={Translation.translatedText('form.description')}
+        />
+      </h3>
       <div className={styles.excerpt}>
         <p>{props.meetup.excerpt}</p>
       </div>
-      <h3 className={styles.caption}>Поддерживают</h3>
+      <h3 className={styles.caption}>
+        <TranslatedMessage
+          message={Translation.translatedText('form.support')}
+        />
+      </h3>
       <div className={styles.votedUsers}>
         {allVotedUsers.slice(0, 7).map((user) => (
           <div className={styles.customUserAvatar} key={user.id}>
@@ -65,7 +81,9 @@ export const ThemePreview = (props: ThemePreviewProps): JSX.Element => {
           type="default"
           callback={(event) => props.onCancel(event)}
         >
-          Назад
+          <TranslatedMessage
+            message={Translation.translatedText('btn.cancel')}
+          />
         </Button>
         <AvailableFor roles={['EMPLOYEE']}>
           <div className={styles.mainButtons}>
@@ -74,23 +92,23 @@ export const ThemePreview = (props: ThemePreviewProps): JSX.Element => {
               type="secondary"
               callback={(event) => props.onDelete(event)}
             >
-              Удалить
+              <TranslatedMessage
+                message={Translation.translatedText('btn.delete')}
+              />
             </Button>
-            <Button
-              type="primary"
-              callback={(event) => props.onApprove(event)}
-            >
-              Одобрить тему
+            <Button type="primary" callback={(event) => props.onApprove(event)}>
+              <TranslatedMessage
+                message={Translation.translatedText('btn.approve')}
+              />
             </Button>
           </div>
         </AvailableFor>
         <AvailableFor roles={['CHIEF']}>
           <div className={styles.mainButtons}>
-            <Button
-              type="primary"
-              callback={(event) => props.onApprove(event)}
-            >
-              Поддержать
+            <Button type="primary" callback={(event) => props.onApprove(event)}>
+              <TranslatedMessage
+                message={Translation.translatedText('btn.support')}
+              />
             </Button>
           </div>
         </AvailableFor>

@@ -4,6 +4,8 @@ import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { AuthorizationRequestData } from '../../core/types/AuthorizationRequestData';
 import styles from './AuthorizationPage.module.scss';
 import { useStore } from '../../context/storeContext';
+import TranslatedMessage from '../../components/translatedMessage/TranslatedMessage';
+import Translation from '../../core/utils/translation';
 
 export const AuthorizationPage = (): JSX.Element => {
   const navigate: NavigateFunction = useNavigate();
@@ -19,10 +21,15 @@ export const AuthorizationPage = (): JSX.Element => {
   return (
     <section className="container smoothPage">
       <div className={styles.authorizationPage}>
-        <h1 className={`basicH1 ${styles.title}`}>Авторизация</h1>
+        <h1 className={`basicH1 ${styles.title}`}>
+          <TranslatedMessage
+            message={Translation.translatedText('auth.title')}
+          />
+        </h1>
         <p className={`paragraph ${styles.description}`}>
-          Войдите в систему, чтобы получить возможность предложения новых тем
-          для митапов и многого другого.
+          <TranslatedMessage
+            message={Translation.translatedText('auth.caption')}
+          />
         </p>
         <AuthorizationForm onSubmit={onAuthorizationFormSend} />
       </div>

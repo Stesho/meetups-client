@@ -8,6 +8,8 @@ import {
   checkMinLength,
   checkMaxLength,
 } from '../../../core/utils/inputValidation';
+import TranslatedMessage from '../../translatedMessage/TranslatedMessage';
+import Translation from '../../../core/utils/translation';
 
 interface AuthorizationFormProps {
   onSubmit: (data: AuthorizationRequestData) => void;
@@ -21,14 +23,14 @@ const validationOptions = {
   maxLength: checkMaxLength(maxInputLength),
 };
 
-const errorMessages = {
-  minLength: 'Поле не может быть пустым',
-  maxLength: 'Поле слишком длинное',
-};
-
 export const AuthorizationForm = (
   props: AuthorizationFormProps,
 ): JSX.Element => {
+  const errorMessages = {
+    minLength: Translation.translatedText('validation.notEmpty'),
+    maxLength: Translation.translatedText('validation.maxLength'),
+  };
+
   const preventDefaultSubmit = (event: React.FormEvent<HTMLFormElement>) =>
     event.preventDefault();
 
@@ -56,7 +58,7 @@ export const AuthorizationForm = (
         onChange={username.setValue}
         onBlur={() => username.setIsOnBlur(true)}
         type="text"
-        label="Имя пользователя"
+        label={Translation.translatedText('form.userName')}
         placeholder="Albert Richards"
         className={styles.input}
         status={username.status}
@@ -66,7 +68,7 @@ export const AuthorizationForm = (
         onChange={password.setValue}
         onBlur={() => password.setIsOnBlur(true)}
         type="password"
-        label="Пароль"
+        label={Translation.translatedText('form.password')}
         className={styles.input}
         status={password.status}
         helpText={password.message}
@@ -77,7 +79,7 @@ export const AuthorizationForm = (
         disabled={!checkForm()}
         className={styles.button}
       >
-        Вход
+        <TranslatedMessage message={Translation.translatedText('btn.signIn')} />
       </Button>
     </form>
   );

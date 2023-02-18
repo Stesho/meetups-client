@@ -4,6 +4,7 @@ import { useStore } from '../../context/storeContext';
 import { CreatedNews, News } from '../../core/types/News';
 import { NavigateFunction, useNavigate } from 'react-router';
 import NewsCreateForm from '../../components/forms/create/news/NewsCreateForm';
+import { FormattedMessage } from 'react-intl';
 
 // TODO: ADD VALIDATION
 const CreateNewsPage = () => {
@@ -27,7 +28,12 @@ const CreateNewsPage = () => {
     <section className="container smoothPage">
       <div className={styles.createNewsPage}>
         <div className={styles.title}>
-          <h1 className="basicH1">Создание Новости</h1>
+          <h1 className="basicH1">
+            <FormattedMessage
+              id="news.create.title"
+              defaultMessage="Создание Новости"
+            />
+          </h1>
         </div>
         <NewsCreateForm onCancel={toNewsPage} onSubmit={createNews} />
       </div>

@@ -2,10 +2,12 @@ import { Input, InputProps } from '../input/Input';
 import styles from './LabeledInput.module.scss';
 import classNames from 'classnames';
 import React from 'react';
+import TranslatedMessage from '../../translatedMessage/TranslatedMessage';
+import Translation from '../../../core/utils/translation';
 
 interface LabeledInputProps extends InputProps {
-  label: string;
-  helpText?: string;
+  label: Translation;
+  helpText?: Translation;
 }
 
 export const LabeledInput = (props: LabeledInputProps): JSX.Element => {
@@ -16,7 +18,9 @@ export const LabeledInput = (props: LabeledInputProps): JSX.Element => {
 
   return (
     <div className={styles.inputGroup}>
-      <label className={styles.label}>{props.label}</label>
+      <label className={styles.label}>
+        <TranslatedMessage message={props.label} />
+      </label>
 
       <Input
         onClick={props.onClick}
@@ -34,7 +38,9 @@ export const LabeledInput = (props: LabeledInputProps): JSX.Element => {
       />
 
       {props.helpText && (
-        <span className={additionalTextClass}>{props.helpText}</span>
+        <span className={additionalTextClass}>
+          <TranslatedMessage message={props.helpText} />
+        </span>
       )}
     </div>
   );

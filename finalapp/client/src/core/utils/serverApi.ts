@@ -9,18 +9,26 @@ import NotificationStore from '../../store/notificationStore';
 import { User } from '../types/User';
 import { AuthorizationRequestData } from '../types/AuthorizationRequestData';
 import { News } from '../types/News';
+import Translation from './translation';
 
 class ServerApi {
   private errorMessage = {
-    unauthorized: 'Войдите или создайте аккаунт',
-    unknown: 'Что-то пошло не так',
-    notFound: 'Не удалось отправить запрос',
-    serverError: 'Что-то пошло не так. Сервер не доступен',
+    unauthorized: Translation.translatedText('notification.error.unauthorized'),
+    unknown: Translation.translatedText('notification.error.unknown'),
+    notFound: Translation.translatedText('notification.error.notFound'),
+    serverError: Translation.translatedText('notification.error.serverError'),
+    wrongAuthData: Translation.translatedText(
+      'notification.error.wrongAuthData',
+    ),
   };
   private successMessage = {
-    addedMeetup: 'Добавлен новый митап',
-    deletedMeetup: 'Митап успешно удален',
-    updatedMeetup: 'Митап успешно обновлен',
+    addedMeetup: Translation.translatedText('notification.success.addedMeetup'),
+    deletedMeetup: Translation.translatedText(
+      'notification.success.deletedMeetup',
+    ),
+    updatedMeetup: Translation.translatedText(
+      'notification.success.updatedMeetup',
+    ),
   };
 
   constructor(private readonly notificationStore: NotificationStore) {}
@@ -174,7 +182,7 @@ class ServerApi {
       });
 
       if (response?.status === 401) {
-        this.notificationStore.error('Не верные логин или пароль');
+        this.notificationStore.error(this.errorMessage.wrongAuthData);
         return null;
       }
 

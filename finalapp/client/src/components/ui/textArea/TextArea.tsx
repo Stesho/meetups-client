@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import styles from './TextArea.module.scss';
 import classNames from 'classnames';
+import Translation from '../../../core/utils/translation';
+import TranslatedMessage from '../../translatedMessage/TranslatedMessage';
 
 export interface TextAreaProps {
   onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
   onBlur?: () => void;
-  name?: string;
+  name?: Translation;
   maxLength?: number;
-  helpText?: string;
+  helpText?: Translation;
   status?: 'success' | 'invalid' | 'default';
   initialValue?: string;
   className?: string;
@@ -43,7 +45,9 @@ export const TextArea = ({
   return (
     <div className={styles.textAreaContainer}>
       <div className={styles.info}>
-        <span className={styles.inputName}>{name}</span>
+        <span className={styles.inputName}>
+          <TranslatedMessage message={name || Translation.empty} />
+        </span>
         {maxLength && (
           <div>
             <span className={styles.inputCount}>{inputText.length}</span>
@@ -57,7 +61,11 @@ export const TextArea = ({
         onChange={handleTextChange}
         onBlur={onBlur}
       />
-      {helpText && <span className={additionalTextClass}>{helpText}</span>}
+      {helpText && (
+        <span className={additionalTextClass}>
+          <TranslatedMessage message={helpText} />
+        </span>
+      )}
     </div>
   );
 };

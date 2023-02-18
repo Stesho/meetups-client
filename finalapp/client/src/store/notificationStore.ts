@@ -1,10 +1,11 @@
 import { makeAutoObservable } from 'mobx';
+import Translation from '../core/utils/translation';
 
 export type NotificationType = 'error' | 'warning' | 'success' | 'help';
 
 class NotificationStore {
   type: NotificationType = 'error';
-  message = '';
+  message = Translation.empty;
   timer = 0;
   isActive = false;
   duration = 5000;
@@ -15,11 +16,11 @@ class NotificationStore {
 
   private clear() {
     this.isActive = false;
-    this.message = '';
+    this.message = Translation.empty;
     this.timer = 0;
   }
 
-  private show(message: string, type: NotificationType) {
+  private show(message: Translation, type: NotificationType) {
     this.message = message;
     this.type = type;
     this.isActive = true;
@@ -33,11 +34,11 @@ class NotificationStore {
     }, this.duration);
   }
 
-  error(message: string) {
+  error(message: Translation) {
     this.show(message, 'error');
   }
 
-  success(message: string) {
+  success(message: Translation) {
     this.show(message, 'success');
   }
 

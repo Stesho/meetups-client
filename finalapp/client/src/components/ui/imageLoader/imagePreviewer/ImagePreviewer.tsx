@@ -1,5 +1,7 @@
 import styles from './ImagePreviewer.module.scss';
 import fileIcon from '../../../../assets/icons/file-icon.svg';
+import TranslatedMessage from '../../../translatedMessage/TranslatedMessage';
+import Translation from '../../../../core/utils/translation';
 
 interface PreviewerProps {
   title: string;
@@ -17,7 +19,11 @@ export const ImagePreviewer = (props: PreviewerProps): JSX.Element => (
           {props.title}
         </span>
         <span className={styles.fileSize} title={`${props.size} bytes`}>
-          File size: {(props.size / 1024 / 1024).toFixed(2)} Mb
+          <TranslatedMessage
+            message={Translation.translatedText('imageLoader.fileSize', {
+              fileSize: (props.size / 1024 / 1024).toFixed(2),
+            })}
+          />
         </span>
       </div>
       <button className={styles.cancel} onClick={(): void => props.onCancel()}>

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Translation from '../utils/translation';
 
 type Status = 'success' | 'invalid' | 'default';
 
@@ -7,16 +8,16 @@ type Options<T> = {
 };
 
 type ErrorMessages<T> = {
-  [K in keyof T]: string;
+  [K in keyof T]: Translation;
 };
 
-type SuccessMessage = string;
+type SuccessMessage = Translation;
 
 interface Input {
   value: string;
   isValid: boolean;
   status: Status;
-  message: string;
+  message: Translation;
   setValue: React.Dispatch<React.SetStateAction<string>>;
   setIsOnBlur: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -31,12 +32,15 @@ export const useInput = <T>(
   const [value, setValue] = useState<string>('');
   const [isOnBlur, setIsOnBlur] = useState<boolean>(false);
   const [status, setStatus] = useState<Status>('default');
-  const [message, setMessage] = useState<string>('');
+  const [message, setMessage] = useState<Translation>(Translation.empty);
   const [isValid, setIsValid] = useState<boolean>(false);
 
-  const getSuccessMessage = (): string => successMessage || '';
-  const getErrorMessage = (option: Option): string =>
-    errorMessages ? errorMessages[option] || '' : '';
+  const getSuccessMessage = (): Translation =>
+    successMessage || Translation.empty;
+  const getErrorMessage = (option: Option): Translation =>
+    errorMessages
+      ? errorMessages[option] || Translation.empty
+      : Translation.empty;
 
   const getErrorOption = (
     validationOptions: Options<T>,
@@ -57,8 +61,10 @@ export const useInput = <T>(
     return 'default';
   };
 
-  const getInputMessage = (message: string, isOnBlur: boolean): string =>
-    isOnBlur ? message : '';
+  const getInputMessage = (
+    message: Translation,
+    isOnBlur: boolean,
+  ): Translation => (isOnBlur ? message : Translation.empty);
 
   const setInputState = () => {
     const errorOption = getErrorOption(validationOptions, value);

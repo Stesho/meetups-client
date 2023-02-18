@@ -5,6 +5,8 @@ import styles from './Confirmation.module.scss';
 import Button from '../ui/button/Button';
 import { useStore } from '../../context/storeContext';
 import { observer } from 'mobx-react-lite';
+import Translation from '../../core/utils/translation';
+import TranslatedMessage from '../translatedMessage/TranslatedMessage';
 
 const Modal = observer((): JSX.Element => {
   const overlay = useRef<HTMLDivElement>(null);
@@ -39,22 +41,28 @@ const Modal = observer((): JSX.Element => {
         <button className={styles.closeBtn} onClick={close}>
           <img src={CrossIcon} alt="cross" />
         </button>
-        <span className={styles.title}>{confirmationStore.title}</span>
-        <span className={styles.text}>{confirmationStore.text}</span>
+        <span className={styles.title}>
+          <TranslatedMessage message={confirmationStore.title} />
+        </span>
+        <span className={styles.text}>
+          <TranslatedMessage message={confirmationStore.text} />
+        </span>
         <div className={styles.buttons}>
           <Button
             callback={close}
             type="secondary"
             className={styles.cancelBtn}
           >
-            Нет
+            <TranslatedMessage message={Translation.translatedText('btn.no')} />
           </Button>
           <Button
             callback={confirm}
             type="primary"
             className={styles.confirmBtn}
           >
-            Да
+            <TranslatedMessage
+              message={Translation.translatedText('btn.yes')}
+            />
           </Button>
         </div>
       </div>

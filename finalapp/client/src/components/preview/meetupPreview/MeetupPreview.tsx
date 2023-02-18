@@ -8,6 +8,8 @@ import { ProfileInfo } from '../../profileInfo/ProfileInfo';
 import Button from '../../ui/button/Button';
 import AvailableFor from '../../../core/utils/availableFor';
 import styles from './MeetupPreview.module.scss';
+import TranslatedMessage from '../../translatedMessage/TranslatedMessage';
+import Translation from '../../../core/utils/translation';
 
 interface MeetupPreviewProps {
   meetup: Meetup;
@@ -24,7 +26,11 @@ const MeetupPreview = (props: MeetupPreviewProps) => {
       <div className={styles.title}>
         <h2>{props.meetup.subject}</h2>
       </div>
-      <h3 className={styles.caption}>Время и место проведения</h3>
+      <h3 className={styles.caption}>
+        <TranslatedMessage
+          message={Translation.translatedText('form.timeAndPlace')}
+        />
+      </h3>
       <div className={styles.timePlace}>
         <div className={styles.timePlaceItem}>
           <img
@@ -47,7 +53,11 @@ const MeetupPreview = (props: MeetupPreviewProps) => {
           <span>{props.meetup.place}</span>
         </div>
       </div>
-      <h3 className={styles.caption}>Спикер</h3>
+      <h3 className={styles.caption}>
+        <TranslatedMessage
+          message={Translation.translatedText('form.speaker')}
+        />
+      </h3>
       <div className={styles.author}>
         <ProfileInfo
           user={props.meetup.author}
@@ -55,16 +65,19 @@ const MeetupPreview = (props: MeetupPreviewProps) => {
           avatarHeightPX={40}
         />
       </div>
-      <h3 className={styles.caption}>Описание</h3>
+      <h3 className={styles.caption}>
+        <TranslatedMessage
+          message={Translation.translatedText('form.description')}
+        />
+      </h3>
       <div className={styles.excerpt}>
         <p>{props.meetup.excerpt}</p>
       </div>
       <div className={styles.buttons}>
-        <Button
-          type="default"
-          callback={(event) => props.onCancel(event)}
-        >
-          Назад
+        <Button type="default" callback={(event) => props.onCancel(event)}>
+          <TranslatedMessage
+            message={Translation.translatedText('btn.cancel')}
+          />
         </Button>
         <AvailableFor roles={['EMPLOYEE']}>
           <Button
@@ -72,7 +85,9 @@ const MeetupPreview = (props: MeetupPreviewProps) => {
             type="primary"
             callback={(event) => props.onPublish(event)}
           >
-            Опубликовать
+            <TranslatedMessage
+              message={Translation.translatedText('btn.publish')}
+            />
           </Button>
         </AvailableFor>
       </div>

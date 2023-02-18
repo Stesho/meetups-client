@@ -5,6 +5,8 @@ import { useParams } from 'react-router-dom';
 import { Meetup } from '../../../core/types/Meetup';
 import { useNavigate, NavigateFunction } from 'react-router-dom';
 import { useStore } from '../../../context/storeContext';
+import TranslatedMessage from '../../../components/translatedMessage/TranslatedMessage';
+import Translation from '../../../core/utils/translation';
 
 const ThemePreviewPage = () => {
   const [meetup, setMeetup] = useState<Meetup | null>(null);
@@ -51,7 +53,13 @@ const ThemePreviewPage = () => {
       {meetup && (
         <div className={styles.previewPage}>
           <div className={styles.title}>
-            <h1 className="basicH1">Просмотр Темы</h1>
+            <h1 className="basicH1">
+              <TranslatedMessage
+                message={Translation.translatedText(
+                  'meetups.preview.theme.title',
+                )}
+              />
+            </h1>
           </div>
           <ThemePreview
             meetup={meetup}
