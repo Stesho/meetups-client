@@ -1,7 +1,7 @@
+import React from 'react';
 import { Input, InputProps } from '../input/Input';
 import styles from './LabeledInput.module.scss';
 import classNames from 'classnames';
-import React from 'react';
 import TranslatedMessage from '../../translatedMessage/TranslatedMessage';
 import Translation from '../../../core/utils/translation';
 
@@ -37,7 +37,7 @@ export const LabeledInput = (props: LabeledInputProps): JSX.Element => {
         value={props.value}
       />
 
-      {props.helpText && (
+      {props.helpText?.id && (
         <span className={additionalTextClass}>
           <TranslatedMessage message={props.helpText} />
         </span>

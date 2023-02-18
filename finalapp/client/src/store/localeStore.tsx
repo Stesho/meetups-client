@@ -8,8 +8,8 @@ class LocaleStore {
   constructor() {
     makeAutoObservable(this);
     let locale = localStorage.getItem('language');
-    
-    if(locale === null) {
+
+    if (locale === null) {
       locale = navigator.language;
     }
 
