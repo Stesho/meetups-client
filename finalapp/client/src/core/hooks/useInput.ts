@@ -37,6 +37,7 @@ export const useInput = <T>(
 
   const getSuccessMessage = (): Translation =>
     successMessage || Translation.empty;
+
   const getErrorMessage = (option: Option): Translation =>
     errorMessages
       ? errorMessages[option] || Translation.empty
