@@ -4,6 +4,8 @@ import defaultNewsImg from '../../../assets/images/default-meetup-img.png';
 import { News } from '../../../core/types/News';
 import Button from '../../ui/button/Button';
 import AvailableFor from '../../../core/utils/availableFor';
+import TranslatedMessage from '../../translatedMessage/TranslatedMessage';
+import Translation from '../../../core/utils/translation';
 
 interface NewsPreviewProps {
   news: News;
@@ -22,19 +24,17 @@ const NewsPreview = (props: NewsPreviewProps) => {
         <p>{props.news.text}</p>
       </div>
       <div className={styles.buttons}>
-        <Button
-          type="default"
-          callback={(event) => props.onCancel(event)}
-        >
-          Назад
+        <Button type="default" callback={(event) => props.onCancel(event)}>
+          <TranslatedMessage
+            message={Translation.translatedText('btn.cancel')}
+          />
         </Button>
         <AvailableFor roles={['EMPLOYEE']}>
           <div className={styles.mainButtons}>
-            <Button
-              type="secondary"
-              callback={(event) => props.onEdit(event)}
-            >
-              Редактировать
+            <Button type="secondary" callback={(event) => props.onEdit(event)}>
+              <TranslatedMessage
+                message={Translation.translatedText('btn.edit')}
+              />
             </Button>
           </div>
         </AvailableFor>

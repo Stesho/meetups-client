@@ -9,6 +9,8 @@ import {
   FormAdditionalData,
   AdditionalCreateForm,
 } from '../forms/create/additional/AdditionalCreateForm';
+import TranslatedMessage from '../translatedMessage/TranslatedMessage';
+import Translation from '../../core/utils/translation';
 
 interface CreateMeetupStepperProps {
   onCreate?: (
@@ -21,7 +23,13 @@ interface CreateMeetupStepperProps {
 export const CreateMeetupStepper = (
   props: CreateMeetupStepperProps,
 ): JSX.Element => {
-  const STEPS: Array<string> = ['Обязательные поля', 'Дополнительные поля'];
+  const requiredFields = Translation.translatedText(
+    'meetups.create.stepper.requires',
+  );
+  const additionalFields = Translation.translatedText(
+    'meetups.create.stepper.additional',
+  );
+  const STEPS: Array<Translation> = [requiredFields, additionalFields];
 
   const [currentStep, setCurrentStep] = React.useState<number>(0);
 
@@ -59,11 +67,15 @@ export const CreateMeetupStepper = (
     <div className={styles.stepper}>
       <Steps steps={STEPS} current={currentStep} />
       <div className={styles.text}>
-        <h2 className="basicH1">Новый митап</h2>
+        <h2 className="basicH1">
+          <TranslatedMessage
+            message={Translation.translatedText('meetups.create.title')}
+          />
+        </h2>
         <p className={`paragraph ${styles.description}`}>
-          Заполните необходимые поля ниже наиболее подробно, это даст полную
-          <br />
-          информации о предстоящем событии.
+          <TranslatedMessage
+            message={Translation.translatedText('meetups.create.caption')}
+          />
         </p>
       </div>
 

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.scss';
 import { App } from './App';
 import { StoreProvider } from './context/storeContext';
+import LocaleProvider from './context/localeProvider';
 
 const root: ReactDOM.Root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -11,7 +12,9 @@ const root: ReactDOM.Root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <StoreProvider>
-      <App />
+      <LocaleProvider>
+        <App />
+      </LocaleProvider>
     </StoreProvider>
   </React.StrictMode>,
 );

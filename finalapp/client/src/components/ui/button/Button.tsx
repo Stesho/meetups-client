@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './Button.module.scss';
 
 interface ButtonProps {
-  children: React.ReactNode
+  children: React.ReactNode;
   type: 'primary' | 'secondary' | 'default';
   className?: string;
   disabled?: boolean;

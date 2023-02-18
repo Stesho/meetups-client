@@ -1,16 +1,17 @@
 import { makeAutoObservable } from 'mobx';
+import Translation from '../core/utils/translation';
 
 class ConfirmationStore {
   isActive = false;
-  title = '';
-  text = '';
+  title: Translation = Translation.empty;
+  text: Translation = Translation.empty;
   onConfirm: () => void = null!;
 
   constructor() {
     makeAutoObservable(this);
   }
 
-  show(title: string, text: string, onConfirm: () => void): void {
+  show(title: Translation, text: Translation, onConfirm: () => void): void {
     this.title = title;
     this.text = text;
     this.onConfirm = onConfirm;
@@ -18,8 +19,8 @@ class ConfirmationStore {
   }
 
   close(): void {
-    this.title = '';
-    this.text = '';
+    this.title = Translation.empty;
+    this.text = Translation.empty;
     this.onConfirm = null!;
     this.isActive = false;
   }

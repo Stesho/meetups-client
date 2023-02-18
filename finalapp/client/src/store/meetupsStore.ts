@@ -2,6 +2,8 @@ import { makeAutoObservable } from 'mobx';
 import { Meetup } from '../core/types/Meetup';
 import ServerApi from '../core/utils/serverApi';
 import ConfirmationStore from './confirmationStore';
+import { defineMessage } from 'react-intl';
+import Translation from '../core/utils/translation';
 
 class MeetupsStore {
   meetups: Meetup[] = [];
@@ -35,8 +37,8 @@ class MeetupsStore {
       this.deleteMeetupById(meetup.id);
     };
     this.confirmationStore.show(
-      'Вы хотите удалить митап?',
-      meetup.subject,
+      Translation.translatedText('confirmation.title'),
+      Translation.plainText(meetup.subject),
       onConfirmModal,
     );
   }

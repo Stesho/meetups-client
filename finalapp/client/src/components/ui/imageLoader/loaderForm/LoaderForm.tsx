@@ -3,6 +3,8 @@ import uploadIcon from '../../../../assets/icons/upload.svg';
 import React from 'react';
 import { checkImageFile } from '../../../../core/utils/checkImageFile';
 import { MAX_UPLOADED_IMAGE_SIZE_MB } from '../../../../core/constants/restrictionConstants';
+import TranslatedMessage from '../../../translatedMessage/TranslatedMessage';
+import Translation from '../../../../core/utils/translation';
 
 interface LoaderFormProps {
   onLoad: (file: File) => void;
@@ -49,15 +51,26 @@ export const LoaderForm = (props: LoaderFormProps): JSX.Element => {
         <div className={styles.labelContent}>
           <img src={uploadIcon} alt="upload icon" />
           <p className={styles.text}>
-            Перетащите изображения сюда или{' '}
-            <span className={styles.button}>загрузите</span>
+            <TranslatedMessage
+              message={Translation.translatedText('imageLoader.text', {
+                span: (word: string) => (
+                  <span className={styles.button}>{word}</span>
+                ),
+              })}
+            />
           </p>
 
           <span className={styles.note}>
-            Разрешенные форматы: .jpg .jpeg .png
+            <TranslatedMessage
+              message={Translation.translatedText('imageLoader.formats')}
+            />
           </span>
           <span className={styles.note}>
-            Максимальный размер файла: {MAX_UPLOADED_IMAGE_SIZE_MB} Mb
+            <TranslatedMessage
+              message={Translation.translatedText('imageLoader.maxFileSize', {
+                maxFileSize: MAX_UPLOADED_IMAGE_SIZE_MB,
+              })}
+            />
           </span>
         </div>
       </label>
@@ -70,7 +83,9 @@ export const LoaderForm = (props: LoaderFormProps): JSX.Element => {
           onDragOver={handleDrag}
           onDrop={handleDrop}
         >
-          Отпустите файл
+          <TranslatedMessage
+            message={Translation.translatedText('imageLoader.drop')}
+          />
         </div>
       )}
     </div>

@@ -7,6 +7,8 @@ import { ProfileInfo } from '../../profileInfo/ProfileInfo';
 import { getMeetupDatePlaceInfo } from '../../../core/utils/getMeetupDatePlaceInfo';
 import { useNavigate, NavigateFunction } from 'react-router-dom';
 import AvailableFor from '../../../core/utils/availableFor';
+import TranslatedMessage from '../../translatedMessage/TranslatedMessage';
+import Translation from '../../../core/utils/translation';
 
 export interface MeetupCardProps {
   meetup: Meetup;
@@ -80,7 +82,11 @@ export const MeetupCard = ({
         <div className={styles.bottomLine}>
           <img src={profileIcon} alt="profile" />
           <span className={styles.supportInfo}>
-            {meetup.goCount} поддерживают
+            <TranslatedMessage
+              message={Translation.translatedText('meetups.card.support', {
+                n: meetup.goCount,
+              })}
+            />
           </span>
         </div>
       ) : (

@@ -11,6 +11,8 @@ import {
 } from '../../../../core/utils/checkDateValidity';
 import { MONTH_NAMES } from '../../../../core/constants/dateTimeConstants';
 import Button from '../../../ui/button/Button';
+import TranslatedMessage from '../../../translatedMessage/TranslatedMessage';
+import Translation from '../../../../core/utils/translation';
 
 export type FormAdditionalData = Pick<
   Meetup,
@@ -29,13 +31,12 @@ const validationOptions = {
   validDate: checkDateValidity,
 };
 
-const errorMessages = {
-  validDate: 'Неверный формат даты',
-};
-
 export const AdditionalCreateForm = (
   props: AdditionalCreateFormProps,
 ): JSX.Element => {
+  const errorMessages = {
+    validDate: Translation.translatedText('validation.date.format'),
+  };
   const start = useInput<typeof validationOptions>(
     validationOptions,
     errorMessages,
@@ -101,11 +102,11 @@ export const AdditionalCreateForm = (
             onBlur={() => start.setIsOnBlur(true)}
             className={styles.dateInput}
             status={isValidDates ? start.status : 'invalid'}
-            label="Начало"
+            label={Translation.translatedText('form.start')}
             helpText={
               isValidDates
                 ? start.message
-                : 'Дата начала не может быть позже даты окончания'
+                : Translation.translatedText('validation.date.start')
             }
           />
           <DateInput
@@ -115,29 +116,31 @@ export const AdditionalCreateForm = (
             onBlur={() => finish.setIsOnBlur(true)}
             className={styles.dateInput}
             status={isValidDates ? finish.status : 'invalid'}
-            label="Окончание"
+            label={Translation.translatedText('form.finish')}
             helpText={
               isValidDates
                 ? finish.message
-                : 'Дата окончания не может быть раньше даты начала'
+                : Translation.translatedText('validation.date.finish')
             }
           />
         </div>
         <LabeledInput
           onChange={setPlace}
           type="text"
-          label="Место проведения"
+          label={Translation.translatedText('form.place')}
         />
         <ImageLoader onLoadCallback={(newImage) => setImage(newImage)} />
       </div>
       <div className={styles.buttons}>
-        <Button callback={props.onCancel} type="default">Назад</Button>
-        <Button
-          callback={submitForm}
-          type="primary"
-          disabled={!checkForm()}
-        >
-          Далее
+        <Button callback={props.onCancel} type="default">
+          <TranslatedMessage
+            message={Translation.translatedText('btn.cancel')}
+          />
+        </Button>
+        <Button callback={submitForm} type="primary" disabled={!checkForm()}>
+          <TranslatedMessage
+            message={Translation.translatedText('btn.create')}
+          />
         </Button>
       </div>
     </form>

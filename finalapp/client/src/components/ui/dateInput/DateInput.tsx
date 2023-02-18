@@ -5,6 +5,7 @@ import { LabeledInput } from '../labeledInput/LabeledInput';
 import { MONTH_NAMES } from '../../../core/constants/dateTimeConstants';
 import { DatePicker } from './datePicker/DatePicker';
 import classNames from 'classnames';
+import Translation from '../../../core/utils/translation';
 
 export type Day = {
   number: number;
@@ -18,8 +19,8 @@ export interface DateInputProps {
   onBlur?: () => void;
   status?: 'success' | 'invalid' | 'default';
   className?: string;
-  label: string;
-  helpText?: string;
+  label: Translation;
+  helpText?: Translation;
 }
 
 export const DateInput = (props: DateInputProps): JSX.Element => {
@@ -69,7 +70,6 @@ export const DateInput = (props: DateInputProps): JSX.Element => {
 
   return (
     <div className={styles.dateInput}>
-      {/* {props.label && <span className={styles.label}>{props.label}</span>} */}
       <div ref={dateInput}>
         <div className={styles.inputWrapper}>
           <LabeledInput

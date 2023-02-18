@@ -7,16 +7,24 @@ import { NavLink } from 'react-router-dom';
 import { ProfileInfo } from '../profileInfo/ProfileInfo';
 import { ShortUser } from '../../core/types/User';
 import { observer } from 'mobx-react-lite';
+import TranslatedMessage from '../translatedMessage/TranslatedMessage';
+import { useStore } from '../../context/storeContext';
+import Translation from '../../core/utils/translation';
 
 export interface HeaderProps {
   user: ShortUser;
 }
 
 export const Header = observer(({ user }: HeaderProps): JSX.Element => {
+  const localeStore = useStore('LocaleStore');
   const navigate: NavigateFunction = useNavigate();
 
   const toAuthorizePage = () => {
     navigate('/authorize');
+  };
+
+  const selectLanguage = (locale: string) => {
+    localeStore.setLocale(locale);
   };
 
   return (
@@ -30,7 +38,9 @@ export const Header = observer(({ user }: HeaderProps): JSX.Element => {
               `${styles.navItem} ${active.isActive && styles.activeLink}`
             }
           >
-            Митапы
+            <TranslatedMessage
+              message={Translation.translatedText('meetups.title')}
+            />
           </NavLink>
           <NavLink
             to="/news"
@@ -38,21 +48,36 @@ export const Header = observer(({ user }: HeaderProps): JSX.Element => {
               `${styles.navItem} ${active.isActive && styles.activeLink}`
             }
           >
-            Новости
+            <TranslatedMessage
+              message={Translation.translatedText('news.title')}
+            />
           </NavLink>
         </nav>
-        {user !== null ? (
-          <ProfileInfo
-            user={user}
-            first="name"
-            avatarHeightPX={40}
-            text={{ fontWeight: '400', fontSize: '16px', color: '#FFF' }}
-          />
-        ) : (
-          <Button callback={toAuthorizePage} type="default">
-            Войти
-          </Button>
-        )}
+        <div>
+          <select
+            name=""
+            id=""
+            value={localeStore.locale}
+            onChange={(event) => selectLanguage(event.target.value)}
+          >
+            <option value="ru">ru</option>
+            <option value="en">en</option>
+          </select>
+          {user !== null ? (
+            <ProfileInfo
+              user={user}
+              first="name"
+              avatarHeightPX={40}
+              text={{ fontWeight: '400', fontSize: '16px', color: '#FFF' }}
+            />
+          ) : (
+            <Button callback={toAuthorizePage} type="default">
+              <TranslatedMessage
+                message={Translation.translatedText('btn.signIn')}
+              />
+            </Button>
+          )}
+        </div>
       </div>
     </header>
   );

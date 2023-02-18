@@ -7,6 +7,8 @@ import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { useStore } from '../../../context/storeContext';
 import { observer } from 'mobx-react-lite';
 import AvailableFor from '../../../core/utils/availableFor';
+import Translation from '../../../core/utils/translation';
+import TranslatedMessage from '../../translatedMessage/TranslatedMessage';
 
 interface MeetupsListProps {
   meetups: Array<Meetup>;
@@ -24,21 +26,24 @@ export const MeetupsList = observer((props: MeetupsListProps): JSX.Element => {
   };
 
   const editMeetupButtonClick = (meetup: Meetup): void => {
-    navigate(`/edit-meetup/${meetup.id}`);
+    navigate(`/meetups/edit/${meetup.id}`);
   };
 
   return (
     <div className={styles.listContainer}>
       <div className={styles.row}>
         <span className={styles.suggested}>
-          {props.meetups.length} тем предложено
+          <TranslatedMessage
+            message={Translation.translatedText('meetups.tab.topics.caption', {
+              n: props.meetups.length,
+            })}
+          />
         </span>
         <AvailableFor roles={['CHIEF', 'EMPLOYEE']}>
-          <Button
-            type="secondary"
-            callback={goToCreateMeetupPage}
-          >
-            + Создать митап
+          <Button type="secondary" callback={goToCreateMeetupPage}>
+            <TranslatedMessage
+              message={Translation.translatedText('btn.createMeetup')}
+            />
           </Button>
         </AvailableFor>
       </div>

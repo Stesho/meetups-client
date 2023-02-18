@@ -6,6 +6,8 @@ import { ShortUser } from '../../core/types/User';
 import { NavigateFunction, useNavigate, useParams } from 'react-router-dom';
 import { useStore } from '../../context/storeContext';
 import styles from './EditMeetupPage.module.scss';
+import TranslatedMessage from '../../components/translatedMessage/TranslatedMessage';
+import Translation from '../../core/utils/translation';
 
 export const EditMeetupPage = () => {
   const [meetup, setMeetup] = useState<Meetup | null>(null);
@@ -69,7 +71,11 @@ export const EditMeetupPage = () => {
       {meetup && (
         <div className={styles.editMeetupPage}>
           <div className={styles.title}>
-            <h1 className="basicH1">Редактирование Митапа</h1>
+            <h1 className="basicH1">
+              <TranslatedMessage
+                message={Translation.translatedText('meetups.edit.title')}
+              />
+            </h1>
           </div>
           <EditMeetupForm
             image={meetup?.image || ''}
