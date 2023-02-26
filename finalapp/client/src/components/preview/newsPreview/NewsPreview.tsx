@@ -3,7 +3,7 @@ import styles from './NewsPreview.module.scss';
 import defaultNewsImg from '../../../assets/images/default-meetup-img.png';
 import { News } from '../../../core/types/News';
 import Button from '../../ui/button/Button';
-import AvailableFor from '../../../core/utils/availableFor';
+import AvailableFor from '../../availableFor/AvailableFor';
 import TranslatedMessage from '../../translatedMessage/TranslatedMessage';
 import Translation from '../../../core/utils/translation';
 

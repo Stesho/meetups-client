@@ -3,13 +3,13 @@ import {
   MEETUPS_URL,
   LOGIN_URL,
   NEWS_URL,
-} from '../constants/serverConstants';
-import { Meetup } from '../types/Meetup';
-import NotificationStore from '../../store/notificationStore';
-import { User } from '../types/User';
-import { AuthorizationRequestData } from '../types/AuthorizationRequestData';
-import { News } from '../types/News';
-import Translation from './translation';
+} from '../../constants/serverConstants';
+import { Meetup } from '../../types/Meetup';
+import NotificationStore from '../../../store/notificationStore';
+import { User } from '../../types/User';
+import { AuthorizationRequestData } from '../../types/AuthorizationRequestData';
+import { News } from '../../types/News';
+import Translation from '../translation';
 
 class ServerApi {
   private errorMessage = {

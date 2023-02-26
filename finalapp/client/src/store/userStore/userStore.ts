@@ -1,14 +1,14 @@
 import { makeAutoObservable } from 'mobx';
-import { User } from '../core/types/User';
-import { AuthorizationRequestData } from '../core/types/AuthorizationRequestData';
-import ServerApi from '../core/utils/serverApi';
+import { User } from '../../core/types/User';
+import { AuthorizationRequestData } from '../../core/types/AuthorizationRequestData';
+import IServerApi from '../../core/types/IServerApi';
 
 type Roles = 'EMPLOYEE' | 'CHIEF';
 
 class UserStore {
   user: User = null!;
 
-  constructor(private readonly serverApi: ServerApi) {
+  constructor(private readonly serverApi: IServerApi) {
     makeAutoObservable(this);
   }
 

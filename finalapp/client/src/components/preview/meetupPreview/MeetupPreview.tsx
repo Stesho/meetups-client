@@ -6,7 +6,7 @@ import mapPinIcon from '../../../assets/icons/map-pin-icon.svg';
 import defaultMeetupImg from '../../../assets/images/default-meetup-img.png';
 import { ProfileInfo } from '../../profileInfo/ProfileInfo';
 import Button from '../../ui/button/Button';
-import AvailableFor from '../../../core/utils/availableFor';
+import AvailableFor from '../../availableFor/AvailableFor';
 import styles from './MeetupPreview.module.scss';
 import TranslatedMessage from '../../translatedMessage/TranslatedMessage';
 import Translation from '../../../core/utils/translation';

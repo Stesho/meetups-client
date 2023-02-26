@@ -1,16 +1,17 @@
 import {
   MONTH_NAMES,
-  DAYS_IN_MONTHS,
-} from '../../core/constants/dateTimeConstants';
+} from '../../constants/dateTimeConstants';
 
 const isInteger = (value: string) => {
   return /^\+?\d+$/.test(value);
 };
 
-const checkDay = (day: number, month: number): boolean =>
-  day < 0 || day > DAYS_IN_MONTHS[month];
-const checkYear = (year: number): boolean => year < 1923 || year > 2123;
-const checkHours = (hours: number): boolean => hours < 1 || hours > 23;
+const checkDay = (year: number, month: number, day: number): boolean => {
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  return day < 0 || day > daysInMonth;
+}
+const checkYear = (year: number): boolean => year < 1970 || year > 2099;
+const checkHours = (hours: number): boolean => hours < 0 || hours > 23;
 const checkMinutes = (minutes: number): boolean => minutes < 0 || minutes > 59;
 
 export const checkDateValidity = (value: string): boolean => {
@@ -29,7 +30,7 @@ export const checkDateValidity = (value: string): boolean => {
     MONTH_NAMES.indexOf(month) === -1;
   const isCorrectValue =
     checkYear(Number(year)) ||
-    checkDay(Number(day), MONTH_NAMES.indexOf(month)) ||
+    checkDay(Number(year), MONTH_NAMES.indexOf(month), Number(day)) ||
     checkHours(Number(hours)) ||
     checkMinutes(Number(minutes));
 

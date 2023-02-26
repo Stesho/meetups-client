@@ -1,0 +1,1650 @@
+{
+  "users": [
+    {
+      "id": "uuu-aaa",
+      "name": "employee",
+      "password": "private",
+      "surname": "Gerlach",
+      "post": "Developer",
+      "roles": "EMPLOYEE"
+    },
+    {
+      "id": "uuu-bbb",
+      "name": "chief",
+      "password": "private",
+      "surname": "Blick",
+      "post": "Chief developer",
+      "roles": "CHIEF"
+    },
+    [
+      {
+        "id": "b93514e5-027a-4f83-bbe1-3ef5da7dfed5",
+        "name": "Alanna",
+        "password": "private",
+        "surname": "Maggio",
+        "post": "Customer Marketing Strategist",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "bd926a61-11c4-4d16-a8c8-45662476d8aa",
+        "name": "Savanah",
+        "password": "private",
+        "surname": "Hansen",
+        "post": "Internal Accountability Facilitator",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "712b6029-ca80-465b-8d80-0dca725e4b0f",
+        "name": "Elton",
+        "password": "private",
+        "surname": "Doyle",
+        "post": "Principal Intranet Coordinator",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "bbb72025-b509-46eb-8871-65bee3a83876",
+        "name": "Monique",
+        "password": "private",
+        "surname": "Satterfield",
+        "post": "District Communications Director",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "23e83dad-9ee0-4ac2-b3b9-3748df428cea",
+        "name": "Christopher",
+        "password": "private",
+        "surname": "Rau",
+        "post": "International Implementation Liaison",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "d9d4b32b-afa0-4473-ac54-71177351bfbc",
+        "name": "Aubree",
+        "password": "private",
+        "surname": "Orn",
+        "post": "National Accounts Strategist",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "ea3da9d5-efb5-40e1-bcb6-de942fafbe8d",
+        "name": "Brody",
+        "password": "private",
+        "surname": "Graham",
+        "post": "Future Division Engineer",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "a120a8c0-586e-42eb-854d-c580fa948e2d",
+        "name": "Cristobal",
+        "password": "private",
+        "surname": "Kshlerin",
+        "post": "Global Directives Assistant",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "d8eaa3fd-9422-4512-9adc-1e16cf2979f1",
+        "name": "Leone",
+        "password": "private",
+        "surname": "Torphy",
+        "post": "Future Mobility Associate",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "81902f39-7ef6-4fff-b90d-9e2744b38c73",
+        "name": "Anjali",
+        "password": "private",
+        "surname": "Friesen",
+        "post": "Future Web Manager",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "40af4a6a-a9ad-4307-b5fd-e172fe7d0c2c",
+        "name": "Jose",
+        "password": "private",
+        "surname": "Christiansen",
+        "post": "Global Data Architect",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "b59efa8a-d60b-4b05-ba0d-30a3470aafb0",
+        "name": "Daphney",
+        "password": "private",
+        "surname": "Moore",
+        "post": "Investor Tactics Consultant",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "dacf0b9f-19f4-4d47-acf2-c83e7b3fcdea",
+        "name": "Christiana",
+        "password": "private",
+        "surname": "Rutherford",
+        "post": "Principal Assurance Analyst",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "6fa3b47c-9784-49c7-bdaa-d8a72e4e0744",
+        "name": "Mertie",
+        "password": "private",
+        "surname": "Lynch",
+        "post": "Forward Branding Supervisor",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "91e463ec-ce56-42b1-8c3c-e6d93942c433",
+        "name": "Agustina",
+        "password": "private",
+        "surname": "Leffler",
+        "post": "Central Division Developer",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "e829de68-d0f0-4ee4-88d3-a5039ba115e4",
+        "name": "Samson",
+        "password": "private",
+        "surname": "Bashirian",
+        "post": "National Tactics Representative",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "cdb44a15-51f9-44a5-9bce-0b0e5e62fb25",
+        "name": "Lisa",
+        "password": "private",
+        "surname": "Heathcote",
+        "post": "Dynamic Web Agent",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "0259b6e1-3a36-4ff8-b89e-afa9b5ddb82a",
+        "name": "Webster",
+        "password": "private",
+        "surname": "Homenick",
+        "post": "Central Functionality Designer",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "6901f8cc-4e16-48ae-8d59-2649925d5fd7",
+        "name": "Gerard",
+        "password": "private",
+        "surname": "Raynor",
+        "post": "Forward Configuration Director",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "51a61945-3abe-4352-86e4-561f7b66cd1a",
+        "name": "Sarina",
+        "password": "private",
+        "surname": "Russel",
+        "post": "Corporate Functionality Engineer",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "b3c5ecf1-dd94-41de-b2ba-845c17c34526",
+        "name": "Eli",
+        "password": "private",
+        "surname": "Thompson",
+        "post": "Direct Solutions Liaison",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "afe70e13-5af7-422b-8438-a31087798a10",
+        "name": "Laron",
+        "password": "private",
+        "surname": "Lind",
+        "post": "Internal Infrastructure Executive",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "2fd79f8f-3613-4e4a-834c-a94223bf44f3",
+        "name": "Josianne",
+        "password": "private",
+        "surname": "Jaskolski",
+        "post": "Senior Configuration Associate",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "d60d0729-0bb8-44c4-a3d4-90a1f9b0857c",
+        "name": "Autumn",
+        "password": "private",
+        "surname": "Frami",
+        "post": "Lead Factors Designer",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "94b39294-8355-4340-af32-7185456ac360",
+        "name": "Beatrice",
+        "password": "private",
+        "surname": "Aufderhar",
+        "post": "Dynamic Optimization Producer",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "21e5a26b-2bb0-4779-9ea4-654f02abd535",
+        "name": "Dorcas",
+        "password": "private",
+        "surname": "Boyle",
+        "post": "Product Interactions Planner",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "bc19a647-eaae-4eed-831f-9ded7660e71a",
+        "name": "Jazmyn",
+        "password": "private",
+        "surname": "Strosin",
+        "post": "Global Creative Director",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "f1407bab-6fbf-444e-aadf-449e0927b8a4",
+        "name": "Benjamin",
+        "password": "private",
+        "surname": "Brakus",
+        "post": "Central Solutions Consultant",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "1969b443-8490-42c3-9fd7-c64da8438250",
+        "name": "Candida",
+        "password": "private",
+        "surname": "Abbott",
+        "post": "District Group Consultant",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "c33bcfcb-ac40-4b16-bb4a-2c17861f7e19",
+        "name": "Grady",
+        "password": "private",
+        "surname": "Crooks",
+        "post": "Future Division Specialist",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "5992e87b-873c-49bf-b2bb-24429c0017d5",
+        "name": "Holden",
+        "password": "private",
+        "surname": "Pfannerstill",
+        "post": "Internal Data Consultant",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "b3006147-2f9b-4829-a298-e6b27ece8ba5",
+        "name": "Pauline",
+        "password": "private",
+        "surname": "Lockman",
+        "post": "Dynamic Web Manager",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "0ca9cfab-e1b8-41fe-9141-1ffddf3c37cd",
+        "name": "Isobel",
+        "password": "private",
+        "surname": "Crist",
+        "post": "District Marketing Producer",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "a844167f-237c-4343-8eee-7073ed534805",
+        "name": "Sadie",
+        "password": "private",
+        "surname": "Lynch",
+        "post": "Principal Identity Coordinator",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "f8d3b73a-de0c-4a28-9a11-7ee4ce17b022",
+        "name": "Melvina",
+        "password": "private",
+        "surname": "Jakubowski",
+        "post": "Global Tactics Director",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "15863b2b-cc6b-479a-bfa8-4d94878cb139",
+        "name": "Eugenia",
+        "password": "private",
+        "surname": "Herman",
+        "post": "Global Brand Planner",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "0a9071fc-7a69-48d8-af53-986b8d6665cd",
+        "name": "Bulah",
+        "password": "private",
+        "surname": "Bins",
+        "post": "Customer Optimization Director",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "d2ffb8a8-c498-48b7-aab5-d848d80fb6dc",
+        "name": "Annabelle",
+        "password": "private",
+        "surname": "Schumm",
+        "post": "Senior Division Associate",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "1844f985-e5b7-48d4-b629-7dca257c7da6",
+        "name": "Aylin",
+        "password": "private",
+        "surname": "Kunze",
+        "post": "Senior Identity Analyst",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "810ca7d6-38a3-412c-ace7-7216804ad76b",
+        "name": "Lisandro",
+        "password": "private",
+        "surname": "Heaney",
+        "post": "Senior Response Developer",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "01521388-26c3-41da-bb39-5f668ce2a9fd",
+        "name": "Nelson",
+        "password": "private",
+        "surname": "Mayer",
+        "post": "International Data Engineer",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "6020abae-d85b-493e-88c6-a9e7ccb52833",
+        "name": "Emmanuel",
+        "password": "private",
+        "surname": "Leannon",
+        "post": "Legacy Group Coordinator",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "7f3fb724-45dd-4dbb-a06a-05e7fb18755a",
+        "name": "Aglae",
+        "password": "private",
+        "surname": "Robel",
+        "post": "Human Assurance Analyst",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "c5af56c0-57c0-4462-87be-f85d7c959a6c",
+        "name": "Braeden",
+        "password": "private",
+        "surname": "Watsica",
+        "post": "Global Operations Designer",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "18803c3a-b3a8-47c6-b17e-f8260d59e08d",
+        "name": "Jerel",
+        "password": "private",
+        "surname": "Cruickshank",
+        "post": "Legacy Quality Associate",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "6671219a-fa75-40c1-b223-fd5e66429a50",
+        "name": "Demarcus",
+        "password": "private",
+        "surname": "Gulgowski",
+        "post": "Forward Markets Director",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "9b6a5704-d943-409e-9a3f-bdafbe302fde",
+        "name": "Braden",
+        "password": "private",
+        "surname": "Pacocha",
+        "post": "Lead Identity Architect",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "00704165-8bb7-4693-ae84-dc09f4fadc21",
+        "name": "Frederick",
+        "password": "private",
+        "surname": "Botsford",
+        "post": "Internal Assurance Technician",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "53cf4ce7-80a2-46fc-9527-ba2393ef3d7b",
+        "name": "Sean",
+        "password": "private",
+        "surname": "Kuphal",
+        "post": "Product Marketing Developer",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "fcd0e236-7102-4862-9430-c6b3d3867ffd",
+        "name": "Myrtie",
+        "password": "private",
+        "surname": "McDermott",
+        "post": "Direct Identity Architect",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "6bd252f0-e32d-4d4d-927e-c4d8ee4403ba",
+        "name": "Jordyn",
+        "password": "private",
+        "surname": "Welch",
+        "post": "District Program Supervisor",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "87e8671c-6759-4d53-b701-0065a56c0cd6",
+        "name": "Vivianne",
+        "password": "private",
+        "surname": "Mertz",
+        "post": "Human Functionality Liaison",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "ba949d0f-f3ca-4be1-ac16-e6d3022ac896",
+        "name": "Myah",
+        "password": "private",
+        "surname": "Weimann",
+        "post": "Direct Response Officer",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "58968bb0-bd62-4e0c-a53e-9e9bd0e93c76",
+        "name": "Carrie",
+        "password": "private",
+        "surname": "Farrell",
+        "post": "Internal Response Producer",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "a11ab7b9-d7b4-4712-ac40-1d16a9d99199",
+        "name": "Kevon",
+        "password": "private",
+        "surname": "Davis",
+        "post": "District Data Producer",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "24290a15-2b78-48a4-ab47-3cf50a178002",
+        "name": "Shakira",
+        "password": "private",
+        "surname": "Marquardt",
+        "post": "International Optimization Analyst",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "3e3a16d6-00dc-4741-b7b9-43032a296350",
+        "name": "Coy",
+        "password": "private",
+        "surname": "Shanahan",
+        "post": "Dynamic Security Strategist",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "5b6663a3-e603-49e2-b9a9-1c79a63fac15",
+        "name": "Judson",
+        "password": "private",
+        "surname": "Johns",
+        "post": "Internal Interactions Designer",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "62f4974c-5174-4653-ae16-552d36ce8d54",
+        "name": "Zachery",
+        "password": "private",
+        "surname": "Rohan",
+        "post": "District Division Liaison",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "cdae517f-0aa4-48c9-b97e-e812305d8ded",
+        "name": "Kolby",
+        "password": "private",
+        "surname": "Paucek",
+        "post": "Investor Identity Executive",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "f3d92dd9-02c8-4ab6-8cce-d6bc4531bb57",
+        "name": "Kara",
+        "password": "private",
+        "surname": "Gaylord",
+        "post": "Central Division Engineer",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "48a16a73-a96f-4f18-bff4-23aa45bf7d2b",
+        "name": "Nat",
+        "password": "private",
+        "surname": "Kuhic",
+        "post": "Direct Applications Planner",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "b565755d-fcc4-44d5-8301-05c3719bcca3",
+        "name": "Corene",
+        "password": "private",
+        "surname": "Lowe",
+        "post": "Future Creative Assistant",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "866ef5f5-5703-4783-9808-e9a0351d2b2c",
+        "name": "Daniela",
+        "password": "private",
+        "surname": "O'Conner",
+        "post": "International Markets Supervisor",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "6567e056-a018-4559-9b9b-7036b884336a",
+        "name": "Asia",
+        "password": "private",
+        "surname": "Schowalter",
+        "post": "Investor Infrastructure Director",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "31799fb6-737e-40a8-8f17-8a7cec956117",
+        "name": "Julio",
+        "password": "private",
+        "surname": "Abbott",
+        "post": "Lead Quality Liaison",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "780a8b33-aab8-460b-a6ad-66c90ac3cabf",
+        "name": "Norwood",
+        "password": "private",
+        "surname": "Jacobi",
+        "post": "Internal Implementation Representative",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "ae11b86d-e313-4a1b-85d0-fc61fa0a18bb",
+        "name": "Perry",
+        "password": "private",
+        "surname": "Zieme",
+        "post": "Product Solutions Coordinator",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "4e6b25b8-c4a8-4821-98d3-05fea07b190e",
+        "name": "Wallace",
+        "password": "private",
+        "surname": "Lehner",
+        "post": "Internal Data Analyst",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "fdd7f021-1517-40f8-9c17-2a6cd872a747",
+        "name": "Meda",
+        "password": "private",
+        "surname": "Gibson",
+        "post": "Dynamic Metrics Coordinator",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "3ce4799c-4c5b-4a86-befa-9dc2416d63be",
+        "name": "Jazlyn",
+        "password": "private",
+        "surname": "Hills",
+        "post": "Direct Interactions Architect",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "c9bea881-7d23-492f-9196-1cd049c8070a",
+        "name": "Hyman",
+        "password": "private",
+        "surname": "Smith",
+        "post": "Product Quality Assistant",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "00589ea7-0899-4f14-9487-2ab8e7df335f",
+        "name": "Jason",
+        "password": "private",
+        "surname": "Price",
+        "post": "Central Program Engineer",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "a8a0248b-5927-421e-bb56-4a1de7bf8b94",
+        "name": "Kailee",
+        "password": "private",
+        "surname": "Becker",
+        "post": "Lead Brand Coordinator",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "57b431f5-f277-4d1e-9216-e744c5831c61",
+        "name": "Abe",
+        "password": "private",
+        "surname": "Kovacek",
+        "post": "Central Tactics Executive",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "6e978c64-f798-4887-b9a0-ff30a2af23b1",
+        "name": "Roberto",
+        "password": "private",
+        "surname": "Schaden",
+        "post": "Dynamic Accounts Manager",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "4eea2e3e-7081-43f8-9861-94e91102e4f8",
+        "name": "Dudley",
+        "password": "private",
+        "surname": "Ziemann",
+        "post": "Forward Data Officer",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "7fc96eeb-1a79-4e05-8f74-7af1dcbb2ceb",
+        "name": "Karlee",
+        "password": "private",
+        "surname": "Brown",
+        "post": "Direct Brand Executive",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "94b556f0-8067-43b1-84ce-eedf3c5b092b",
+        "name": "Salma",
+        "password": "private",
+        "surname": "Kohler",
+        "post": "Investor Response Specialist",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "f6411279-c5e6-4c5f-83cf-9f3fe942f3a2",
+        "name": "Luisa",
+        "password": "private",
+        "surname": "Gulgowski",
+        "post": "Product Solutions Technician",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "4d1baa9c-9b21-4cf3-a5f6-193dcb8ee958",
+        "name": "Daniela",
+        "password": "private",
+        "surname": "Becker",
+        "post": "Lead Response Architect",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "a9d58ba0-7c2d-4832-a85d-85b1a1a72795",
+        "name": "Abraham",
+        "password": "private",
+        "surname": "Prosacco",
+        "post": "Central Assurance Technician",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "88fcc4e0-4874-44ac-a3ad-2f889a3c12a2",
+        "name": "Hilma",
+        "password": "private",
+        "surname": "Dibbert",
+        "post": "Global Configuration Planner",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "aee7fdce-5efa-40be-89ae-a153e26b4c8b",
+        "name": "Gordon",
+        "password": "private",
+        "surname": "Hyatt",
+        "post": "Central Program Developer",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "a5aa6700-c3c5-4bd0-b7e0-20f9910a4b6f",
+        "name": "Kathryne",
+        "password": "private",
+        "surname": "Harvey",
+        "post": "Forward Accounts Supervisor",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "8222b5dc-4c69-4aba-a722-c7b9138dfbca",
+        "name": "Marlon",
+        "password": "private",
+        "surname": "Lynch",
+        "post": "Customer Paradigm Assistant",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "492c159b-7ff1-4f63-9c49-86a6ea0d94f4",
+        "name": "Doug",
+        "password": "private",
+        "surname": "Schimmel",
+        "post": "Internal Optimization Manager",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "13f0b04d-2fad-4d87-89bc-65e46f67b096",
+        "name": "Philip",
+        "password": "private",
+        "surname": "Pfeffer",
+        "post": "Internal Configuration Coordinator",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "941f1e6f-87b4-4f02-8366-3e0c4374ccbd",
+        "name": "Hellen",
+        "password": "private",
+        "surname": "Corwin",
+        "post": "Dynamic Metrics Architect",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "115abdc8-1e27-4c74-ac80-9f32079e6fd4",
+        "name": "Kaia",
+        "password": "private",
+        "surname": "MacGyver",
+        "post": "International Factors Associate",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "aada404b-3fd5-4f9f-9aec-a86048355c57",
+        "name": "Ervin",
+        "password": "private",
+        "surname": "Koss",
+        "post": "District Creative Specialist",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "f0bf99ad-66e2-413b-8ae9-d9a0fee540ea",
+        "name": "Cassandra",
+        "password": "private",
+        "surname": "Morissette",
+        "post": "Principal Branding Developer",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "36c86b6b-1db2-4853-a62c-5e409240f179",
+        "name": "Janie",
+        "password": "private",
+        "surname": "Funk",
+        "post": "Senior Interactions Director",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "b04290dc-9f06-4342-8f6e-480f44a2e848",
+        "name": "Carlie",
+        "password": "private",
+        "surname": "Reichert",
+        "post": "Dynamic Division Administrator",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "7ec53e45-57a5-468a-ba87-cd859f65cb13",
+        "name": "Magdalena",
+        "password": "private",
+        "surname": "Davis",
+        "post": "Dynamic Mobility Specialist",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "8229a2f4-3e88-4cf0-9bfe-7467ab8abaaa",
+        "name": "Felipa",
+        "password": "private",
+        "surname": "Osinski",
+        "post": "Human Implementation Engineer",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "1a78b970-13d6-43d2-baba-1d23291a9548",
+        "name": "Horace",
+        "password": "private",
+        "surname": "McCullough",
+        "post": "Regional Branding Administrator",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "f916c04a-16cd-42e5-a506-9b5d4ebab3e8",
+        "name": "Evie",
+        "password": "private",
+        "surname": "Conroy",
+        "post": "National Branding Strategist",
+        "roles": "EMPLOYEE"
+      },
+      {
+        "id": "b366e349-4c21-4a2c-90b9-c117e610c6c9",
+        "name": "Adolph",
+        "password": "private",
+        "surname": "McLaughlin",
+        "post": "Forward Operations Planner",
+        "roles": "CHIEF"
+      },
+      {
+        "id": "b23c3c89-8db2-4712-9e14-54889718ef30",
+        "name": "Devin",
+        "password": "private",
+        "surname": "Schulist",
+        "post": "Customer Marketing Facilitator",
+        "roles": "CHIEF"
+      }
+    ]
+  ],
+  "meetups": [
+    {
+      "id": "aaa-aaa-aaa-aaa",
+      "modified": "2021-08-27T04:38:33.816Z",
+      "start": "2022-06-09T23:35:47.068Z",
+      "finish": "2022-06-10T02:51:47.068Z",
+      "author": {
+        "id": "uuu-aaa",
+        "name": "employee",
+        "surname": "Gerlach"
+      },
+      "speakers": [
+        {
+          "id": "uuu-aaa",
+          "name": "employee",
+          "surname": "Gerlach"
+        }
+      ],
+      "subject": "Reverse-engineered even-keeled standardization",
+      "excerpt": "Nemo pariatur dolores ut vero velit non. Quidem temporibus quod nihil amet recusandae atque provident voluptatum iste. Aut architecto cum sit rerum aliquam maxime. Ratione voluptate optio id molestias quia quidem ipsam. Eius voluptatem quia dolores enim assumenda. Consequuntur cupiditate error earum hic est numquam vero.",
+      "place": "630 Goyette Causeway",
+      "goCount": 64,
+      "status": "CONFIRMED",
+      "isOver": false,
+      "meta": {}
+    },
+    {
+      "id": "aa8a811a-15ba-4d36-b250-2c610e73d29c",
+      "modified": "2022-04-18T03:54:32.304Z",
+      "start": "2023-05-27T07:08:53.081Z",
+      "finish": "2023-05-27T08:11:53.081Z",
+      "author": {
+        "id": "uuu-aaa",
+        "name": "employee",
+        "surname": "Gerlach"
+      },
+      "speakers": [
+        {
+          "id": "uuu-aaa",
+          "name": "employee",
+          "surname": "Gerlach"
+        }
+      ],
+      "subject": "Advanced system-worthy function",
+      "excerpt": "Magni voluptas nemo quasi. Voluptate sint vel sapiente dolor porro. Officiis sunt facilis nulla odit omnis. Architecto ab veritatis debitis facilis. Voluptatem dolor omnis. Et necessitatibus dignissimos et error fuga laudantium blanditiis cum.",
+      "place": "568 Anabel Turnpike",
+      "goCount": -5,
+      "status": "CONFIRMED",
+      "isOver": false,
+      "meta": {}
+    },
+    {
+      "id": "8301064e-c4ff-49a1-986c-1ed23516584c",
+      "modified": "2022-10-29T12:24:52.536Z",
+      "start": "2024-02-07T16:42:06.070Z",
+      "finish": "2024-02-07T18:24:06.070Z",
+      "author": {
+        "id": "uuu-aaa",
+        "name": "employee",
+        "surname": "Gerlach"
+      },
+      "speakers": [
+        {
+          "id": "uuu-aaa",
+          "name": "employee",
+          "surname": "Gerlach"
+        }
+      ],
+      "subject": "Enterprise-wide neutral hub",
+      "excerpt": "Nihil vel facilis doloremque voluptate eligendi. Sit voluptatibus occaecati rem. Cumque vero vel rerum repellat.",
+      "place": "2815 Conor Shores",
+      "goCount": 0,
+      "status": "CONFIRMED",
+      "isOver": false,
+      "meta": {}
+    },
+    {
+      "id": "2db4e18c-fc22-43bd-bfc2-7271ee3a8369",
+      "modified": "2022-11-10T14:57:09.177Z",
+      "start": "2023-10-20T23:07:38.403Z",
+      "finish": "2023-10-20T23:51:38.403Z",
+      "author": {
+        "id": "uuu-aaa",
+        "name": "employee",
+        "surname": "Gerlach"
+      },
+      "speakers": [
+        {
+          "id": "uuu-aaa",
+          "name": "employee",
+          "surname": "Gerlach"
+        }
+      ],
+      "subject": "Versatile heuristic solution",
+      "excerpt": "Rem culpa sunt labore recusandae. Ut iste quasi deleniti et eius. Et et tempore consequatur eos voluptas natus fugit similique. Consectetur sint velit quo impedit odit aut.",
+      "place": "75847 Quitzon Walks",
+      "goCount": -4,
+      "status": "REQUEST",
+      "isOver": false,
+      "meta": {}
+    },
+    {
+      "id": "ef7edf22-01a1-4eaf-9e81-203f820a6a84",
+      "modified": "2022-05-16T05:17:37.311Z",
+      "start": "2023-07-01T09:22:49.149Z",
+      "finish": "2023-07-01T12:11:49.149Z",
+      "author": {
+        "id": "uuu-aaa",
+        "name": "employee",
+        "surname": "Gerlach"
+      },
+      "speakers": [
+        {
+          "id": "uuu-aaa",
+          "name": "employee",
+          "surname": "Gerlach"
+        }
+      ],
+      "subject": "Quality-focused system-worthy access",
+      "excerpt": "Ad ut culpa corrupti ea maxime reiciendis impedit non ut. Commodi qui consequatur soluta ut quo rerum sunt voluptas neque. Sequi error voluptates tempore accusantium qui quam explicabo eum qui.",
+      "place": "83011 Naomie Parkway",
+      "goCount": -5,
+      "status": "CONFIRMED",
+      "isOver": false,
+      "meta": {}
+    },
+    {
+      "id": "a3586f44-d03a-4a46-8fcb-7e078f55ccc4",
+      "modified": "2022-06-24T20:26:48.512Z",
+      "start": "2023-11-27T12:18:18.818Z",
+      "finish": "2023-11-27T13:35:18.818Z",
+      "author": {
+        "id": "uuu-aaa",
+        "name": "employee",
+        "surname": "Gerlach"
+      },
+      "speakers": [
+        {
+          "id": "uuu-aaa",
+          "name": "employee",
+          "surname": "Gerlach"
+        }
+      ],
+      "subject": "Multi-layered systematic forecast",
+      "excerpt": "Assumenda rerum corrupti. Qui hic aperiam quas quis voluptatem. Repellendus quidem quia ab voluptas saepe ea atque.",
+      "place": "8627 Beverly Road",
+      "goCount": 0,
+      "status": "DRAFT",
+      "isOver": false,
+      "meta": {}
+    },
+    {
+      "id": "54243b3f-17e3-4946-b3cd-257e66da2e7d",
+      "modified": "2023-01-13T19:33:48.468Z",
+      "start": "2023-06-18T14:27:39.250Z",
+      "finish": "2023-06-18T16:09:39.250Z",
+      "author": {
+        "id": "uuu-aaa",
+        "name": "employee",
+        "surname": "Gerlach"
+      },
+      "speakers": [
+        {
+          "id": "uuu-aaa",
+          "name": "employee",
+          "surname": "Gerlach"
+        }
+      ],
+      "subject": "Automated foreground adapter",
+      "excerpt": "Voluptatem voluptatum impedit ad ullam voluptatum. Officia maiores pariatur quo. Nemo explicabo impedit non. Saepe odio excepturi itaque sint libero similique aut velit. Molestias totam minus quia qui mollitia ipsa voluptas qui natus. Voluptas ducimus quidem sapiente at possimus impedit sit quia.",
+      "place": "37227 DuBuque Summit",
+      "goCount": -4,
+      "status": "DRAFT",
+      "isOver": false,
+      "meta": {}
+    },
+    {
+      "id": "6836d9ae-2418-4e22-bacb-5dbaba6be467",
+      "modified": "2023-01-28T19:43:52.724Z",
+      "start": "2023-04-28T13:19:50.100Z",
+      "finish": "2023-04-28T14:30:50.100Z",
+      "author": {
+        "id": "uuu-aaa",
+        "name": "employee",
+        "surname": "Gerlach"
+      },
+      "speakers": [
+        {
+          "id": "uuu-aaa",
+          "name": "employee",
+          "surname": "Gerlach"
+        }
+      ],
+      "subject": "Reduced analyzing product",
+      "excerpt": "Sed ut ducimus laboriosam debitis facere et temporibus facere. Architecto voluptatem et earum minima magnam eos. Veritatis expedita et. Odit sint delectus et ab ea optio. Corrupti sint laboriosam maiores repudiandae cum et est quo necessitatibus. Beatae aut molestiae nemo molestiae placeat perspiciatis consequuntur sapiente.",
+      "place": "7694 Angus Pines",
+      "goCount": -5,
+      "status": "DRAFT",
+      "isOver": false,
+      "meta": {}
+    },
+    {
+      "id": "95948711-6e07-448f-b327-cd39027da906",
+      "modified": "2022-12-03T20:14:24.174Z",
+      "start": "2023-09-18T03:33:31.116Z",
+      "finish": "2023-09-18T06:05:31.116Z",
+      "author": {
+        "id": "uuu-aaa",
+        "name": "employee",
+        "surname": "Gerlach"
+      },
+      "speakers": [
+        {
+          "id": "uuu-aaa",
+          "name": "employee",
+          "surname": "Gerlach"
+        }
+      ],
+      "subject": "Automated secondary strategy",
+      "excerpt": "Quia qui doloremque sit sint quia tempora voluptatem. Molestiae id earum quo modi voluptatem enim quasi aut aspernatur. Quis at voluptas quasi est recusandae ut tempora dolor. Alias voluptatum quo alias.",
+      "place": "1366 Cummings Dam",
+      "goCount": -2,
+      "status": "DRAFT",
+      "isOver": false,
+      "meta": {}
+    },
+    {
+      "id": "34f4bba4-54f7-4896-baf8-921d37b183fc",
+      "modified": "2022-02-22T19:04:10.060Z",
+      "start": "2023-10-11T15:50:05.604Z",
+      "finish": "2023-10-11T17:02:05.604Z",
+      "author": {
+        "id": "uuu-aaa",
+        "name": "employee",
+        "surname": "Gerlach"
+      },
+      "speakers": [
+        {
+          "id": "uuu-aaa",
+          "name": "employee",
+          "surname": "Gerlach"
+        }
+      ],
+      "subject": "Team-oriented demand-driven productivity",
+      "excerpt": "Distinctio dolor libero sit porro itaque et error consequatur ipsam. Rem quis perferendis earum repellat qui. Iusto nam perferendis. Qui quas exercitationem enim. Ut sit corporis est quis fugit voluptas aut dolores tenetur. Qui quia autem voluptatem blanditiis consequuntur odio est voluptatem ullam.",
+      "place": "918 Clovis Glens",
+      "goCount": 0,
+      "status": "CONFIRMED",
+      "isOver": false,
+      "meta": {}
+    },
+    {
+      "id": "7dfa9182-6e95-4d51-a193-d075465ff793",
+      "modified": "2022-03-27T09:19:58.585Z",
+      "start": "2023-12-25T17:41:41.013Z",
+      "finish": "2023-12-25T19:28:41.013Z",
+      "author": {
+        "id": "uuu-aaa",
+        "name": "employee",
+        "surname": "Gerlach"
+      },
+      "speakers": [
+        {
+          "id": "uuu-aaa",
+          "name": "employee",
+          "surname": "Gerlach"
+        }
+      ],
+      "subject": "Extended bifurcated help-desk",
+      "excerpt": "Minus ea eius officiis molestiae numquam. Ut dolorum dolor labore omnis porro est. Nobis quia occaecati molestiae. Sed eum ut autem.",
+      "place": "9232 Dameon Parkways",
+      "goCount": -5,
+      "status": "REQUEST",
+      "isOver": false,
+      "meta": {}
+    },
+    {
+      "id": "48baac70-3866-4586-8759-bd9d82189645",
+      "modified": "2022-04-12T22:19:00.681Z",
+      "start": "2023-05-29T08:16:19.273Z",
+      "finish": "2023-05-29T08:35:19.273Z",
+      "author": {
+        "id": "uuu-aaa",
+        "name": "employee",
+        "surname": "Gerlach"
+      },
+      "speakers": [
+        {
+          "id": "uuu-aaa",
+          "name": "employee",
+          "surname": "Gerlach"
+        }
+      ],
+      "subject": "Enhanced mobile Graphic Interface",
+      "excerpt": "Rerum magnam non id. Aut soluta aliquid in aut aut dolorem ea excepturi officiis. Optio molestiae et numquam. Minus ex laborum in.",
+      "place": "166 Scotty Neck",
+      "goCount": -1,
+      "status": "CONFIRMED",
+      "isOver": false,
+      "meta": {}
+    },
+    {
+      "id": "fa3d9842-b4af-4688-b97f-181ce4ab984c",
+      "modified": "2022-10-16T06:37:58.820Z",
+      "start": "2023-08-27T06:04:34.813Z",
+      "finish": "2023-08-27T06:49:34.813Z",
+      "author": {
+        "id": "uuu-aaa",
+        "name": "employee",
+        "surname": "Gerlach"
+      },
+      "speakers": [
+        {
+          "id": "uuu-aaa",
+          "name": "employee",
+          "surname": "Gerlach"
+        }
+      ],
+      "subject": "Right-sized optimal process improvement",
+      "excerpt": "Aut nam laudantium et aliquid explicabo quia quo labore. Est exercitationem doloremque dicta illum nulla doloribus rerum. Natus consectetur sint nostrum ducimus eaque dicta sit qui eum. Nesciunt similique laboriosam et. Voluptate recusandae perspiciatis.",
+      "place": "9620 Lenora Row",
+      "goCount": 0,
+      "status": "REQUEST",
+      "isOver": false,
+      "meta": {}
+    },
+    {
+      "id": "02e5e068-f7ea-46a6-8a0e-2da8f5cb5c41",
+      "modified": "2022-11-07T16:40:51.816Z",
+      "start": "2023-04-25T07:04:26.945Z",
+      "finish": "2023-04-25T10:24:26.945Z",
+      "author": {
+        "id": "uuu-aaa",
+        "name": "employee",
+        "surname": "Gerlach"
+      },
+      "speakers": [
+        {
+          "id": "uuu-aaa",
+          "name": "employee",
+          "surname": "Gerlach"
+        }
+      ],
+      "subject": "Expanded 24/7 system engine",
+      "excerpt": "Facilis sequi quo fugiat. Molestiae eum ducimus pariatur voluptas omnis voluptate. Quia earum assumenda quos dolores rerum. Magnam ea qui. Dolor quasi sunt nisi. Quod error est tempora.",
+      "place": "832 Bartoletti Prairie",
+      "goCount": -7,
+      "status": "DRAFT",
+      "isOver": false,
+      "meta": {}
+    },
+    {
+      "id": "34488f19-9786-4d28-974d-ca3caa363119",
+      "modified": "2022-10-01T20:48:54.648Z",
+      "start": "2023-10-03T19:15:36.675Z",
+      "finish": "2023-10-03T22:04:36.675Z",
+      "author": {
+        "id": "uuu-aaa",
+        "name": "employee",
+        "surname": "Gerlach"
+      },
+      "speakers": [
+        {
+          "id": "uuu-aaa",
+          "name": "employee",
+          "surname": "Gerlach"
+        }
+      ],
+      "subject": "Reduced executive project",
+      "excerpt": "Ad ex error aliquid minima vel laudantium aut. Possimus nihil occaecati eum ut illum possimus vel. Nihil placeat et autem ad explicabo qui voluptate id. Voluptatem eos minima nulla. Ipsa illo quos earum aut.",
+      "place": "3979 Crona Trafficway",
+      "goCount": -2,
+      "status": "CONFIRMED",
+      "isOver": false,
+      "meta": {}
+    },
+    {
+      "id": "27e0e89a-367a-450e-802f-035b2173f766",
+      "modified": "2022-03-07T21:23:22.240Z",
+      "start": "2023-10-23T20:27:51.163Z",
+      "finish": "2023-10-23T21:55:51.163Z",
+      "author": {
+        "id": "uuu-aaa",
+        "name": "employee",
+        "surname": "Gerlach"
+      },
+      "speakers": [
+        {
+          "id": "uuu-aaa",
+          "name": "employee",
+          "surname": "Gerlach"
+        }
+      ],
+      "subject": "User-friendly needs-based neural-net",
+      "excerpt": "Non saepe suscipit praesentium explicabo accusantium ut sed at. Quia quas reprehenderit. Adipisci itaque ut. Praesentium illum aut sed. Voluptatem et beatae delectus non ut sed illo autem omnis. Occaecati alias magni quae qui laudantium.",
+      "place": "1602 Nick Meadows",
+      "goCount": -6,
+      "status": "DRAFT",
+      "isOver": false,
+      "meta": {}
+    },
+    {
+      "id": "fe534bf1-1b59-4b14-97f1-93446ce59e6d",
+      "modified": "2022-11-12T02:44:53.658Z",
+      "start": "2023-03-17T02:39:57.369Z",
+      "finish": "2023-03-17T04:26:57.369Z",
+      "author": {
+        "id": "uuu-aaa",
+        "name": "employee",
+        "surname": "Gerlach"
+      },
+      "speakers": [
+        {
+          "id": "uuu-aaa",
+          "name": "employee",
+          "surname": "Gerlach"
+        }
+      ],
+      "subject": "Pre-emptive optimizing paradigm",
+      "excerpt": "Sed animi ipsum. Deserunt ducimus iure. Cumque velit consectetur sunt.",
+      "place": "5734 Adolfo Plaza",
+      "goCount": -5,
+      "status": "DRAFT",
+      "isOver": false,
+      "meta": {}
+    },
+    {
+      "id": "05872d63-2b29-4804-ac1d-c6c6774967a9",
+      "modified": "2022-07-05T21:19:50.934Z",
+      "start": "2023-02-28T21:19:29.089Z",
+      "finish": "2023-02-28T21:43:29.089Z",
+      "author": {
+        "id": "uuu-aaa",
+        "name": "employee",
+        "surname": "Gerlach"
+      },
+      "speakers": [
+        {
+          "id": "uuu-aaa",
+          "name": "employee",
+          "surname": "Gerlach"
+        }
+      ],
+      "subject": "Face to face motivating analyzer",
+      "excerpt": "A similique at. Blanditiis est earum quibusdam eaque. Ratione rerum quos et recusandae est dolores repudiandae.",
+      "place": "64858 Kautzer Island",
+      "goCount": -3,
+      "status": "CONFIRMED",
+      "isOver": false,
+      "meta": {}
+    },
+    {
+      "id": "b21f4dd8-f0df-4932-b467-4535406b1712",
+      "modified": "2022-09-03T02:04:53.344Z",
+      "start": "2023-03-29T23:09:49.851Z",
+      "finish": "2023-03-30T02:46:49.851Z",
+      "author": {
+        "id": "uuu-aaa",
+        "name": "employee",
+        "surname": "Gerlach"
+      },
+      "speakers": [
+        {
+          "id": "uuu-aaa",
+          "name": "employee",
+          "surname": "Gerlach"
+        }
+      ],
+      "subject": "Operative didactic definition",
+      "excerpt": "Et quas quia vel quo nemo ut odio quae. Doloremque molestiae cupiditate natus. Facilis dolor amet ea optio et ad.",
+      "place": "365 VonRueden Spring",
+      "goCount": -1,
+      "status": "CONFIRMED",
+      "isOver": false,
+      "meta": {}
+    },
+    {
+      "id": "42924166-bdf7-4e4e-97a1-22171c6388ad",
+      "modified": "2022-03-08T08:26:05.024Z",
+      "start": "2023-10-06T04:05:24.470Z",
+      "finish": "2023-10-06T06:45:24.470Z",
+      "author": {
+        "id": "uuu-aaa",
+        "name": "employee",
+        "surname": "Gerlach"
+      },
+      "speakers": [
+        {
+          "id": "uuu-aaa",
+          "name": "employee",
+          "surname": "Gerlach"
+        }
+      ],
+      "subject": "Triple-buffered regional portal",
+      "excerpt": "In assumenda quisquam asperiores. Nesciunt iure aperiam aut qui nostrum. Magni sequi dolor totam et itaque rerum. Placeat veritatis unde voluptatum. Similique dolorem itaque. Possimus est non minima vel doloribus quo et.",
+      "place": "762 Parker Club",
+      "goCount": -6,
+      "status": "CONFIRMED",
+      "isOver": false,
+      "meta": {}
+    },
+    {
+      "id": "1ba4484b-2e85-4c0a-b567-809c771aaab8",
+      "modified": "2022-03-05T20:47:08.296Z",
+      "start": "2023-03-12T06:04:20.916Z",
+      "finish": "2023-03-12T09:38:20.916Z",
+      "author": {
+        "id": "uuu-aaa",
+        "name": "employee",
+        "surname": "Gerlach"
+      },
+      "speakers": [
+        {
+          "id": "uuu-aaa",
+          "name": "employee",
+          "surname": "Gerlach"
+        }
+      ],
+      "subject": "Streamlined actuating functionalities",
+      "excerpt": "Sit quo veniam perspiciatis tenetur commodi. Aliquam aut dolore maiores quo cumque. Enim labore quasi tempore officia ut beatae veritatis consequatur. Delectus nam consequatur nihil sapiente.",
+      "place": "364 Terry Creek",
+      "goCount": -1,
+      "status": "DRAFT",
+      "isOver": false,
+      "meta": {}
+    }
+  ],
+  "participants": {
+    "aaa-aaa-aaa-aaa": [],
+    "aa8a811a-15ba-4d36-b250-2c610e73d29c": [
+      {}
+    ],
+    "8301064e-c4ff-49a1-986c-1ed23516584c": [
+      {}
+    ],
+    "2db4e18c-fc22-43bd-bfc2-7271ee3a8369": [
+      {}
+    ],
+    "ef7edf22-01a1-4eaf-9e81-203f820a6a84": [
+      {
+        "id": "uuu-bbb",
+        "name": "chief",
+        "surname": "Blick"
+      },
+      {}
+    ],
+    "a3586f44-d03a-4a46-8fcb-7e078f55ccc4": [
+      {
+        "id": "uuu-aaa",
+        "name": "employee",
+        "surname": "Gerlach"
+      },
+      {}
+    ],
+    "54243b3f-17e3-4946-b3cd-257e66da2e7d": [],
+    "6836d9ae-2418-4e22-bacb-5dbaba6be467": [
+      {
+        "id": "uuu-aaa",
+        "name": "employee",
+        "surname": "Gerlach"
+      },
+      {
+        "id": "uuu-bbb",
+        "name": "chief",
+        "surname": "Blick"
+      },
+      {}
+    ],
+    "95948711-6e07-448f-b327-cd39027da906": [
+      {
+        "id": "uuu-bbb",
+        "name": "chief",
+        "surname": "Blick"
+      },
+      {}
+    ],
+    "34f4bba4-54f7-4896-baf8-921d37b183fc": [
+      {
+        "id": "uuu-bbb",
+        "name": "chief",
+        "surname": "Blick"
+      },
+      {}
+    ],
+    "7dfa9182-6e95-4d51-a193-d075465ff793": [],
+    "48baac70-3866-4586-8759-bd9d82189645": [],
+    "fa3d9842-b4af-4688-b97f-181ce4ab984c": [
+      {
+        "id": "uuu-bbb",
+        "name": "chief",
+        "surname": "Blick"
+      }
+    ],
+    "02e5e068-f7ea-46a6-8a0e-2da8f5cb5c41": [],
+    "34488f19-9786-4d28-974d-ca3caa363119": [
+      {
+        "id": "uuu-aaa",
+        "name": "employee",
+        "surname": "Gerlach"
+      }
+    ],
+    "27e0e89a-367a-450e-802f-035b2173f766": [
+      {
+        "id": "uuu-bbb",
+        "name": "chief",
+        "surname": "Blick"
+      }
+    ],
+    "fe534bf1-1b59-4b14-97f1-93446ce59e6d": [
+      {
+        "id": "uuu-aaa",
+        "name": "employee",
+        "surname": "Gerlach"
+      }
+    ],
+    "05872d63-2b29-4804-ac1d-c6c6774967a9": [
+      {
+        "id": "uuu-aaa",
+        "name": "employee",
+        "surname": "Gerlach"
+      }
+    ],
+    "b21f4dd8-f0df-4932-b467-4535406b1712": [
+      {
+        "id": "uuu-aaa",
+        "name": "employee",
+        "surname": "Gerlach"
+      },
+      {
+        "id": "uuu-bbb",
+        "name": "chief",
+        "surname": "Blick"
+      },
+      {}
+    ],
+    "42924166-bdf7-4e4e-97a1-22171c6388ad": [
+      {
+        "id": "uuu-aaa",
+        "name": "employee",
+        "surname": "Gerlach"
+      }
+    ],
+    "1ba4484b-2e85-4c0a-b567-809c771aaab8": [
+      {
+        "id": "uuu-bbb",
+        "name": "chief",
+        "surname": "Blick"
+      },
+      {}
+    ]
+  },
+  "votedUsers": {
+    "aaa-aaa-aaa-aaa": [],
+    "aa8a811a-15ba-4d36-b250-2c610e73d29c": [
+      {
+        "id": "uuu-bbb",
+        "name": "chief",
+        "surname": "Blick"
+      }
+    ],
+    "8301064e-c4ff-49a1-986c-1ed23516584c": [],
+    "2db4e18c-fc22-43bd-bfc2-7271ee3a8369": [],
+    "ef7edf22-01a1-4eaf-9e81-203f820a6a84": [
+      {
+        "id": "uuu-bbb",
+        "name": "chief",
+        "surname": "Blick"
+      }
+    ],
+    "a3586f44-d03a-4a46-8fcb-7e078f55ccc4": [
+      {}
+    ],
+    "54243b3f-17e3-4946-b3cd-257e66da2e7d": [
+      {
+        "id": "uuu-aaa",
+        "name": "employee",
+        "surname": "Gerlach"
+      },
+      {}
+    ],
+    "6836d9ae-2418-4e22-bacb-5dbaba6be467": [],
+    "95948711-6e07-448f-b327-cd39027da906": [],
+    "34f4bba4-54f7-4896-baf8-921d37b183fc": [
+      {
+        "id": "uuu-aaa",
+        "name": "employee",
+        "surname": "Gerlach"
+      },
+      {
+        "id": "uuu-bbb",
+        "name": "chief",
+        "surname": "Blick"
+      },
+      {}
+    ],
+    "7dfa9182-6e95-4d51-a193-d075465ff793": [],
+    "48baac70-3866-4586-8759-bd9d82189645": [
+      {
+        "id": "uuu-aaa",
+        "name": "employee",
+        "surname": "Gerlach"
+      }
+    ],
+    "fa3d9842-b4af-4688-b97f-181ce4ab984c": [
+      {
+        "id": "uuu-bbb",
+        "name": "chief",
+        "surname": "Blick"
+      }
+    ],
+    "02e5e068-f7ea-46a6-8a0e-2da8f5cb5c41": [
+      {
+        "id": "uuu-aaa",
+        "name": "employee",
+        "surname": "Gerlach"
+      },
+      {
+        "id": "uuu-bbb",
+        "name": "chief",
+        "surname": "Blick"
+      }
+    ],
+    "34488f19-9786-4d28-974d-ca3caa363119": [
+      {}
+    ],
+    "27e0e89a-367a-450e-802f-035b2173f766": [
+      {
+        "id": "uuu-aaa",
+        "name": "employee",
+        "surname": "Gerlach"
+      }
+    ],
+    "fe534bf1-1b59-4b14-97f1-93446ce59e6d": [
+      {
+        "id": "uuu-bbb",
+        "name": "chief",
+        "surname": "Blick"
+      },
+      {}
+    ],
+    "05872d63-2b29-4804-ac1d-c6c6774967a9": [],
+    "b21f4dd8-f0df-4932-b467-4535406b1712": [
+      {}
+    ],
+    "42924166-bdf7-4e4e-97a1-22171c6388ad": [],
+    "1ba4484b-2e85-4c0a-b567-809c771aaab8": [
+      {}
+    ]
+  },
+  "news": [
+    {
+      "id": "2de0306f-a712-4078-b1f0-b223c2f4246b",
+      "publicationDate": "2021-08-27T04:38:33.816Z",
+      "title": "Reverse-engineered even-keeled standardization",
+      "text": "Nemo pariatur dolores ut vero velit non.",
+      "image": "future image id/url"
+    },
+    {
+      "id": "5a18de82-f610-4d6a-86ca-2beb59e335f3",
+      "publicationDate": "2020-02-21T02:16:47.236Z",
+      "title": "Enterprise-wide holistic challenge",
+      "text": "Ut similique aut aut voluptas rerum. Et numquam dignissimos nihil. Aut quod animi. Optio quod quo ut enim. Impedit quia commodi illum totam omnis asperiores et.\n \rTenetur quaerat voluptatem et laborum. Sit pariatur similique voluptatem modi cupiditate occaecati ipsam explicabo. Eius quos veniam nihil ea distinctio libero qui debitis facilis.\n \rIpsum tempora officia fugit sequi tempora enim consequuntur dicta. Voluptas temporibus consequuntur illo ex veritatis facere aperiam dicta ab. Minima aspernatur ut qui beatae velit et nesciunt minus rem. Blanditiis adipisci voluptas dolorem et earum non labore itaque quia. Deserunt nobis perspiciatis. Aut odit sit ut quo fuga rerum.",
+      "image": null
+    },
+    {
+      "id": "3206b4df-516f-4f42-bd84-4675d741eb28",
+      "publicationDate": "2020-04-23T11:39:40.657Z",
+      "title": "Triple-buffered cohesive hardware",
+      "text": "Accusamus illo et id odio deleniti et quam facilis. Possimus repellat at mollitia incidunt placeat commodi unde quos. Repellat accusantium inventore illo quasi non enim rem itaque aut. Sequi quidem quia omnis. Minima maxime quo laborum vitae rerum et itaque voluptas iusto.\n \rNostrum earum excepturi ipsam odit voluptas quidem dolores sequi optio. Esse voluptate aut rerum. Illum laborum est sit dicta impedit laborum. Magni nihil doloremque deserunt beatae adipisci a. Nesciunt debitis enim et molestiae. Sit voluptatem autem perferendis voluptatem illum et adipisci molestias praesentium.\n \rAtque velit molestias necessitatibus. Maxime repellat nihil molestiae odit fugit sunt. Perspiciatis aliquam doloremque aut. Aut eligendi est ducimus nobis eum.",
+      "image": null
+    },
+    {
+      "id": "7f590ffc-7a4b-414f-90d8-6246de0bbe3b",
+      "publicationDate": "2021-01-10T06:21:16.502Z",
+      "title": "Seamless contextually-based moratorium",
+      "text": "Dolore culpa occaecati officiis a error est est. Ea optio veritatis in officiis aspernatur at libero molestiae. Voluptatum voluptatem eius minus facere est consectetur voluptas quia ipsam.\n \rEaque harum et quasi fuga molestias qui ipsam. Aut et natus praesentium et autem deserunt sed eum. Aperiam libero rem saepe quo.\n \rBeatae eos sit repudiandae non fugit eligendi sed rem ullam. Rerum ut ut et ad dolorum praesentium dolore autem. Amet vel sunt pariatur possimus incidunt dolor magnam consequatur.",
+      "image": null
+    },
+    {
+      "id": "75287307-8c99-4943-a03d-c8f5c32881fb",
+      "publicationDate": "2020-05-20T16:09:18.231Z",
+      "title": "Optimized web-enabled orchestration",
+      "text": "Doloremque quod sit ut sed quasi ex. Perspiciatis praesentium et delectus assumenda neque ea. Et quo molestiae sed similique tempora non reprehenderit nostrum.\n \rEst similique minus aut at sapiente sapiente consectetur. Qui atque veritatis et delectus sapiente et corrupti. Ex alias voluptates et doloribus ut.\n \rMolestiae quae molestiae iusto consectetur nisi sit sed. Consequatur blanditiis deserunt. Modi ut labore omnis recusandae laboriosam qui ut.",
+      "image": null
+    },
+    {
+      "id": "058a2255-7abc-4c98-b765-a48c11272f11",
+      "publicationDate": "2020-11-22T23:48:22.682Z",
+      "title": "Decentralized human-resource approach",
+      "text": "Accusantium corrupti pariatur ea doloremque. Quas earum soluta earum ea. Quos nobis totam ab dicta.\n \rEx consequatur non ad. Cum et rerum consequatur sapiente. Earum earum deleniti numquam tempora sunt quos eos dolore dolorem. Et pariatur aperiam ipsam voluptates voluptatem et laboriosam.\n \rVoluptatem ipsum veritatis voluptate. Tenetur praesentium quisquam. Deleniti sed aliquam. Cumque harum eligendi eum eligendi quo. Dolor ut id et.",
+      "image": null
+    },
+    {
+      "id": "05a0cb64-5fd7-457d-a27f-be7d8b1f3a33",
+      "publicationDate": "2020-08-15T15:00:15.338Z",
+      "title": "Expanded systemic infrastructure",
+      "text": "Cupiditate non alias sit ut reiciendis. Nostrum qui aperiam officiis quaerat quaerat maiores. Aut quia molestiae et voluptatem voluptates et quae ad voluptatum. Rerum error earum laudantium. Voluptatum ipsa cupiditate. Dolores odit harum et et quibusdam dicta ullam voluptatem.\n \rQuasi libero excepturi. Possimus eligendi ea. Sit aut voluptatem suscipit sed aut. Voluptatem sit laudantium et pariatur suscipit ad. At aliquid inventore qui ipsa rerum ab dicta animi et. Nam vitae voluptas repellat animi.\n \rOdio aut pariatur tempora rerum aperiam reprehenderit dolor in. Deleniti saepe unde eveniet optio sint possimus tempore dicta consequatur. Omnis qui tempora similique aut explicabo ea alias.",
+      "image": null
+    },
+    {
+      "id": "ef5e937f-ce2e-462c-bcd1-efad10217a91",
+      "publicationDate": "2020-07-23T13:45:09.708Z",
+      "title": "Upgradable composite secured line",
+      "text": "Quo est sed ut tempora blanditiis enim eius perferendis et. Et itaque eligendi ea non nihil. Eveniet fugit quia tenetur. Qui sequi dicta assumenda ipsum ad velit a eum. Optio quae nihil quis accusantium omnis. Ducimus voluptatem atque cupiditate unde ex.\n \rSed aperiam numquam voluptas et eligendi officiis. Incidunt dolorum atque. Fuga molestiae soluta. Consequatur sit expedita facere labore temporibus nisi nemo magni libero. Sapiente excepturi repellat quia dolorum facilis eius.\n \rAlias et eos voluptatum quidem. Placeat nam perspiciatis esse consequatur rem facilis. Cum aspernatur vitae veniam eligendi eum delectus. Assumenda perspiciatis aperiam. Mollitia corrupti soluta vitae qui sequi.",
+      "image": null
+    },
+    {
+      "id": "d428ef24-c355-4625-b29f-5701245ca366",
+      "publicationDate": "2020-01-17T07:07:58.016Z",
+      "title": "Secured human-resource encoding",
+      "text": "Est incidunt occaecati et et et asperiores autem ipsum illum. Id qui quo omnis quae. Blanditiis quod temporibus.\n \rAperiam vel commodi in tempore autem vero aut voluptas. Deleniti qui consequatur quos incidunt eaque impedit optio quidem. Voluptate optio voluptates qui explicabo rem sint. Ex sunt sunt libero quam distinctio inventore.\n \rHic voluptas necessitatibus ipsam. Molestiae nam deleniti nulla fugiat. Aut nemo nihil est. Eius omnis tempore nisi quasi tempore. Suscipit quisquam sint ut similique est.",
+      "image": null
+    },
+    {
+      "id": "c247cca1-a2e6-4a83-bbfe-cba7cb5ba9bd",
+      "publicationDate": "2021-06-12T17:25:25.644Z",
+      "title": "Networked global toolset",
+      "text": "Aut sit consectetur. Non non quia. Voluptatum ipsam occaecati sed. Id ut consequatur exercitationem expedita ducimus libero perspiciatis et veritatis. Quia numquam at delectus incidunt at ut esse voluptatem. Amet accusamus rerum.\n \rHic reprehenderit minima dolores. Quo accusamus ut vitae incidunt consectetur delectus voluptas eos. Illo at quia consequatur impedit eveniet dicta omnis cupiditate repellat. Culpa qui beatae corporis asperiores eum natus impedit. Dolores blanditiis qui non rerum esse dolores nulla. Sit sapiente repellendus iure velit quo et nesciunt.\n \rQuisquam molestias sunt qui explicabo sit mollitia laudantium. Et sit est id officiis assumenda consequatur molestiae. Deserunt temporibus et et qui enim dolorum aut earum quos.",
+      "image": null
+    },
+    {
+      "id": "fbe8a5d5-2300-42cb-a546-f83c1fbaa2a1",
+      "publicationDate": "2021-02-11T03:14:59.030Z",
+      "title": "Programmable foreground function",
+      "text": "Officia tempore vel voluptatem omnis sint eos nihil sed. Ut eaque ea repudiandae autem dolore in fuga dolor atque. Ut rerum neque aliquam excepturi minima.\n \rAssumenda voluptatem autem velit dolores et qui sapiente. In vitae exercitationem et voluptas deleniti soluta cum. Quia aut dignissimos sed delectus sequi a nulla et voluptates. Exercitationem officiis est at et amet odio occaecati modi laborum.\n \rVoluptas rerum ipsum nostrum odio. Ab est distinctio vel velit doloribus reiciendis accusantium unde ex. Tempora consequatur similique repudiandae quos cupiditate.",
+      "image": null
+    }
+  ]
+}

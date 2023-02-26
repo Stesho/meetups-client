@@ -1,6 +1,6 @@
 import { makeAutoObservable } from 'mobx';
 import { News } from '../core/types/News';
-import ServerApi from '../core/utils/serverApi';
+import ServerApi from '../core/utils/serverApi/serverApi';
 
 class NewsStore {
   news: News[] = [];

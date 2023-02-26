@@ -6,7 +6,7 @@ import Button from '../../ui/button/Button';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { useStore } from '../../../context/storeContext';
 import { observer } from 'mobx-react-lite';
-import AvailableFor from '../../../core/utils/availableFor';
+import AvailableFor from '../../availableFor/AvailableFor';
 import Translation from '../../../core/utils/translation';
 import TranslatedMessage from '../../translatedMessage/TranslatedMessage';
 

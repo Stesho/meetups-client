@@ -59,7 +59,7 @@ const NotificationBanner = observer((): JSX.Element => {
   return (
     <div>
       {notificationStore.isActive && (
-        <div className={style}>
+        <div id='notification' data-testid='notification' className={style}>
           <img className={styles.img} src={img} alt="banner type" />
           <div className={styles.text}>
             <span className={styles.title}>
