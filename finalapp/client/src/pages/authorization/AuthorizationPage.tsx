@@ -14,13 +14,15 @@ export const AuthorizationPage = (): JSX.Element => {
   const onAuthorizationFormSend = async (
     data: AuthorizationRequestData,
   ): Promise<void> => {
-    userStore.singIn(data);
-    navigate('/meetups');
+    await userStore.singIn(data);
+    if(userStore.role) {
+      navigate('/meetups');
+    }
   };
 
   return (
     <section className="container smoothPage">
-      <div className={styles.authorizationPage}>
+      <div id='authorizationPage' className={styles.authorizationPage}>
         <h1 className={`basicH1 ${styles.title}`}>
           <TranslatedMessage
             message={Translation.translatedText('auth.title')}

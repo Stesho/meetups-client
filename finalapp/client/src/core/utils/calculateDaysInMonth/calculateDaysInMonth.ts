@@ -1,14 +1,21 @@
 import {
-  DAYS_IN_MONTHS,
   DISPLAYED_DAYS_COUNT,
-} from '../constants/dateTimeConstants';
-import { Day } from '../../components/ui/dateInput/DateInput';
+} from '../../constants/dateTimeConstants';
+import { Day } from '../../../components/ui/dateInput/DateInput';
 
-export const calculateDaysInMonth = (year: number, month: number) => {
+const minYear = 1970;
+const maxYear = 2099;
+const minMonth = 0;
+const maxMonth = 11;
+
+export const calculateDaysInMonth = (year: number, month: number): Day[] | null => {
+  if(year < minYear || year > maxYear || month < minMonth || month > maxMonth) {
+    return null;
+  }
+
   const newDays: Day[] = [];
-  const maxDays = DAYS_IN_MONTHS[month] + 1;
-  const maxDaysInPrevMoth =
-    (DAYS_IN_MONTHS[month - 1] || DAYS_IN_MONTHS[11]) + 1;
+  const maxDays = new Date(year, month + 1, 0).getDate() + 1;
+  const maxDaysInPrevMoth = new Date(year, month, 0).getDate() + 1;
   const firstDayInMonth = new Date(year, month, 1).getDay();
   const lastDayInMonth = firstDayInMonth + maxDays - 1;
   let isCurrentMonth = false;

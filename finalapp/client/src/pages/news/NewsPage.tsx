@@ -5,7 +5,7 @@ import NewsList from '../../components/lists/newsList/NewsList';
 import { observer } from 'mobx-react-lite';
 import { useStore } from '../../context/storeContext';
 import { useNavigate, NavigateFunction } from 'react-router-dom';
-import AvailableFor from '../../core/utils/availableFor';
+import AvailableFor from '../../components/availableFor/AvailableFor';
 import TranslatedMessage from '../../components/translatedMessage/TranslatedMessage';
 import Translation from '../../core/utils/translation';
 

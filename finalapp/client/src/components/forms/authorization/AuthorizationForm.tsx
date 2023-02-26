@@ -74,6 +74,7 @@ export const AuthorizationForm = (
         helpText={password.message}
       />
       <Button
+        id='singInBtn'
         type="primary"
         callback={onAuthorizeButtonClick}
         disabled={!checkForm()}

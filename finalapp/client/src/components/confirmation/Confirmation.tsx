@@ -33,6 +33,7 @@ const Modal = observer((): JSX.Element => {
 
   return (
     <div
+      data-testid='overlay'
       ref={overlay}
       className={overlayClass}
       onClick={(event) => onClickOutside(event.target)}
@@ -47,7 +48,10 @@ const Modal = observer((): JSX.Element => {
         <span className={styles.text}>
           <TranslatedMessage message={confirmationStore.text} />
         </span>
-        <div className={styles.buttons}>
+        <div
+          className={styles.buttons}
+          data-testid='buttons'
+        >
           <Button
             callback={close}
             type="secondary"
@@ -59,6 +63,7 @@ const Modal = observer((): JSX.Element => {
             callback={confirm}
             type="primary"
             className={styles.confirmBtn}
+            data-testid='confirmBtn'
           >
             <TranslatedMessage
               message={Translation.translatedText('btn.yes')}

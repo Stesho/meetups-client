@@ -1,9 +1,9 @@
 import { createStoreContext } from '../core/utils/createContext';
-import MeetupsStore from '../store/meetupsStore';
-import UserStore from '../store/userStore';
+import MeetupsStore from '../store/meetupsStore/meetupsStore';
+import UserStore from '../store/userStore/userStore';
 import NewsStore from '../store/newsStore';
 import NotificationStore from '../store/notificationStore';
-import ServerApi from '../core/utils/serverApi';
+import ServerApi from '../core/utils/serverApi/serverApi';
 import ConfirmationStore from '../store/confirmationStore';
 import LocaleStore from '../store/localeStore';
 

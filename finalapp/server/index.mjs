@@ -10,6 +10,7 @@ import { meetupsRoutes } from './routers/meetups.mjs';
 import { usersRoutes } from './routers/users.mjs';
 import { initDataBase } from './initDataBase.mjs';
 import { newsRoutes } from './routers/news.mjs';
+import { resetdbRoutes } from './routers/resetdb.mjs';
 import swaggerUI from 'swagger-ui-express'
 import YAML from 'yamljs';
 
@@ -50,6 +51,7 @@ app.use('/api', loginRoutes);
 app.use('/api/users', usersRoutes(db));
 app.use('/api/meetups', meetupsRoutes(db));
 app.use('/api/news', newsRoutes(db));
+app.use('/api/resetdb', resetdbRoutes(db));
 
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 

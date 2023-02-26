@@ -6,7 +6,7 @@ import { RedactorButton } from '../../ui/redactorButton/RedactorButton';
 import { ProfileInfo } from '../../profileInfo/ProfileInfo';
 import { getMeetupDatePlaceInfo } from '../../../core/utils/getMeetupDatePlaceInfo';
 import { useNavigate, NavigateFunction } from 'react-router-dom';
-import AvailableFor from '../../../core/utils/availableFor';
+import AvailableFor from '../../availableFor/AvailableFor';
 import TranslatedMessage from '../../translatedMessage/TranslatedMessage';
 import Translation from '../../../core/utils/translation';
 

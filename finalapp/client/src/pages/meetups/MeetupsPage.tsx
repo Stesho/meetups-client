@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styles from './MeetupsPage.module.scss';
 import { observer } from 'mobx-react-lite';
 import { useStore } from '../../context/storeContext';
-import AvailableFor from '../../core/utils/availableFor';
+import AvailableFor from '../../components/availableFor/AvailableFor';
 import { Outlet, NavLink } from 'react-router-dom';
 import TranslatedMessage from '../../components/translatedMessage/TranslatedMessage';
 import Translation from '../../core/utils/translation';

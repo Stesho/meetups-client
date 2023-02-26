@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './DatePicker.module.scss';
-import { calculateDaysInMonth } from '../../../../core/utils/calculateDaysInMonth';
+import { calculateDaysInMonth } from '../../../../core/utils/calculateDaysInMonth/calculateDaysInMonth';
 import {
   TIME,
   CALENDAR_MONTH_NAMES,
@@ -30,7 +30,9 @@ export const DatePicker = (props: DatePickerProps): JSX.Element => {
 
   const displayDaysInCurrentMonth = (): void => {
     const newDays = calculateDaysInMonth(year, month);
-    setDays([...newDays]);
+    if(newDays) {
+      setDays([...newDays]);
+    }
   };
 
   const setNextMonth = (): void => {

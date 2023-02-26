@@ -3,7 +3,7 @@ import { ProfileInfo } from '../../profileInfo/ProfileInfo';
 import Button from '../../ui/button/Button';
 import { Meetup } from '../../../core/types/Meetup';
 import { User } from '../../../core/types/User';
-import AvailableFor from '../../../core/utils/availableFor';
+import AvailableFor from '../../availableFor/AvailableFor';
 import styles from './ThemePreview.module.scss';
 import TranslatedMessage from '../../translatedMessage/TranslatedMessage';
 import Translation from '../../../core/utils/translation';

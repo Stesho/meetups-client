@@ -8,7 +8,7 @@ import { useInput } from '../../../../core/hooks/useInput';
 import {
   checkDateValidity,
   checkDatesValidity,
-} from '../../../../core/utils/checkDateValidity';
+} from '../../../../core/utils/checkDateValidity/checkDateValidity';
 import { MONTH_NAMES } from '../../../../core/constants/dateTimeConstants';
 import Button from '../../../ui/button/Button';
 import TranslatedMessage from '../../../translatedMessage/TranslatedMessage';
