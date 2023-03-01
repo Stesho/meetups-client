@@ -1,4 +1,13 @@
 export const DISPLAYED_DAYS_COUNT = 42;
+export const DAY_NAMES = [
+  'Воскресенье',
+  'Понедельник',
+  'Вторник',
+  'Среда',
+  'Четверг',
+  'Пятница',
+  'Суббота'
+];
 export const DAY_SHORT_NAMES = [
   'Воск',
   'Пон',

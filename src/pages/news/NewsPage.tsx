@@ -30,7 +30,7 @@ const NewsPage = observer((): JSX.Element => {
               message={Translation.translatedText('news.title')}
             />
           </h1>
-          <AvailableFor roles={['EMPLOYEE']}>
+          <AvailableFor roles={['CHIEF']}>
             <Button type="secondary" callback={toCreateNewsPage}>
               <TranslatedMessage
                 message={Translation.translatedText('btn.createNews')}

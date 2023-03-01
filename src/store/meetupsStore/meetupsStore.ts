@@ -1,6 +1,6 @@
 import { makeAutoObservable } from 'mobx';
 import { Meetup } from '../../core/types/Meetup';
-import ServerApi from '../../core/utils/serverApi/serverApi';
+import { User } from '../../core/types/User';
 import ConfirmationStore from '../confirmationStore';
 import Translation from '../../core/utils/translation';
 import IServerApi from '../../core/types/IServerApi';
@@ -64,25 +64,54 @@ class MeetupsStore {
     this.setMeetups(recievedMeetups);
   }
 
+  async getVotedusers(id: string): Promise<User[]> {
+    const votedUsers = await this.serverApi.getVotedUsers(id);
+    return votedUsers || [];
+  }
+  
+  async addVoteduser(id: string, user: User): Promise<User[] | null> {
+    const votedUsers = await this.serverApi.sendVotedUser(id, user);
+    return votedUsers;
+  }
+
+  async deleteVoteduser(id: string, user: User): Promise<User[] | null> {
+    const votedUsers = await this.serverApi.removeVotedUser(id, user);
+    return votedUsers;
+  }
+
   get requestMeetups(): Meetup[] {
-    return this.meetups.filter((meetup) => meetup.status === 'REQUEST');
+    return (
+      this.meetups
+      .filter((meetup) => meetup.status === 'REQUEST')
+      .sort((a, b) => new Date(b.modified) < new Date(a.modified) ? 1 : -1)
+    );
   }
 
   get draftMeetups(): Meetup[] {
-    return this.meetups.filter((meetup) => meetup.status === 'DRAFT');
+    return (
+      this.meetups
+      .filter((meetup) => meetup.status === 'DRAFT')
+      .sort((a, b) => new Date(b.start) < new Date(a.start) ? 1 : -1)
+    );
   }
 
   get futureMeetups(): Meetup[] {
-    return this.meetups.filter(
-      (meetup) =>
-        meetup.status === 'CONFIRMED' && new Date(meetup.start) > new Date(),
+    return (
+      this.meetups
+      .filter((meetup) => (
+        meetup.status === 'CONFIRMED' && new Date(meetup.start) > new Date()
+      ))
+      .sort((a, b) => new Date(b.start) < new Date(a.start) ? 1 : -1)
     );
   }
 
   get pastMeetups(): Meetup[] {
-    return this.meetups.filter(
-      (meetup) =>
-        meetup.status === 'CONFIRMED' && new Date(meetup.start) < new Date(),
+    return (
+      this.meetups
+      .filter((meetup) => (
+        meetup.status === 'CONFIRMED' && new Date(meetup.start) < new Date()
+      ))
+      .sort((a, b) => new Date(b.finish) > new Date(a.finish) ? 1 : -1)
     );
   }
 

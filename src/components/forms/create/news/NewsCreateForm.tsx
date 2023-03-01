@@ -35,14 +35,14 @@ const NewsCreateForm = (props: NewsCreateFormProps) => {
     minLength: Translation.translatedText('validation.notEmpty'),
     miaxLength: Translation.translatedText('validation.maxLength'),
   };
-  const title = useInput<typeof validationOptions>(
+  const title = useInput({
     validationOptions,
     errorMessages,
-  );
-  const text = useInput<typeof validationOptions>(
+  });
+  const text = useInput({
     validationOptions,
     errorMessages,
-  );
+  });
   const [image, setImage] = useState<string | null>(null);
 
   const getData = (): CreatedNews => {

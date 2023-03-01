@@ -34,14 +34,14 @@ export const AuthorizationForm = (
   const preventDefaultSubmit = (event: React.FormEvent<HTMLFormElement>) =>
     event.preventDefault();
 
-  const username = useInput<typeof validationOptions>(
+  const username = useInput({
     validationOptions,
     errorMessages,
-  );
-  const password = useInput<typeof validationOptions>(
+  });
+  const password = useInput({
     validationOptions,
     errorMessages,
-  );
+  });
 
   const onAuthorizeButtonClick = (): void =>
     props.onSubmit({

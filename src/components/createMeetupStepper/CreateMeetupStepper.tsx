@@ -47,6 +47,14 @@ export const CreateMeetupStepper = (
     setCurrentStep((old) => old + 1);
   };
 
+  // const onPreviousStep = (
+  //   data: FormRequiredData,
+  //   event?: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  // ) => {
+  //   onRequiredFormSubmit(data, event);
+  //   props.onExit();
+  // }
+
   const onAdditionalFormSubmit = (
     data: FormAdditionalData,
     event?: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -81,6 +89,7 @@ export const CreateMeetupStepper = (
 
       {currentStep === 0 ? (
         <RequiredCreateForm
+          initialValues={requiredFormData || undefined}
           onSubmit={onRequiredFormSubmit}
           onCancel={props.onExit}
         />

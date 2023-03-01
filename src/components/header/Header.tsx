@@ -8,23 +8,19 @@ import { ProfileInfo } from '../profileInfo/ProfileInfo';
 import { ShortUser } from '../../core/types/User';
 import { observer } from 'mobx-react-lite';
 import TranslatedMessage from '../translatedMessage/TranslatedMessage';
-import { useStore } from '../../context/storeContext';
 import Translation from '../../core/utils/translation';
+import AccountMenu from '../accountMenu/AccountMenu';
+import LangSwitcher from '../ui/langSwitcher/LangSwitcher';
 
 export interface HeaderProps {
-  user: ShortUser;
+  user: ShortUser | null;
 }
 
 export const Header = observer(({ user }: HeaderProps): JSX.Element => {
-  const localeStore = useStore('LocaleStore');
   const navigate: NavigateFunction = useNavigate();
 
   const toAuthorizePage = () => {
     navigate('/authorize');
-  };
-
-  const selectLanguage = (locale: string) => {
-    localeStore.setLocale(locale);
   };
 
   return (
@@ -53,23 +49,20 @@ export const Header = observer(({ user }: HeaderProps): JSX.Element => {
             />
           </NavLink>
         </nav>
-        <div>
-          <select
-            name=""
-            id=""
-            value={localeStore.locale}
-            onChange={(event) => selectLanguage(event.target.value)}
-          >
-            <option value="ru">ru</option>
-            <option value="en">en</option>
-          </select>
+        <div className={styles.mainBar}>
+          <LangSwitcher
+            switcherClassName={styles.langSwitcher}
+            listClassName={styles.langList}
+          />
           {user !== null ? (
-            <ProfileInfo
-              user={user}
-              first="name"
-              avatarHeightPX={40}
-              text={{ fontWeight: '400', fontSize: '16px', color: '#FFF' }}
-            />
+            <AccountMenu className={styles.accountMenu}>
+              <ProfileInfo
+                user={user}
+                first="name"
+                avatarHeightPX={40}
+                text={{ fontWeight: '400', fontSize: '16px', color: '#FFF' }}
+              />
+            </AccountMenu>
           ) : (
             <Button callback={toAuthorizePage} type="default">
               <TranslatedMessage

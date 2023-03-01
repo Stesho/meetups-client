@@ -19,14 +19,25 @@ interface DatePickerProps {
     minutes?: number,
   ) => void;
   className?: string;
+  initialDate?: Date;
 }
 
 export const DatePicker = (props: DatePickerProps): JSX.Element => {
-  const [year, setYear] = useState<number>(new Date().getFullYear());
-  const [month, setMonth] = useState<number>(new Date().getMonth());
+  const initialYear = props.initialDate?.getFullYear() || new Date().getFullYear();
+  const initialMonth = props.initialDate?.getMonth() || new Date().getMonth();
+  const initialDay = props.initialDate?.getDate() || undefined;
+  const hours = props.initialDate?.getHours();
+  const minutes = props.initialDate?.getMinutes();
+  const initialHours = hours === undefined ? hours : isNaN(hours) ? undefined : hours;
+  const initialMinutes = minutes === undefined ? minutes : isNaN(minutes) ? undefined : minutes;
+  const initialTime = 
+    (initialHours !== undefined && initialMinutes !== undefined) ? `${initialHours}:${initialMinutes}` : undefined;
+
+  const [year, setYear] = useState<number>(initialYear);
+  const [month, setMonth] = useState<number>(initialMonth);
   const [days, setDays] = useState<Day[]>([]);
-  const [day, setDay] = useState<number | undefined>(undefined);
-  const [time, setTime] = useState<string | undefined>(undefined);
+  const [day, setDay] = useState<number | undefined>(initialDay);
+  const [time, setTime] = useState<string | undefined>(initialTime);
 
   const displayDaysInCurrentMonth = (): void => {
     const newDays = calculateDaysInMonth(year, month);

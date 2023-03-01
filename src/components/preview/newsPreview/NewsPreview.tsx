@@ -29,7 +29,7 @@ const NewsPreview = (props: NewsPreviewProps) => {
             message={Translation.translatedText('btn.cancel')}
           />
         </Button>
-        <AvailableFor roles={['EMPLOYEE']}>
+        <AvailableFor roles={['CHIEF']}>
           <div className={styles.mainButtons}>
             <Button type="secondary" callback={(event) => props.onEdit(event)}>
               <TranslatedMessage

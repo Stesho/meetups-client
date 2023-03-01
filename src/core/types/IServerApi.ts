@@ -11,10 +11,14 @@ interface IServerApi {
   sendCreatedMeetupToServer(newMeetup: Meetup): Promise<Meetup | null>;
   getMeetupFromServerById(id: string): Promise<Meetup | null>;
   tryAuthorize(authData: AuthorizationRequestData): Promise<User | null>;
+  getVotedUsers(id: string): Promise<User[] | null>;
+  sendVotedUser(id: string, user: User): Promise<User[] | null>;
+  removeVotedUser(id: string, user: User): Promise<User[] | null>;
 
   //User
   tryAuthorize(authData: AuthorizationRequestData): Promise<User | null>;
   getUserFromServer(): Promise<User | null>;
+  logout(): Promise<Response | null>
 
   //News
   getNewsFromServer(): Promise<News[]>;

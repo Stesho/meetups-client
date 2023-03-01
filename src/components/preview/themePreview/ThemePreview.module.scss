@@ -1,6 +1,10 @@
 @import '../../../styles/colors.scss';
 @import '../../../styles/typography.scss';
 
+.themePreview {
+  width: 100%;
+}
+
 .block {
   background-color: $white;
   box-shadow: 0px 4px 7px rgba(215, 221, 232, 0.398055);
@@ -40,24 +44,14 @@
 .votedUsers {
   @extend .block;
   display: flex;
-  justify-content: space-between;
   margin-top: 5px;
   margin-bottom: 26px;
   padding: 17px 23px 15px 17px;
 }
 
-.customUserAvatar {
-  width: 40px;
-  height: 40px;
-  background: $primary-purple;
-  border-radius: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  color: $white;
-  cursor: default;
+.noVotedUsers {
+  @extend .pageLink;
+  color: $grey-800;
 }
 
 .buttons {

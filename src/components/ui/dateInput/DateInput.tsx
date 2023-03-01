@@ -1,11 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './DateInput.module.scss';
 import { ReactComponent as CalendarImg } from '../../../assets/icons/calendar-icon.svg';
 import { LabeledInput } from '../labeledInput/LabeledInput';
 import { MONTH_NAMES } from '../../../core/constants/dateTimeConstants';
 import { DatePicker } from './datePicker/DatePicker';
+import useOutsideClick from '../../../core/hooks/useOutsideClick';
 import classNames from 'classnames';
 import Translation from '../../../core/utils/translation';
+import dateToISOString from '../../../core/utils/dateToISOString';
 
 export type Day = {
   number: number;
@@ -25,7 +27,8 @@ export interface DateInputProps {
 
 export const DateInput = (props: DateInputProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const dateInput = useRef<HTMLDivElement>(null);
+  const dateInput = useOutsideClick(() => setIsOpen(false));
+  const initialValue = props.value;
 
   const inputClass = classNames(props.className, styles.input);
 
@@ -56,18 +59,6 @@ export const DateInput = (props: DateInputProps): JSX.Element => {
     props.setValue(newValue);
   };
 
-  const setOnClickOutside = (): (() => void) => {
-    const onClick = (event: Event) => {
-      return (
-        dateInput?.current?.contains(event?.target as Node) || setIsOpen(false)
-      );
-    };
-    document.addEventListener('click', onClick);
-    return () => document.removeEventListener('click', onClick);
-  };
-
-  useEffect(setOnClickOutside, []);
-
   return (
     <div className={styles.dateInput}>
       <div ref={dateInput}>
@@ -88,6 +79,7 @@ export const DateInput = (props: DateInputProps): JSX.Element => {
           className={isOpen ? styles.visible : styles.invisible}
           onDatePick={onDatePick}
           id={props.id}
+          initialDate={new Date(dateToISOString(initialValue))}
         />
       </div>
     </div>

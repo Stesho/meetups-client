@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { EditMeetupForm } from '../../components/forms/edit/EditMeetupForm';
 import { MeetupData } from '../../components/forms/edit/EditMeetupForm';
 import { Meetup } from '../../core/types/Meetup';
-import { ShortUser } from '../../core/types/User';
 import { NavigateFunction, useNavigate, useParams } from 'react-router-dom';
 import { useStore } from '../../context/storeContext';
 import styles from './EditMeetupPage.module.scss';
@@ -16,11 +15,14 @@ export const EditMeetupPage = () => {
 
   const { id } = useParams();
 
-  // todo: write function
   const onCancel = (): void => {
-    navigate('/');
+    navigate('/meetups/moderation');
   };
-  // todo: write function
+
+  const onPreview = (): void => {
+    navigate(`/meetups/preview/${meetup!.id}`);
+  };
+
   const onSave = async (
     data: MeetupData,
     event?: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -41,10 +43,8 @@ export const EditMeetupPage = () => {
       author: data.author,
     };
     meetupsStore.editMeetup(newMeetup);
-    navigate('/meetups');
+    navigate(`/meetups/moderation`);
   };
-  // todo: write function
-  const onPreview = (): void => {};
 
   const loadMeetup = async () => {
     if (id) {
@@ -58,13 +58,6 @@ export const EditMeetupPage = () => {
   useEffect(() => {
     loadMeetup();
   }, []);
-
-  // todo: delete
-  const shortUser: ShortUser = {
-    id: '1',
-    name: 'Name',
-    surname: 'Surname',
-  };
 
   return (
     <section className="container smoothPage">
@@ -82,7 +75,7 @@ export const EditMeetupPage = () => {
             start={meetup?.start || ''}
             finish={meetup?.finish || ''}
             subject={meetup?.subject || ''}
-            author={meetup?.author || shortUser}
+            author={meetup?.author || ''}
             excerpt={meetup?.excerpt || ''}
             place={meetup?.place || ''}
             onCancel={onCancel}

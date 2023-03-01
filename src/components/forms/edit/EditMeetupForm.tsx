@@ -8,6 +8,8 @@ import defaultMeetupImg from '../../../assets/images/default-meetup-img.png';
 import styles from './EditMeetupForm.module.scss';
 import TranslatedMessage from '../../translatedMessage/TranslatedMessage';
 import Translation from '../../../core/utils/translation';
+import dateToISOString from '../../../core/utils/dateToISOString';
+import dateFromISOToReadable from '../../../core/utils/dateFromISOToReadable';
 
 export type MeetupData = Pick<
   Meetup,
@@ -25,13 +27,13 @@ interface EditMeetupFormProps extends MeetupData {
 
 export const EditMeetupForm = (props: EditMeetupFormProps): JSX.Element => {
   const [subject, setTheme] = useState<string>(props.subject);
-  const [start, setStart] = useState<string>(props.start || '');
-  const [finish, setEnd] = useState<string>(props.finish || '');
+  const [start, setStart] = useState<string>(dateFromISOToReadable(props.start || ''));
+  const [finish, setFinish] = useState<string>(dateFromISOToReadable(props.finish || ''));
   const [place, setPlace] = useState<string>(props.place || '');
+  const [excerpt, setDescription] = useState<string>(props.excerpt);
   const [author, setSpeaker] = useState<string>(
     `${props.author.name} ${props.author.surname}`,
   );
-  const [excerpt, setDescription] = useState<string>(props.excerpt);
 
   const image = props.image || defaultMeetupImg;
 
@@ -44,8 +46,8 @@ export const EditMeetupForm = (props: EditMeetupFormProps): JSX.Element => {
 
     return {
       image,
-      start,
-      finish,
+      start: dateToISOString(start),
+      finish: dateToISOString(finish),
       subject,
       place,
       author: {
@@ -57,8 +59,9 @@ export const EditMeetupForm = (props: EditMeetupFormProps): JSX.Element => {
     };
   };
 
-  const preventDefaultSubmit = (event: React.FormEvent): void =>
+  const preventDefaultSubmit = (event: React.FormEvent): void => {
     event.preventDefault();
+  }
 
   return (
     <form className={styles.form} onSubmit={preventDefaultSubmit}>
@@ -90,7 +93,7 @@ export const EditMeetupForm = (props: EditMeetupFormProps): JSX.Element => {
           />
           <DateInput
             id={'finish'}
-            setValue={setEnd}
+            setValue={setFinish}
             value={finish}
             className={styles.date}
             label={Translation.translatedText('form.finish')}

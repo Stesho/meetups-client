@@ -7,6 +7,7 @@ export interface ProfileInfoProps {
   user: ShortUser;
   first: 'name' | 'avatar';
   avatarHeightPX: number;
+  withName?: boolean;
   text?: {
     fontWeight?: string;
     fontSize?: string;
@@ -18,6 +19,7 @@ export interface ProfileInfoProps {
 export const ProfileInfo = ({
   user,
   first,
+  withName,
   avatarHeightPX,
   text,
   style,
@@ -35,9 +37,12 @@ export const ProfileInfo = ({
         {user.surname[0]}
         {user.name === '' && user.surname === '' && '-'}
       </div>
-      <span style={{ ...text }}>
-        {user.name} {user.surname}
-      </span>
+      {withName === false
+      ? null
+      : <span style={{ ...text }}>
+          {user.name} {user.surname}
+        </span>
+      }
     </div>
   );
 };

@@ -10,6 +10,7 @@ import AvailableFor from '../../availableFor/AvailableFor';
 import styles from './MeetupPreview.module.scss';
 import TranslatedMessage from '../../translatedMessage/TranslatedMessage';
 import Translation from '../../../core/utils/translation';
+import { getMeetupDate, getMeetupTime } from '../../../core/utils/getMeetupDatePlaceInfo';
 
 interface MeetupPreviewProps {
   meetup: Meetup;
@@ -19,7 +20,7 @@ interface MeetupPreviewProps {
 
 const MeetupPreview = (props: MeetupPreviewProps) => {
   return (
-    <article>
+    <article className={styles.meetupPreview}>
       <div className={styles.img}>
         <img src={props.meetup.image || defaultMeetupImg} alt="meetup img" />
       </div>
@@ -38,11 +39,11 @@ const MeetupPreview = (props: MeetupPreviewProps) => {
             src={calendarIcon}
             alt="calendar"
           />
-          <span>Date</span>
+          <span>{getMeetupDate(props.meetup)}</span>
         </div>
         <div className={styles.timePlaceItem}>
           <img className={styles.timePlaceIcon} src={clockIcon} alt="clock" />
-          <span>Time</span>
+          <span>{getMeetupTime(props.meetup)}</span>
         </div>
         <div className={styles.timePlaceItem}>
           <img
@@ -79,7 +80,7 @@ const MeetupPreview = (props: MeetupPreviewProps) => {
             message={Translation.translatedText('btn.cancel')}
           />
         </Button>
-        <AvailableFor roles={['EMPLOYEE']}>
+        <AvailableFor roles={['CHIEF']}>
           <Button
             className={styles.publishBtn}
             type="primary"

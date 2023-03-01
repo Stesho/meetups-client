@@ -23,8 +23,8 @@ const MeetupPreviewPage = () => {
     }
   };
 
-  const toMeetupsPage = () => {
-    navigate('/meetups');
+  const toModeration = () => {
+    navigate('/meetups/moderation');
   };
 
   const publish = () => {
@@ -34,7 +34,7 @@ const MeetupPreviewPage = () => {
         status: 'CONFIRMED',
       });
     }
-    toMeetupsPage();
+    toModeration();
   };
 
   useEffect(() => {
@@ -56,7 +56,7 @@ const MeetupPreviewPage = () => {
           </div>
           <MeetupPreview
             meetup={meetup}
-            onCancel={toMeetupsPage}
+            onCancel={toModeration}
             onPublish={publish}
           />
         </div>

@@ -9,7 +9,7 @@ import {
   checkDateValidity,
   checkDatesValidity,
 } from '../../../../core/utils/checkDateValidity/checkDateValidity';
-import { MONTH_NAMES } from '../../../../core/constants/dateTimeConstants';
+import dateToISOString from '../../../../core/utils/dateToISOString';
 import Button from '../../../ui/button/Button';
 import TranslatedMessage from '../../../translatedMessage/TranslatedMessage';
 import Translation from '../../../../core/utils/translation';
@@ -37,43 +37,27 @@ export const AdditionalCreateForm = (
   const errorMessages = {
     validDate: Translation.translatedText('validation.date.format'),
   };
-  const start = useInput<typeof validationOptions>(
+  const start = useInput({
     validationOptions,
     errorMessages,
-  );
-  const finish = useInput<typeof validationOptions>(
+  });
+  const finish = useInput({
     validationOptions,
     errorMessages,
-  );
+  });
   const [place, setPlace] = useState<string>('');
   const [image, setImage] = useState<string | null>('');
   const [isValidDates, setIsValidDates] = useState<boolean>(false);
 
-  const checkForm = () =>
+  const checkForm = () => (
     [start, finish].every((input) => input.status !== 'invalid') &&
-    isValidDates;
-
-  const DateToISOString = (date: string): string => {
-    if (date === '') {
-      return date;
-    }
-
-    const [day, month, year, time] = date.split(' ');
-    const [hours, minutes] = time.split(':');
-    const monthNumber = MONTH_NAMES.indexOf(month);
-    return new Date(
-      Number(year),
-      monthNumber,
-      Number(day) + 1,
-      Number(hours),
-      Number(minutes),
-    ).toISOString();
-  };
+    isValidDates
+  );
 
   const getData = (): FormAdditionalData => {
     return {
-      start: DateToISOString(start.value),
-      finish: DateToISOString(finish.value),
+      start: dateToISOString(start.value),
+      finish: dateToISOString(finish.value),
       place,
       image,
     };

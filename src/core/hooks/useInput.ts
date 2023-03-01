@@ -22,25 +22,33 @@ interface Input {
   setIsOnBlur: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const useInput = <T>(
+type UseInputProps<T> = {
   validationOptions: Options<T>,
+  initialValue?: string,
   errorMessages?: Partial<ErrorMessages<T>>,
   successMessage?: SuccessMessage,
+}
+
+export const useInput = <T>(
+  props: UseInputProps<T>
+  // validationOptions: Options<T>,
+  // errorMessages?: Partial<ErrorMessages<T>>,
+  // successMessage?: SuccessMessage,
 ): Input => {
   type Option = keyof Options<T>;
 
-  const [value, setValue] = useState<string>('');
+  const [value, setValue] = useState<string>(props.initialValue || '');
   const [isOnBlur, setIsOnBlur] = useState<boolean>(false);
   const [status, setStatus] = useState<Status>('default');
   const [message, setMessage] = useState<Translation>(Translation.empty);
   const [isValid, setIsValid] = useState<boolean>(false);
 
   const getSuccessMessage = (): Translation =>
-    successMessage || Translation.empty;
+    props.successMessage || Translation.empty;
 
   const getErrorMessage = (option: Option): Translation =>
-    errorMessages
-      ? errorMessages[option] || Translation.empty
+    props.errorMessages
+      ? props.errorMessages[option] || Translation.empty
       : Translation.empty;
 
   const getErrorOption = (
@@ -68,7 +76,7 @@ export const useInput = <T>(
   ): Translation => (isOnBlur ? message : Translation.empty);
 
   const setInputState = () => {
-    const errorOption = getErrorOption(validationOptions, value);
+    const errorOption = getErrorOption(props.validationOptions, value);
     const isValidInput = errorOption === null;
     const inputStatus = getInputStatus(isOnBlur, isValidInput);
     const message = isValidInput

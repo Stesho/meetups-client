@@ -1,0 +1,29 @@
+@import '../../styles/colors.scss';
+
+.accountMenu {
+  position: relative;
+}
+
+.accountBtn {
+  cursor: pointer;
+}
+
+.dropDownMenu {
+  position: absolute;
+  padding: 20px;
+  border-radius: 3px;
+  background-color: $white;
+  box-shadow: 0px 4px 9px rgb(194 203 218 / 25%);
+  &::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid $white;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -100%);
+  }
+}

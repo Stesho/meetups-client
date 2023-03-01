@@ -18,6 +18,7 @@ export interface FormRequiredData {
 }
 
 interface RequiredCreateFormProps {
+  initialValues?: FormRequiredData
   onSubmit: (
     data: FormRequiredData,
     event?: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -34,28 +35,34 @@ const validationOptions = {
   maxLength: checkMaxLength(maxInputLength),
 };
 
+const textAreaValidationOptions = {
+  ...validationOptions,
+  maxLength: checkMaxLength(maxTextAreaLength),
+}
+
+const errorMessages = {
+  minLength: Translation.translatedText('validation.notEmpty'),
+  maxLength: Translation.translatedText('validation.maxLength'),
+};
+
 export const RequiredCreateForm = (
   props: RequiredCreateFormProps,
 ): JSX.Element => {
-  const errorMessages = {
-    minLength: Translation.translatedText('validation.notEmpty'),
-    maxLength: Translation.translatedText('validation.maxLength'),
-  };
-  const name = useInput<typeof validationOptions>(
+  const name = useInput({
+    initialValue: props.initialValues?.name,
     validationOptions,
     errorMessages,
-  );
-  const speaker = useInput<typeof validationOptions>(
+  });
+  const speaker = useInput({
+    initialValue: props.initialValues?.speaker,
     validationOptions,
     errorMessages,
-  );
-  const description = useInput<typeof validationOptions>(
-    {
-      ...validationOptions,
-      maxLength: checkMaxLength(maxTextAreaLength),
-    },
+  });
+  const description = useInput({
+    initialValue: props.initialValues?.description,
+    validationOptions: textAreaValidationOptions,
     errorMessages,
-  );
+  });
 
   const checkForm = (): boolean =>
     [name, speaker, description].every((input) => input.isValid);
@@ -72,6 +79,7 @@ export const RequiredCreateForm = (
     <form className={styles.form}>
       <div className={styles.inputs}>
         <LabeledInput
+          value={name.value}
           onChange={name.setValue}
           onBlur={() => name.setIsOnBlur(true)}
           status={name.status}
@@ -80,6 +88,7 @@ export const RequiredCreateForm = (
           helpText={name.message}
         />
         <LabeledInput
+          value={speaker.value}
           onChange={speaker.setValue}
           onBlur={() => speaker.setIsOnBlur(true)}
           status={speaker.status}
@@ -88,6 +97,7 @@ export const RequiredCreateForm = (
           helpText={speaker.message}
         />
         <TextArea
+          initialValue={description.value}
           onChange={(event) => description.setValue(event.target.value)}
           onBlur={() => description.setIsOnBlur(true)}
           status={description.status}
