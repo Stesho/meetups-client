@@ -2,8 +2,11 @@ import {
   BASE_SERVER_URL,
   MEETUPS_URL,
   LOGIN_URL,
+  LOGOUT_URL,
   NEWS_URL,
+  VOTEDUSERS_URL,
 } from '../../constants/serverConstants';
+import IServerApi from '../../types/IServerApi';
 import { Meetup } from '../../types/Meetup';
 import NotificationStore from '../../../store/notificationStore';
 import { User } from '../../types/User';
@@ -11,7 +14,7 @@ import { AuthorizationRequestData } from '../../types/AuthorizationRequestData';
 import { News } from '../../types/News';
 import Translation from '../translation';
 
-class ServerApi {
+class ServerApi implements IServerApi {
   private errorMessage = {
     unauthorized: Translation.translatedText('notification.error.unauthorized'),
     unknown: Translation.translatedText('notification.error.unknown'),
@@ -20,6 +23,7 @@ class ServerApi {
     wrongAuthData: Translation.translatedText(
       'notification.error.wrongAuthData',
     ),
+    logout: Translation.translatedText('notification.error.logout')
   };
   private successMessage = {
     addedMeetup: Translation.translatedText('notification.success.addedMeetup'),
@@ -169,6 +173,69 @@ class ServerApi {
     }
   }
 
+  async getVotedUsers(id: string): Promise<User[] | null> {
+    try {
+      const response = await this.fetch(
+        `${BASE_SERVER_URL}${MEETUPS_URL}/${id}${VOTEDUSERS_URL}`,
+      );
+
+      if (!response?.ok) {
+        return null;
+      }
+
+      return await response.json();
+    } catch (error) {
+      this.notificationStore.error(this.errorMessage.unknown);
+      return null;
+    }
+  }
+
+  async sendVotedUser(id: string, user: User): Promise<User[] | null> {
+    try {
+      const response = await this.fetch(
+        `${BASE_SERVER_URL}${MEETUPS_URL}/${id}${VOTEDUSERS_URL}`, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({user: user}),
+      });
+
+      if (!response?.ok) {
+        return null;
+      }
+
+      return await response.json();
+    } catch (error) {
+      this.notificationStore.error(this.errorMessage.unknown);
+      return null;
+    }
+  }
+
+  async removeVotedUser(id: string, user: User): Promise<User[] | null> {
+    try {
+      const response = await this.fetch(
+        `${BASE_SERVER_URL}${MEETUPS_URL}/${id}${VOTEDUSERS_URL}`, {
+        method: 'DELETE',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({user: user}),
+      });
+
+      if (!response?.ok) {
+        return null;
+      }
+
+      return await response.json();
+    } catch (error) {
+      this.notificationStore.error(this.errorMessage.unknown);
+      return null;
+    }
+  }
+
   // User
   async tryAuthorize(authData: AuthorizationRequestData): Promise<User | null> {
     try {
@@ -212,6 +279,23 @@ class ServerApi {
       return userData.user;
     } catch {
       console.error('Failed to retrieve user');
+      return null;
+    }
+  }
+
+  async logout(): Promise<Response | null> {
+    try {
+      const response: Response = await fetch(`${BASE_SERVER_URL}${LOGOUT_URL}`, {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      });
+
+      return response.json();
+    } catch {
+      this.notificationStore.error(this.errorMessage.logout);
       return null;
     }
   }

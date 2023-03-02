@@ -9,8 +9,8 @@ export const combineFormDataForCreatedMeetup = (
   user: ShortUser,
 ): CreatedMeetup => {
   return {
-    start: new Date(new Date().getTime()).toISOString(),
-    finish: new Date(new Date().getTime() + 20000).toISOString(),
+    start: additional.start,
+    finish: additional.finish,
     author: user,
     modified: new Date().toISOString(),
     image: additional.image as string,

@@ -6,18 +6,18 @@ import { FormRequiredData } from '../../components/forms/create/required/Require
 import { FormAdditionalData } from '../../components/forms/create/additional/AdditionalCreateForm';
 import { CreatedMeetup, Meetup } from '../../core/types/Meetup';
 import { combineFormDataForCreatedMeetup } from '../../core/utils/combineFormDataForCreatedMeetup';
-import { ShortUser } from '../../core/types/User';
+import { ShortUser, User } from '../../core/types/User';
 import { useStore } from '../../context/storeContext';
 
 interface CreateMeetupPageProps {
-  user: ShortUser;
+  // user: User;
+  // user: ShortUser;
 }
 
-export const CreateMeetupPage = ({
-  user,
-}: CreateMeetupPageProps): JSX.Element => {
+export const CreateMeetupPage = (): JSX.Element => {
   const navigation: NavigateFunction = useNavigate();
   const meetupsStore = useStore('MeetupsStore');
+  const userStore = useStore('UserStore');
 
   const leavePage = (): void => navigation('/meetups');
 
@@ -25,12 +25,14 @@ export const CreateMeetupPage = ({
     required: FormRequiredData,
     additional: FormAdditionalData,
   ): Promise<void> => {
-    const combinedMeetup: CreatedMeetup = combineFormDataForCreatedMeetup(
-      required,
-      additional,
-      user,
-    );
-    meetupsStore.addMeetup(combinedMeetup as Meetup);
+    if(userStore.user) {
+      const combinedMeetup: CreatedMeetup = combineFormDataForCreatedMeetup(
+        required,
+        additional,
+        userStore.user,
+      );
+      await meetupsStore.addMeetup(combinedMeetup as Meetup);
+    }
     leavePage();
   };
 

@@ -46,3 +46,23 @@
     border-bottom: 2px solid #fff;
   }
 }
+
+.mainBar {
+  display: flex;
+  align-items: center;
+}
+
+.langSwitcher {
+  margin: 0 30px 0 0;
+}
+
+.langList {
+  top: calc(100% + 17px);
+  left: 0;
+  transform: translateX(-33px);
+}
+
+.accountMenu {
+  top: calc(100% + 18px);
+  left: 0;
+}
