@@ -3,6 +3,7 @@ import styles from './ThemePreviewPage.module.scss';
 import { ThemePreview } from '../../../components/preview/themePreview/ThemePreview';
 import { useParams } from 'react-router-dom';
 import { Meetup } from '../../../core/types/Meetup';
+import { User } from '../../../core/types/User';
 import { useNavigate, NavigateFunction } from 'react-router-dom';
 import { useStore } from '../../../context/storeContext';
 import TranslatedMessage from '../../../components/translatedMessage/TranslatedMessage';
@@ -10,21 +11,18 @@ import Translation from '../../../core/utils/translation';
 
 const ThemePreviewPage = () => {
   const [meetup, setMeetup] = useState<Meetup | null>(null);
+  const [votedUsers, setVotedUsers] = useState<User[]>([]);
   const { id } = useParams();
   const navigate: NavigateFunction = useNavigate();
   const meetupsStore = useStore('MeetupsStore');
+  const userStore = useStore('UserStore');
 
-  const loadMeetup = async () => {
-    if (id) {
-      const receivedMeetup: Meetup | null = await meetupsStore.getMeetupById(
-        id,
-      );
-      setMeetup(receivedMeetup);
-    }
+  const redirectToOnModeration = () => {
+    navigate('/meetups/moderation');
   };
 
-  const toMeetupsPage = () => {
-    navigate('/meetups');
+  const redirectToTopics = () => {
+    navigate('/meetups/topics');
   };
 
   const approveTheme = () => {
@@ -34,18 +32,46 @@ const ThemePreviewPage = () => {
         status: 'DRAFT',
       });
     }
-    toMeetupsPage();
+    redirectToOnModeration();
   };
+
+  const subscribe = async () => {
+    if(meetup && userStore.user) {
+      const newVotedUsers = await meetupsStore.addVoteduser(meetup?.id, userStore.user);
+      if(newVotedUsers) {
+        setVotedUsers(newVotedUsers);
+      }
+    }
+  }
+
+  const unsubscribe = async () => {
+    if(meetup && userStore.user) {
+      const newVotedUsers = await meetupsStore.deleteVoteduser(meetup?.id, userStore.user);
+      if(newVotedUsers) {
+        setVotedUsers(newVotedUsers);
+      }
+    }
+  }
 
   const deleteMeetup = () => {
     if (meetup) {
       meetupsStore.deleteMeetup(meetup);
     }
-    toMeetupsPage();
+    redirectToTopics();
   };
 
+  const loadData = async () => {
+    if (id) {
+      const receivedMeetup = await meetupsStore.getMeetupById(id);
+      const votedUsers = await meetupsStore.getVotedusers(id);
+
+      setMeetup(receivedMeetup);
+      setVotedUsers(votedUsers);
+    }
+  }
+
   useEffect(() => {
-    loadMeetup();
+    loadData();
   }, []);
 
   return (
@@ -63,9 +89,12 @@ const ThemePreviewPage = () => {
           </div>
           <ThemePreview
             meetup={meetup}
-            onCancel={toMeetupsPage}
+            votedUsers={votedUsers}
+            onCancel={redirectToTopics}
             onDelete={deleteMeetup}
             onApprove={approveTheme}
+            onSubscribe={subscribe}
+            onUnsubscribe={unsubscribe}
           />
         </div>
       )}

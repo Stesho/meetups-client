@@ -6,7 +6,7 @@ import IServerApi from '../../core/types/IServerApi';
 type Roles = 'EMPLOYEE' | 'CHIEF';
 
 class UserStore {
-  user: User = null!;
+  user: User | null = null;
 
   constructor(private readonly serverApi: IServerApi) {
     makeAutoObservable(this);
@@ -28,8 +28,16 @@ class UserStore {
     }
   }
 
+  async logout(): Promise<void> {
+    const response = await this.serverApi.logout();
+
+    if(response !== null) {
+      this.user = null;
+    }
+  } 
+
   get role(): Roles | null {
-    return this.user?.roles;
+    return this.user?.roles || null;
   }
 }
 

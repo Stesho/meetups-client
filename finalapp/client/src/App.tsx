@@ -43,7 +43,7 @@ export const App = observer((): JSX.Element => {
             <Route path="future" element={<FutureMeetups />} />
             <Route path="past" element={<PastMeetups />} />
           </Route>
-          <Route path="create" element={<CreateMeetupPage user={testUser} />} />
+          <Route path="create" element={<CreateMeetupPage />} />
           <Route path="edit/:id" element={<EditMeetupPage />} />
           <Route path="preview/:id" element={<MeetupPreviewPage />} />
           <Route path="theme-preview/:id" element={<ThemePreviewPage />} />
@@ -60,9 +60,3 @@ export const App = observer((): JSX.Element => {
     </BrowserRouter>
   );
 });
-
-const testUser: ShortUser = {
-  name: 'Alfred',
-  surname: 'Lind',
-  id: '1af86359-8e9d-41da-8da8-67e68ee514ea',
-};

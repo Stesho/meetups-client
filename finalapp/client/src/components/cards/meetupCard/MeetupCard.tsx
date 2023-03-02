@@ -55,11 +55,11 @@ export const MeetupCard = ({
           </div>
         )}
         <div className={styles.editCard}>
-          <AvailableFor roles={['EMPLOYEE']}>
+          <AvailableFor roles={['CHIEF']}>
             <RedactorButton type="delete" onClick={onDelete} />
           </AvailableFor>
           {type === 'moderation' && typeof onEdit !== 'undefined' && (
-            <AvailableFor roles={['EMPLOYEE']}>
+            <AvailableFor roles={['CHIEF']}>
               <RedactorButton
                 type="edit"
                 onClick={onEdit}
