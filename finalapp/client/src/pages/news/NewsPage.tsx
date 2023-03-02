@@ -38,7 +38,7 @@ const NewsPage = observer((): JSX.Element => {
             </Button>
           </AvailableFor>
         </div>
-        <NewsList news={newsStore.news} />
+        <NewsList news={newsStore.sortedNews} />
       </div>
     </section>
   );

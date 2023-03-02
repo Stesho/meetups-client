@@ -30,6 +30,10 @@ class NewsStore {
     }
   }
 
+  get sortedNews() {
+    return this.news.slice().sort((a, b) => a.publicationDate < b.publicationDate ? 1 : -1);
+  }
+
   setNews(news: News[]) {
     this.news = news;
   }

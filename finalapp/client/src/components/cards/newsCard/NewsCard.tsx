@@ -19,7 +19,7 @@ export const NewsCard = ({ news }: NewsCardProps): JSX.Element => {
   return (
     <article className={styles.newsCard}>
       <div className={styles.image}>
-        <img src={defaultNewsImg} alt="news" />
+        <img src={news.image || defaultNewsImg} alt="news" />
       </div>
       <div className={styles.newsInfo}>
         <span className={styles.newsDate}>{getNewsDate(news)}</span>

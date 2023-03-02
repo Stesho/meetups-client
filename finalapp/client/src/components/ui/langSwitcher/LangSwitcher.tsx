@@ -16,7 +16,7 @@ const LangSwitcher = (props: LangSwitcherProps) => {
   const switcher = useOutsideClick(() => setIsOpen(false));
 
   const switcherClass = classNames(styles.langSwitcher, props.switcherClassName); 
-  const listClass = classNames(styles.langList, props.listClassName); 
+  const listClass = classNames(styles.langList, 'popUp', props.listClassName); 
 
   const selectLanguage = (locale: string) => {
     localeStore.setLocale(locale);

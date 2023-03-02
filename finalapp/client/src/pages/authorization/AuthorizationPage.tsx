@@ -21,7 +21,7 @@ export const AuthorizationPage = (): JSX.Element => {
   };
 
   return (
-    <section className="container smoothPage">
+    <section className={`container smoothPage`}>
       <div id='authorizationPage' className={styles.authorizationPage}>
         <h1 className={`basicH1 ${styles.title}`}>
           <TranslatedMessage

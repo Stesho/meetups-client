@@ -19,7 +19,7 @@ const AccountMenu = (props: AccountMenuProps): JSX.Element | null => {
   const [isActive, setIsActive] = React.useState<boolean>(false);
   const dropDownMenu = useOutsideClick(() => setIsActive(false));
   
-  const dropDownMenuClass = classNames(styles.dropDownMenu, props.className);
+  const dropDownMenuClass = classNames(styles.dropDownMenu, 'popUp', props.className);
 
   const onLogout = async () => {
     await userStore.logout();

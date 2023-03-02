@@ -23,6 +23,7 @@ export const newsRoutes = (db) => {
   });
 
   newsRouter.post('/', ensureAuthenticated, isModerator, async (req, res) => {
+    console.log(req.body);
     try {
       const {
         title,

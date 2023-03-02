@@ -1,5 +1,6 @@
 @import './styles/typography';
 @import './styles/colors';
+@import './styles/animations';
 
 *,
 *::before,
@@ -25,16 +26,6 @@ body {
   padding-bottom: 15px;
 }
 
-@keyframes smoothAppear {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
 @media (max-width: 1200px) {
   .container {
     max-width: 940px;
@@ -51,21 +42,5 @@ body {
 @media (max-width: 639px) {
   .container {
     max-width: 90%;
-  }
-}
-
-.smoothPage {
-  animation-duration: 0.3s;
-  animation-name: smoothAppear;
-  animation-timing-function: ease-in-out;
-}
-
-@keyframes smoothAppear {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
   }
 }

@@ -15,12 +15,12 @@ const CreateNewsPage = () => {
     navigation('/news');
   };
 
-  const createNews = (
+  const createNews = async (
     news: CreatedNews,
     event?: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
     event?.preventDefault();
-    newsStore.addNews(news as News);
+    await newsStore.addNews(news as News);
     toNewsPage();
   };
 
