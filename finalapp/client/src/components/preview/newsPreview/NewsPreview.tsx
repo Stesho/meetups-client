@@ -15,7 +15,7 @@ interface NewsPreviewProps {
 
 const NewsPreview = (props: NewsPreviewProps) => {
   return (
-    <article>
+    <article className={styles.newsPreview}>
       <div className={styles.img}>
         <img src={props.news.image || defaultNewsImg} alt="meetup img" />
       </div>

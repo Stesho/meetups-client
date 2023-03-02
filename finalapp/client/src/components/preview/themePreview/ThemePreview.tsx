@@ -8,6 +8,8 @@ import styles from './ThemePreview.module.scss';
 import TranslatedMessage from '../../translatedMessage/TranslatedMessage';
 import Translation from '../../../core/utils/translation';
 import { useStore } from '../../../context/storeContext';
+import LoadingSpinner from '../../ui/loadingSpinner/LoadingSpinner';
+import classNames from 'classnames';
 
 interface ThemePreviewProps {
   meetup: Meetup;
@@ -22,12 +24,33 @@ interface ThemePreviewProps {
 export const ThemePreview = (props: ThemePreviewProps): JSX.Element => {
   const [isVotedUser, setIsVotedUser] = React.useState<boolean>(false);
   const userStore = useStore('UserStore');
+  const [subscribeLoader, setSubscribeLoader] = React.useState(false);
+  const [unsubscribeLoader, setUnsubscribeLoader] = React.useState(false);
+
+  const subscribeClass = classNames({
+    [styles.loader]: subscribeLoader
+  });
+  const unsubscribeClass = classNames({
+    [styles.loader]: unsubscribeLoader
+  });
 
   const isVoted = (): boolean => {
     if(userStore.user) {
       return !!props.votedUsers.find(user => user.id === userStore.user?.id);
     }
     return false;
+  }
+
+  const onSubscribe = () => {
+    setSubscribeLoader(true);
+    props.onSubscribe()
+    setUnsubscribeLoader(false);
+  }
+  
+  const onUnsubscribe = () => {
+    setUnsubscribeLoader(true);
+    props.onUnsubscribe()
+    setSubscribeLoader(false);
   }
 
   useEffect(() => {
@@ -110,12 +133,14 @@ export const ThemePreview = (props: ThemePreviewProps): JSX.Element => {
         <AvailableFor roles={['EMPLOYEE']}>
           <div className={styles.mainButtons}>
             {isVotedUser
-            ? <Button type="secondary" callback={(event) => props.onUnsubscribe(event)}>
+            ? <Button type="secondary" className={styles.unsubscribeBtn} disabled={unsubscribeLoader} callback={() => onUnsubscribe()}>
+                {unsubscribeLoader && <LoadingSpinner spinnerClassName={styles.loader}/>}
                 <TranslatedMessage
                   message={Translation.translatedText('btn.unsubscribe')}
                 />
               </Button>
-            : <Button type="primary" callback={(event) => props.onSubscribe(event)}>
+            : <Button type="primary" className={styles.subscribeBtn} disabled={subscribeLoader} callback={() => onSubscribe()}>
+                {subscribeLoader && <LoadingSpinner spinnerClassName={styles.loader} dotClassName={styles.loaderDot}/>}
                 <TranslatedMessage
                   message={Translation.translatedText('btn.subscribe')}
                 />

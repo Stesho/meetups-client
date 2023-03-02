@@ -69,3 +69,21 @@
 .mainButtons {
   margin: 0 0 0 auto;
 }
+
+.subscribeBtn,
+.unsubscribeBtn {
+  position: relative;
+}
+
+.loader {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loaderDot {
+  background-color: $white;
+}
