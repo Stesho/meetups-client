@@ -355,6 +355,31 @@ class ServerApi implements IServerApi {
       return null;
     }
   }
+
+  async updateNews(editedNews: News, id: string): Promise<News | null> {
+    try {
+      const response = await this.fetch(`${BASE_SERVER_URL}${NEWS_URL}/${id}`, {
+        method: 'PUT',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(editedNews),
+      });
+
+      if (!response?.ok) {
+        return null;
+      }
+
+      const news = await response.json();
+      this.notificationStore.success(this.successMessage.updatedMeetup);
+
+      return news;
+    } catch (error) {
+      this.notificationStore.error(this.errorMessage.unknown);
+      return null;
+    }
+  }
 }
 
 export default ServerApi;

@@ -5,7 +5,6 @@ import NewsPage from './pages/news/NewsPage';
 import { Header } from './components/header/Header';
 import { CreateMeetupPage } from './pages/create-meetup/CreateMeetupPage';
 import { AuthorizationPage } from './pages/authorization/AuthorizationPage';
-import { ShortUser } from './core/types/User';
 import { EditMeetupPage } from './pages/edit-meetup/EditMeetupPage';
 import ThemePreviewPage from './pages/preview/ThemePreviewPage/ThemePreviewPage';
 import MeetupPreviewPage from './pages/preview/MeetupPreviewPage/MeetupPreviewPage';
@@ -21,6 +20,7 @@ import {
 import Modal from './components/confirmation/Confirmation';
 import { useStore } from './context/storeContext';
 import { observer } from 'mobx-react-lite';
+import EditNewsPage from './pages/edit-news/EditNewsPage';
 
 export const App = observer((): JSX.Element => {
   const userStore = useStore('UserStore');
@@ -50,8 +50,9 @@ export const App = observer((): JSX.Element => {
         </Route>
         <Route path="news">
           <Route index element={<NewsPage />} />
-          <Route path="preview/:id" element={<NewsPreviewPage />} />
           <Route path="create" element={<CreateNewsPage />} />
+          <Route path="edit/:id" element={<EditNewsPage />} />
+          <Route path="preview/:id" element={<NewsPreviewPage />} />
         </Route>
         <Route path="*" element={'NOT FOUND'} />
       </Routes>

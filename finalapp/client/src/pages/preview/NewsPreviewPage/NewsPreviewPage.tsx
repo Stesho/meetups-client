@@ -21,7 +21,7 @@ const NewsPreviewPage = () => {
   };
 
   const toNewsPage = () => {
-    navigate('/news');
+    navigate(`/news/edit/${id}`);
   };
 
   useEffect(() => {

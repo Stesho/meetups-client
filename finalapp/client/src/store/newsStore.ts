@@ -22,6 +22,17 @@ class NewsStore {
     return news;
   }
 
+  async editNews(news: News): Promise<void> {
+    const recievedNews = await this.serverApi.updateNews(news, news.id);
+    
+    if (recievedNews !== null) {
+      const editedNewsIndex = this.news.findIndex(
+        (item) => item.id === news.id,
+      );
+      this.news[editedNewsIndex] = news;
+    }
+  }
+
   async fetchNews(): Promise<void> {
     const newsList = await this.serverApi.getNewsFromServer();
 
