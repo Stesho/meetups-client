@@ -81,6 +81,7 @@
   "news.title": "News",
   "news.preview.title": "View News",
   "news.create.title": "Create News",
+  "news.edit.title": "Edit News",
 
   "auth.title": "Authorization",
   "auth.caption": "Log in to be able to suggest new topics for meetups and more."

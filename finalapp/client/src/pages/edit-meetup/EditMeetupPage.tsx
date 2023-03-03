@@ -42,7 +42,7 @@ export const EditMeetupPage = () => {
       goCount: meetup!.goCount,
       author: data.author,
     };
-    meetupsStore.editMeetup(newMeetup);
+    await meetupsStore.editMeetup(newMeetup);
     navigate(`/meetups/moderation`);
   };
 
