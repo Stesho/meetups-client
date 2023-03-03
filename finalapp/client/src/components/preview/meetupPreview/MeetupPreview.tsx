@@ -80,17 +80,20 @@ const MeetupPreview = (props: MeetupPreviewProps) => {
             message={Translation.translatedText('btn.cancel')}
           />
         </Button>
-        <AvailableFor roles={['CHIEF']}>
-          <Button
-            className={styles.publishBtn}
-            type="primary"
-            callback={(event) => props.onPublish(event)}
-          >
-            <TranslatedMessage
-              message={Translation.translatedText('btn.publish')}
-            />
-          </Button>
-        </AvailableFor>
+        {props.meetup.status !== 'CONFIRMED'
+          ? <AvailableFor roles={['CHIEF']}>
+              <Button
+                className={styles.publishBtn}
+                type="primary"
+                callback={(event) => props.onPublish(event)}
+              >
+                <TranslatedMessage
+                  message={Translation.translatedText('btn.publish')}
+                />
+              </Button>
+            </AvailableFor>
+          : null
+        }
       </div>
     </article>
   );
