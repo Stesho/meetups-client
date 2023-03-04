@@ -10,7 +10,9 @@ export interface Meetup {
   subject: string;
   excerpt: string;
   place: string;
-  goCount: number;
+  // goCount: number;
+  votedUsersCount: number;
+  participantsCount: number;
   status: 'DRAFT' | 'REQUEST' | 'CONFIRMED';
   isOver: boolean;
   image?: string | null;

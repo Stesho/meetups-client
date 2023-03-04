@@ -64,18 +64,24 @@ class MeetupsStore {
     this.setMeetups(recievedMeetups);
   }
 
-  async getVotedusers(id: string): Promise<User[]> {
-    const votedUsers = await this.serverApi.getVotedUsers(id);
+  async getVotedusers(meetupId: string): Promise<User[]> {
+    const votedUsers = await this.serverApi.getVotedUsers(meetupId);
     return votedUsers || [];
   }
   
-  async addVoteduser(id: string, user: User): Promise<User[] | null> {
-    const votedUsers = await this.serverApi.sendVotedUser(id, user);
+  async addVoteduser(meetupId: string, user: User): Promise<User[] | null> {
+    const votedUsers = await this.serverApi.sendVotedUser(meetupId, user);
+    this.meetups = this.meetups.map((meetup) => {
+      if(meetup.id === meetupId) {
+        meetup.votedUsersCount++;
+      }
+      return meetup;
+    })
     return votedUsers;
   }
 
-  async deleteVoteduser(id: string, user: User): Promise<User[] | null> {
-    const votedUsers = await this.serverApi.removeVotedUser(id, user);
+  async deleteVoteduser(meetupId: string, user: User): Promise<User[] | null> {
+    const votedUsers = await this.serverApi.removeVotedUser(meetupId, user);
     return votedUsers;
   }
 

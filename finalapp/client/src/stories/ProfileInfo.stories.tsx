@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { ProfileInfo } from '../components/profileInfo/ProfileInfo';
+import { ProfileInfo } from '../components/profileInfo/profileInfo/ProfileInfo';
 
 export default {
   title: 'ProfileInfo',

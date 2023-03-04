@@ -3,7 +3,7 @@ import {fixedMeetups, generateMeetups, generateShortUsers} from './data/meetups.
 import {fixedNews, generateNews} from './data/news.mjs';
 
 export const generateInitialData = () => {
-  const users = [...fixedUsers, generateUsers(100)];
+  const users = [...fixedUsers, ...generateUsers(100)];
   const meetups = [...fixedMeetups, ...generateMeetups(20, users)];
   const participants = generateShortUsers(meetups, users);
   const votedUsers = generateShortUsers(meetups, users);

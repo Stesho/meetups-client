@@ -34,7 +34,8 @@ Basic.args = {
     excerpt:
       'Nemo pariatur dolores ut vero velit non. Quidem temporibus quod nihil amet recusandae atque provident voluptatum iste. Aut architecto cum sit rerum aliquam maxime. Ratione voluptate optio id molestias quia quidem ipsam. Eius voluptatem quia dolores enim assumenda. Consequuntur cupiditate error earum hic est numquam vero.',
     place: '630 Goyette Causeway',
-    goCount: 64,
+    votedUsersCount: 15,
+    participantsCount: 0,
     status: 'CONFIRMED',
     isOver: false,
   },
@@ -65,7 +66,8 @@ ModeratorCard.args = {
     excerpt:
       'Nemo pariatur dolores ut vero velit non. Quidem temporibus quod nihil amet recusandae atque provident voluptatum iste. Aut architecto cum sit rerum aliquam maxime. Ratione voluptate optio id molestias quia quidem ipsam. Eius voluptatem quia dolores enim assumenda. Consequuntur cupiditate error earum hic est numquam vero.',
     place: '630 Goyette Causeway',
-    goCount: 64,
+    votedUsersCount: 15,
+    participantsCount: 0,
     status: 'CONFIRMED',
     isOver: false,
   },
