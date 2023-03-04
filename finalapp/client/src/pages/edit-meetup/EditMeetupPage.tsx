@@ -39,7 +39,8 @@ export const EditMeetupPage = () => {
       status: meetup!.status,
       start: data.start,
       finish: data.finish,
-      goCount: meetup!.goCount,
+      votedUsersCount: meetup!.votedUsersCount,
+      participantsCount: meetup!.participantsCount,
       author: data.author,
     };
     await meetupsStore.editMeetup(newMeetup);

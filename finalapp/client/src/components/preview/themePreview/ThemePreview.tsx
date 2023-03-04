@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ProfileInfo } from '../../profileInfo/ProfileInfo';
+import { ProfileInfo } from '../../profileInfo/profileInfo/ProfileInfo';
 import Button from '../../ui/button/Button';
 import { Meetup } from '../../../core/types/Meetup';
 import { User } from '../../../core/types/User';
@@ -10,6 +10,7 @@ import Translation from '../../../core/utils/translation';
 import { useStore } from '../../../context/storeContext';
 import LoadingSpinner from '../../ui/loadingSpinner/LoadingSpinner';
 import classNames from 'classnames';
+import MoreUsers from '../../profileInfo/moreUsers/MoreUsers';
 
 interface ThemePreviewProps {
   meetup: Meetup;
@@ -92,14 +93,17 @@ export const ThemePreview = (props: ThemePreviewProps): JSX.Element => {
       </h3>
       <div className={styles.votedUsers}>
         {props.votedUsers.length === 0
-        ? <div className={styles.noVotedUsers}>
-            <TranslatedMessage
-              message={Translation.translatedText('meetups.preview.voteduser.novotedusers')}
-            />
-          </div>
-        : props.votedUsers.slice(0, 7).map((user) => (
-            <ProfileInfo user={user} first="avatar" avatarHeightPX={40} withName={false} key={user.id}/>
-          ))
+          ? <div className={styles.noVotedUsers}>
+              <TranslatedMessage
+                message={Translation.translatedText('meetups.preview.voteduser.novotedusers')}
+              />
+            </div>
+          : props.votedUsers.slice(0, 10).map((user, index) => {
+              if(index === 9) {
+                return <MoreUsers usersCount={props.votedUsers.length - 9}/>
+              }
+              return <ProfileInfo user={user} first="avatar" avatarHeightPX={40} withName={false} key={user.id}/>
+            })
         }
       </div>
       <div className={styles.buttons}>

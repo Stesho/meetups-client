@@ -3,7 +3,7 @@ import styles from './MeetupCard.module.scss';
 import profileIcon from '../../../assets/icons/profile-icon.svg';
 import { Meetup } from '../../../core/types/Meetup';
 import { RedactorButton } from '../../ui/redactorButton/RedactorButton';
-import { ProfileInfo } from '../../profileInfo/ProfileInfo';
+import { ProfileInfo } from '../../profileInfo/profileInfo/ProfileInfo';
 import { getMeetupDatePlaceInfo } from '../../../core/utils/getMeetupDatePlaceInfo';
 import { useNavigate, NavigateFunction } from 'react-router-dom';
 import AvailableFor from '../../availableFor/AvailableFor';
@@ -84,7 +84,7 @@ export const MeetupCard = ({
           <span className={styles.supportInfo}>
             <TranslatedMessage
               message={Translation.translatedText('meetups.card.support', {
-                n: meetup.goCount,
+                n: meetup.votedUsersCount,
               })}
             />
           </span>

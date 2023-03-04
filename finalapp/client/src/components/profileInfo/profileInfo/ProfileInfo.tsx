@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import React from 'react';
 import styles from './ProfileInfo.module.scss';
-import { ShortUser } from '../../core/types/User';
+import { ShortUser } from '../../../core/types/User';
 
 export interface ProfileInfoProps {
   user: ShortUser;

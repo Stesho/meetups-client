@@ -32,7 +32,8 @@ export const fixedMeetups = [
 
 const generateMeetup = (users) => {
   const start = faker.date.future();
-  const goCount = faker.datatype.number({ min: 1, max: users.length - 10 });
+  const votedUsersCount = faker.datatype.number({ min: 0, max: users.length - users.length * 0.6 });
+  const participantsCount = faker.datatype.number({ min: 0, max: users.length - users.length * 0.8 });
   const finish = new Date(
     start.getTime() + faker.datatype.number({ min: 15, max: 240 }) * 60 * 1000
   );
@@ -46,7 +47,8 @@ const generateMeetup = (users) => {
     subject: faker.company.catchPhrase(),
     excerpt: faker.lorem.paragraph(),
     place: faker.address.streetAddress(),
-    goCount,
+    votedUsersCount,
+    participantsCount,
     status: faker.random.arrayElement(["DRAFT", "REQUEST", "CONFIRMED"]),
     isOver: false,
     meta: {}
@@ -57,11 +59,17 @@ export const generateMeetups = (count, users) => {
   return Array.from({ length: count }, () => generateMeetup(users));
 };
 
+const getRandomArrayOfNumbers = (array, max) => (
+  [...Array(array.length - 0 + 1).keys()]
+    .sort(() => Math.random() - 0.5)
+    .splice(0, max)
+)
+
 export const generateShortUsers = (meetups, users) => {
   const shortUsers = meetups.reduce((res, meetup) => {
+    const randomUsersindexes = getRandomArrayOfNumbers(users, meetup.votedUsersCount);
     res[meetup.id] = users
-      // ~30% chance that the user will be added
-      .filter(() => Math.random() > 0.7)
+      .filter((_, index) => randomUsersindexes.indexOf(index) !== -1)
       .map(u => ({ id: u.id, name: u.name, surname: u.surname }));
 
     return res;

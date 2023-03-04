@@ -15,6 +15,8 @@ export const combineFormDataForCreatedMeetup = (
     modified: new Date().toISOString(),
     image: additional.image as string,
     excerpt: required.description,
+    votedUsersCount: 0,
+    participantsCount: 0,
     place: additional.place,
     subject: required.name,
     speakers: [],

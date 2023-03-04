@@ -4,7 +4,7 @@ import logo from '../../assets/images/Logo_SaM.svg';
 import Button from '../ui/button/Button';
 import { useNavigate, NavigateFunction } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
-import { ProfileInfo } from '../profileInfo/ProfileInfo';
+import { ProfileInfo } from '../profileInfo/profileInfo/ProfileInfo';
 import { ShortUser } from '../../core/types/User';
 import { observer } from 'mobx-react-lite';
 import TranslatedMessage from '../translatedMessage/TranslatedMessage';
