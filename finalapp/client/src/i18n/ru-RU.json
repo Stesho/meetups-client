@@ -71,7 +71,7 @@
   "meetups.card.support": "{n} поддерживают",
   "meetups.preview.theme.title": "Просмотр Темы",
   "meetups.preview.meetup.title": "Просмотр Митапа",
-  "meetups.preview.voteduser.novotedusers": "Еще никто не проголосовал за вашу тему",
+  "meetups.preview.voteduser.novotedusers": "Еще никто не проголосовал за эту тему",
   "meetups.create.title": "Новый Митап",
   "meetups.create.caption": "Заполните необходимые поля ниже наиболее подробно, это даст полную информации о предстоящем событии.",
   "meetups.create.stepper.requires": "Обязательные поля",

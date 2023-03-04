@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ProfileInfo } from '../../profileInfo/profileInfo/ProfileInfo';
+import { ProfileInfo } from '../../profile/profileInfo/ProfileInfo';
 import Button from '../../ui/button/Button';
 import { Meetup } from '../../../core/types/Meetup';
 import { User } from '../../../core/types/User';
@@ -10,7 +10,7 @@ import Translation from '../../../core/utils/translation';
 import { useStore } from '../../../context/storeContext';
 import LoadingSpinner from '../../ui/loadingSpinner/LoadingSpinner';
 import classNames from 'classnames';
-import MoreUsers from '../../profileInfo/moreUsers/MoreUsers';
+import MoreUsers from '../../profile/moreUsers/MoreUsers';
 
 interface ThemePreviewProps {
   meetup: Meetup;

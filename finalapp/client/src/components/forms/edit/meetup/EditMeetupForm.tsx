@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { LabeledInput } from '../../ui/labeledInput/LabeledInput';
-import { TextArea } from '../../ui/textArea/TextArea';
-import { DateInput } from '../../ui/dateInput/DateInput';
-import { Meetup } from '../../../core/types/Meetup';
-import Button from '../../ui/button/Button';
-import defaultMeetupImg from '../../../assets/images/default-meetup-img.png';
+import { LabeledInput } from '../../../ui/labeledInput/LabeledInput';
+import { TextArea } from '../../../ui/textArea/TextArea';
+import { DateInput } from '../../../ui/dateInput/DateInput';
+import { Meetup } from '../../../../core/types/Meetup';
+import Button from '../../../ui/button/Button';
+import defaultMeetupImg from '../../../../assets/images/default-meetup-img.png';
 import styles from './EditMeetupForm.module.scss';
-import TranslatedMessage from '../../translatedMessage/TranslatedMessage';
-import Translation from '../../../core/utils/translation';
-import dateToISOString from '../../../core/utils/dateToISOString';
-import dateFromISOToReadable from '../../../core/utils/dateFromISOToReadable';
+import TranslatedMessage from '../../../translatedMessage/TranslatedMessage';
+import Translation from '../../../../core/utils/translation';
+import dateToISOString from '../../../../core/utils/dateToISOString';
+import dateFromISOToReadable from '../../../../core/utils/dateFromISOToReadable';
 
 export type MeetupData = Pick<
   Meetup,
