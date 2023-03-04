@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { EditMeetupForm } from '../../components/forms/edit/EditMeetupForm';
-import { MeetupData } from '../../components/forms/edit/EditMeetupForm';
+import { EditMeetupForm } from '../../components/forms/edit/meetup/EditMeetupForm';
+import { MeetupData } from '../../components/forms/edit/meetup/EditMeetupForm';
 import { Meetup } from '../../core/types/Meetup';
 import { NavigateFunction, useNavigate, useParams } from 'react-router-dom';
 import { useStore } from '../../context/storeContext';

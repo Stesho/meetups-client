@@ -71,7 +71,7 @@
   "meetups.card.support": "{n} support",
   "meetups.preview.theme.title": "View Topic",
   "meetups.preview.meetup.title": "View Meetup",
-  "meetups.preview.voteduser.novotedusers": "No one has voted for your topic yet",
+  "meetups.preview.voteduser.novotedusers": "No one has voted for this topic yet",
   "meetups.create.title": "New Meetup",
   "meetups.create.caption": "Fill out the required fields below in as much detail as possible, this will give full information about the upcoming event.",
   "meetups.create.stepper.requires": "Required fields",

@@ -4,7 +4,7 @@ import calendarIcon from '../../../assets/icons/calendar2-icon.svg';
 import clockIcon from '../../../assets/icons/clock-icon.svg';
 import mapPinIcon from '../../../assets/icons/map-pin-icon.svg';
 import defaultMeetupImg from '../../../assets/images/default-meetup-img.png';
-import { ProfileInfo } from '../../profileInfo/profileInfo/ProfileInfo';
+import { ProfileInfo } from '../../profile/profileInfo/ProfileInfo';
 import Button from '../../ui/button/Button';
 import AvailableFor from '../../availableFor/AvailableFor';
 import styles from './MeetupPreview.module.scss';
