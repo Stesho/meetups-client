@@ -174,6 +174,7 @@ export const meetupsRoutes = (db) => {
         }
 
         db.data.votedUsers[meetupId].push({ id, name, surname });
+        db.data.meetups.find((meetup) => meetup.id === meetupId).votedUsersCount++;
 
         await db.write();
         res.send(db.data.votedUsers[meetupId]);
@@ -198,6 +199,7 @@ export const meetupsRoutes = (db) => {
         }
 
         db.data.votedUsers[meetupId] = users.filter(u => u.id !== userId);
+        db.data.meetups.find((meetup) => meetup.id === meetupId).votedUsersCount--;
 
         await db.write();
         res.send(db.data.votedUsers[meetupId]);
