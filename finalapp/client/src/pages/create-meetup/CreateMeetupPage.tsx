@@ -38,7 +38,7 @@ export const CreateMeetupPage = (): JSX.Element => {
 
   return (
     <section className="container smoothPage">
-      <div className={styles.createMeetupPage}>
+      <div className={styles.createMeetupPage} id="createMeetupPage">
         <CreateMeetupStepper onExit={leavePage} onCreate={createMeetup} />
       </div>
     </section>

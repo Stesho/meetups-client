@@ -116,12 +116,12 @@ export const AdditionalCreateForm = (
         <ImageLoader onLoadCallback={(newImage) => setImage(newImage)} />
       </div>
       <div className={styles.buttons}>
-        <Button callback={props.onCancel} type="default">
+        <Button id="cancelBtn" callback={props.onCancel} type="default">
           <TranslatedMessage
             message={Translation.translatedText('btn.cancel')}
           />
         </Button>
-        <Button callback={submitForm} type="primary" disabled={!checkForm()}>
+        <Button id="submitBtn" callback={submitForm} type="primary" disabled={!checkForm()}>
           <TranslatedMessage
             message={Translation.translatedText('btn.create')}
           />

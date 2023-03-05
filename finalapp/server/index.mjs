@@ -52,6 +52,7 @@ app.use('/api', loginRoutes);
 app.use('/api/users', usersRoutes(db));
 app.use('/api/meetups', meetupsRoutes(db));
 app.use('/api/news', newsRoutes(db));
+
 app.use('/api/resetdb', resetdbRoutes(db));
 
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));

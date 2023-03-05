@@ -2,7 +2,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import Modal from '../Confirmation';
 import { IntlProvider } from 'react-intl';
 import English from '../../../i18n/en-US.json';
-import confirmationStore from '../../../mocks/mockConfirmation';
+import confirmationStore from '../../../mocks/mockConfirmationStore';
 import Translation from '../../../core/utils/translation';
 
 let mockConfirmationStore = {...confirmationStore}; 

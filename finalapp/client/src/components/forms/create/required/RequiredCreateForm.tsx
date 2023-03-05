@@ -107,12 +107,13 @@ export const RequiredCreateForm = (
         />
       </div>
       <div className={styles.buttons}>
-        <Button callback={props.onCancel} type="default">
+        <Button id="cancelBtn" callback={props.onCancel} type="default">
           <TranslatedMessage
             message={Translation.translatedText('btn.cancel')}
           />
         </Button>
         <Button
+          id="submitBtn"
           callback={(event) => props.onSubmit(getData(), event)}
           type="primary"
           disabled={!checkForm()}

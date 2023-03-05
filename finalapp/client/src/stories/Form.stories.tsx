@@ -2,7 +2,7 @@ import { ComponentStory } from '@storybook/react';
 import { RequiredCreateForm } from '../components/forms/create/required/RequiredCreateForm';
 import { AdditionalCreateForm } from '../components/forms/create/additional/AdditionalCreateForm';
 import { AuthorizationForm } from '../components/forms/authorization/AuthorizationForm';
-import { EditMeetupForm } from '../components/forms/edit/EditMeetupForm';
+import { EditMeetupForm } from '../components/forms/edit/meetup/EditMeetupForm';
 
 export default {
   title: 'Containers/Form',
