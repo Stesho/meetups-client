@@ -62,7 +62,7 @@ export const DateInput = (props: DateInputProps): JSX.Element => {
   return (
     <div className={styles.dateInput}>
       <div ref={dateInput}>
-        <div className={styles.inputWrapper}>
+        <div className={styles.inputWrapper} data-testid="input">
           <LabeledInput
             onChange={props.setValue}
             onClick={() => setIsOpen(!isOpen)}

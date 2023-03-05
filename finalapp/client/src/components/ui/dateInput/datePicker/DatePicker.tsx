@@ -87,7 +87,7 @@ export const DatePicker = (props: DatePickerProps): JSX.Element => {
   }, [year, month, day, time]);
 
   return (
-    <div className={`${styles.datePicker} ${props.className}`}>
+    <div className={`${styles.datePicker} ${props.className}`} data-testid='datePicker'>
       <div className={styles.date}>
         <div className={styles.monthWrapper}>
           <button

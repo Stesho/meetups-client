@@ -17,7 +17,7 @@ const errorMessages = {
 
 const renderUseInput = () => {
   return renderHook(() => (
-    useInput(validationOptions, errorMessages)
+    useInput({validationOptions, errorMessages})
   ));
 }
 
