@@ -59,7 +59,7 @@ export const App = observer((): JSX.Element => {
               <Route path="past" element={<PastMeetups />} />
             </Route>
             <Route path="create" element={
-              <PrivateRoute roles={['CHIEF']}>
+              <PrivateRoute roles={['CHIEF', 'EMPLOYEE']}>
                 <CreateMeetupPage />
               </PrivateRoute>
             } />

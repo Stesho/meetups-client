@@ -13,8 +13,8 @@
   justify-content: center;
   flex: 1;
   opacity: 0.6;
-  padding-left: 32px;
-  padding-right: 32px;
+  // padding-left: 32px;
+  // padding-right: 32px;
   border-bottom: 1px solid $grey-200;
   padding-bottom: 15px;
   cursor: pointer;
@@ -52,4 +52,14 @@
   background-color: $primary-blue;
   border-radius: 50%;
   color: #ffffff;
+}
+
+@media (max-width: 525px) {
+  .steps {
+    flex-direction: column;
+  }
+  .step {
+    width: 100%;
+    margin: 0 0 15px 0;
+  }
 }

@@ -33,3 +33,9 @@
 
   color: $grey-700;
 }
+
+@media (max-width: 375px) {
+  .suggestBtn {
+    padding: 12px 15px;
+  }
+}

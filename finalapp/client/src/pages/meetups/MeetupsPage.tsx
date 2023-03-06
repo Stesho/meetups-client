@@ -36,28 +36,32 @@ const MeetupsPage = observer((): JSX.Element => {
 
         <div className={styles.tabs}>
           <div className={styles.tabList}>
-            <NavLink to="/meetups/topics" className={setActiveLink}>
-              <TranslatedMessage
-                message={Translation.translatedText('meetups.tab.topics')}
-              />
-            </NavLink>
-            <AvailableFor roles={['CHIEF', 'EMPLOYEE']}>
-              <NavLink to="/meetups/moderation" className={setActiveLink}>
+            <div>
+              <NavLink to="/meetups/topics" className={setActiveLink}>
                 <TranslatedMessage
-                  message={Translation.translatedText('meetups.tab.moderation')}
+                  message={Translation.translatedText('meetups.tab.topics')}
                 />
               </NavLink>
-            </AvailableFor>
-            <NavLink to="/meetups/future" className={setActiveLink}>
-              <TranslatedMessage
-                message={Translation.translatedText('meetups.tab.future')}
-              />
-            </NavLink>
-            <NavLink to="/meetups/past" className={setActiveLink}>
-              <TranslatedMessage
-                message={Translation.translatedText('meetups.tab.past')}
-              />
-            </NavLink>
+              <AvailableFor roles={['CHIEF', 'EMPLOYEE']}>
+                <NavLink to="/meetups/moderation" className={setActiveLink}>
+                  <TranslatedMessage
+                    message={Translation.translatedText('meetups.tab.moderation')}
+                  />
+                </NavLink>
+              </AvailableFor>
+            </div>
+            <div>
+              <NavLink to="/meetups/future" className={setActiveLink}>
+                <TranslatedMessage
+                  message={Translation.translatedText('meetups.tab.future')}
+                />
+              </NavLink>
+              <NavLink to="/meetups/past" className={setActiveLink}>
+                <TranslatedMessage
+                  message={Translation.translatedText('meetups.tab.past')}
+                />
+              </NavLink>
+            </div>
           </div>
         </div>
         <Loader promise={fetchMeetups()}>

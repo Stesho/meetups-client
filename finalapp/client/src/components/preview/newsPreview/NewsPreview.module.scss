@@ -56,3 +56,22 @@
 .mainButtons {
   margin: 0 0 0 auto;
 }
+
+@media (max-width: 425px) {
+  .inputs {
+    padding: 25px;
+  }
+  .buttons {
+    flex-direction: column-reverse;
+    padding: 16px 25px;
+    button:last-child {
+      margin: 0 0 10px 0;
+    }
+  }
+  .mainButtons {
+    margin: 0;
+  }
+  .editBtn {
+    width: 100%;
+  }
+}

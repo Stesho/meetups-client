@@ -44,3 +44,16 @@
   border-radius: 5px;
   background-color: $white;
 }
+
+@media (max-width: 425px) {
+  .inputs {
+    padding: 15px;
+  }
+  .buttons {
+    flex-direction: column-reverse;
+    padding: 15px;
+    button:last-child {
+      margin: 0 0 10px 0;
+    }
+  }
+}

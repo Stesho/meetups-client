@@ -31,7 +31,7 @@ const NewsPreview = (props: NewsPreviewProps) => {
         </Button>
         <AvailableFor roles={['CHIEF']}>
           <div className={styles.mainButtons}>
-            <Button type="secondary" callback={(event) => props.onEdit(event)}>
+            <Button type="secondary" callback={(event) => props.onEdit(event)} className={styles.editBtn}>
               <TranslatedMessage
                 message={Translation.translatedText('btn.edit')}
               />

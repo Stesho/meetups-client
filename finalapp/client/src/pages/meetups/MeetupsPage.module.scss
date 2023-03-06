@@ -19,11 +19,14 @@
 
 .tabList {
   display: flex;
-  justify-content: center;
   margin: auto;
   width: 100%;
   list-style: none;
   margin-bottom: 36px;
+  div {
+    display: flex;
+    width: 100%;
+  }
 }
 
 .tabItem {
@@ -57,4 +60,13 @@
   font-size: 16px;
   line-height: 19px;
   color: $grey-800;
+}
+
+@media (max-width: 560px) {
+  .tabList {
+    flex-direction: column;
+    div:first-child {
+      margin: 0 0 15px 0;
+    }
+  }
 }

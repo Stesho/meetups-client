@@ -51,6 +51,7 @@
 
 .noVotedUsers {
   @extend .pageLink;
+  display: flex;
   color: $grey-800;
 }
 
@@ -86,4 +87,26 @@
 
 .loaderDot {
   background-color: $white;
+}
+
+.jc_start {
+  justify-content: start;
+}
+
+.jc_spaceBetween {
+  justify-content: space-between;
+}
+
+@media (max-width: 560px) {
+  .buttons {
+    flex-direction: column-reverse;
+  }
+  .mainButtons {
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .deleteButton {
+    margin: 15px 0;
+  }
 }
