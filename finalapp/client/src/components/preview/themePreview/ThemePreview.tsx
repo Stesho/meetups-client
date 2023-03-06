@@ -27,14 +27,24 @@ export const ThemePreview = (props: ThemePreviewProps): JSX.Element => {
   const userStore = useStore('UserStore');
   const [subscribeLoader, setSubscribeLoader] = React.useState(false);
   const [unsubscribeLoader, setUnsubscribeLoader] = React.useState(false);
+  const [renderedVotedCount, setRenderedVotedCount] = React.useState(10);
+  const votedUsersClass = classNames(styles.votedUsers,
+    props.votedUsers.length === renderedVotedCount ? styles.jc_start : styles.jc_spaceBetween
+  )
 
-  const subscribeClass = classNames({
-    [styles.loader]: subscribeLoader
-  });
-  const unsubscribeClass = classNames({
-    [styles.loader]: unsubscribeLoader
-  });
-
+  const getRenderedVotedCount = (): void => {
+    const pageWidth = document.documentElement.scrollWidth;
+    if(pageWidth <= 425) {
+      setRenderedVotedCount(4);
+    }
+    else if(pageWidth <= 615) {
+      setRenderedVotedCount(6);
+    }
+    else {
+      setRenderedVotedCount(10);
+    }
+  }
+  
   const isVoted = (): boolean => {
     if(userStore.user) {
       return !!props.votedUsers.find(user => user.id === userStore.user?.id);
@@ -56,6 +66,10 @@ export const ThemePreview = (props: ThemePreviewProps): JSX.Element => {
 
   useEffect(() => {
     setIsVotedUser(isVoted());
+    window.addEventListener("resize", getRenderedVotedCount);
+    return () => {
+      window.removeEventListener("resize", getRenderedVotedCount);
+    };
   }, [props.votedUsers]);
 
   return (
@@ -91,16 +105,16 @@ export const ThemePreview = (props: ThemePreviewProps): JSX.Element => {
           message={Translation.translatedText('form.support')}
         />
       </h3>
-      <div className={styles.votedUsers}>
+      <div className={votedUsersClass}>
         {props.votedUsers.length === 0
           ? <div className={styles.noVotedUsers}>
               <TranslatedMessage
                 message={Translation.translatedText('meetups.preview.voteduser.novotedusers')}
               />
             </div>
-          : props.votedUsers.slice(0, 10).map((user, index) => {
-              if(index === 9) {
-                return <MoreUsers usersCount={props.votedUsers.length - 9}/>
+          : props.votedUsers.slice(0, renderedVotedCount).map((user, index) => {
+              if(index === renderedVotedCount - 1) {
+                return <MoreUsers usersCount={props.votedUsers.length - renderedVotedCount + 1} key={user.id}/>
               }
               return <ProfileInfo user={user} first="avatar" avatarHeightPX={40} withName={false} key={user.id}/>
             })

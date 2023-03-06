@@ -32,7 +32,7 @@ const ListHeader = (props: ListHeaderProps): JSX.Element => {
         />
       </span>
       <AvailableFor roles={['CHIEF', 'EMPLOYEE']}>
-        <Button type="secondary" callback={goToCreateMeetupPage}>
+        <Button type="secondary" callback={goToCreateMeetupPage} className={styles.suggestBtn}>
           <TranslatedMessage
             message={Translation.translatedText('btn.createMeetup')}
           />

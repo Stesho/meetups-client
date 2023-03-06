@@ -5,13 +5,13 @@ import Button from '../ui/button/Button';
 import { useNavigate, NavigateFunction } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { ProfileInfo } from '../profile/profileInfo/ProfileInfo';
-import { ShortUser } from '../../core/types/User';
 import { observer } from 'mobx-react-lite';
 import TranslatedMessage from '../translatedMessage/TranslatedMessage';
 import Translation from '../../core/utils/translation';
 import AccountMenu from '../accountMenu/AccountMenu';
 import LangSwitcher from '../ui/langSwitcher/LangSwitcher';
 import { useStore } from '../../context/storeContext';
+import BurgerMenu from './burgerMenu/BurgerMenu';
 
 export const Header = observer((): JSX.Element => {
   const userStore = useStore('UserStore');
@@ -25,7 +25,8 @@ export const Header = observer((): JSX.Element => {
     <header className={styles.header}>
       <div className={styles.headerContainer}>
         <img className={styles.logo} src={logo} alt="SaM Solutions logo" />
-        <nav className={styles.navigation}>
+        <BurgerMenu />
+        {/* <nav className={styles.navigation}>
           <NavLink
             to="/meetups"
             className={(active) =>
@@ -68,7 +69,7 @@ export const Header = observer((): JSX.Element => {
               />
             </Button>
           )}
-        </div>
+        </div> */}
       </div>
     </header>
   );

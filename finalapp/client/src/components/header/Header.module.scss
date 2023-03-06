@@ -65,3 +65,15 @@
   top: calc(100% + 17px);
   left: 0;
 }
+
+@media (max-width: 1024px) {
+  .header {
+    padding: 8px 40px 12px;
+  }
+}
+
+@media (max-width: 425px) {
+  .header {
+    padding: 4px 15px 6px;
+  }
+}

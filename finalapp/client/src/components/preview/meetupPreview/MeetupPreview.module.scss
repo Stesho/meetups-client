@@ -39,7 +39,7 @@
 
 .timePlace {
   @extend .block;
-  padding: 21px 200px 11px 23px;
+  padding: 21px 23px 11px;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 16px;
@@ -85,4 +85,13 @@
 
 .publishBtn {
   margin: 0 0 0 auto;
+}
+
+@media (max-width: 425px) {
+  .buttons {
+    flex-direction: column-reverse;
+  }
+  .publishBtn {
+    margin: 0 0 15px 0;
+  }
 }

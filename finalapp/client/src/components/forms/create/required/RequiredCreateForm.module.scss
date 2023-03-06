@@ -1,7 +1,7 @@
 @import '../../../../styles/colors.scss';
 
 .form {
-  width: 550px; // todo: delete
+  width: 100%;
 }
 
 .inputs {
@@ -29,4 +29,17 @@
 
 .textArea {
   height: 100px;
+}
+
+@media (max-width: 425px) {
+  .inputs {
+    padding: 25px 25px 5px 25px;
+  }
+  .buttons {
+    flex-direction: column-reverse;
+    padding: 16px 25px;
+    button:last-child {
+      margin: 0 0 10px 0;
+    }
+  }
 }
