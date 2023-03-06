@@ -11,12 +11,10 @@ import TranslatedMessage from '../translatedMessage/TranslatedMessage';
 import Translation from '../../core/utils/translation';
 import AccountMenu from '../accountMenu/AccountMenu';
 import LangSwitcher from '../ui/langSwitcher/LangSwitcher';
+import { useStore } from '../../context/storeContext';
 
-export interface HeaderProps {
-  user: ShortUser | null;
-}
-
-export const Header = observer(({ user }: HeaderProps): JSX.Element => {
+export const Header = observer((): JSX.Element => {
+  const userStore = useStore('UserStore');
   const navigate: NavigateFunction = useNavigate();
 
   const toAuthorizePage = () => {
@@ -54,10 +52,10 @@ export const Header = observer(({ user }: HeaderProps): JSX.Element => {
             switcherClassName={styles.langSwitcher}
             listClassName={styles.langList}
           />
-          {user !== null ? (
+          {userStore.user !== null ? (
             <AccountMenu className={styles.accountMenu}>
               <ProfileInfo
-                user={user}
+                user={userStore.user}
                 first="name"
                 avatarHeightPX={40}
                 text={{ fontWeight: '400', fontSize: '16px', color: '#FFF' }}

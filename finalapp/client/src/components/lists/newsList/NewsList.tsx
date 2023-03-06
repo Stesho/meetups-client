@@ -1,20 +1,20 @@
+import { observer } from 'mobx-react-lite';
 import React from 'react';
+import { useStore } from '../../../context/storeContext';
 import { News } from '../../../core/types/News';
 import { NewsCard } from '../../cards/newsCard/NewsCard';
 import styles from './NewsList.module.scss';
 
-interface NewsListProps {
-  news: News[];
-}
+const NewsList = observer(() => {
+  const newsStore = useStore('NewsStore');
 
-const NewsList = (props: NewsListProps) => {
   return (
     <div className={styles.newsList}>
-      {props.news.map((news: News) => (
+      {newsStore.sortedNews.map((news: News) => (
         <NewsCard news={news} key={news.id} />
       ))}
     </div>
   );
-};
+});
 
 export default NewsList;

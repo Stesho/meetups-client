@@ -22,6 +22,7 @@ const resetdb = async () => {
 
 describe('meetup creating', () => {
   beforeEach(() => {
+    authorizeAsChief();
     cy.visit('/meetups/create');
   });
 
@@ -84,7 +85,6 @@ describe('meetup creating', () => {
 
   it('should create new meetup with passed data', () => {
     resetdb();
-    authorizeAsChief();    
 
     cy.visit('/meetups/create');
 
