@@ -8,6 +8,7 @@ import { useNavigate, NavigateFunction } from 'react-router-dom';
 import AvailableFor from '../../components/availableFor/AvailableFor';
 import TranslatedMessage from '../../components/translatedMessage/TranslatedMessage';
 import Translation from '../../core/utils/translation';
+import Loader from '../../components/ui/loader/Loader';
 
 const NewsPage = observer((): JSX.Element => {
   const navigate: NavigateFunction = useNavigate();
@@ -17,9 +18,12 @@ const NewsPage = observer((): JSX.Element => {
     navigate('/news/create');
   };
 
-  useEffect(() => {
-    newsStore.fetchNews();
-  }, [newsStore]);
+  const fetchNews = (): Promise<void> => {
+    return new Promise(async (resolve) => {
+      await newsStore.fetchNews();
+      resolve();
+    })
+  }
 
   return (
     <section className="container smoothPage">
@@ -38,7 +42,9 @@ const NewsPage = observer((): JSX.Element => {
             </Button>
           </AvailableFor>
         </div>
-        <NewsList news={newsStore.sortedNews} />
+        <Loader promise={fetchNews()}>
+          <NewsList />
+        </Loader>
       </div>
     </section>
   );

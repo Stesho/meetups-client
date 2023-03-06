@@ -305,11 +305,11 @@ class ServerApi implements IServerApi {
     try {
       const response = await this.fetch(`${BASE_SERVER_URL}${NEWS_URL}`);
 
-      if (response === null) {
+      if (!response?.ok) {
         return [];
       }
 
-      return response.json();
+      return await response.json();
     } catch {
       this.notificationStore.error(this.errorMessage.unknown);
       return [];

@@ -22,10 +22,7 @@ class UserStore {
 
   async fetchUser(): Promise<void> {
     const recievedUser = await this.serverApi.getUserFromServer();
-
-    if (recievedUser !== null) {
-      this.user = recievedUser;
-    }
+    this.user = recievedUser;
   }
 
   async logout(): Promise<void> {

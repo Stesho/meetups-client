@@ -6,6 +6,7 @@ import AvailableFor from '../../components/availableFor/AvailableFor';
 import { Outlet, NavLink } from 'react-router-dom';
 import TranslatedMessage from '../../components/translatedMessage/TranslatedMessage';
 import Translation from '../../core/utils/translation';
+import Loader from '../../components/ui/loader/Loader';
 
 const MeetupsPage = observer((): JSX.Element => {
   const meetupsStore = useStore('MeetupsStore');
@@ -16,10 +17,13 @@ const MeetupsPage = observer((): JSX.Element => {
     props.isActive
       ? `${styles.tabItem} ${styles.selectedTabItem}`
       : `${styles.tabItem}`;
-
-  useEffect((): void => {
-    meetupsStore.fetchMeetups();
-  }, []);
+  
+  const fetchMeetups = (): Promise<void> => {
+    return new Promise(async (resolve) => {
+      await meetupsStore.fetchMeetups();
+      resolve();
+    });
+  }
 
   return (
     <section className="container smoothPage">
@@ -56,7 +60,9 @@ const MeetupsPage = observer((): JSX.Element => {
             </NavLink>
           </div>
         </div>
-        <Outlet />
+        <Loader promise={fetchMeetups()}>
+          <Outlet />
+        </Loader>
       </div>
     </section>
   );

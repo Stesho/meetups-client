@@ -138,13 +138,13 @@ export const ThemePreview = (props: ThemePreviewProps): JSX.Element => {
           <div className={styles.mainButtons}>
             {isVotedUser
             ? <Button type="secondary" className={styles.unsubscribeBtn} disabled={unsubscribeLoader} callback={() => onUnsubscribe()}>
-                {unsubscribeLoader && <LoadingSpinner spinnerClassName={styles.loader}/>}
+                {unsubscribeLoader && <LoadingSpinner />}
                 <TranslatedMessage
                   message={Translation.translatedText('btn.unsubscribe')}
                 />
               </Button>
             : <Button type="primary" className={styles.subscribeBtn} disabled={subscribeLoader} callback={() => onSubscribe()}>
-                {subscribeLoader && <LoadingSpinner spinnerClassName={styles.loader} dotClassName={styles.loaderDot}/>}
+                {subscribeLoader && <LoadingSpinner />}
                 <TranslatedMessage
                   message={Translation.translatedText('btn.subscribe')}
                 />

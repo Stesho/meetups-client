@@ -35,10 +35,8 @@ class NewsStore {
 
   async fetchNews(): Promise<void> {
     const newsList = await this.serverApi.getNewsFromServer();
-
-    if (newsList !== null) {
-      this.setNews(newsList);
-    }
+    // this.news = newsList;
+    this.setNews(newsList);
   }
 
   get sortedNews() {
