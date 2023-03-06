@@ -6,7 +6,10 @@ export const resetdbRoutes = (db) => {
   
   newsRouter.get('/', async (req, res) => {
     try {
-      await fs.copyFile('seed.json', 'db.json');
+      const seedText = await fs.readFile('seed.json', { encoding: 'utf-8'});
+      const seed = JSON.parse(seedText);
+      db.data = seed;
+      db.write();
       res.json({ message: 'ok!' });
     }
     catch(err) {
