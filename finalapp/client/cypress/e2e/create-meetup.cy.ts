@@ -17,11 +17,12 @@ const authorizeAsChief = () => {
 }
 
 const resetdb = async () => {
-  await fetch('http://localhost:3000/api/resetdb');
+  cy.request('http://localhost:3000/api/resetdb');
 }
 
 describe('meetup creating', () => {
   beforeEach(() => {
+    resetdb();
     authorizeAsChief();
     cy.visit('/meetups/create');
   });
@@ -84,8 +85,6 @@ describe('meetup creating', () => {
   });
 
   it('should create new meetup with passed data', () => {
-    resetdb();
-
     cy.visit('/meetups/create');
 
     insertDataOnRequiredForm();
@@ -100,6 +99,8 @@ describe('meetup creating', () => {
     cy.get('#submitBtn').click();
 
     cy.contains('Test Name').should('exist');
+
+    resetdb();
   });
 });
 
