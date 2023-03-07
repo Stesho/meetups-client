@@ -7,9 +7,12 @@ import { Outlet, NavLink } from 'react-router-dom';
 import TranslatedMessage from '../../components/translatedMessage/TranslatedMessage';
 import Translation from '../../core/utils/translation';
 import Loader from '../../components/ui/loader/Loader';
+import classNames from 'classnames';
 
 const MeetupsPage = observer((): JSX.Element => {
   const meetupsStore = useStore('MeetupsStore');
+  const userStore = useStore('UserStore');
+  const tabListClass = classNames(styles.tabList, userStore.user ? styles.fourTabs : styles.threeTabs)
   const setActiveLink = (props: {
     isActive: boolean;
     isPending: boolean;
@@ -35,7 +38,7 @@ const MeetupsPage = observer((): JSX.Element => {
         </h1>
 
         <div className={styles.tabs}>
-          <div className={styles.tabList}>
+          <div className={tabListClass}>
             <div>
               <NavLink to="/meetups/topics" className={setActiveLink}>
                 <TranslatedMessage
