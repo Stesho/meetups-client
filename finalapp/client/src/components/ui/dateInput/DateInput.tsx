@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './DateInput.module.scss';
 import { ReactComponent as CalendarImg } from '../../../assets/icons/calendar-icon.svg';
 import { LabeledInput } from '../labeledInput/LabeledInput';
-import { MONTH_NAMES } from '../../../core/constants/dateTimeConstants';
+import getStringDate from '../../../core/utils/getStringDate';
 import { DatePicker } from './datePicker/DatePicker';
 import useOutsideClick from '../../../core/hooks/useOutsideClick';
 import classNames from 'classnames';
@@ -31,22 +31,6 @@ export const DateInput = (props: DateInputProps): JSX.Element => {
   const initialValue = props.value;
 
   const inputClass = classNames(props.className, styles.input);
-
-  const getStringDate = (
-    year: number,
-    month: number,
-    day?: number,
-    hours?: number,
-    minutes?: number,
-  ): string => {
-    let newValue = '';
-    if (day !== undefined && hours !== undefined && hours !== undefined) {
-      const formatedHours = `${hours}`.padStart(2, '0');
-      const formatedMinutes = `${minutes}`.padStart(2, '0');
-      newValue = `${day} ${MONTH_NAMES[month]} ${year} ${formatedHours}:${formatedMinutes}`;
-    }
-    return newValue;
-  };
 
   const onDatePick = (
     year: number,

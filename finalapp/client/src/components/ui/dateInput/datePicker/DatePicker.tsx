@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './DatePicker.module.scss';
 import { calculateDaysInMonth } from '../../../../core/utils/calculateDaysInMonth/calculateDaysInMonth';
+import parseTime from '../../../../core/utils/parseTime';
 import {
   TIME,
   CALENDAR_MONTH_NAMES,
@@ -62,16 +63,6 @@ export const DatePicker = (props: DatePickerProps): JSX.Element => {
     } else {
       setMonth((current) => current - 1);
     }
-  };
-
-  const parseTime = (time: string) => {
-    const parsedTime = time.split(':');
-    const hours = Number.parseInt(parsedTime[0]);
-    const minutes = Number.parseInt(parsedTime[1]);
-    return {
-      hours,
-      minutes,
-    };
   };
 
   useEffect(displayDaysInCurrentMonth, [month, year]);
