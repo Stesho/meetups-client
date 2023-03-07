@@ -7,6 +7,7 @@ import Button from '../../../ui/button/Button';
 import defaultImage from '../../../../assets/images/default-meetup-img.png';
 import { LabeledInput } from '../../../ui/labeledInput/LabeledInput';
 import styles from './EditNewsForm.module.scss';
+import ImageEditor from '../../../imageEditor/ImageEditor';
 
 interface EditNewsFormProps {
   news: News,
@@ -42,6 +43,7 @@ const EditNewsForm = (props: EditNewsFormProps) => {
           </span>
           <div className={styles.imgWrapper}>
             <img src={image || defaultImage} className={styles.img} alt="#" />
+            <ImageEditor onLoadCallback={(newImage) => setImage(newImage || defaultImage)} className={styles.imageLoader}/>
           </div>
         </div>
         <div className={styles.theme}>
