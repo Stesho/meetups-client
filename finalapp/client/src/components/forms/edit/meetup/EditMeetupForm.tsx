@@ -10,6 +10,9 @@ import TranslatedMessage from '../../../translatedMessage/TranslatedMessage';
 import Translation from '../../../../core/utils/translation';
 import dateToISOString from '../../../../core/utils/dateToISOString';
 import dateFromISOToReadable from '../../../../core/utils/dateFromISOToReadable';
+import { useInput } from '../../../../core/hooks/useInput';
+import { checkDateValidity } from '../../../../core/utils/checkDateValidity/checkDateValidity';
+import { checkDatesValidity } from '../../../../core/utils/checkDateValidity/checkDateValidity';
 import ImageEditor from '../../../imageEditor/ImageEditor';
 
 export type MeetupData = Pick<
@@ -26,15 +29,37 @@ interface EditMeetupFormProps extends MeetupData {
   onPreview: () => void;
 }
 
+const validationOptions = {
+  validDate: checkDateValidity,
+};
+
+const errorMessages = {
+  validDate: Translation.translatedText('validation.date.format'),
+};
+
 export const EditMeetupForm = (props: EditMeetupFormProps): JSX.Element => {
+  const start = useInput({
+    initialValue: dateFromISOToReadable(props.start || ''),
+    validationOptions,
+    errorMessages,
+  });
+  const finish = useInput({
+    initialValue: dateFromISOToReadable(props.finish || ''),
+    validationOptions,
+    errorMessages,
+  });
   const [image, setImage] = useState<string>(props.image || defaultMeetupImg);
   const [subject, setTheme] = useState<string>(props.subject);
-  const [start, setStart] = useState<string>(dateFromISOToReadable(props.start || ''));
-  const [finish, setFinish] = useState<string>(dateFromISOToReadable(props.finish || ''));
+  const [isValidDates, setIsValidDates] = useState<boolean>(false);
   const [place, setPlace] = useState<string>(props.place || '');
   const [excerpt, setDescription] = useState<string>(props.excerpt);
   const [author, setSpeaker] = useState<string>(
     `${props.author.name} ${props.author.surname}`,
+  );
+
+  const checkForm = () => (
+    [start, finish].every((input) => input.value !== '' && input.status !== 'invalid') &&
+    isValidDates
   );
 
   const parseAuthor = (author: string) => {
@@ -46,8 +71,8 @@ export const EditMeetupForm = (props: EditMeetupFormProps): JSX.Element => {
 
     return {
       image,
-      start: dateToISOString(start),
-      finish: dateToISOString(finish),
+      start: dateToISOString(start.value),
+      finish: dateToISOString(finish.value),
       subject,
       place,
       author: {
@@ -62,6 +87,12 @@ export const EditMeetupForm = (props: EditMeetupFormProps): JSX.Element => {
   const preventDefaultSubmit = (event: React.FormEvent): void => {
     event.preventDefault();
   }
+
+  React.useEffect(() => {
+    checkDatesValidity(start.value, finish.value)
+      ? setIsValidDates(true)
+      : setIsValidDates(false);
+  }, [start.value, finish.value]);
 
   return (
     <form className={styles.form} onSubmit={preventDefaultSubmit}>
@@ -86,18 +117,32 @@ export const EditMeetupForm = (props: EditMeetupFormProps): JSX.Element => {
         </div>
         <div className={styles.dates}>
           <DateInput
-            id={'start'}
-            setValue={setStart}
-            value={start}
+            id="start"
+            value={start.value}
+            setValue={start.setValue}
+            onBlur={() => start.setIsOnBlur(true)}
             className={styles.date}
+            status={isValidDates ? start.status : 'invalid'}
             label={Translation.translatedText('form.start')}
+            helpText={
+              isValidDates
+                ? start.message
+                : Translation.translatedText('validation.date.start')
+            }
           />
           <DateInput
-            id={'finish'}
-            setValue={setFinish}
-            value={finish}
+            id="finish"
+            value={finish.value}
+            setValue={finish.setValue}
+            onBlur={() => finish.setIsOnBlur(true)}
             className={styles.date}
+            status={isValidDates ? finish.status : 'invalid'}
             label={Translation.translatedText('form.finish')}
+            helpText={
+              isValidDates
+                ? finish.message
+                : Translation.translatedText('validation.date.finish')
+            }
           />
         </div>
         <div className={styles.place}>
@@ -142,6 +187,7 @@ export const EditMeetupForm = (props: EditMeetupFormProps): JSX.Element => {
           <Button
             callback={(event) => props.onSave(getData(), event)}
             type="primary"
+            disabled={!checkForm()}
           >
             <TranslatedMessage
               message={Translation.translatedText('btn.save')}

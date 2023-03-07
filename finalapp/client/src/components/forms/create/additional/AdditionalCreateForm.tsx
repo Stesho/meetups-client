@@ -14,10 +14,10 @@ import Button from '../../../ui/button/Button';
 import TranslatedMessage from '../../../translatedMessage/TranslatedMessage';
 import Translation from '../../../../core/utils/translation';
 
-export type FormAdditionalData = Pick<
+export type FormAdditionalData = Partial<Pick<
   Meetup,
   'start' | 'finish' | 'place' | 'image'
->;
+>>;
 
 interface AdditionalCreateFormProps {
   onSubmit: (
@@ -38,10 +38,12 @@ export const AdditionalCreateForm = (
     validDate: Translation.translatedText('validation.date.format'),
   };
   const start = useInput({
+    initialValue: undefined,
     validationOptions,
     errorMessages,
   });
   const finish = useInput({
+    initialValue: undefined,
     validationOptions,
     errorMessages,
   });
@@ -56,8 +58,8 @@ export const AdditionalCreateForm = (
 
   const getData = (): FormAdditionalData => {
     return {
-      start: dateToISOString(start.value),
-      finish: dateToISOString(finish.value),
+      start: dateToISOString(start.value) || undefined,
+      finish: dateToISOString(finish.value) || undefined,
       place,
       image,
     };
