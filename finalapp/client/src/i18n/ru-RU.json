@@ -24,6 +24,8 @@
   "btn.approve": "Одобрить Тему",
   "btn.subscribe": "Подписаться",
   "btn.unsubscribe": "Отписаться",
+  "btn.vote": "Поддержать",
+  "btn.unvote": "Отписаться",
   "btn.publish": "Опубликовать",
   "btn.edit": "Редактировать",
   "btn.create": "Создать",

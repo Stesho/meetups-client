@@ -11,14 +11,53 @@ import styles from './MeetupPreview.module.scss';
 import TranslatedMessage from '../../translatedMessage/TranslatedMessage';
 import Translation from '../../../core/utils/translation';
 import { getMeetupDate, getMeetupTime } from '../../../core/utils/getMeetupDatePlaceInfo';
+import { User } from '../../../core/types/User';
+import LoadingSpinner from '../../ui/loadingSpinner/LoadingSpinner';
+import { observer } from 'mobx-react-lite';
+import { useStore } from '../../../context/storeContext';
 
 interface MeetupPreviewProps {
   meetup: Meetup;
+  participants: User[];
   onCancel: (event?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   onPublish: (event?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  onSubscribe: (event?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  onUnsubscribe: (event?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
-const MeetupPreview = (props: MeetupPreviewProps) => {
+const MeetupPreview = observer((props: MeetupPreviewProps) => {
+  const userStore = useStore('UserStore');
+  const [isParticipant, setIsParticipant] = React.useState<boolean>(false);
+  const [subscribeLoader, setSubscribeLoader] = React.useState(false);
+  const [unsubscribeLoader, setUnsubscribeLoader] = React.useState(false);
+
+  const isFutureMeetup = (): boolean => {
+    return new Date(props.meetup.start) > new Date()
+  }
+
+  const checkIsParticipant = (): boolean => {
+    if(userStore.user) {
+      return !!props.participants.find(user => user.id === userStore.user?.id);
+    }
+    return false;
+  }
+
+  const onSubscribe = () => {
+    setSubscribeLoader(true);
+    props.onSubscribe();
+    setUnsubscribeLoader(false);
+  }
+  
+  const onUnsubscribe = () => {
+    setUnsubscribeLoader(true);
+    props.onUnsubscribe();
+    setSubscribeLoader(false);
+  }
+
+  React.useEffect(() => {
+    setIsParticipant(checkIsParticipant());
+  }, [props.participants]);
+
   return (
     <article className={styles.meetupPreview}>
       <div className={styles.img}>
@@ -94,9 +133,27 @@ const MeetupPreview = (props: MeetupPreviewProps) => {
             </AvailableFor>
           : null
         }
+        {isFutureMeetup() && (
+          <AvailableFor roles={['EMPLOYEE']}>
+            {isParticipant
+              ? <Button type="secondary" className={styles.unsubscribeBtn} disabled={unsubscribeLoader} callback={() => onUnsubscribe()}>
+                  {unsubscribeLoader && <LoadingSpinner loaderClassName={styles.loader} spinnerClassName={styles.spinner} />}
+                  <TranslatedMessage
+                    message={Translation.translatedText('btn.unsubscribe')}
+                  />
+                </Button>
+              : <Button type="primary" className={styles.subscribeBtn} disabled={subscribeLoader} callback={() => onSubscribe()}>
+                  {subscribeLoader && <LoadingSpinner loaderClassName={styles.loader} spinnerClassName={styles.spinner} />}
+                  <TranslatedMessage
+                    message={Translation.translatedText('btn.subscribe')}
+                  />
+                </Button>
+            }
+          </AvailableFor>
+        )}
       </div>
     </article>
   );
-};
+});
 
 export default MeetupPreview;

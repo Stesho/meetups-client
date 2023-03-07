@@ -5,6 +5,7 @@ import {
   LOGOUT_URL,
   NEWS_URL,
   VOTEDUSERS_URL,
+  PARTICIPANTS_URL
 } from '../../constants/serverConstants';
 import IServerApi from '../../types/IServerApi';
 import { Meetup } from '../../types/Meetup';
@@ -217,6 +218,69 @@ class ServerApi implements IServerApi {
     try {
       const response = await this.fetch(
         `${BASE_SERVER_URL}${MEETUPS_URL}/${id}${VOTEDUSERS_URL}`, {
+        method: 'DELETE',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({user: user}),
+      });
+
+      if (!response?.ok) {
+        return null;
+      }
+
+      return await response.json();
+    } catch (error) {
+      this.notificationStore.error(this.errorMessage.unknown);
+      return null;
+    }
+  }
+
+  async getParticipants(id: string): Promise<User[] | null> {
+    try {
+      const response = await this.fetch(
+        `${BASE_SERVER_URL}${MEETUPS_URL}/${id}${PARTICIPANTS_URL}`,
+      );
+
+      if (!response?.ok) {
+        return null;
+      }
+
+      return await response.json();
+    } catch (error) {
+      this.notificationStore.error(this.errorMessage.unknown);
+      return null;
+    }
+  }
+
+  async sendParticipant(id: string, user: User): Promise<User[] | null> {
+    try {
+      const response = await this.fetch(
+        `${BASE_SERVER_URL}${MEETUPS_URL}/${id}${PARTICIPANTS_URL}`, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({user: user}),
+      });
+
+      if (!response?.ok) {
+        return null;
+      }
+
+      return await response.json();
+    } catch (error) {
+      this.notificationStore.error(this.errorMessage.unknown);
+      return null;
+    }
+  }
+
+  async removeParticipant(id: string, user: User): Promise<User[] | null> {
+    try {
+      const response = await this.fetch(
+        `${BASE_SERVER_URL}${MEETUPS_URL}/${id}${PARTICIPANTS_URL}`, {
         method: 'DELETE',
         headers: {
           Accept: 'application/json',

@@ -23,8 +23,8 @@ interface ThemePreviewProps {
 }
 
 export const ThemePreview = (props: ThemePreviewProps): JSX.Element => {
-  const [isVotedUser, setIsVotedUser] = React.useState<boolean>(false);
   const userStore = useStore('UserStore');
+  const [isVotedUser, setIsVotedUser] = React.useState<boolean>(false);
   const [subscribeLoader, setSubscribeLoader] = React.useState(false);
   const [unsubscribeLoader, setUnsubscribeLoader] = React.useState(false);
   const [renderedVotedCount, setRenderedVotedCount] = React.useState(10);
@@ -45,7 +45,7 @@ export const ThemePreview = (props: ThemePreviewProps): JSX.Element => {
     }
   }
   
-  const isVoted = (): boolean => {
+  const checkIsVoted = (): boolean => {
     if(userStore.user) {
       return !!props.votedUsers.find(user => user.id === userStore.user?.id);
     }
@@ -65,7 +65,7 @@ export const ThemePreview = (props: ThemePreviewProps): JSX.Element => {
   }
 
   useEffect(() => {
-    setIsVotedUser(isVoted());
+    setIsVotedUser(checkIsVoted());
     window.addEventListener("resize", getRenderedVotedCount);
     return () => {
       window.removeEventListener("resize", getRenderedVotedCount);
@@ -154,13 +154,13 @@ export const ThemePreview = (props: ThemePreviewProps): JSX.Element => {
             ? <Button type="secondary" className={styles.unsubscribeBtn} disabled={unsubscribeLoader} callback={() => onUnsubscribe()}>
                 {unsubscribeLoader && <LoadingSpinner />}
                 <TranslatedMessage
-                  message={Translation.translatedText('btn.unsubscribe')}
+                  message={Translation.translatedText('btn.unvote')}
                 />
               </Button>
             : <Button type="primary" className={styles.subscribeBtn} disabled={subscribeLoader} callback={() => onSubscribe()}>
                 {subscribeLoader && <LoadingSpinner />}
                 <TranslatedMessage
-                  message={Translation.translatedText('btn.subscribe')}
+                  message={Translation.translatedText('btn.vote')}
                 />
               </Button>
             }

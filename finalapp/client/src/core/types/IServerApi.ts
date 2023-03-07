@@ -14,6 +14,9 @@ interface IServerApi {
   getVotedUsers(id: string): Promise<User[] | null>;
   sendVotedUser(id: string, user: User): Promise<User[] | null>;
   removeVotedUser(id: string, user: User): Promise<User[] | null>;
+  getParticipants(id: string): Promise<User[] | null>;
+  sendParticipant(id: string, user: User): Promise<User[] | null>;
+  removeParticipant(id: string, user: User): Promise<User[] | null>;
 
   //User
   tryAuthorize(authData: AuthorizationRequestData): Promise<User | null>;
