@@ -24,6 +24,7 @@ import EditNewsPage from './pages/edit-news/EditNewsPage';
 import PrivateRoute from './core/utils/privateRoute';
 import Loader from './components/ui/loader/Loader';
 import styles from './App.module.scss';
+import NotFound from './pages/notFound/NotFound';
 
 export const App = observer((): JSX.Element => {
   const userStore = useStore('UserStore');
@@ -85,7 +86,7 @@ export const App = observer((): JSX.Element => {
             } />
             <Route path="preview/:id" element={<NewsPreviewPage />} />
           </Route>
-          <Route path="*" element={'NOT FOUND'} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <NotificationBanner />
         <Modal />
