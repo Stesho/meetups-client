@@ -35,6 +35,7 @@
   "btn.logout": "Logout",
   "btn.yes": "Yes",
   "btn.no": "No",
+  "btn.toHome": "To Home Page",
   "imageLoader.text": "Drag and drop images here or <span>download</span>",
   "imageLoader.formats": "Allowed formats: .jpg .jpeg .png",
   "imageLoader.maxFileSize": "Maximum file size: {maxFileSize} Mb",
@@ -86,5 +87,8 @@
   "news.edit.title": "Edit News",
 
   "auth.title": "Authorization",
-  "auth.caption": "Log in to be able to suggest new topics for meetups and more."
+  "auth.caption": "Log in to be able to suggest new topics for meetups and more.",
+
+  "notFound.title": "Page Not Found",
+  "notFound.text": "We couldn't find what you were looking for."
 }
