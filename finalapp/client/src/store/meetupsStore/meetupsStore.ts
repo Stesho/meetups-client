@@ -85,6 +85,27 @@ class MeetupsStore {
     return votedUsers;
   }
 
+  async getParticipants(meetupId: string): Promise<User[]> {
+    const votedUsers = await this.serverApi.getParticipants(meetupId);
+    return votedUsers || [];
+  }
+  
+  async addParticipant(meetupId: string, user: User): Promise<User[] | null> {
+    const votedUsers = await this.serverApi.sendParticipant(meetupId, user);
+    this.meetups = this.meetups.map((meetup) => {
+      if(meetup.id === meetupId) {
+        meetup.votedUsersCount++;
+      }
+      return meetup;
+    })
+    return votedUsers;
+  }
+
+  async deleteParticipant(meetupId: string, user: User): Promise<User[] | null> {
+    const votedUsers = await this.serverApi.removeParticipant(meetupId, user);
+    return votedUsers;
+  }
+
   get requestMeetups(): Meetup[] {
     return (
       this.meetups

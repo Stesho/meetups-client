@@ -24,6 +24,8 @@
   "btn.approve": "Approve The Topic",
   "btn.subscribe": "Subscribe",
   "btn.unsubscribe": "Unsubscribe",
+  "btn.vote": "Vote",
+  "btn.unvote": "UnVote",
   "btn.publish": "Publish",
   "btn.edit": "Edit",
   "btn.create": "Create",
