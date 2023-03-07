@@ -18,6 +18,7 @@ export const Header = (): JSX.Element => {
   }
 
   React.useEffect(() => {
+    checkIsBurger();
     window.addEventListener("resize", checkIsBurger);
     return () => {
       window.removeEventListener("resize", checkIsBurger);

@@ -17,6 +17,24 @@
   flex-direction: column;
 }
 
+.threeTabs {
+  div:first-child {
+    flex: 1;
+  }
+  div:last-child {
+    flex: 2;
+  }
+}
+
+.fourTabs {
+  div:first-child {
+    flex: 1;
+  }
+  div:last-child {
+    flex: 1;
+  }
+}
+
 .tabList {
   display: flex;
   margin: auto;

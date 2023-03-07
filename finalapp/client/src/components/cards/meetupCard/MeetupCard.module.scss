@@ -30,6 +30,11 @@
   color: $grey-700;
 }
 
+.editCard {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
 .meetupInfo {
   margin-bottom: 20px;
 }

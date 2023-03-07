@@ -16,6 +16,11 @@ body {
   background-color: $grey-100;
 }
 
+.stopScrolling {
+  height: 100%;
+  overflow: hidden;
+}
+
 .container {
   max-width: 630px;
   margin: 0 auto;

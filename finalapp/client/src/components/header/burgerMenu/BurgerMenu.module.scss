@@ -35,6 +35,26 @@
   height: 4px;
   border-radius: 3px;
   background-color: $white;
+  transition: all 0.2s linear;
+}
+
+.cross {
+  .burgerLine {
+    background-color: $grey-700;
+  }
+  .burgerLine:first-child {
+    width: calc(100% + 5px);
+    transform-origin: 0% 0%;
+    transform: rotate(37deg);
+  }
+  .burgerLine:nth-child(2) {
+    display: none;
+  }
+  .burgerLine:last-child {
+    width: calc(100% + 5px);
+    transform-origin: 0% 100%;
+    transform: rotate(-37deg);
+  }
 }
 
 .menu {
@@ -45,7 +65,7 @@
   width: 320px;
   z-index: 1;
   padding: 60px 0 0 0;
-  background-color: $grey-300;
+  background-color: $grey-100;
   left: calc(100% - 320px);
   top: 0;
   animation: slide 0.3s linear;
@@ -55,6 +75,16 @@
   display: flex;
   justify-content: space-between;
   padding: 20px 10px;
+}
+
+.langSwitcher {
+  background: $primary-gradient;
+  border-radius: 50%;
+}
+
+.langList {
+  left: -30px;
+  top: 48px;
 }
 
 .navItem {

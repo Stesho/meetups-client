@@ -32,7 +32,7 @@ export const ThemePreview = (props: ThemePreviewProps): JSX.Element => {
     props.votedUsers.length === renderedVotedCount ? styles.jc_start : styles.jc_spaceBetween
   )
 
-  const getRenderedVotedCount = (): void => {
+  const calcRenderedVotedCount = (): void => {
     const pageWidth = document.documentElement.scrollWidth;
     if(pageWidth <= 425) {
       setRenderedVotedCount(4);
@@ -66,9 +66,10 @@ export const ThemePreview = (props: ThemePreviewProps): JSX.Element => {
 
   useEffect(() => {
     setIsVotedUser(checkIsVoted());
-    window.addEventListener("resize", getRenderedVotedCount);
+    calcRenderedVotedCount();
+    window.addEventListener("resize", calcRenderedVotedCount);
     return () => {
-      window.removeEventListener("resize", getRenderedVotedCount);
+      window.removeEventListener("resize", calcRenderedVotedCount);
     };
   }, [props.votedUsers]);
 
