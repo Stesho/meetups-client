@@ -31,9 +31,6 @@ type UseInputProps<T> = {
 
 export const useInput = <T>(
   props: UseInputProps<T>
-  // validationOptions: Options<T>,
-  // errorMessages?: Partial<ErrorMessages<T>>,
-  // successMessage?: SuccessMessage,
 ): Input => {
   type Option = keyof Options<T>;
 

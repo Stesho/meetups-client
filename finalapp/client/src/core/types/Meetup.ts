@@ -10,7 +10,6 @@ export interface Meetup {
   subject: string;
   excerpt: string;
   place: string;
-  // goCount: number;
   votedUsersCount: number;
   participantsCount: number;
   status: 'DRAFT' | 'REQUEST' | 'CONFIRMED';
@@ -18,7 +17,7 @@ export interface Meetup {
   image?: string | null;
 }
 
-export type CreatedMeetup = Omit<
+export type CreatedMeetup = Partial<Omit<
   Meetup,
   'goCount' | 'status' | 'isOver' | 'id'
->;
+>>;
