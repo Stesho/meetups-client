@@ -10,6 +10,7 @@ import TranslatedMessage from '../../../translatedMessage/TranslatedMessage';
 import Translation from '../../../../core/utils/translation';
 import dateToISOString from '../../../../core/utils/dateToISOString';
 import dateFromISOToReadable from '../../../../core/utils/dateFromISOToReadable';
+import ImageEditor from '../../../imageEditor/ImageEditor';
 
 export type MeetupData = Pick<
   Meetup,
@@ -26,6 +27,7 @@ interface EditMeetupFormProps extends MeetupData {
 }
 
 export const EditMeetupForm = (props: EditMeetupFormProps): JSX.Element => {
+  const [image, setImage] = useState<string>(props.image || defaultMeetupImg);
   const [subject, setTheme] = useState<string>(props.subject);
   const [start, setStart] = useState<string>(dateFromISOToReadable(props.start || ''));
   const [finish, setFinish] = useState<string>(dateFromISOToReadable(props.finish || ''));
@@ -34,8 +36,6 @@ export const EditMeetupForm = (props: EditMeetupFormProps): JSX.Element => {
   const [author, setSpeaker] = useState<string>(
     `${props.author.name} ${props.author.surname}`,
   );
-
-  const image = props.image || defaultMeetupImg;
 
   const parseAuthor = (author: string) => {
     return author.split(' ');
@@ -74,6 +74,7 @@ export const EditMeetupForm = (props: EditMeetupFormProps): JSX.Element => {
           </span>
           <div className={styles.imgWrapper}>
             <img src={image} className={styles.img} alt="#" />
+            <ImageEditor onLoadCallback={(newImage) => setImage(newImage || defaultMeetupImg)} className={styles.imageLoader}/>
           </div>
         </div>
         <div className={styles.theme}>
