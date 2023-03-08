@@ -17,8 +17,8 @@ const MeetupPreviewPage = () => {
   const navigate: NavigateFunction = useNavigate();
   const meetupsStore = useStore('MeetupsStore');
 
-  const toModeration = () => {
-    navigate('/meetups/moderation');
+  const toTopics = () => {
+    navigate('/meetups/Topics');
   };
 
   const subscribe = async () => {
@@ -56,7 +56,7 @@ const MeetupPreviewPage = () => {
         status: 'CONFIRMED',
       });
     }
-    toModeration();
+    toTopics();
   };
 
   useEffect(() => {
@@ -79,7 +79,7 @@ const MeetupPreviewPage = () => {
           <MeetupPreview
             meetup={meetup}
             participants={participants}
-            onCancel={toModeration}
+            onCancel={toTopics}
             onPublish={publish}
             onSubscribe={subscribe}
             onUnsubscribe={unsubscribe}
