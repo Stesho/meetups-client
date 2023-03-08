@@ -8,6 +8,7 @@ import defaultImage from '../../../../assets/images/default-meetup-img.png';
 import { LabeledInput } from '../../../ui/labeledInput/LabeledInput';
 import styles from './EditNewsForm.module.scss';
 import ImageEditor from '../../../imageEditor/ImageEditor';
+import { observer } from 'mobx-react-lite';
 
 interface EditNewsFormProps {
   news: News,
@@ -15,7 +16,7 @@ interface EditNewsFormProps {
   onSave: (news: News) => void
 }
 
-const EditNewsForm = (props: EditNewsFormProps) => {
+const EditNewsForm = observer((props: EditNewsFormProps) => {
   const [image, setImage] = React.useState<string>(props.news.image || '');
   const [title, setTitle] = React.useState<string>(props.news.title || '');
   const [text, setText] = React.useState<string>(props.news.text || '');
@@ -76,6 +77,6 @@ const EditNewsForm = (props: EditNewsFormProps) => {
       </div>
     </form>
   );
-};
+});
 
 export default EditNewsForm;

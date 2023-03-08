@@ -21,6 +21,10 @@ const NewsPreviewPage = () => {
   };
 
   const toNewsPage = () => {
+    navigate(`/news`);
+  };
+
+  const toEditPage = () => {
     navigate(`/news/edit/${id}`);
   };
 
@@ -40,7 +44,7 @@ const NewsPreviewPage = () => {
               />
             </h1>
           </div>
-          <NewsPreview news={news} onCancel={toNewsPage} onEdit={toNewsPage} />
+          <NewsPreview news={news} onCancel={toNewsPage} onEdit={toEditPage} />
         </div>
       )}
     </section>

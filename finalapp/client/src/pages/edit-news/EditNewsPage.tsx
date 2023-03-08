@@ -7,8 +7,9 @@ import { useStore } from '../../context/storeContext';
 import { News } from '../../core/types/News';
 import { useNavigate, NavigateFunction } from 'react-router-dom';
 import styles from './EditNewsPage.module.scss';
+import { observer } from 'mobx-react-lite';
 
-const EditNewsPage = () => {
+const EditNewsPage = observer(() => {
   const [news, setNews] = React.useState<News | null>(null);
   const newsStore = useStore('NewsStore');
   const { id } = useParams();
@@ -34,8 +35,8 @@ const EditNewsPage = () => {
   }
 
   const onSave = async (editedNews: News) => {
+    navigate(`/news`);
     await newsStore.editNews(editedNews);
-    toPreviewPage();
   }
 
   useEffect(() => {
@@ -62,6 +63,6 @@ const EditNewsPage = () => {
       )}
     </section>
   );
-};
+});
 
 export default EditNewsPage;
