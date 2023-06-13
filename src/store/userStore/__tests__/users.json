@@ -1,0 +1,18 @@
+[
+  {
+    "id": "uuu-aaa",
+    "name": "employee",
+    "password": "private",
+    "surname": "Gerlach",
+    "post": "Developer",
+    "roles": "EMPLOYEE"
+  },
+  {
+    "id": "uuu-bbb",
+    "name": "chief",
+    "password": "private",
+    "surname": "Blick",
+    "post": "Chief developer",
+    "roles": "CHIEF"
+  }
+]

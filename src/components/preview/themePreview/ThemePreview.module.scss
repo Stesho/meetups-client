@@ -1,0 +1,112 @@
+@import '../../../styles/colors.scss';
+@import '../../../styles/typography.scss';
+
+.themePreview {
+  width: 100%;
+}
+
+.block {
+  background-color: $white;
+  box-shadow: 0px 4px 7px rgba(215, 221, 232, 0.398055);
+  border-radius: 5px;
+}
+
+.caption {
+  @extend .inputName;
+  margin-top: 7px;
+  margin-bottom: 10px;
+}
+
+.title {
+  @extend .block;
+  @extend .additionalH2;
+  padding: 26px 29px 30px 24px;
+}
+
+.author {
+  @extend .block;
+  @extend .pageLink_active;
+  color: $grey-800;
+  padding: 15px 16px 17px 23px;
+  margin-top: 5px;
+  margin-bottom: 19px;
+}
+
+.excerpt {
+  @extend .block;
+  @extend .pageLink;
+  color: $grey-800;
+  padding: 22px 63px 18px 23px;
+  margin-top: 5px;
+  margin-bottom: 19px;
+}
+
+.votedUsers {
+  @extend .block;
+  display: flex;
+  margin-top: 5px;
+  margin-bottom: 26px;
+  padding: 17px 23px 15px 17px;
+}
+
+.noVotedUsers {
+  @extend .pageLink;
+  display: flex;
+  color: $grey-800;
+}
+
+.buttons {
+  @extend .block;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+  padding: 16px 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.deleteButton {
+  margin-right: 9px;
+}
+
+.mainButtons {
+  margin: 0 0 0 auto;
+}
+
+.subscribeBtn,
+.unsubscribeBtn {
+  position: relative;
+}
+
+.loader {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.spinner {
+  width: 35px;
+  height: 35px;
+}
+
+.jc_start {
+  justify-content: start;
+}
+
+.jc_spaceBetween {
+  justify-content: space-between;
+}
+
+@media (max-width: 560px) {
+  .buttons {
+    flex-direction: column-reverse;
+  }
+  .mainButtons {
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .deleteButton {
+    margin: 15px 0;
+  }
+}

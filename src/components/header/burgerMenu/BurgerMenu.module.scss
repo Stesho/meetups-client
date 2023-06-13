@@ -1,0 +1,113 @@
+@import '../../../styles/colors.scss';
+@import '../../../styles/typography.scss';
+
+.overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.burgerMenu {
+  position: relative;
+}
+
+.burgerBtn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  z-index: 3;
+  width: 40px;
+  height: 30px;
+  background: none;
+  border: none;
+}
+
+.burgerLine {
+  width: 100%;
+  height: 4px;
+  border-radius: 3px;
+  background-color: $white;
+  transition: all 0.2s linear;
+}
+
+.cross {
+  .burgerLine {
+    background-color: $grey-700;
+  }
+  .burgerLine:first-child {
+    width: calc(100% + 5px);
+    transform-origin: 0% 0%;
+    transform: rotate(37deg);
+  }
+  .burgerLine:nth-child(2) {
+    display: none;
+  }
+  .burgerLine:last-child {
+    width: calc(100% + 5px);
+    transform-origin: 0% 100%;
+    transform: rotate(-37deg);
+  }
+}
+
+.menu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 320px;
+  z-index: 1;
+  padding: 60px 0 0 0;
+  background-color: $grey-100;
+  left: calc(100% - 320px);
+  top: 0;
+  animation: slide 0.3s linear;
+}
+
+.profile {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 10px;
+}
+
+.langSwitcher {
+  background: $primary-gradient;
+  border-radius: 50%;
+}
+
+.langList {
+  left: -30px;
+  top: 48px;
+}
+
+.navItem {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  text-decoration: none;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  transition: 0.2s all;
+  color: $grey-700;
+  cursor: pointer;
+
+  &.activeLink {
+    background-color: $grey-500;  
+  }
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
